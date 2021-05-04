@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@prefresh/next": "^1.3.0",
+    "goober": "^2.0.37",
     "next": "^10.0.0",
     "next-plugin-preact": "^3.0.3",
     "preact": "^10.5.5",
