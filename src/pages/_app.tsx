@@ -1,8 +1,12 @@
+import { createElement } from 'react';
+import { setup } from 'goober';
 import Head from 'next/head';
 import { AppProps } from 'next/app';
 
-import '@/styles/reset.css'
-import '@/styles/global.css'
+import '@/styles/reset.css';
+import '@/styles/global.css';
+
+setup(createElement);
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
