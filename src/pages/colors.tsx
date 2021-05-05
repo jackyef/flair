@@ -1,5 +1,6 @@
 import { H2, H3, P } from '@/components/Typography/Typography';
 import { COLORS_VARIANTS, colors, ColorShadeValue } from '@/theme/colors';
+import { shadows } from '@/theme/shadow';
 import { space } from '@/theme/space';
 import { css, styled } from 'goober';
 
@@ -24,6 +25,7 @@ const ColorSquare = styled('div')<{ background: string; color: string }>`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  box-shadow: ${shadows.subtle};
 
   & > p {
     font-weight: 500;
