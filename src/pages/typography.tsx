@@ -1,7 +1,7 @@
 import { styled } from 'goober';
 
 import { H1, H2, H3, H4, H5, H6, P } from '@/components/Typography/Typography';
-import { onNonMobileViewPort } from '@/theme/mediaQueries';
+import { onMobileUp } from '@/theme/mediaQueries';
 import { space } from '@/theme/space';
 
 const Paper = styled('section')`
@@ -9,7 +9,7 @@ const Paper = styled('section')`
   margin: 0;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 
-  ${onNonMobileViewPort} {
+  ${onMobileUp} {
     padding: ${space['2xl']};
     margin: ${space['2xl']};
   }

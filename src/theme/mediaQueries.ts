@@ -1,2 +1,2 @@
-export const onNonMobileViewPort = '@media (min-width: 501px)';
+export const onMobileUp = '@media (min-width: 501px)';
 

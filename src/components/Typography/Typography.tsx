@@ -3,7 +3,7 @@ import { css } from 'goober';
 
 import { fontSizes, mobileFontSizes, FontSizeVariant, lineHeights } from '@/theme/fonts';
 import { SizeVariant, space } from '@/theme/space';
-import { onNonMobileViewPort } from '@/theme/mediaQueries';
+import { onMobileUp } from '@/theme/mediaQueries';
 
 const AVAILABLE_ELEMENTS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'] as const;
 type TypographyElement = typeof AVAILABLE_ELEMENTS[number];
@@ -61,7 +61,7 @@ const cssClasses = AVAILABLE_ELEMENTS.reduce((acc, element) => {
     text-transform: ${shouldUppercase ? 'uppercase' : 'none'};
     letter-spacing: ${shouldUppercase ? space.xs : 'inherit'};
 
-    ${onNonMobileViewPort} {
+    ${onMobileUp} {
       font-size: ${fontSize};
     }
   `;
