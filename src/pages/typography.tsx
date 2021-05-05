@@ -1,4 +1,4 @@
-import { styled } from 'goober';
+import { css, styled } from 'goober';
 
 import { H1, H2, H3, H4, H5, H6, P } from '@/components/Typography/Typography';
 import { onMobileUp } from '@/theme/mediaQueries';
@@ -15,13 +15,19 @@ const Paper = styled('section')`
   }
 `;
 
+const withoutTopMargin = css`
+  margin-top: 0;
+`;
+
 export default function Home() {
   return (
     <main>
       <H2>Typography</H2>
 
       <Paper>
-        <H1>The quick brown fox jumps over the lazy dog (h1)</H1>
+        <H1 className={withoutTopMargin}>
+          The quick brown fox jumps over the lazy dog (h1)
+        </H1>
         <P>
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry&apos;s standard dummy text

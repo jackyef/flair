@@ -1,7 +1,13 @@
 import React from 'react';
 import { css } from 'goober';
+import cx from 'classnames';
 
-import { fontSizes, mobileFontSizes, FontSizeVariant, lineHeights } from '@/theme/fonts';
+import {
+  fontSizes,
+  mobileFontSizes,
+  FontSizeVariant,
+  lineHeights,
+} from '@/theme/fonts';
 import { SizeVariant, space } from '@/theme/space';
 import { onMobileUp } from '@/theme/mediaQueries';
 
@@ -73,31 +79,46 @@ interface Props extends React.HTMLProps<HTMLHeadingElement> {
   as?: TypographyElement;
 }
 
-export const H1: React.FC<Props> = ({ as = 'h1', children, ...props }) => {
+export const H1: React.FC<Props> = ({
+  as = 'h1',
+  className,
+  children,
+  ...props
+}) => {
   const Element = as;
 
   return (
-    <Element className={cssClasses.h1} {...props}>
+    <Element className={cx(cssClasses.h1, className)} {...props}>
       {children}
     </Element>
   );
 };
 
-export const H2: React.FC<Props> = ({ as = 'h2', children, ...props }) => {
+export const H2: React.FC<Props> = ({
+  as = 'h2',
+  className,
+  children,
+  ...props
+}) => {
   const Element = as;
 
   return (
-    <Element className={cssClasses.h2} {...props}>
+    <Element className={cx(cssClasses.h2, className)} {...props}>
       {children}
     </Element>
   );
 };
 
-export const H3: React.FC<Props> = ({ as = 'h3', children, ...props }) => {
+export const H3: React.FC<Props> = ({
+  as = 'h3',
+  className,
+  children,
+  ...props
+}) => {
   const Element = as;
 
   return (
-    <Element className={cssClasses.h3} {...props}>
+    <Element className={cx(cssClasses.h3, className)} {...props}>
       {children}
     </Element>
   );
@@ -108,41 +129,61 @@ const h4Class = css`
   font-style: italic;
 `;
 
-export const H4: React.FC<Props> = ({ as = 'h4', children, ...props }) => {
+export const H4: React.FC<Props> = ({
+  as = 'h4',
+  className,
+  children,
+  ...props
+}) => {
   const Element = as;
 
   return (
-    <Element className={`${cssClasses.h4} ${h4Class}`} {...props}>
+    <Element className={cx(cssClasses.h4, h4Class, className)} {...props}>
       {children}
     </Element>
   );
 };
 
-export const H5: React.FC<Props> = ({ as = 'h5', children, ...props }) => {
+export const H5: React.FC<Props> = ({
+  as = 'h5',
+  className,
+  children,
+  ...props
+}) => {
   const Element = as;
 
   return (
-    <Element className={cssClasses.h5} {...props}>
+    <Element className={cx(cssClasses.h5, className)} {...props}>
       {children}
     </Element>
   );
 };
 
-export const H6: React.FC<Props> = ({ as = 'h6', children, ...props }) => {
+export const H6: React.FC<Props> = ({
+  as = 'h6',
+  className,
+  children,
+  ...props
+}) => {
   const Element = as;
 
   return (
-    <Element className={cssClasses.h6} {...props}>
+    <Element className={cx(cssClasses.h6, className)} {...props}>
       {children}
     </Element>
   );
 };
 
-export const P: React.FC<Props> = ({ as = 'p', children, ...props }) => {
+export const P: React.FC<Props> = ({
+  as = 'p',
+  className,
+  children,
+  ...props
+}) => {
   const Element = as;
 
   return (
-    <Element className={cssClasses.p} {...props}>
+    <Element className={cx(cssClasses.p, className)} {...props}>
       {children}
     </Element>
   );

@@ -4,14 +4,14 @@ import { styled } from 'goober';
 const SquareContainer = styled('div')`
   display: flex;
   align-items: center;
-  margin-bottom: ${space.md};
+  margin-bottom: ${space.lg};
 `;
 
 const spaceSquares = SIZE_VARIANTS.map((size) => {
   return styled('div')`
     width: ${space[size]};
     height: ${space[size]};
-    margin-right: ${space.md};
+    margin-right: ${space.lg};
     background: gray;
   `;
 });
