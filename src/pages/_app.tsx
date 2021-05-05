@@ -1,14 +1,12 @@
-import { createElement } from 'react';
-import { setup } from 'goober';
+
 import Head from 'next/head';
 import { AppProps } from 'next/app';
 
 import { Layout } from '@/components/Layout/Layout';
+import { GlobalStyles } from '@/components/GlobalStyles/GlobalStyles';
 
 import '@/styles/reset.css';
 import '@/styles/global.css';
-
-setup(createElement);
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
@@ -20,6 +18,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           rel="stylesheet"
         />
       </Head>
+      <GlobalStyles />
       <Layout>
         <Component {...pageProps} />
       </Layout>

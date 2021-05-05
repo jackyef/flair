@@ -46,6 +46,7 @@ const MARGIN_BOTTOM_MAP: Record<TypographyElement, SizeVariant> = {
 
 const cssClasses = AVAILABLE_ELEMENTS.reduce((acc, element) => {
   const isHeading = element.startsWith('h');
+  const isBigHeading = element === 'h1' || element === 'h2';
   const shouldUppercase = element === 'h5';
   const fontSizeVar = SIZE_MAP[element];
   const marginTopVar = MARGIN_TOP_MAP[element];
@@ -65,7 +66,11 @@ const cssClasses = AVAILABLE_ELEMENTS.reduce((acc, element) => {
     line-height: ${lineHeights[fontSizeVar]};
     font-weight: ${isHeading ? '700' : '400'};
     text-transform: ${shouldUppercase ? 'uppercase' : 'none'};
-    letter-spacing: ${shouldUppercase ? space.xs : 'inherit'};
+    letter-spacing: ${shouldUppercase
+      ? space.xs
+      : isBigHeading
+      ? '-1px'
+      : 'inherit'};
 
     ${onMobileUp} {
       font-size: ${fontSize};
