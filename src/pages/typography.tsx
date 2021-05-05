@@ -1,11 +1,18 @@
-import { H1, H2, H3, H4, H5, H6, P } from '@/components/Typography/Typography';
-import { space } from '@/theme/space';
 import { styled } from 'goober';
 
+import { H1, H2, H3, H4, H5, H6, P } from '@/components/Typography/Typography';
+import { onNonMobileViewPort } from '@/theme/mediaQueries';
+import { space } from '@/theme/space';
+
 const Paper = styled('section')`
-  padding: ${space['2xl']};
-  margin: ${space['2xl']};
+  padding: ${space['lg']};
+  margin: 0;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+
+  ${onNonMobileViewPort} {
+    padding: ${space['2xl']};
+    margin: ${space['2xl']};
+  }
 `;
 
 export default function Home() {

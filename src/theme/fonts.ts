@@ -2,7 +2,7 @@ export const FONTSIZE_VARIANTS = [
   'h1',
   'h2',
   'h3',
-  'subheading',
+  'subheading', // h4 and h5 are considered subheadings
   'body',
   'small',
 ] as const;
@@ -14,6 +14,15 @@ export const fontSizes: Record<FontSizeVariant, string> = {
   h2: '2.5rem',
   h3: '1.8rem',
   subheading: '1.5rem',
+  body: '1rem',
+  small: '0.875rem',
+} as const;
+
+export const mobileFontSizes: Record<FontSizeVariant, string> = {
+  h1: '2.5rem',
+  h2: '2rem',
+  h3: '1.6rem',
+  subheading: '1.35rem',
   body: '1rem',
   small: '0.875rem',
 } as const;

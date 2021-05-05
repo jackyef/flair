@@ -1,8 +1,9 @@
 import React from 'react';
 import { css } from 'goober';
 
-import { fontSizes, FontSizeVariant, lineHeights } from '@/theme/fonts';
+import { fontSizes, mobileFontSizes, FontSizeVariant, lineHeights } from '@/theme/fonts';
 import { SizeVariant, space } from '@/theme/space';
+import { onNonMobileViewPort } from '@/theme/mediaQueries';
 
 const AVAILABLE_ELEMENTS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'] as const;
 type TypographyElement = typeof AVAILABLE_ELEMENTS[number];
@@ -45,6 +46,7 @@ const cssClasses = AVAILABLE_ELEMENTS.reduce((acc, element) => {
   const marginBottomVar = MARGIN_BOTTOM_MAP[element];
 
   const fontSize = fontSizes[fontSizeVar];
+  const mobileFontSize = mobileFontSizes[fontSizeVar];
 
   // We generally want the top margin to be larger than the bottom margin
   // to make the heading feels more connected with the next paragraph
@@ -52,12 +54,16 @@ const cssClasses = AVAILABLE_ELEMENTS.reduce((acc, element) => {
   const marginBottom = space[marginBottomVar];
 
   acc[element] = css`
-    font-size: ${fontSize};
+    font-size: ${mobileFontSize};
     margin: ${marginTop} 0 ${marginBottom};
     line-height: ${lineHeights[fontSizeVar]};
     font-weight: ${isHeading ? '700' : '400'};
     text-transform: ${shouldUppercase ? 'uppercase' : 'none'};
     letter-spacing: ${shouldUppercase ? space.xs : 'inherit'};
+
+    ${onNonMobileViewPort} {
+      font-size: ${fontSize};
+    }
   `;
 
   return acc;
