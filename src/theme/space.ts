@@ -6,9 +6,9 @@ export const space: Record<SizeVariant, string> = {
   xs: '2px',
   sm: '4px',
   md: '8px',
-  lg: '16px',
-  xl: '24px',
-  '2xl': '32px',
+  lg: '20px',
+  xl: '32px',
+  '2xl': '40px',
   '3xl': '48px',
   '4xl': '64px',
 } as const;

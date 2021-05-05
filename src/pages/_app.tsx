@@ -3,6 +3,8 @@ import { setup } from 'goober';
 import Head from 'next/head';
 import { AppProps } from 'next/app';
 
+import { Layout } from '@/components/Layout/Layout';
+
 import '@/styles/reset.css';
 import '@/styles/global.css';
 
@@ -18,7 +20,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           rel="stylesheet"
         />
       </Head>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </>
   );
 };

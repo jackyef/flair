@@ -18,7 +18,7 @@ const SIZE_MAP: Record<TypographyElement, FontSizeVariant> = {
 };
 
 const MARGIN_TOP_MAP: Record<TypographyElement, SizeVariant> = {
-  h1: '2xl',
+  h1: 'xl',
   h2: 'xl',
   h3: 'xl',
   h4: 'lg',
@@ -28,7 +28,7 @@ const MARGIN_TOP_MAP: Record<TypographyElement, SizeVariant> = {
 };
 
 const MARGIN_BOTTOM_MAP: Record<TypographyElement, SizeVariant> = {
-  h1: 'xl',
+  h1: 'lg',
   h2: 'lg',
   h3: 'lg',
   h4: 'md',
