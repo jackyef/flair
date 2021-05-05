@@ -7,7 +7,7 @@ setup(createElement);
 
 export const GlobalStyles = createGlobalStyles`
   body {
-    background: ${colors.light[800]};
-    color: ${colors.dark[800]};
+    background: ${colors.light[800].color};
+    color: ${colors.dark[800].color};
   }
 `;

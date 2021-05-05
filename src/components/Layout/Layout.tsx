@@ -26,6 +26,7 @@ export const Layout: React.FC = ({ children }) => {
           <NavItem><Link href="/" passHref><a>/</a></Link></NavItem>
           <NavItem><Link href="/spacing" passHref><a>/spacing</a></Link></NavItem>
           <NavItem><Link href="/typography" passHref><a>/typography</a></Link></NavItem>
+          <NavItem><Link href="/colors" passHref><a>/colors</a></Link></NavItem>
         </NavList>
       </nav>
       {children}
