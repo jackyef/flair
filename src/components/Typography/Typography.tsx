@@ -1,86 +1,143 @@
 import React from 'react';
 import { css } from 'goober';
 
-import { textSize, TextSizeVariant } from '@/theme/text';
+import { fontSizes, FontSizeVariant, lineHeights } from '@/theme/fonts';
 import { SizeVariant, space } from '@/theme/space';
 
 const AVAILABLE_ELEMENTS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'] as const;
 type TypographyElement = typeof AVAILABLE_ELEMENTS[number];
 
-const SIZE_MAP: Record<TypographyElement, TextSizeVariant> = {
+const SIZE_MAP: Record<TypographyElement, FontSizeVariant> = {
   h1: 'h1',
   h2: 'h2',
   h3: 'h3',
-  h4: 'subheading',
-  h5: 'body',
+  h4: 'h3',
+  h5: 'subheading',
   h6: 'body',
   p: 'body',
 };
 
-const SPACE_MAP: Record<TypographyElement, SizeVariant> = {
+const MARGIN_TOP_MAP: Record<TypographyElement, SizeVariant> = {
   h1: '2xl',
   h2: 'xl',
+  h3: 'xl',
+  h4: 'lg',
+  h5: 'lg',
+  h6: 'lg',
+  p: 'md',
+};
+
+const MARGIN_BOTTOM_MAP: Record<TypographyElement, SizeVariant> = {
+  h1: 'xl',
+  h2: 'lg',
   h3: 'lg',
   h4: 'md',
   h5: 'md',
   h6: 'md',
-  p: 'md',
+  p: 'sm',
 };
 
-const ELEMENT_CLASSES = AVAILABLE_ELEMENTS.map((element) => {
+const cssClasses = AVAILABLE_ELEMENTS.reduce((acc, element) => {
   const isHeading = element.startsWith('h');
   const shouldUppercase = element === 'h5';
+  const fontSizeVar = SIZE_MAP[element];
+  const marginTopVar = MARGIN_TOP_MAP[element];
+  const marginBottomVar = MARGIN_BOTTOM_MAP[element];
 
-  return css`
-    font-size: ${textSize[SIZE_MAP[element]]};
-    margin: ${space[SPACE_MAP[element]]} 0;
+  const fontSize = fontSizes[fontSizeVar];
+
+  // We generally want the top margin to be larger than the bottom margin
+  // to make the heading feels more connected with the next paragraph
+  const marginTop = space[marginTopVar];
+  const marginBottom = space[marginBottomVar];
+
+  acc[element] = css`
+    font-size: ${fontSize};
+    margin: ${marginTop} 0 ${marginBottom};
+    line-height: ${lineHeights[fontSizeVar]};
     font-weight: ${isHeading ? '700' : '400'};
     text-transform: ${shouldUppercase ? 'uppercase' : 'none'};
+    letter-spacing: ${shouldUppercase ? space.xs : 'inherit'};
   `;
-});
+
+  return acc;
+}, {} as Record<TypographyElement, string>);
 
 interface Props extends React.HTMLProps<HTMLHeadingElement> {
   as?: TypographyElement;
 }
 
-export const H1: React.FC<Props> = ({ as = 'h1', children }) => {
+export const H1: React.FC<Props> = ({ as = 'h1', children, ...props }) => {
   const Element = as;
 
-  return <Element className={ELEMENT_CLASSES[0]}>{children}</Element>;
+  return (
+    <Element className={cssClasses.h1} {...props}>
+      {children}
+    </Element>
+  );
 };
 
-export const H2: React.FC<Props> = ({ as = 'h2', children }) => {
+export const H2: React.FC<Props> = ({ as = 'h2', children, ...props }) => {
   const Element = as;
 
-  return <Element className={ELEMENT_CLASSES[1]}>{children}</Element>;
+  return (
+    <Element className={cssClasses.h2} {...props}>
+      {children}
+    </Element>
+  );
 };
 
-export const H3: React.FC<Props> = ({ as = 'h3', children }) => {
+export const H3: React.FC<Props> = ({ as = 'h3', children, ...props }) => {
   const Element = as;
 
-  return <Element className={ELEMENT_CLASSES[2]}>{children}</Element>;
+  return (
+    <Element className={cssClasses.h3} {...props}>
+      {children}
+    </Element>
+  );
 };
 
-export const H4: React.FC<Props> = ({ as = 'h4', children }) => {
+const h4Class = css`
+  font-weight: 400;
+  font-style: italic;
+`;
+
+export const H4: React.FC<Props> = ({ as = 'h4', children, ...props }) => {
   const Element = as;
 
-  return <Element className={ELEMENT_CLASSES[3]}>{children}</Element>;
+  return (
+    <Element className={`${cssClasses.h4} ${h4Class}`} {...props}>
+      {children}
+    </Element>
+  );
 };
 
-export const H5: React.FC<Props> = ({ as = 'h5', children }) => {
+export const H5: React.FC<Props> = ({ as = 'h5', children, ...props }) => {
   const Element = as;
 
-  return <Element className={ELEMENT_CLASSES[4]}>{children}</Element>;
+  return (
+    <Element className={cssClasses.h5} {...props}>
+      {children}
+    </Element>
+  );
 };
 
-export const H6: React.FC<Props> = ({ as = 'h6', children }) => {
+export const H6: React.FC<Props> = ({ as = 'h6', children, ...props }) => {
   const Element = as;
 
-  return <Element className={ELEMENT_CLASSES[5]}>{children}</Element>;
+  return (
+    <Element className={cssClasses.h6} {...props}>
+      {children}
+    </Element>
+  );
 };
 
-export const P: React.FC<Props> = ({ as = 'p', children }) => {
+export const P: React.FC<Props> = ({ as = 'p', children, ...props }) => {
   const Element = as;
 
-  return <Element className={ELEMENT_CLASSES[6]}>{children}</Element>;
+  return (
+    <Element className={cssClasses.p} {...props}>
+      {children}
+    </Element>
+  );
 };
