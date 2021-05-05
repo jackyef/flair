@@ -14,7 +14,7 @@ export default function Home() {
       <H2>Typography</H2>
 
       <Paper>
-        <H1>This is an example of a Heading 1 element</H1>
+        <H1>The quick brown fox jumps over the lazy dog (h1)</H1>
         <P>
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry&apos;s standard dummy text
@@ -26,7 +26,7 @@ export default function Home() {
           more recently with desktop publishing software like Aldus PageMaker
           including versions of Lorem Ipsum.
         </P>
-        <H2>This is an example of a Heading 2 element</H2>
+        <H2>The quick brown fox jumps over the lazy dog (h2)</H2>
         <P>
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry&apos;s standard dummy text
@@ -49,7 +49,7 @@ export default function Home() {
           more recently with desktop publishing software like Aldus PageMaker
           including versions of Lorem Ipsum.
         </P>
-        <H3>This is an example of a Heading 3 element</H3>
+        <H3>The quick brown fox jumps over the lazy dog (h3)</H3>
         <P>
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry&apos;s standard dummy text
@@ -61,7 +61,7 @@ export default function Home() {
           more recently with desktop publishing software like Aldus PageMaker
           including versions of Lorem Ipsum.
         </P>
-        <H4>This is an example of a Heading 4 element</H4>
+        <H4>The quick brown fox jumps over the lazy dog (h4)</H4>
         <P>
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry&apos;s standard dummy text
@@ -73,7 +73,7 @@ export default function Home() {
           more recently with desktop publishing software like Aldus PageMaker
           including versions of Lorem Ipsum.
         </P>
-        <H5>This is an example of a Heading 5 element</H5>
+        <H5>The quick brown fox jumps over the lazy dog (h5)</H5>
         <P>
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry&apos;s standard dummy text
@@ -85,7 +85,7 @@ export default function Home() {
           more recently with desktop publishing software like Aldus PageMaker
           including versions of Lorem Ipsum.
         </P>
-        <H6>This is an example of a Heading 6 element</H6>
+        <H6>The quick brown fox jumps over the lazy dog (h6)</H6>
         <P>
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry&apos;s standard dummy text
