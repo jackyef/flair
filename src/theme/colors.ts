@@ -22,43 +22,43 @@ export type ColorShade = {
 };
 export type ColorShadeValue = Array<keyof ColorShade>;
 
-const defaultForegroundColor = 'hsl(212, 30.6%, 5%)';
+const defaultForegroundColor = 'hsl(233, 22%, 10%)';
 const defaultBackgroundColor = 'hsl(0, 0%, 100%)';
 
 export const colors: Record<ColorVariant, ColorShade> = {
   dark: {
     400: {
-      color: 'hsl(212, 30.6%, 21%)',
+      color: defaultForegroundColor,
       contrastingColor: defaultBackgroundColor,
     },
     500: {
-      color: 'hsl(212, 30.6%, 17%)',
+      color: 'hsl(233, 22%, 15%)',
       contrastingColor: defaultBackgroundColor,
     },
     600: {
-      color: 'hsl(212, 30.6%, 13%)',
+      color: 'hsl(233, 22%, 20%)',
       contrastingColor: defaultBackgroundColor,
     },
     700: {
-      color: 'hsl(212, 30.6%, 9%)',
+      color: 'hsl(233, 22%, 25%)',
       contrastingColor: defaultBackgroundColor,
     },
     800: {
-      color: defaultForegroundColor,
+      color: 'hsl(233, 22%, 30%)',
       contrastingColor: defaultBackgroundColor,
     },
   },
   light: {
     400: {
-      color: 'hsl(0, 0%, 50%)',
-      contrastingColor: defaultBackgroundColor,
+      color: 'hsl(0, 0%, 84%)',
+      contrastingColor: defaultForegroundColor,
     },
     500: {
-      color: 'hsl(0, 0%, 64%)',
+      color: 'hsl(0, 0%, 88%)',
       contrastingColor: defaultForegroundColor,
     },
     600: {
-      color: 'hsl(0, 0%, 80%)',
+      color: 'hsl(0, 0%, 92%)',
       contrastingColor: defaultForegroundColor,
     },
     700: {
@@ -116,24 +116,24 @@ export const colors: Record<ColorVariant, ColorShade> = {
   },
   tertiary: {
     400: {
-      color: 'hsl(233, 22%, 10%)',
+      color: 'hsl(340, 79%, 59%)',
       contrastingColor: defaultBackgroundColor,
     },
     500: {
-      color: 'hsl(233, 22%, 15%)',
+      color: 'hsl(340, 79%, 64%)',
       contrastingColor: defaultBackgroundColor,
     },
     600: {
-      color: 'hsl(233, 22%, 20%)',
+      color: 'hsl(340, 79%, 69%)',
       contrastingColor: defaultBackgroundColor,
     },
     700: {
-      color: 'hsl(233, 22%, 25%)',
-      contrastingColor: defaultBackgroundColor,
+      color: 'hsl(340, 79%, 74%)',
+      contrastingColor: defaultForegroundColor,
     },
     800: {
-      color: 'hsl(233, 22%, 30%)',
-      contrastingColor: defaultBackgroundColor,
+      color: 'hsl(340, 79%, 79%)',
+      contrastingColor: defaultForegroundColor,
     },
   },
   warning: {
