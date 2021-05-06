@@ -1,4 +1,4 @@
-import { SIZE_VARIANTS, space } from '@/theme/space';
+import { SIZE_VARIANTS, space } from '@/flair/theme/space';
 import { styled } from 'goober';
 
 const SquareContainer = styled('div')`

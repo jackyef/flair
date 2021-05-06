@@ -7,9 +7,9 @@ import {
   mobileFontSizes,
   FontSizeVariant,
   lineHeights,
-} from '@/theme/fonts';
-import { SizeVariant, space } from '@/theme/space';
-import { onMobileUp } from '@/theme/mediaQueries';
+} from '@/flair/theme/fonts';
+import { SizeVariant, space } from '@/flair/theme/space';
+import { onMobileUp } from '@/flair/theme/mediaQueries';
 
 const AVAILABLE_ELEMENTS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'] as const;
 type TypographyElement = typeof AVAILABLE_ELEMENTS[number];

@@ -1,4 +1,4 @@
-import { H2 } from '@/components/Typography/Typography';
+import { H2 } from '@/flair/components/Typography/Typography';
 
 export default function Home() {
   return (

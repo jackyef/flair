@@ -1,8 +1,8 @@
 import { css, styled } from 'goober';
 
-import { H1, H2, H3, H4, H5, H6, P } from '@/components/Typography/Typography';
-import { onMobileUp } from '@/theme/mediaQueries';
-import { space } from '@/theme/space';
+import { H1, H2, H3, H4, H5, H6, P } from '@/flair/components/Typography/Typography';
+import { onMobileUp } from '@/flair/theme/mediaQueries';
+import { space } from '@/flair/theme/space';
 
 const Paper = styled('section')`
   padding: ${space['lg']};

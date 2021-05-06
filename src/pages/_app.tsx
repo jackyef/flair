@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { AppProps } from 'next/app';
 
 import { Layout } from '@/components/Layout/Layout';
-import { GlobalStyles } from '@/components/GlobalStyles/GlobalStyles';
+import { GlobalStyles } from '@/flair/components/GlobalStyles/GlobalStyles';
 
 import '@/styles/reset.css';
 import '@/styles/global.css';

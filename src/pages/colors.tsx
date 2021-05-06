@@ -1,7 +1,7 @@
-import { H2, H3, P } from '@/components/Typography/Typography';
-import { COLORS_VARIANTS, colors, ColorShadeValue } from '@/theme/colors';
-import { shadows } from '@/theme/shadow';
-import { space } from '@/theme/space';
+import { H2, H3, P } from '@/flair/components/Typography/Typography';
+import { COLORS_VARIANTS, colors, ColorShadeValue } from '@/flair/theme/colors';
+import { shadows } from '@/flair/theme/shadow';
+import { space } from '@/flair/theme/space';
 import { css, styled } from 'goober';
 
 const capitalize = css`

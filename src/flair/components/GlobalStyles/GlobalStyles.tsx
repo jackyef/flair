@@ -1,7 +1,7 @@
 import { createElement } from 'react';
 import { setup } from 'goober';
 import { createGlobalStyles } from 'goober/global';
-import { colors } from '@/theme/colors';
+import { colors } from '@/flair/theme/colors';
 
 setup(createElement);
 

@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { styled } from 'goober';
 
-import { space } from '@/theme/space';
+import { space } from '@/flair/theme/space';
 
 const Container = styled('div')`
   max-width: 1000px;
