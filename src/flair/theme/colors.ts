@@ -7,6 +7,7 @@ export const COLORS_VARIANTS = [
   'warning',
   'error',
 ] as const;
+export const COLOR_SHADE_VARIANTS = [400, 500, 600, 700, 800] as const;
 
 export type ColorPair = {
   color: string;
@@ -25,7 +26,8 @@ export type ColorShadeValue = Array<keyof ColorShade>;
 const defaultForegroundColor = 'hsl(233, 22%, 10%)';
 const defaultBackgroundColor = 'hsl(0, 0%, 100%)';
 
-export const colors: Record<ColorVariant, ColorShade> = {
+export type Colors = Record<ColorVariant, ColorShade>;
+export const colors: Colors = {
   dark: {
     400: {
       color: defaultForegroundColor,

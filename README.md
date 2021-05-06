@@ -20,6 +20,10 @@ Meant personal usage, but you can use it too, I guess.
       - how would it be compatible with intellisense?
     - UX 
       - How would it handle flash of initial theme in statically generated HTML?
+- Support theme overriding?
+- Support theme extending?
+
+
 ## References
 - https://github.com/adobe/react-spectrum/tree/main/packages/%40react-spectrum
 - https://medium.com/sfl-newsroom/typography-scaling-from-the-design-perspective-45d82f77ba95

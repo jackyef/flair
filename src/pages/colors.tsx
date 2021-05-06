@@ -1,7 +1,9 @@
 import { H2, H3, P } from '@/flair/components/Typography/Typography';
+import { useTheme } from '@/flair/context/theme';
 import { COLORS_VARIANTS, colors, ColorShadeValue } from '@/flair/theme/colors';
 import { shadows } from '@/flair/theme/shadow';
 import { space } from '@/flair/theme/space';
+import { canUseDOM } from '@/flair/utils/canUseDOM';
 import { css, styled } from 'goober';
 
 const capitalize = css`
@@ -33,32 +35,43 @@ const ColorSquare = styled('div')<{ background: string; color: string }>`
 `;
 
 export default function Colors() {
+  const { toggleColorScheme, colorScheme } = useTheme();
+
   return (
     <main>
+      <button onClick={toggleColorScheme}>Toggle color scheme</button>
       <H2>Colors</H2>
 
       {COLORS_VARIANTS.map((colorName) => {
+        let usedColorName = colorName;
+
+        if (colorScheme === 'dark') {
+          if (usedColorName === 'dark') usedColorName = 'light'
+          else if (usedColorName === 'light') usedColorName = 'dark'
+        }
+
         return (
           <>
-            <H3 key={colorName} className={capitalize}>
-              {colorName}
+            <H3 key={usedColorName} className={capitalize}>
+              {usedColorName}
             </H3>
             <ColorSwatchContainer>
               {((Object.keys(
                 colors[colorName],
               ) as unknown) as ColorShadeValue).map((shadeStep) => {
-                const colorValue = colors[colorName][shadeStep].color;
-                const textColorValue =
-                  colors[colorName][shadeStep].contrastingColor;
+                const cssVarName = `--color-${colorName}-${shadeStep}`;
+                const colorValue = canUseDOM
+                  ? getComputedStyle(document.body).getPropertyValue(cssVarName)
+                  : '';
 
                 return (
                   <ColorSquare
-                    key={colorValue}
-                    background={colorValue}
-                    color={textColorValue}
+                    key={`${colorName}-${shadeStep}`}
+                    background={`var(--color-${colorName}-${shadeStep})`}
+                    color={`var(--contrasting-color-${colorName}-${shadeStep})`}
                   >
                     <P>
-                      {colorName}.{shadeStep}
+                      {usedColorName}.{shadeStep}
                     </P>
                     <P>{colorValue}</P>
                   </ColorSquare>

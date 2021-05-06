@@ -9,7 +9,8 @@ export const FONTSIZE_VARIANTS = [
 
 export type FontSizeVariant = typeof FONTSIZE_VARIANTS[number];
 
-export const fontSizes: Record<FontSizeVariant, string> = {
+export type FontSizes = Record<FontSizeVariant, string>;
+export const fontSizes: FontSizes = {
   h1: '4rem',
   h2: '2.5rem',
   h3: '1.8rem',
@@ -18,7 +19,7 @@ export const fontSizes: Record<FontSizeVariant, string> = {
   small: '0.875rem',
 } as const;
 
-export const mobileFontSizes: Record<FontSizeVariant, string> = {
+export const mobileFontSizes: FontSizes = {
   h1: '2.5rem',
   h2: '2rem',
   h3: '1.6rem',
@@ -27,7 +28,9 @@ export const mobileFontSizes: Record<FontSizeVariant, string> = {
   small: '0.875rem',
 } as const;
 
-export const lineHeights: Record<FontSizeVariant, string> = {
+export type LineHeights = Record<FontSizeVariant, string>;
+
+export const lineHeights: LineHeights = {
   h1: '1.19',
   h2: '1.175',
   h3: '1.2',

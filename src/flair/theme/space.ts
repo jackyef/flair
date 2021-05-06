@@ -1,8 +1,18 @@
-export const SIZE_VARIANTS = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl'] as const
+export const SIZE_VARIANTS = [
+  'xs',
+  'sm',
+  'md',
+  'lg',
+  'xl',
+  '2xl',
+  '3xl',
+  '4xl',
+] as const;
 
-export type SizeVariant = typeof SIZE_VARIANTS[number]
+export type SizeVariant = typeof SIZE_VARIANTS[number];
+export type Space = Record<SizeVariant, string>;
 
-export const space: Record<SizeVariant, string> = {
+export const space: Space = {
   xs: '2px',
   sm: '4px',
   md: '8px',
