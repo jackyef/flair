@@ -1,4 +1,4 @@
-export const SIZE_VARIANTS = [
+export const SPACE_VARIANTS = [
   'xs',
   'sm',
   'md',
@@ -9,7 +9,7 @@ export const SIZE_VARIANTS = [
   '4xl',
 ] as const;
 
-export type SizeVariant = typeof SIZE_VARIANTS[number];
+export type SpaceVariant = typeof SPACE_VARIANTS[number];
 export const space = {
   xs: '2px',
   sm: '4px',

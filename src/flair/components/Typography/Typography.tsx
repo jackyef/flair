@@ -8,7 +8,7 @@ import {
   FontSizeVariant,
   lineHeights,
 } from '@/flair/theme/fonts';
-import { SizeVariant, space } from '@/flair/theme/space';
+import { SpaceVariant, space } from '@/flair/theme/space';
 import { onMobileUp } from '@/flair/theme/mediaQueries';
 
 const AVAILABLE_ELEMENTS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'] as const;
@@ -24,7 +24,7 @@ const SIZE_MAP: Record<TypographyElement, FontSizeVariant> = {
   p: 'body',
 };
 
-const MARGIN_TOP_MAP: Record<TypographyElement, SizeVariant> = {
+const MARGIN_TOP_MAP: Record<TypographyElement, SpaceVariant> = {
   h1: '2xl',
   h2: '2xl',
   h3: 'xl',
@@ -34,7 +34,7 @@ const MARGIN_TOP_MAP: Record<TypographyElement, SizeVariant> = {
   p: 'lg',
 };
 
-const MARGIN_BOTTOM_MAP: Record<TypographyElement, SizeVariant> = {
+const MARGIN_BOTTOM_MAP: Record<TypographyElement, SpaceVariant> = {
   h1: 'xl',
   h2: 'xl',
   h3: 'lg',

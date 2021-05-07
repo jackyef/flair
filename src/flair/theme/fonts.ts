@@ -1,4 +1,4 @@
-export const FONTSIZE_VARIANTS = [
+export const FONTSPACE_VARIANTS = [
   'h1',
   'h2',
   'h3',
@@ -7,7 +7,7 @@ export const FONTSIZE_VARIANTS = [
   'small',
 ] as const;
 
-export type FontSizeVariant = typeof FONTSIZE_VARIANTS[number];
+export type FontSizeVariant = typeof FONTSPACE_VARIANTS[number];
 
 export type FontSizes = Record<FontSizeVariant, string>;
 export const fontSizes: FontSizes = {

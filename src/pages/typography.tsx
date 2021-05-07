@@ -17,8 +17,6 @@ import { useTheme } from '@/flair/context/theme';
 const Paper = (props: React.HTMLAttributes<HTMLDivElement>) => {
   const { colors } = useTheme();
 
-  console.log({ bg: colors.background })
-
   return (
     <section
       {...props}

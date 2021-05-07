@@ -1,5 +1,6 @@
-import { SIZE_VARIANTS, space } from '@/flair/theme/space';
-import { styled } from 'goober';
+import { css, styled } from 'goober';
+import { useTheme } from '@/flair/context/theme';
+import { SPACE_VARIANTS, space, SpaceVariant } from '@/flair/theme/space';
 
 const SquareContainer = styled('div')`
   display: flex;
@@ -7,24 +8,28 @@ const SquareContainer = styled('div')`
   margin-bottom: ${space.lg};
 `;
 
-const spaceSquares = SIZE_VARIANTS.map((size) => {
-  return styled('div')`
+const Square = ({ size }: { size: SpaceVariant }) => {
+  const { space, colors } = useTheme();
+
+  const className = css`
     width: ${space[size]};
     height: ${space[size]};
     margin-right: ${space.lg};
-    background: gray;
+    background: ${colors.primary[700].color};
   `;
-});
+
+  return <div className={className} />;
+};
 
 export const SpaceSquares = () => {
   return (
     <>
-      {spaceSquares.map((Div, index) => {
-        const variant = SIZE_VARIANTS[index];
+      {SPACE_VARIANTS.map((size, index) => {
+        const variant = SPACE_VARIANTS[index];
 
         return (
           <SquareContainer key={index}>
-            <Div />
+            <Square size={size} />
             <span>
               {space[variant]} ({variant})
             </span>
