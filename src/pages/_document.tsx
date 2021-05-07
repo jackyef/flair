@@ -9,7 +9,9 @@ import { extractCss } from 'goober';
 
 import { generateCssVariables } from '@/flair/utils/generateCssVariables';
 import { NoFlashScript } from '@/flair/components/NoFlashScript/NoFlashScript';
+// import { stickerMuleColors } from '@/flair/theme/custom/stickerMule';
 
+// const cssVariables = generateCssVariables(stickerMuleColors);
 const cssVariables = generateCssVariables();
 
 export default class MyDocument extends Document {

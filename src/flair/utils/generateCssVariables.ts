@@ -3,9 +3,10 @@
 // Based on the theme
 
 import { extractCss, glob } from 'goober';
-import { colors, COLORS_VARIANTS, COLOR_SHADE_VARIANTS } from '../theme/colors';
+import { colors as defaultColors, COLORS_VARIANTS, COLOR_SHADE_VARIANTS } from '../theme/colors';
+import type { Colors } from '../theme/colors';
 
-const generateLightThemeCssVariables = () => {
+const generateLightThemeCssVariables = (colors: Colors) => {
   const declarations: string[] = [];
 
   COLORS_VARIANTS.forEach((colorName) => {
@@ -42,7 +43,7 @@ const generateLightThemeCssVariables = () => {
 
 const REVERSED_SHADE_VARIANTS = [...COLOR_SHADE_VARIANTS].reverse();
 
-const generateDarkThemeCssVariables = () => {
+const generateDarkThemeCssVariables = (colors: Colors) => {
   const declarations: string[] = [
     `--color-foreground: ${colors.light[800].color};`,
     `--color-background: ${colors.light[800].contrastingColor};`,
@@ -82,14 +83,14 @@ const generateDarkThemeCssVariables = () => {
   return declarations.join('');
 };
 
-export const generateCssVariables = () => {
+export const generateCssVariables = (colors = defaultColors) => {
   glob`
   :root {
-    ${generateLightThemeCssVariables()}
+    ${generateLightThemeCssVariables(colors)}
   }
 
   [data-flair-theme='dark'] {
-    ${generateDarkThemeCssVariables()}
+    ${generateDarkThemeCssVariables(colors)}
   }
 `;
 

@@ -1,14 +1,11 @@
 import { Button } from '@/flair/components/Button/Button';
 import { H1, H2, H3, P } from '@/flair/components/Typography/Typography';
-import {
-  MappedColorVariant,
-  ColorMapping,
-  useTheme,
-} from '@/flair/context/theme';
+import { useTheme } from '@/flair/context/theme';
 import { ColorShadeVariant } from '@/flair/theme/colors';
 import { shadows } from '@/flair/theme/shadow';
 import { space } from '@/flair/theme/space';
 import { canUseDOM } from '@/flair/utils/canUseDOM';
+import { ColorMapping, MappedColorVariant } from '@/flair/utils/getColorMapping';
 import { css, styled } from 'goober';
 
 const copyToClipboard = (str: string) => {
@@ -94,14 +91,20 @@ const renderColorSquares = (
                 color={contrastingColor}
                 tabIndex={0}
                 onClick={() => {
-                  copyToClipboard(colorValue)
+                  copyToClipboard(colorValue);
                   // TODO: Add a toast showing that the color value has been copied
                 }}
               >
                 <P>
                   {colorName}.{shadeStep}
                 </P>
-                <P>{colorValue}</P>
+                <P
+                  className={css`
+                    font-size: 12px;
+                  `}
+                >
+                  {colorValue}
+                </P>
               </ColorSquare>
             );
           })}
