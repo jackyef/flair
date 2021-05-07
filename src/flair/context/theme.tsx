@@ -13,7 +13,7 @@ import { canUseDOM } from '../utils/canUseDOM';
 type ColorScheme = 'light' | 'dark';
 export type MappedColorVariant = ColorVariant | 'foreground' | 'background';
 
-type ColorMapping = Partial<Record<MappedColorVariant, Partial<ColorShade>>>;
+type ColorMapping = Record<MappedColorVariant, ColorShade>;
 
 type ThemeContextValue = {
   toggleColorScheme: () => void;
@@ -28,6 +28,7 @@ const defaultContextValue: ThemeContextValue = {
     // no-op
   },
   space,
+  // @ts-expect-error
   colors: {},
 };
 
@@ -35,14 +36,13 @@ export const ThemeContext = createContext<ThemeContextValue>(
   defaultContextValue,
 );
 
-const getColorMapping = (colorScheme: ColorScheme) => {
-  const map: ThemeContextValue['colorMapping'] = {};
+const getColorMapping = (colorScheme: ColorScheme): ColorMapping => {
+  const map: any = {};
 
   COLORS_VARIANTS.forEach((colorName) => {
     COLOR_SHADE_VARIANTS.forEach((shadeStep) => {
       if (!map[colorName]) map[colorName] = {};
 
-      // @ts-expect-error
       map[colorName][shadeStep] = {
         color: `var(--color-${colorName}-${shadeStep})`,
         contrastingColor: `var(--contrasting-color-${colorName}-${shadeStep})`,
