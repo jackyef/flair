@@ -12,4 +12,11 @@ export const GlobalStyles = createGlobalStyles`
     color: ${colors.dark[400].color};
     color: var(--color-foreground-400);
   }
+
+  @media (prefers-reduced-motion: no-preference) {
+    :focus {
+      transition: outline-offset .25s ease;
+      outline-offset: 4px;
+    }
+  }
 `;

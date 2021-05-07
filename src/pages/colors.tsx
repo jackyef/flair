@@ -11,6 +11,18 @@ import { space } from '@/flair/theme/space';
 import { canUseDOM } from '@/flair/utils/canUseDOM';
 import { css, styled } from 'goober';
 
+const copyToClipboard = (str: string) => {
+  const el = document.createElement('textarea');
+  el.value = str;
+  el.setAttribute('readonly', '');
+  el.style.position = 'absolute';
+  el.style.left = '-9999px';
+  document.body.appendChild(el);
+  el.select();
+  document.execCommand('copy');
+  document.body.removeChild(el);
+};
+
 const capitalize = css`
   text-transform: capitalize;
 `;
@@ -33,10 +45,16 @@ const ColorSquare = styled('div')<{ background: string; color: string }>`
   align-items: center;
   justify-content: center;
   box-shadow: ${shadows.subtle};
-  transition: background 0.15s ease-out, color 0.15s ease-out;
+  transition: background 0.15s ease-out, color 0.15s ease-out,
+    transform 0.3s cubic-bezier(0.28, 0.84, 0.42, 1);
 
   & > p {
     font-weight: 500;
+  }
+
+  &:focus,
+  &:hover {
+    transform: scale(1.05) translateY(-4px);
   }
 `;
 
@@ -74,6 +92,11 @@ const renderColorSquares = (
                 // TODO: Colors should come from ThemeProvider
                 background={color}
                 color={contrastingColor}
+                tabIndex={0}
+                onClick={() => {
+                  copyToClipboard(colorValue)
+                  // TODO: Add a toast showing that the color value has been copied
+                }}
               >
                 <P>
                   {colorName}.{shadeStep}
@@ -128,9 +151,9 @@ export default function Colors() {
 
       <P>
         Because of how the &quot;intensity&quot; concept works in Flair, in dark
-        color-scheme, the order of color for each shades are basically just reversed!
-        Obviously this will not work well in ALL cases, so you will have to
-        adjust according to your needs.
+        color-scheme, the order of color for each shades are basically just
+        reversed! Obviously this will not work well in ALL cases, so you will
+        have to adjust according to your needs.
       </P>
 
       <H2>Variants</H2>
