@@ -63,7 +63,7 @@ const colorMapping = getColorMapping();
 export const ThemeProvider: React.FC = ({ children }) => {
   const [colorScheme, setColorScheme] = useState<ColorScheme>(
     canUseDOM
-      ? (document.documentElement.getAttribute('data-theme') as ColorScheme)
+      ? (document.documentElement.getAttribute('data-flair-theme') as ColorScheme)
       : 'light',
   );
 
@@ -71,11 +71,11 @@ export const ThemeProvider: React.FC = ({ children }) => {
     const isDarkMode = colorScheme === 'dark';
 
     if (!isDarkMode) {
-      document.documentElement.setAttribute('data-theme', 'dark');
+      document.documentElement.setAttribute('data-flair-theme', 'dark');
       localStorage.setItem('flair-theme', 'dark');
       setColorScheme('dark');
     } else {
-      document.documentElement.setAttribute('data-theme', 'light');
+      document.documentElement.setAttribute('data-flair-theme', 'light');
       localStorage.setItem('flair-theme', 'light');
       setColorScheme('light');
     }

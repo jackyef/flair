@@ -88,7 +88,7 @@ export const generateCssVariables = () => {
     ${generateLightThemeCssVariables()}
   }
 
-  [data-theme='dark'] {
+  [data-flair-theme='dark'] {
     ${generateDarkThemeCssVariables()}
   }
 `;
