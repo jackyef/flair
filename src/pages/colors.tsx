@@ -33,6 +33,7 @@ const ColorSquare = styled('div')<{ background: string; color: string }>`
   align-items: center;
   justify-content: center;
   box-shadow: ${shadows.subtle};
+  transition: background 0.15s ease-out, color 0.15s ease-out;
 
   & > p {
     font-weight: 500;
