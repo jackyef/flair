@@ -7,13 +7,15 @@ export const COLORS_VARIANTS = [
   'warning',
   'error',
 ] as const;
+export type ColorVariant = typeof COLORS_VARIANTS[number];
 export const COLOR_SHADE_VARIANTS = [400, 500, 600, 700, 800] as const;
+export type ColorShadeValue = Array<keyof ColorShade>;
 
 export type ColorPair = {
   color: string;
   contrastingColor: string;
 };
-export type ColorVariant = typeof COLORS_VARIANTS[number];
+
 export type ColorShade = {
   400: ColorPair;
   500: ColorPair;
@@ -21,7 +23,6 @@ export type ColorShade = {
   700: ColorPair;
   800: ColorPair;
 };
-export type ColorShadeValue = Array<keyof ColorShade>;
 
 const defaultForegroundColor = 'hsl(233, 22%, 10%)';
 const defaultBackgroundColor = 'hsl(0, 0%, 100%)';

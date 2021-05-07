@@ -35,19 +35,20 @@ const ColorSquare = styled('div')<{ background: string; color: string }>`
 `;
 
 export default function Colors() {
-  const { toggleColorScheme, colorScheme } = useTheme();
+  const { toggleColorScheme } = useTheme();
 
   return (
     <main>
       <button onClick={toggleColorScheme}>Toggle color scheme</button>
       <H2>Colors</H2>
 
-      {COLORS_VARIANTS.map((colorName) => {
-        let usedColorName = colorName;
+      {COLORS_VARIANTS.map((colorName, index) => {
+        let usedColorName: string = colorName;
 
-        if (colorScheme === 'dark') {
-          if (usedColorName === 'dark') usedColorName = 'light'
-          else if (usedColorName === 'light') usedColorName = 'dark'
+        if (index === 0) {
+          usedColorName = 'foreground';
+        } else if (index === 1) {
+          usedColorName = 'background';
         }
 
         return (
