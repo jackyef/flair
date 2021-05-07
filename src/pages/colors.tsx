@@ -1,6 +1,6 @@
 import { H2, H3, P } from '@/flair/components/Typography/Typography';
-import { useTheme } from '@/flair/context/theme';
-import { COLORS_VARIANTS, colors, ColorShadeValue } from '@/flair/theme/colors';
+import { MappedColorVariant, useTheme } from '@/flair/context/theme';
+import { ColorShadeVariant } from '@/flair/theme/colors';
 import { shadows } from '@/flair/theme/shadow';
 import { space } from '@/flair/theme/space';
 import { canUseDOM } from '@/flair/utils/canUseDOM';
@@ -35,46 +35,61 @@ const ColorSquare = styled('div')<{ background: string; color: string }>`
 `;
 
 export default function Colors() {
-  const { toggleColorScheme } = useTheme();
+  const { toggleColorScheme, colors } = useTheme();
+
+  let colorNames = (Object.keys(
+    colors,
+  ) as unknown) as MappedColorVariant[];
+
+  colorNames = colorNames.filter(
+    (c) =>
+      c !== 'foreground' && c !== 'background' && c !== 'dark' && c !== 'light',
+  );
+  // We want foreground and background to be displayed first
+  colorNames.unshift('background');
+  colorNames.unshift('foreground');
+  // And dark and light to be displayed last
+  colorNames.push('dark');
+  colorNames.push('light');
 
   return (
     <main>
       <button onClick={toggleColorScheme}>Toggle color scheme</button>
       <H2>Colors</H2>
 
-      {COLORS_VARIANTS.map((colorName, index) => {
-        let usedColorName: string = colorName;
+      {colorNames.map((colorName) => {
+        const colorShade = colors[colorName];
 
-        if (index === 0) {
-          usedColorName = 'foreground';
-        } else if (index === 1) {
-          usedColorName = 'background';
-        }
+        if (!colorShade) return;
 
         return (
           <>
-            <H3 key={usedColorName} className={capitalize}>
-              {usedColorName}
+            <H3 key={colorName} className={capitalize}>
+              {colorName}
             </H3>
             <ColorSwatchContainer>
-              {((Object.keys(
-                colors[colorName],
-              ) as unknown) as ColorShadeValue).map((shadeStep) => {
-                // TODO: Colors should come from ThemeProvider
-                const cssVarName = `--color-${colorName}-${shadeStep}`;
+              {/* @ts-expect-error */}
+              {Object.keys(colorShade).map((shadeStep: ColorShadeVariant) => {
+                const color = colorShade[shadeStep]?.color ?? '';
+                const contrastingColor =
+                  colorShade[shadeStep]?.contrastingColor ?? '';
+
                 const colorValue = canUseDOM
-                  ? getComputedStyle(document.body).getPropertyValue(cssVarName)
+                  ? getComputedStyle(document.body).getPropertyValue(
+                      // Remove the `var()` enclosing the CSS variable name
+                      color.slice(4, color.length - 1),
+                    )
                   : '';
 
                 return (
                   <ColorSquare
                     key={`${colorName}-${shadeStep}`}
                     // TODO: Colors should come from ThemeProvider
-                    background={`var(--color-${colorName}-${shadeStep})`}
-                    color={`var(--contrasting-color-${colorName}-${shadeStep})`}
+                    background={color}
+                    color={contrastingColor}
                   >
                     <P>
-                      {usedColorName}.{shadeStep}
+                      {colorName}.{shadeStep}
                     </P>
                     <P>{colorValue}</P>
                   </ColorSquare>
