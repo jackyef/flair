@@ -25,23 +25,23 @@ const SIZE_MAP: Record<TypographyElement, FontSizeVariant> = {
 };
 
 const MARGIN_TOP_MAP: Record<TypographyElement, SizeVariant> = {
-  h1: 'xl',
-  h2: 'xl',
+  h1: '2xl',
+  h2: '2xl',
   h3: 'xl',
   h4: 'lg',
   h5: 'lg',
   h6: 'lg',
-  p: 'md',
+  p: 'lg',
 };
 
 const MARGIN_BOTTOM_MAP: Record<TypographyElement, SizeVariant> = {
-  h1: 'lg',
-  h2: 'lg',
+  h1: 'xl',
+  h2: 'xl',
   h3: 'lg',
   h4: 'md',
   h5: 'md',
   h6: 'md',
-  p: 'sm',
+  p: 'md',
 };
 
 const cssClasses = AVAILABLE_ELEMENTS.reduce((acc, element) => {

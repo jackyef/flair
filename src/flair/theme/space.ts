@@ -10,15 +10,15 @@ export const SIZE_VARIANTS = [
 ] as const;
 
 export type SizeVariant = typeof SIZE_VARIANTS[number];
-export type Space = Record<SizeVariant, string>;
-
-export const space: Space = {
+export const space = {
   xs: '2px',
   sm: '4px',
   md: '8px',
-  lg: '20px',
-  xl: '32px',
+  lg: '16px',
+  xl: '24px',
   '2xl': '40px',
-  '3xl': '48px',
-  '4xl': '64px',
+  '3xl': '60px',
+  '4xl': '80px',
 } as const;
+
+export type Space = typeof space;

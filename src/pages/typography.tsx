@@ -1,20 +1,41 @@
-import { css, styled } from 'goober';
+import React from 'react';
+import { css } from 'goober';
 
-import { H1, H2, H3, H4, H5, H6, P } from '@/flair/components/Typography/Typography';
+import {
+  H1,
+  H2,
+  H3,
+  H4,
+  H5,
+  H6,
+  P,
+} from '@/flair/components/Typography/Typography';
 import { onMobileUp } from '@/flair/theme/mediaQueries';
 import { space } from '@/flair/theme/space';
+import { useTheme } from '@/flair/context/theme';
 
-const Paper = styled('section')`
-  padding: ${space['lg']};
-  margin: 0;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+const Paper = (props: React.HTMLAttributes<HTMLDivElement>) => {
+  const { colors } = useTheme();
 
-  ${onMobileUp} {
-    padding: ${space['2xl']};
-    margin: ${space['2xl']};
-  }
-`;
+  console.log({ bg: colors.background })
 
+  return (
+    <section
+      {...props}
+      className={css`
+        padding: ${space['lg']};
+        margin: 0;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+        background: ${colors.background[700].color};
+
+        ${onMobileUp} {
+          padding: ${space['2xl']};
+          margin: ${space['2xl']};
+        }
+      `}
+    />
+  );
+};
 const withoutTopMargin = css`
   margin-top: 0;
 `;

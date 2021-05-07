@@ -6,10 +6,7 @@ import { extractCss, glob } from 'goober';
 import { colors, COLORS_VARIANTS, COLOR_SHADE_VARIANTS } from '../theme/colors';
 
 const generateLightThemeCssVariables = () => {
-  const declarations: string[] = [
-    `--color-foreground: ${colors.dark[400].color};`,
-    `--color-background: ${colors.dark[400].contrastingColor};`,
-  ];
+  const declarations: string[] = [];
 
   COLORS_VARIANTS.forEach((colorName) => {
     COLOR_SHADE_VARIANTS.forEach((shadeStep) => {
@@ -19,6 +16,24 @@ const generateLightThemeCssVariables = () => {
       declarations.push(
         `--contrasting-color-${colorName}-${shadeStep}: ${colors[colorName][shadeStep].contrastingColor};`,
       );
+
+      if (colorName === 'light') {
+        declarations.push(
+          `--color-background-${shadeStep}: ${colors[colorName][shadeStep].color};`,
+        );
+        declarations.push(
+          `--contrasting-color-background-${shadeStep}: ${colors[colorName][shadeStep].contrastingColor};`,
+        );
+      }
+
+      if (colorName === 'dark') {
+        declarations.push(
+          `--color-foreground-${shadeStep}: ${colors[colorName][shadeStep].color};`,
+        );
+        declarations.push(
+          `--contrasting-color-foreground-${shadeStep}: ${colors[colorName][shadeStep].contrastingColor};`,
+        );
+      }
     });
   });
 
@@ -36,17 +51,31 @@ const generateDarkThemeCssVariables = () => {
   COLORS_VARIANTS.forEach((colorName) => {
     COLOR_SHADE_VARIANTS.forEach((shadeStep, index) => {
       const oppositeShadeStep = REVERSED_SHADE_VARIANTS[index];
-      let usedColorName = colorName;
-
-      if (usedColorName === 'dark') usedColorName = 'light';
-      else if (usedColorName === 'light') usedColorName = 'dark';
 
       declarations.push(
-        `--color-${colorName}-${shadeStep}: ${colors[usedColorName][oppositeShadeStep].color};`,
+        `--color-${colorName}-${shadeStep}: ${colors[colorName][oppositeShadeStep].color};`,
       );
       declarations.push(
-        `--contrasting-color-${colorName}-${shadeStep}: ${colors[usedColorName][oppositeShadeStep].contrastingColor};`,
+        `--contrasting-color-${colorName}-${shadeStep}: ${colors[colorName][oppositeShadeStep].contrastingColor};`,
       );
+
+      if (colorName === 'dark') {
+        declarations.push(
+          `--color-background-${shadeStep}: ${colors[colorName][oppositeShadeStep].color};`,
+        );
+        declarations.push(
+          `--contrasting-color-background-${shadeStep}: ${colors[colorName][oppositeShadeStep].contrastingColor};`,
+        );
+      }
+
+      if (colorName === 'light') {
+        declarations.push(
+          `--color-foreground-${shadeStep}: ${colors[colorName][oppositeShadeStep].color};`,
+        );
+        declarations.push(
+          `--contrasting-color-foreground-${shadeStep}: ${colors[colorName][oppositeShadeStep].contrastingColor};`,
+        );
+      }
     });
   });
 

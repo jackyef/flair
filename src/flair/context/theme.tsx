@@ -13,7 +13,7 @@ import { canUseDOM } from '../utils/canUseDOM';
 type ColorScheme = 'light' | 'dark';
 export type MappedColorVariant = ColorVariant | 'foreground' | 'background';
 
-type ColorMapping = Record<MappedColorVariant, ColorShade>;
+export type ColorMapping = Record<MappedColorVariant, ColorShade>;
 
 type ThemeContextValue = {
   toggleColorScheme: () => void;
@@ -36,10 +36,15 @@ export const ThemeContext = createContext<ThemeContextValue>(
   defaultContextValue,
 );
 
-const getColorMapping = (colorScheme: ColorScheme): ColorMapping => {
+const getColorMapping = (): ColorMapping => {
   const map: any = {};
+  const colorVariantsWithForegroundAndBackground = [
+    'foreground',
+    'background',
+    ...COLORS_VARIANTS,
+  ];
 
-  COLORS_VARIANTS.forEach((colorName) => {
+  colorVariantsWithForegroundAndBackground.forEach((colorName) => {
     COLOR_SHADE_VARIANTS.forEach((shadeStep) => {
       if (!map[colorName]) map[colorName] = {};
 
@@ -50,11 +55,10 @@ const getColorMapping = (colorScheme: ColorScheme): ColorMapping => {
     });
   });
 
-  map['foreground'] = map[colorScheme === 'light' ? 'dark' : 'light'];
-  map['background'] = map[colorScheme === 'light' ? 'light' : 'dark'];
-
   return map;
 };
+
+const colorMapping = getColorMapping();
 
 export const ThemeProvider: React.FC = ({ children }) => {
   const [colorScheme, setColorScheme] = useState<ColorScheme>(
@@ -62,7 +66,6 @@ export const ThemeProvider: React.FC = ({ children }) => {
       ? (document.body.getAttribute('data-theme') as ColorScheme)
       : 'light',
   );
-  const [colors, setColors] = useState(getColorMapping(colorScheme));
 
   const toggleColorScheme = () => {
     const isDarkMode = colorScheme === 'dark';
@@ -71,12 +74,10 @@ export const ThemeProvider: React.FC = ({ children }) => {
       document.body.setAttribute('data-theme', 'dark');
       localStorage.setItem('flair-theme', 'dark');
       setColorScheme('dark');
-      setColors(getColorMapping('dark'));
     } else {
       document.body.setAttribute('data-theme', 'light');
       localStorage.setItem('flair-theme', 'light');
       setColorScheme('light');
-      setColors(getColorMapping('light'));
     }
   };
 
@@ -84,7 +85,7 @@ export const ThemeProvider: React.FC = ({ children }) => {
     <>
       <GlobalStyles />
       <ThemeContext.Provider
-        value={{ colorScheme, toggleColorScheme, space, colors }}
+        value={{ colorScheme, toggleColorScheme, space, colors: colorMapping }}
       >
         {children}
       </ThemeContext.Provider>
