@@ -60,6 +60,7 @@ export default function Colors() {
               {((Object.keys(
                 colors[colorName],
               ) as unknown) as ColorShadeValue).map((shadeStep) => {
+                // TODO: Colors should come from ThemeProvider
                 const cssVarName = `--color-${colorName}-${shadeStep}`;
                 const colorValue = canUseDOM
                   ? getComputedStyle(document.body).getPropertyValue(cssVarName)
@@ -68,6 +69,7 @@ export default function Colors() {
                 return (
                   <ColorSquare
                     key={`${colorName}-${shadeStep}`}
+                    // TODO: Colors should come from ThemeProvider
                     background={`var(--color-${colorName}-${shadeStep})`}
                     color={`var(--contrasting-color-${colorName}-${shadeStep})`}
                   >

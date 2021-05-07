@@ -32,9 +32,11 @@ export const ThemeProvider: React.FC = ({ children }) => {
 
     if (!isDarkMode) {
       document.body.setAttribute('data-theme', 'dark');
+      localStorage.setItem('flair-theme', 'dark');
       setColorScheme('dark');
     } else {
       document.body.setAttribute('data-theme', 'light');
+      localStorage.setItem('flair-theme', 'light');
       setColorScheme('light');
     }
   };

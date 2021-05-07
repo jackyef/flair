@@ -1,11 +1,11 @@
 // This file is meant to be run on the server-side
-// Usually during build-time to generate all the CSS properties
+// Usually during build-time to generate all the CSS Variables
 // Based on the theme
 
 import { extractCss, glob } from 'goober';
 import { colors, COLORS_VARIANTS, COLOR_SHADE_VARIANTS } from '../theme/colors';
 
-const generateLightThemeCssProperties = () => {
+const generateLightThemeCssVariables = () => {
   const declarations: string[] = [
     `--color-foreground: ${colors.dark[400].color};`,
     `--color-background: ${colors.dark[400].contrastingColor};`,
@@ -27,7 +27,7 @@ const generateLightThemeCssProperties = () => {
 
 const REVERSED_SHADE_VARIANTS = [...COLOR_SHADE_VARIANTS].reverse();
 
-const generateDarkThemeCssProperties = () => {
+const generateDarkThemeCssVariables = () => {
   const declarations: string[] = [
     `--color-foreground: ${colors.light[800].color};`,
     `--color-background: ${colors.light[800].contrastingColor};`,
@@ -53,14 +53,14 @@ const generateDarkThemeCssProperties = () => {
   return declarations.join('');
 };
 
-export const generateCssProperties = () => {
+export const generateCssVariables = () => {
   glob`
   :root {
-    ${generateLightThemeCssProperties()}
+    ${generateLightThemeCssVariables()}
   }
 
   body[data-theme='dark'] {
-    ${generateDarkThemeCssProperties()}
+    ${generateDarkThemeCssVariables()}
   }
 `;
 

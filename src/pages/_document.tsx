@@ -7,9 +7,10 @@ import Document, {
 } from 'next/document';
 import { extractCss } from 'goober';
 
-import { generateCssProperties } from '@/flair/utils/generateCssProperties';
+import { generateCssVariables } from '@/flair/utils/generateCssVariables';
+import { NoFlashScript } from '@/flair/components/NoFlashScript/NoFlashScript';
 
-const cssProperties = generateCssProperties();
+const cssVariables = generateCssVariables();
 
 export default class MyDocument extends Document {
   static async getInitialProps({ renderPage }: DocumentContext) {
@@ -17,14 +18,14 @@ export default class MyDocument extends Document {
 
     // Extract the css for each page render
     const css = extractCss();
-    
+
     return {
       ...page,
       styles: (
         <style
-          id={'_goober'}
+          id="_goober"
           // And defined it in here
-          dangerouslySetInnerHTML={{ __html: `${cssProperties}${css}` }}
+          dangerouslySetInnerHTML={{ __html: `${cssVariables}${css}` }}
         />
       ),
     };
@@ -35,6 +36,7 @@ export default class MyDocument extends Document {
       <Html>
         <Head />
         <body>
+          <NoFlashScript />
           <Main />
           <NextScript />
         </body>
