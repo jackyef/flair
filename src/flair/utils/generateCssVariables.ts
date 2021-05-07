@@ -88,7 +88,7 @@ export const generateCssVariables = () => {
     ${generateLightThemeCssVariables()}
   }
 
-  body[data-theme='dark'] {
+  [data-theme='dark'] {
     ${generateDarkThemeCssVariables()}
   }
 `;

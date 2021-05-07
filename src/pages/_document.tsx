@@ -35,8 +35,8 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head />
+        <NoFlashScript />
         <body>
-          <NoFlashScript />
           <Main />
           <NextScript />
         </body>
