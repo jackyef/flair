@@ -128,6 +128,8 @@ export default function Colors() {
       <P>
         Because of how the &quot;intensity&quot; concepts work in Flair, in dark
         color-scheme, color for each shades are basically just reversed!
+        Obviously this will not work well in ALL cases, so you will have to
+        adjust according to your needs.
       </P>
 
       <H2>Variants</H2>
