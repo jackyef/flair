@@ -41,7 +41,7 @@ const withoutTopMargin = css`
 export default function Home() {
   return (
     <main>
-      <H2>Typography</H2>
+      <H1>Typography</H1>
 
       <Paper>
         <H1 className={withoutTopMargin}>

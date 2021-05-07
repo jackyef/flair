@@ -1,10 +1,10 @@
 import { SpaceSquares } from '@/components/SpaceSquares/SpaceSquares';
-import { H2 } from '@/flair/components/Typography/Typography';
+import { H1 } from '@/flair/components/Typography/Typography';
 
 export default function Home() {
   return (
     <main>
-      <H2>Spacing</H2>
+      <H1>Spacing</H1>
 
       <SpaceSquares />
     </main>
