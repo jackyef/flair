@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { css, styled } from 'goober';
+import { styled } from 'goober';
 
 import { space } from '@/flair/theme/space';
 import { A } from '@/flair/components/Anchor/A';
