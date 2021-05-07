@@ -46,19 +46,19 @@ export const colors: Colors = {
   },
   light: {
     400: {
-      color: 'hsl(0, 0%, 84%)',
+      color: 'hsl(0, 0%, 89%)',
       contrastingColor: defaultForegroundColor,
     },
     500: {
-      color: 'hsl(0, 0%, 88%)',
-      contrastingColor: defaultForegroundColor,
-    },
-    600: {
       color: 'hsl(0, 0%, 92%)',
       contrastingColor: defaultForegroundColor,
     },
+    600: {
+      color: 'hsl(0, 0%, 95%)',
+      contrastingColor: defaultForegroundColor,
+    },
     700: {
-      color: 'hsl(0, 0%, 96%)',
+      color: 'hsl(0, 0%, 98%)',
       contrastingColor: defaultForegroundColor,
     },
     800: {

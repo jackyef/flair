@@ -13,6 +13,10 @@ const Container = styled('div')`
   padding: ${space.lg};
 `;
 
+const Footer = styled('footer')`
+  height: ${space['4xl']};
+`;
+
 const NavList = styled('ul')`
   display: flex;
 `;
@@ -60,6 +64,7 @@ export const Layout: React.FC = ({ children }) => {
         </Button>
       </Nav>
       {children}
+      <Footer />
     </Container>
   );
 };

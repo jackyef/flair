@@ -127,8 +127,8 @@ export default function Colors() {
       </div>
 
       <P>
-        Because of how the &quot;intensity&quot; concepts work in Flair, in dark
-        color-scheme, color for each shades are basically just reversed!
+        Because of how the &quot;intensity&quot; concept works in Flair, in dark
+        color-scheme, the order of color for each shades are basically just reversed!
         Obviously this will not work well in ALL cases, so you will have to
         adjust according to your needs.
       </P>
