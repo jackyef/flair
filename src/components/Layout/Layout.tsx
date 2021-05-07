@@ -1,8 +1,10 @@
 import Link from 'next/link';
-import { styled } from 'goober';
+import { css, styled } from 'goober';
 
 import { space } from '@/flair/theme/space';
 import { A } from '@/flair/components/Anchor/A';
+import { Button } from '@/flair/components/Button/Button';
+import { useTheme } from '@/flair/context/theme';
 
 const Container = styled('div')`
   max-width: 1000px;
@@ -19,10 +21,18 @@ const NavItem = styled('li')`
   margin: 0 ${space.md};
 `;
 
+const Nav = styled('nav')`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 export const Layout: React.FC = ({ children }) => {
+  const { toggleColorScheme, colorScheme } = useTheme();
+
   return (
     <Container>
-      <nav>
+      <Nav>
         <NavList>
           <NavItem>
             <Link href="/" passHref>
@@ -45,7 +55,10 @@ export const Layout: React.FC = ({ children }) => {
             </Link>
           </NavItem>
         </NavList>
-      </nav>
+        <Button variant={colorScheme} onClick={toggleColorScheme}>
+          Toggle color scheme
+        </Button>
+      </Nav>
       {children}
     </Container>
   );
