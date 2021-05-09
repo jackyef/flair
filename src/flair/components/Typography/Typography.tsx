@@ -7,9 +7,9 @@ import {
   mobileFontSizes,
   FontSizeVariant,
   lineHeights,
-} from '@/theme/fonts';
-import { SizeVariant, space } from '@/theme/space';
-import { onMobileUp } from '@/theme/mediaQueries';
+} from '@/flair/theme/fonts';
+import { SpaceVariant, space } from '@/flair/theme/space';
+import { onMobileUp } from '@/flair/theme/mediaQueries';
 
 const AVAILABLE_ELEMENTS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'] as const;
 type TypographyElement = typeof AVAILABLE_ELEMENTS[number];
@@ -24,24 +24,24 @@ const SIZE_MAP: Record<TypographyElement, FontSizeVariant> = {
   p: 'body',
 };
 
-const MARGIN_TOP_MAP: Record<TypographyElement, SizeVariant> = {
-  h1: 'xl',
-  h2: 'xl',
+const MARGIN_TOP_MAP: Record<TypographyElement, SpaceVariant> = {
+  h1: '2xl',
+  h2: '2xl',
   h3: 'xl',
   h4: 'lg',
   h5: 'lg',
   h6: 'lg',
-  p: 'md',
+  p: 'lg',
 };
 
-const MARGIN_BOTTOM_MAP: Record<TypographyElement, SizeVariant> = {
-  h1: 'lg',
-  h2: 'lg',
+const MARGIN_BOTTOM_MAP: Record<TypographyElement, SpaceVariant> = {
+  h1: 'xl',
+  h2: 'xl',
   h3: 'lg',
   h4: 'md',
   h5: 'md',
   h6: 'md',
-  p: 'sm',
+  p: 'md',
 };
 
 const cssClasses = AVAILABLE_ELEMENTS.reduce((acc, element) => {

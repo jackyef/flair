@@ -1,68 +1,46 @@
-export const COLORS_VARIANTS = [
-  'dark',
-  'light',
-  'primary',
-  'secondary',
-  'tertiary',
-  'warning',
-  'error',
-] as const;
+import type { Colors } from "../colors";
 
-export type ColorPair = {
-  color: string;
-  contrastingColor: string;
-};
-export type ColorVariant = typeof COLORS_VARIANTS[number];
-export type ColorShade = {
-  400: ColorPair;
-  500: ColorPair;
-  600: ColorPair;
-  700: ColorPair;
-  800: ColorPair;
-};
-export type ColorShadeValue = Array<keyof ColorShade>;
-
-const defaultForegroundColor = 'hsl(233, 22%, 10%)';
+const defaultForegroundColor = 'hsl(0, 0%, 12.5%)';
 const defaultBackgroundColor = 'hsl(0, 0%, 100%)';
 
-export const colors: Record<ColorVariant, ColorShade> = {
+export const stickerMuleColors: Colors = {
   dark: {
     400: {
       color: defaultForegroundColor,
       contrastingColor: defaultBackgroundColor,
     },
     500: {
-      color: 'hsl(233, 22%, 15%)',
+      color: 'hsl(0, 0%, 14.5%)',
       contrastingColor: defaultBackgroundColor,
     },
     600: {
-      color: 'hsl(233, 22%, 20%)',
+      color: 'hsl(0, 0%, 16.5%)',
       contrastingColor: defaultBackgroundColor,
     },
     700: {
-      color: 'hsl(233, 22%, 25%)',
+      color: 'hsl(0, 0%, 18.5%)',
       contrastingColor: defaultBackgroundColor,
     },
     800: {
-      color: 'hsl(233, 22%, 30%)',
+      color: 'hsl(0, 0%, 20.5%)',
       contrastingColor: defaultBackgroundColor,
     },
   },
   light: {
     400: {
-      color: 'hsl(0, 0%, 84%)',
+      color: 'hsl(0, 0%, 89%)',
       contrastingColor: defaultForegroundColor,
     },
     500: {
-      color: 'hsl(0, 0%, 88%)',
-      contrastingColor: defaultForegroundColor,
-    },
-    600: {
       color: 'hsl(0, 0%, 92%)',
       contrastingColor: defaultForegroundColor,
     },
+    600: {
+      color: 'hsl(0, 0%, 95%)',
+      contrastingColor: defaultForegroundColor,
+    },
     700: {
-      color: 'hsl(0, 0%, 96%)',
+      color: 'hsl(0, 0%, 98%)',
       contrastingColor: defaultForegroundColor,
     },
     800: {
@@ -72,112 +50,112 @@ export const colors: Record<ColorVariant, ColorShade> = {
   },
   primary: {
     400: {
-      color: 'hsl(165, 100%, 26%)',
+      color: 'hsl(28.7, 100%, 46%)',
       contrastingColor: defaultBackgroundColor,
     },
     500: {
-      color: 'hsl(165, 100%, 28%)',
+      color: 'hsl(28.7, 100%, 48%)',
       contrastingColor: defaultBackgroundColor,
     },
     600: {
-      color: 'hsl(165, 100%, 32%)',
+      color: 'hsl(28.7, 100%, 50%)',
       contrastingColor: defaultBackgroundColor,
     },
     700: {
-      color: 'hsl(165, 100%, 36%)',
+      color: 'hsl(28.7, 100%, 52%)',
       contrastingColor: defaultBackgroundColor,
     },
     800: {
-      color: 'hsl(165, 100%, 40%)',
+      color: 'hsl(28.7, 100%, 54%)',
       contrastingColor: defaultForegroundColor,
     },
   },
   secondary: {
     400: {
-      color: 'hsl(230, 97%, 57%)',
+      color: 'hsl(208.5, 73.5%, 58.9%)',
       contrastingColor: defaultBackgroundColor,
     },
     500: {
-      color: 'hsl(230, 97%, 61%)',
+      color: 'hsl(208.5, 73.5%, 60.9%)',
       contrastingColor: defaultBackgroundColor,
     },
     600: {
-      color: 'hsl(230, 97%, 65%)',
+      color: 'hsl(208.5, 73.5%, 62.9%)',
       contrastingColor: defaultBackgroundColor,
     },
     700: {
-      color: 'hsl(230, 97%, 69%)',
+      color: 'hsl(208.5, 73.5%, 64.9%)',
       contrastingColor: defaultBackgroundColor,
     },
     800: {
-      color: 'hsl(230, 97%, 73%)',
-      contrastingColor: defaultBackgroundColor,
-    },
-  },
-  tertiary: {
-    400: {
-      color: 'hsl(340, 79%, 59%)',
-      contrastingColor: defaultBackgroundColor,
-    },
-    500: {
-      color: 'hsl(340, 79%, 64%)',
-      contrastingColor: defaultBackgroundColor,
-    },
-    600: {
-      color: 'hsl(340, 79%, 69%)',
-      contrastingColor: defaultBackgroundColor,
-    },
-    700: {
-      color: 'hsl(340, 79%, 74%)',
+      color: 'hsl(208.5, 73.5%, 66.9%)',
       contrastingColor: defaultForegroundColor,
     },
+  },
+  success: {
+    400: {
+      color: 'hsl(134.6, 48%, 52.3%)',
+      contrastingColor: defaultBackgroundColor,
+    },
+    500: {
+      color: 'hsl(134.6, 48%, 54.3%)',
+      contrastingColor: defaultBackgroundColor,
+    },
+    600: {
+      color: 'hsl(134.6, 48%, 56.3%)',
+      contrastingColor: defaultBackgroundColor,
+    },
+    700: {
+      color: 'hsl(134.6, 48%, 58.3%)',
+      contrastingColor: defaultBackgroundColor,
+    },
     800: {
-      color: 'hsl(340, 79%, 79%)',
+      color: 'hsl(134.6, 48%, 60.3%)',
       contrastingColor: defaultForegroundColor,
     },
   },
   warning: {
     400: {
-      color: 'hsl(51, 100%, 60%)',
+      color: 'hsl(47.9, 91.4%, 58.7%)',
       contrastingColor: defaultForegroundColor,
     },
     500: {
-      color: 'hsl(51, 100%, 65%)',
+      color: 'hsl(47.9, 91.4%, 60.7%)',
       contrastingColor: defaultForegroundColor,
     },
     600: {
-      color: 'hsl(51, 100%, 70%)',
+      color: 'hsl(47.9, 91.4%, 63.7%)',
       contrastingColor: defaultForegroundColor,
     },
     700: {
-      color: 'hsl(51, 100%, 75%)',
+      color: 'hsl(47.9, 91.4%, 65.7%)',
       contrastingColor: defaultForegroundColor,
     },
     800: {
-      color: 'hsl(51, 100%, 80%)',
+      color: 'hsl(47.9, 91.4%, 67.7%)',
       contrastingColor: defaultForegroundColor,
     },
   },
   error: {
     400: {
-      color: 'hsl(353, 86%, 37%)',
+      color: 'hsl(0, 100%, 57.9%)',
       contrastingColor: defaultBackgroundColor,
     },
     500: {
-      color: 'hsl(353, 86%, 42%)',
+      color: 'hsl(0, 100%, 59.9%)',
       contrastingColor: defaultBackgroundColor,
     },
     600: {
-      color: 'hsl(353, 86%, 47%)',
+      color: 'hsl(0, 100%, 62.9%)',
       contrastingColor: defaultBackgroundColor,
     },
     700: {
-      color: 'hsl(353, 86%, 52%)',
+      color: 'hsl(0, 100%, 65.9%)',
       contrastingColor: defaultBackgroundColor,
     },
     800: {
-      color: 'hsl(353, 86%, 57%)',
-      contrastingColor: defaultBackgroundColor,
+      color: 'hsl(0, 100%, 67.9%)',
+      contrastingColor: defaultForegroundColor,
     },
   },
 } as const;
