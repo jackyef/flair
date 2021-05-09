@@ -1,3 +1,5 @@
+import { css, styled } from 'goober';
+
 import { Button } from '@/flair/components/Button/Button';
 import { H1, H2, H3, P } from '@/flair/components/Typography/Typography';
 import { useTheme } from '@/flair/context/theme';
@@ -6,7 +8,6 @@ import { shadows } from '@/flair/theme/shadow';
 import { space } from '@/flair/theme/space';
 import { canUseDOM } from '@/flair/utils/canUseDOM';
 import { ColorMapping, MappedColorVariant } from '@/flair/utils/getColorMapping';
-import { css, styled } from 'goober';
 
 const copyToClipboard = (str: string) => {
   const el = document.createElement('textarea');

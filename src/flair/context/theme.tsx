@@ -17,21 +17,21 @@ type ThemeContextValue = {
   colors: ColorMapping;
 };
 
+const colorMapping = getColorMapping();
+
 const defaultContextValue: ThemeContextValue = {
   colorScheme: 'light',
   toggleColorScheme: () => {
     // no-op
   },
   space,
-  // @ts-expect-error
-  colors: {},
+  colors: colorMapping,
 };
 
 export const ThemeContext = createContext<ThemeContextValue>(
   defaultContextValue,
 );
 
-const colorMapping = getColorMapping();
 
 export const ThemeProvider: React.FC = ({ children }) => {
   const [colorScheme, setColorScheme] = useState<ColorScheme>(
