@@ -4,9 +4,8 @@ import { Button } from '@/flair/components/Button/Button';
 import { H1, H2 } from '@/flair/components/Typography/Typography';
 import { useTheme } from '@/flair/context/theme';
 import { ColorVariant } from '@/flair/theme/colors';
-import {
-  MappedColorVariant,
-} from '@/flair/utils/getColorMapping';
+import { MappedColorVariant } from '@/flair/utils/getColorMapping';
+import { AnnouncementIcon } from '@/components/icons/AnnouncementIcon';
 
 export default function Colors() {
   const { colors, space } = useTheme();
@@ -61,12 +60,17 @@ export default function Colors() {
         })}
       </div>
 
-      <H2>With icons</H2>
+      <H2>With icon</H2>
       <div className={buttonContainer}>
         {(['sm', 'md', 'lg'] as const).map((size) => {
           return (
-            <Button key={size} variant="secondary" size={size}>
-              {size}
+            <Button
+              key={size}
+              icon={<AnnouncementIcon />}
+              variant="success"
+              size={size}
+            >
+              Announce
             </Button>
           );
         })}

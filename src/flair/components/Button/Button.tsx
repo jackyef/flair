@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { cloneElement } from 'react';
 import cx from 'classnames';
 import { css } from 'goober';
 
@@ -6,6 +6,7 @@ import { useTheme } from '@/flair/context/theme';
 import { ColorVariant } from '@/flair/theme/colors';
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  icon?: React.ReactNode;
   size?: 'sm' | 'md' | 'lg';
   variant?: ColorVariant;
 }
@@ -13,6 +14,8 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 const base = css`
   cursor: pointer;
   border: none;
+  display: inline-flex;
+  align-items: center;
 `;
 
 const disabledClass = css`
@@ -22,9 +25,11 @@ const disabledClass = css`
 
 export const Button = ({
   className,
+  icon,
   size = 'md',
   variant = 'primary',
   disabled,
+  children,
   ...rest
 }: Props) => {
   const { colors, space } = useTheme();
@@ -33,20 +38,32 @@ export const Button = ({
       case 'sm':
         return css`
           font-size: 1rem;
-          padding: ${space.sm} ${space.md};
+          padding: ${space.md} ${space.md};
           border-radius: 4px;
+
+          & svg {
+            margin-right: ${space.sm};
+          }
         `;
       case 'md':
         return css`
           font-size: 1rem;
-          padding: ${space.lg} ${space.xl};
+          padding: ${space.lg} ${space.lg};
           border-radius: 8px;
+
+          & svg {
+            margin-right: ${space.md};
+          }
         `;
       case 'lg':
         return css`
-          font-size: 1.2rem;
-          padding: ${space.xl} ${space['2xl']};
+          font-size: 1.3rem;
+          padding: ${space.xl} ${space.xl};
           border-radius: 12px;
+
+          & svg {
+            margin-right: ${space.lg};
+          }
         `;
     }
   };
@@ -60,14 +77,32 @@ export const Button = ({
       color: ${colors[variant][500].contrastingColor};
     }
   `;
+  const getIconSize = () => {
+    switch (size) {
+      case 'sm':
+        return 16;
+      case 'md':
+        return 24;
+      case 'lg':
+        return 40;
+    }
+  };
 
   return (
-    <button
-      className={cx(base, localClass, className, getSizeClass(), {
-        [disabledClass]: disabled,
-      })}
-      disabled={disabled}
-      {...rest}
-    />
+    <>
+      <button
+        className={cx(base, localClass, className, getSizeClass(), {
+          [disabledClass]: disabled,
+        })}
+        disabled={disabled}
+        {...rest}
+      >
+        {/* @ts-ignore */}
+        {cloneElement(icon, {
+          size: getIconSize(),
+        })}
+        {children}
+      </button>
+    </>
   );
 };
