@@ -92,7 +92,7 @@ export const stickerMuleColors: Colors = {
       contrastingColor: defaultForegroundColor,
     },
   },
-  tertiary: {
+  success: {
     400: {
       color: 'hsl(134.6, 48%, 52.3%)',
       contrastingColor: defaultBackgroundColor,

@@ -13,6 +13,10 @@ export const GlobalStyles = createGlobalStyles`
     color: var(--color-foreground-400);
   }
 
+  button {
+    font: inherit;
+  }
+
   @media (prefers-reduced-motion: no-preference) {
     :focus {
       transition: outline-offset .25s ease;

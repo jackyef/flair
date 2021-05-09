@@ -9,7 +9,7 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ColorVariant;
 }
 
-export const Button = ({ className, variant = 'primary', ...rest }: Props) => {
+export const Button = ({ className, variant = 'primary', disabled, ...rest }: Props) => {
   const { colors, space } = useTheme();
   const localClass = css`
     background: ${colors[variant][400].color};
@@ -25,6 +25,17 @@ export const Button = ({ className, variant = 'primary', ...rest }: Props) => {
       color: ${colors[variant][500].contrastingColor};
     }
   `;
+  const isDisabled = css`
+    cursor: not-allowed;
+  `;
 
-  return <button className={cx(localClass, className)} {...rest} />;
+  return (
+    <button
+      className={cx(localClass, className, {
+        [isDisabled]: disabled,
+      })}
+      disabled={disabled}
+      {...rest}
+    />
+  );
 };

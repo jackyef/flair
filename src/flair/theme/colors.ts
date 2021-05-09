@@ -3,7 +3,7 @@ export const COLORS_VARIANTS = [
   'light',
   'primary',
   'secondary',
-  'tertiary',
+  'success',
   'warning',
   'error',
 ] as const;
@@ -68,28 +68,6 @@ export const colors: Colors = {
   },
   primary: {
     400: {
-      color: 'hsl(165, 100%, 26%)',
-      contrastingColor: defaultBackgroundColor,
-    },
-    500: {
-      color: 'hsl(165, 100%, 28%)',
-      contrastingColor: defaultBackgroundColor,
-    },
-    600: {
-      color: 'hsl(165, 100%, 32%)',
-      contrastingColor: defaultBackgroundColor,
-    },
-    700: {
-      color: 'hsl(165, 100%, 36%)',
-      contrastingColor: defaultBackgroundColor,
-    },
-    800: {
-      color: 'hsl(165, 100%, 40%)',
-      contrastingColor: defaultForegroundColor,
-    },
-  },
-  secondary: {
-    400: {
       color: 'hsl(230, 97%, 57%)',
       contrastingColor: defaultBackgroundColor,
     },
@@ -110,7 +88,7 @@ export const colors: Colors = {
       contrastingColor: defaultBackgroundColor,
     },
   },
-  tertiary: {
+  secondary: {
     400: {
       color: 'hsl(340, 79%, 59%)',
       contrastingColor: defaultBackgroundColor,
@@ -129,6 +107,28 @@ export const colors: Colors = {
     },
     800: {
       color: 'hsl(340, 79%, 79%)',
+      contrastingColor: defaultForegroundColor,
+    },
+  },
+  success: {
+    400: {
+      color: 'hsl(165, 100%, 26%)',
+      contrastingColor: defaultBackgroundColor,
+    },
+    500: {
+      color: 'hsl(165, 100%, 28%)',
+      contrastingColor: defaultBackgroundColor,
+    },
+    600: {
+      color: 'hsl(165, 100%, 32%)',
+      contrastingColor: defaultBackgroundColor,
+    },
+    700: {
+      color: 'hsl(165, 100%, 36%)',
+      contrastingColor: defaultBackgroundColor,
+    },
+    800: {
+      color: 'hsl(165, 100%, 40%)',
       contrastingColor: defaultForegroundColor,
     },
   },

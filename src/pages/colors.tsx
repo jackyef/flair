@@ -163,7 +163,7 @@ export default function Colors() {
       <H2>Variants</H2>
 
       <P>
-        By default, Flair has 7 color variants: primary, secondary, tertiary,
+        By default, Flair has 7 color variants: primary, secondary, success,
         warning, error, dark and light. All of the colors are accessible from
         the ThemeContext. Accessing a color is as simple as{' '}
         <code>colors[variant][intensity].color</code>. To get the contrasting
