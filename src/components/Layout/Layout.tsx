@@ -58,6 +58,11 @@ export const Layout: React.FC = ({ children }) => {
               <A>/colors</A>
             </Link>
           </NavItem>
+          <NavItem>
+            <Link href="/buttons" passHref>
+              <A>/buttons</A>
+            </Link>
+          </NavItem>
         </NavList>
         <Button variant={colorScheme} onClick={toggleColorScheme}>
           Toggle color scheme
