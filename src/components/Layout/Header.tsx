@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { css } from 'goober';
 
 import { Button } from '@/flair/components/Button/Button';
@@ -5,10 +6,13 @@ import { useTheme } from '@/flair/context/theme';
 import { defaultTransition } from '@/flair/theme/transition';
 import { H3 } from '@/flair/components/Typography/Typography';
 import { shadows } from '@/flair/theme/shadow';
-import { SunIcon, MoonIcon } from '@heroicons/react/solid';
+import { SunIcon, MoonIcon, MenuIcon, XIcon } from '@heroicons/react/solid';
+import { RenderOnMobile } from '../MediaQuery/RenderOnMobile';
+import { MobileNav } from './MobileNav';
 
 export const Header = () => {
   const { toggleColorScheme, colorScheme, space, colors } = useTheme();
+  const [showMobileNav, setShowMobileNav] = useState(false);
 
   return (
     <header
@@ -38,18 +42,43 @@ export const Header = () => {
         `}
       >
         <H3>FlairUI</H3>
-        <Button
-          icon={
-            colorScheme === 'light' ? (
-              <SunIcon width={24} height={24} />
-            ) : (
-              <MoonIcon width={24} height={24} />
-            )
-          }
-          size="sm"
-          onClick={toggleColorScheme}
-          variant="background"
-        />
+        <div>
+          <Button
+            icon={
+              colorScheme === 'light' ? (
+                <SunIcon width={24} height={24} />
+              ) : (
+                <MoonIcon width={24} height={24} />
+              )
+            }
+            size="sm"
+            onClick={toggleColorScheme}
+            variant="background"
+          />
+          <RenderOnMobile display="inline-block">
+            <Button
+              className={css`
+                margin-left: ${space.md};
+              `}
+              icon={
+                showMobileNav ? (
+                  <XIcon width={24} height={24} />
+                ) : (
+                  <MenuIcon width={24} height={24} />
+                )
+              }
+              size="sm"
+              onClick={() => {
+                setShowMobileNav((prev) => !prev);
+              }}
+              variant="background"
+            />
+
+            {showMobileNav && (
+              <MobileNav onNavClick={() => setShowMobileNav(false)} />
+            )}
+          </RenderOnMobile>
+        </div>
       </div>
     </header>
   );

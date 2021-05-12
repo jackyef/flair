@@ -7,6 +7,7 @@ import '@/styles/reset.css';
 import '@/styles/global.css';
 
 import { ThemeProvider } from '@/flair/context/theme';
+import { NProgressLoader } from '@/components/NProgressLoader/NProgressLoader';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
@@ -19,6 +20,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         />
       </Head>
       <ThemeProvider>
+        <NProgressLoader />
         <Layout>
           <Component {...pageProps} />
         </Layout>

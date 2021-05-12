@@ -3,6 +3,7 @@ import { css } from 'goober';
 import { useTheme } from '@/flair/context/theme';
 import { Header } from './Header';
 import { SideNav } from './SideNav';
+import { RenderOnMobileUp } from '../MediaQuery/RenderOnMobileUp';
 
 export const Layout: React.FC = ({ children }) => {
   const { space } = useTheme();
@@ -19,7 +20,9 @@ export const Layout: React.FC = ({ children }) => {
           margin: 0 auto;
         `}
       >
-        <SideNav />
+        <RenderOnMobileUp>
+          <SideNav />
+        </RenderOnMobileUp>
         <div
           className={css`
             margin-left: ${space.lg};
