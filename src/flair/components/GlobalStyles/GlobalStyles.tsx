@@ -7,6 +7,9 @@ setup(createElement);
 
 export const GlobalStyles = createGlobalStyles`
   body {
+    font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+      Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
     background: ${colors.light[800].color};
     background: var(--color-background-800);
     color: ${colors.dark[400].color};

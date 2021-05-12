@@ -1,13 +1,44 @@
 import Head from 'next/head';
 import { AppProps } from 'next/app';
+import { createGlobalStyles } from 'goober/global';
 
 import { Layout } from '@/components/Layout/Layout';
 
-import '@/styles/reset.css';
-import '@/styles/global.css';
-
 import { ThemeProvider } from '@/flair/context/theme';
 import { NProgressLoader } from '@/components/NProgressLoader/NProgressLoader';
+
+const ResetStyles = createGlobalStyles`
+  html {
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+
+
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+  body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+  }
+
+  ol, ul {
+    list-style: none;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+`;
+
+const GlobalStyles = createGlobalStyles`
+  body {
+    transition: background 0.15s ease-out, color 0.15s ease-out;
+}
+`;
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
@@ -19,6 +50,8 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           rel="stylesheet"
         />
       </Head>
+      <ResetStyles />
+      <GlobalStyles />
       <ThemeProvider>
         <NProgressLoader />
         <Layout>
