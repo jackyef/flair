@@ -1,5 +1,3 @@
-const withPreact = require('next-plugin-preact')
-
-module.exports = withPreact({
+module.exports = {
   /* regular next.js config options here */
-})
+}

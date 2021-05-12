@@ -6,7 +6,7 @@ import { useTheme } from '@/flair/context/theme';
 import { ColorVariant } from '@/flair/theme/colors';
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  icon?: React.ReactNode;
+  icon?: React.ReactElement;
   size?: 'sm' | 'md' | 'lg';
   variant?: ColorVariant;
 }
@@ -97,10 +97,10 @@ export const Button = ({
         disabled={disabled}
         {...rest}
       >
-        {/* @ts-ignore */}
-        {cloneElement(icon, {
-          size: getIconSize(),
-        })}
+        {icon &&
+          cloneElement(icon, {
+            size: getIconSize(),
+          })}
         {children}
       </button>
     </>
