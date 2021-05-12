@@ -75,6 +75,10 @@ const cssClasses = AVAILABLE_ELEMENTS.reduce((acc, element) => {
     ${onMobileUp} {
       font-size: ${fontSize};
     }
+
+    &:first-child {
+      margin-top: 0;
+    }
   `;
 
   return acc;
