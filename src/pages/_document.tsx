@@ -15,9 +15,10 @@ import { NoFlashScript } from '@/flair/components/NoFlashScript/NoFlashScript';
 // const cssVariables = generateCssVariables();
 
 export default class MyDocument extends Document {
-  static async getInitialProps({ renderPage }: DocumentContext) {
-    const page = await renderPage();
+  static async getInitialProps(ctx: DocumentContext) {
+    const page = await Document.getInitialProps(ctx);
 
+    await ctx.renderPage();
     // Extract the css for each page render
     const css = extractCss();
 
