@@ -2,10 +2,21 @@ import { createElement } from 'react';
 import { setup } from 'goober';
 import { createGlobalStyles } from 'goober/global';
 import { colors } from '@/flair/theme/colors';
+import {
+  generateDarkThemeCssVariables,
+  generateLightThemeCssVariables,
+} from '@/flair/utils/generateCssVariables';
 
 setup(createElement);
 
 export const GlobalStyles = createGlobalStyles`
+:root {
+  ${generateLightThemeCssVariables()}
+}
+
+[data-flair-theme='dark'] {
+  ${generateDarkThemeCssVariables()}
+}
   body {
     font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI',
       Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
