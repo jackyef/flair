@@ -6,6 +6,7 @@ import { useTheme } from '@/flair/context/theme';
 import { ColorVariant } from '@/flair/theme/colors';
 import { MappedColorVariant } from '@/flair/utils/getColorMapping';
 import { AnnouncementIcon } from '@iconicicons/react';
+import { Main } from '@/components/Main/Main';
 
 export default function Colors() {
   const { colors, space } = useTheme();
@@ -24,7 +25,7 @@ export default function Colors() {
   `;
 
   return (
-    <main>
+    <Main>
       <H1>Buttons</H1>
 
       <div className={buttonContainer}>
@@ -75,6 +76,6 @@ export default function Colors() {
           );
         })}
       </div>
-    </main>
+    </Main>
   );
 }

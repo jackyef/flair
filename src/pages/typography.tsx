@@ -13,6 +13,7 @@ import {
 import { onMobileUp } from '@/flair/theme/mediaQueries';
 import { space } from '@/flair/theme/space';
 import { useTheme } from '@/flair/context/theme';
+import { Main } from '@/components/Main/Main';
 
 const Paper = (props: React.HTMLAttributes<HTMLDivElement>) => {
   const { colors } = useTheme();
@@ -40,7 +41,7 @@ const withoutTopMargin = css`
 
 export default function Home() {
   return (
-    <main>
+    <Main>
       <H1>Typography</H1>
 
       <Paper>
@@ -130,6 +131,6 @@ export default function Home() {
           including versions of Lorem Ipsum.
         </P>
       </Paper>
-    </main>
+    </Main>
   );
 }

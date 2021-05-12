@@ -20,7 +20,7 @@ export const Header = () => {
         position: sticky;
         top: 0;
         box-shadow: ${shadows.subtle};
-        margin-bottom: ${space.xl};
+        margin-bottom: ${space.md};
         width: 100%;
         background: ${colors.background[700].color};
         transition: ${defaultTransition};
@@ -37,7 +37,7 @@ export const Header = () => {
           width: 100%;
 
           & > h3 {
-            margin-bottom: 0;
+            margin: 0;
           }
         `}
       >

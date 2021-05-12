@@ -26,6 +26,7 @@ export const Layout: React.FC = ({ children }) => {
         <div
           className={css`
             margin-left: ${space.lg};
+            flex: 1;
           `}
         >
           {children}

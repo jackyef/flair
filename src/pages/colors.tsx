@@ -13,6 +13,7 @@ import {
 } from '@/flair/utils/getColorMapping';
 import { RenderOnMount } from '@/components/RenderOnMount/RenderOnMount';
 import { Fragment } from 'react';
+import { Main } from '@/components/Main/Main';
 
 const copyToClipboard = (str: string) => {
   const el = document.createElement('textarea');
@@ -121,7 +122,7 @@ const renderColorSquares = (
 };
 
 export default function Colors() {
-  const { toggleColorScheme, colors } = useTheme();
+  const { toggleColorScheme, colors, space } = useTheme();
 
   const colorNames = (Object.keys(colors) as unknown) as MappedColorVariant[];
 
@@ -132,7 +133,7 @@ export default function Colors() {
   const fgAndBgColors = ['foreground', 'background'] as MappedColorVariant[];
 
   return (
-    <main>
+    <Main>
       <H1>Colors</H1>
       <P>
         Colors in Flair are organized by <code>variants</code>. Each variant has
@@ -187,6 +188,6 @@ export default function Colors() {
       </P>
 
       {renderColorSquares(fgAndBgColors, colors)}
-    </main>
+    </Main>
   );
 }
