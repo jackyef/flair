@@ -39,7 +39,13 @@ export const Header = () => {
       >
         <H3>FlairUI</H3>
         <Button
-          icon={colorScheme === 'light' ? <SunIcon /> : <MoonIcon />}
+          icon={
+            colorScheme === 'light' ? (
+              <SunIcon width={24} height={24} />
+            ) : (
+              <MoonIcon width={24} height={24} />
+            )
+          }
           size="sm"
           onClick={toggleColorScheme}
           variant="background"

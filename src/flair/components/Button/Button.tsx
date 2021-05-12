@@ -106,8 +106,8 @@ export const Button = ({
       >
         {icon &&
           cloneElement(icon, {
-            width: iconSize,
-            height: iconSize,
+            width: icon.props.width || iconSize,
+            height: icon.props.height || iconSize,
           })}
         {children}
       </button>
