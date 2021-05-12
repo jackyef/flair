@@ -31,19 +31,18 @@ export const Header = () => {
           align-items: center;
           justify-content: space-between;
           width: 100%;
+
+          & > h3 {
+            margin-bottom: 0;
+          }
         `}
       >
-        <H3
-          className={css`
-            margin-bottom: 0;
-          `}
-        >
-          FlairUI
-        </H3>
+        <H3>FlairUI</H3>
         <Button
           icon={colorScheme === 'light' ? <SunIcon /> : <MoonIcon />}
           size="sm"
           onClick={toggleColorScheme}
+          variant="background"
         />
       </div>
     </header>

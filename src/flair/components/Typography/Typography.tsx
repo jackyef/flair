@@ -84,7 +84,7 @@ const cssClasses = AVAILABLE_ELEMENTS.reduce((acc, element) => {
   return acc;
 }, {} as Record<TypographyElement, string>);
 
-interface Props extends React.HTMLProps<HTMLHeadingElement> {
+interface Props extends React.HTMLProps<HTMLHeadingElement | HTMLParagraphElement> {
   as?: TypographyElement;
 }
 
