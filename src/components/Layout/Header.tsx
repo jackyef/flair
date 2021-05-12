@@ -41,7 +41,7 @@ export const Header = () => {
           }
         `}
       >
-        <H3>FlairUI</H3>
+        <H3>FlairKit</H3>
         <div>
           <Button
             icon={
