@@ -27,10 +27,6 @@ const copyToClipboard = (str: string) => {
   document.body.removeChild(el);
 };
 
-const capitalize = css`
-  text-transform: capitalize;
-`;
-
 const ColorSwatchContainer = styled('div')`
   display: flex;
   gap: ${space.lg};
@@ -73,7 +69,13 @@ const renderColorSquares = (
 
     return (
       <Fragment key={colorName}>
-        <H3 className={capitalize}>{colorName}</H3>
+        <H3
+          className={css`
+            text-transform: capitalize;
+          `}
+        >
+          {colorName}
+        </H3>
         <ColorSwatchContainer>
           {/* @ts-expect-error */}
           {Object.keys(colorShade).map((shadeStep: ColorShadeVariant) => {

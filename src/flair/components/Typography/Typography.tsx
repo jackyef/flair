@@ -8,8 +8,9 @@ import {
   FontSizeVariant,
   lineHeights,
 } from '@/flair/theme/fonts';
-import { SpaceVariant, space } from '@/flair/theme/space';
+import { SpaceVariant } from '@/flair/theme/space';
 import { onMobileUp } from '@/flair/theme/mediaQueries';
+import { useTheme } from '@/flair/context/theme';
 
 const AVAILABLE_ELEMENTS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'] as const;
 type TypographyElement = typeof AVAILABLE_ELEMENTS[number];
@@ -44,7 +45,8 @@ const MARGIN_BOTTOM_MAP: Record<TypographyElement, SpaceVariant> = {
   p: 'md',
 };
 
-const cssClasses = AVAILABLE_ELEMENTS.reduce((acc, element) => {
+const useTypographyClass = (element: TypographyElement) => {
+  const { space } = useTheme();
   const isHeading = element.startsWith('h');
   const isBigHeading = element === 'h1' || element === 'h2';
   const shouldUppercase = element === 'h5';
@@ -60,7 +62,7 @@ const cssClasses = AVAILABLE_ELEMENTS.reduce((acc, element) => {
   const marginTop = space[marginTopVar];
   const marginBottom = space[marginBottomVar];
 
-  acc[element] = css`
+  return css`
     font-size: ${mobileFontSize};
     margin: ${marginTop} 0 ${marginBottom};
     line-height: ${lineHeights[fontSizeVar]};
@@ -76,11 +78,10 @@ const cssClasses = AVAILABLE_ELEMENTS.reduce((acc, element) => {
       font-size: ${fontSize};
     }
   `;
+};
 
-  return acc;
-}, {} as Record<TypographyElement, string>);
-
-interface Props extends React.HTMLProps<HTMLHeadingElement | HTMLParagraphElement> {
+interface Props
+  extends React.HTMLProps<HTMLHeadingElement | HTMLParagraphElement> {
   as?: TypographyElement;
 }
 
@@ -90,10 +91,11 @@ export const H1: React.FC<Props> = ({
   children,
   ...props
 }) => {
+  const cssClass = useTypographyClass('h1');
   const Element = as;
 
   return (
-    <Element className={cx(cssClasses.h1, className)} {...props}>
+    <Element className={cx(cssClass, className)} {...props}>
       {children}
     </Element>
   );
@@ -105,10 +107,11 @@ export const H2: React.FC<Props> = ({
   children,
   ...props
 }) => {
+  const cssClass = useTypographyClass('h2');
   const Element = as;
 
   return (
-    <Element className={cx(cssClasses.h2, className)} {...props}>
+    <Element className={cx(cssClass, className)} {...props}>
       {children}
     </Element>
   );
@@ -120,19 +123,15 @@ export const H3: React.FC<Props> = ({
   children,
   ...props
 }) => {
+  const cssClass = useTypographyClass('h3');
   const Element = as;
 
   return (
-    <Element className={cx(cssClasses.h3, className)} {...props}>
+    <Element className={cx(cssClass, className)} {...props}>
       {children}
     </Element>
   );
 };
-
-const h4Class = css`
-  font-weight: 400;
-  font-style: italic;
-`;
 
 export const H4: React.FC<Props> = ({
   as = 'h4',
@@ -140,10 +139,15 @@ export const H4: React.FC<Props> = ({
   children,
   ...props
 }) => {
+  const cssClass = useTypographyClass('h4');
+  const h4Class = css`
+    font-weight: 400;
+    font-style: italic;
+  `;
   const Element = as;
 
   return (
-    <Element className={cx(cssClasses.h4, h4Class, className)} {...props}>
+    <Element className={cx(cssClass, h4Class, className)} {...props}>
       {children}
     </Element>
   );
@@ -155,10 +159,11 @@ export const H5: React.FC<Props> = ({
   children,
   ...props
 }) => {
+  const cssClass = useTypographyClass('h5');
   const Element = as;
 
   return (
-    <Element className={cx(cssClasses.h5, className)} {...props}>
+    <Element className={cx(cssClass, className)} {...props}>
       {children}
     </Element>
   );
@@ -170,10 +175,11 @@ export const H6: React.FC<Props> = ({
   children,
   ...props
 }) => {
+  const cssClass = useTypographyClass('h6');
   const Element = as;
 
   return (
-    <Element className={cx(cssClasses.h6, className)} {...props}>
+    <Element className={cx(cssClass, className)} {...props}>
       {children}
     </Element>
   );
@@ -185,10 +191,11 @@ export const P: React.FC<Props> = ({
   children,
   ...props
 }) => {
+  const cssClass = useTypographyClass('p');
   const Element = as;
 
   return (
-    <Element className={cx(cssClasses.p, className)} {...props}>
+    <Element className={cx(cssClass, className)} {...props}>
       {children}
     </Element>
   );

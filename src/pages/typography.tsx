@@ -35,9 +35,6 @@ const Paper = (props: React.HTMLAttributes<HTMLDivElement>) => {
     />
   );
 };
-const withoutTopMargin = css`
-  margin-top: 0;
-`;
 
 export default function Home() {
   return (
@@ -45,7 +42,11 @@ export default function Home() {
       <H1>Typography</H1>
 
       <Paper>
-        <H1 className={withoutTopMargin}>
+        <H1
+          className={css`
+            margin-top: 0;
+          `}
+        >
           The quick brown fox jumps over the lazy dog (h1)
         </H1>
         <P>

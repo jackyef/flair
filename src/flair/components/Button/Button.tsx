@@ -12,19 +12,6 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: MappedColorVariant;
 }
 
-const base = css`
-  cursor: pointer;
-  border: none;
-  display: inline-flex;
-  align-items: center;
-  transition: ${defaultTransition};
-`;
-
-const disabledClass = css`
-  opacity: 0.7;
-  cursor: not-allowed;
-`;
-
 export const Button = ({
   className,
   icon,
@@ -36,6 +23,28 @@ export const Button = ({
 }: Props) => {
   const { colors, space } = useTheme();
   const hasNoChildren = !Boolean(children);
+
+  const base = css`
+    cursor: pointer;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    transition: ${defaultTransition};
+
+    background: ${colors[variant][400].color};
+    color: ${colors[variant][400].contrastingColor};
+
+    &:hover,
+    &:focus {
+      background: ${colors[variant][500].color};
+      color: ${colors[variant][500].contrastingColor};
+    }
+
+    &[disabled] {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+  `;
 
   const getSizeClass = () => {
     switch (size) {
@@ -71,16 +80,6 @@ export const Button = ({
         `;
     }
   };
-  const localClass = css`
-    background: ${colors[variant][400].color};
-    color: ${colors[variant][400].contrastingColor};
-
-    &:hover,
-    &:focus {
-      background: ${colors[variant][500].color};
-      color: ${colors[variant][500].contrastingColor};
-    }
-  `;
 
   const getIconSize = () => {
     switch (size) {
@@ -98,9 +97,7 @@ export const Button = ({
   return (
     <>
       <button
-        className={cx(base, localClass, className, getSizeClass(), {
-          [disabledClass]: disabled,
-        })}
+        className={cx(base, className, getSizeClass())}
         disabled={disabled}
         {...rest}
       >
