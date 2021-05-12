@@ -5,7 +5,7 @@ import { H1, H2 } from '@/flair/components/Typography/Typography';
 import { useTheme } from '@/flair/context/theme';
 import { ColorVariant } from '@/flair/theme/colors';
 import { MappedColorVariant } from '@/flair/utils/getColorMapping';
-import { AnnouncementIcon } from '@/components/icons/AnnouncementIcon';
+import { AnnouncementIcon } from '@iconicicons/react';
 
 export default function Colors() {
   const { colors, space } = useTheme();

@@ -77,6 +77,7 @@ export const Button = ({
       color: ${colors[variant][500].contrastingColor};
     }
   `;
+
   const getIconSize = () => {
     switch (size) {
       case 'sm':
@@ -87,6 +88,8 @@ export const Button = ({
         return 40;
     }
   };
+
+  const iconSize = getIconSize();
 
   return (
     <>
@@ -99,7 +102,8 @@ export const Button = ({
       >
         {icon &&
           cloneElement(icon, {
-            size: getIconSize(),
+            width: iconSize,
+            height: iconSize,
           })}
         {children}
       </button>
