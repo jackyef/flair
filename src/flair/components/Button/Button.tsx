@@ -3,12 +3,12 @@ import cx from 'classnames';
 import { css } from 'goober';
 
 import { useTheme } from '@/flair/context/theme';
-import { ColorVariant } from '@/flair/theme/colors';
+import { MappedColorVariant } from '@/flair/utils/getColorMapping';
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   icon?: React.ReactElement;
   size?: 'sm' | 'md' | 'lg';
-  variant?: ColorVariant;
+  variant?: MappedColorVariant;
 }
 
 const base = css`

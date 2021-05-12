@@ -32,7 +32,7 @@ const Nav = styled('nav')`
 `;
 
 export const Layout: React.FC = ({ children }) => {
-  const { toggleColorScheme, colorScheme } = useTheme();
+  const { toggleColorScheme } = useTheme();
 
   return (
     <Container>
@@ -64,7 +64,7 @@ export const Layout: React.FC = ({ children }) => {
             </Link>
           </NavItem>
         </NavList>
-        <Button variant={colorScheme} onClick={toggleColorScheme}>
+        <Button variant="background" onClick={toggleColorScheme}>
           Toggle color scheme
         </Button>
       </Nav>
