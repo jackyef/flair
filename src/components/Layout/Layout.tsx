@@ -2,24 +2,16 @@ import Link from 'next/link';
 import { css } from 'goober';
 
 import { Anchor } from '@/flair/components/Anchor/Anchor';
-import { Button } from '@/flair/components/Button/Button';
 import { H5 } from '@/flair/components/Typography/Typography';
 import { useTheme } from '@/flair/context/theme';
+import { Header } from './Header';
 
 export const Layout: React.FC = ({ children }) => {
-  const { toggleColorScheme, space } = useTheme();
+  const { space } = useTheme();
 
   return (
     <>
-      <header
-        className={css`
-          padding: ${space.lg};
-        `}
-      >
-        <Button variant="background" onClick={toggleColorScheme}>
-          Toggle color scheme
-        </Button>
-      </header>
+      <Header />
 
       <div
         className={css`

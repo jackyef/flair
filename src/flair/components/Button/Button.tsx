@@ -4,6 +4,7 @@ import { css } from 'goober';
 
 import { useTheme } from '@/flair/context/theme';
 import { MappedColorVariant } from '@/flair/utils/getColorMapping';
+import { defaultTransition } from '@/flair/theme/transition';
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   icon?: React.ReactElement;
@@ -16,6 +17,7 @@ const base = css`
   border: none;
   display: inline-flex;
   align-items: center;
+  transition: ${defaultTransition};
 `;
 
 const disabledClass = css`
@@ -33,6 +35,8 @@ export const Button = ({
   ...rest
 }: Props) => {
   const { colors, space } = useTheme();
+  const hasNoChildren = !Boolean(children);
+
   const getSizeClass = () => {
     switch (size) {
       case 'sm':
@@ -42,7 +46,7 @@ export const Button = ({
           border-radius: 4px;
 
           & svg {
-            margin-right: ${space.sm};
+            margin-right: ${hasNoChildren ? '0' : space.sm};
           }
         `;
       case 'md':
@@ -52,7 +56,7 @@ export const Button = ({
           border-radius: 8px;
 
           & svg {
-            margin-right: ${space.md};
+            margin-right: ${hasNoChildren ? '0' : space.md};
           }
         `;
       case 'lg':
@@ -62,7 +66,7 @@ export const Button = ({
           border-radius: 12px;
 
           & svg {
-            margin-right: ${space.lg};
+            margin-right: ${hasNoChildren ? '0' : space.lg};
           }
         `;
     }
