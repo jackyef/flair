@@ -26,9 +26,12 @@ export const SideNav = () => {
   return (
     <nav
       className={css`
+        position: sticky;
+        top: 96px;
         display: flex;
         flex-direction: column;
         width: 280px;
+        height: calc(100vh - 96px);
         flex-shrink: 0;
         padding: ${space.lg};
 

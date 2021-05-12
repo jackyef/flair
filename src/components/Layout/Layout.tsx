@@ -20,13 +20,19 @@ export const Layout: React.FC = ({ children }) => {
         `}
       >
         <SideNav />
-        {children}
+        <div
+          className={css`
+            margin-left: ${space.lg};
+          `}
+        >
+          {children}
+          <footer
+            className={css`
+              height: ${space['4xl']};
+            `}
+          />
+        </div>
       </div>
-      <footer
-        className={css`
-          height: ${space['4xl']};
-        `}
-      />
     </>
   );
 };
