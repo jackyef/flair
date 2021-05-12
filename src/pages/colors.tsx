@@ -7,7 +7,12 @@ import { ColorShadeVariant } from '@/flair/theme/colors';
 import { shadows } from '@/flair/theme/shadow';
 import { space } from '@/flair/theme/space';
 import { canUseDOM } from '@/flair/utils/canUseDOM';
-import { ColorMapping, MappedColorVariant } from '@/flair/utils/getColorMapping';
+import {
+  ColorMapping,
+  MappedColorVariant,
+} from '@/flair/utils/getColorMapping';
+import { RenderOnMount } from '@/components/RenderOnMount/RenderOnMount';
+import { Fragment } from 'react';
 
 const copyToClipboard = (str: string) => {
   const el = document.createElement('textarea');
@@ -66,10 +71,8 @@ const renderColorSquares = (
     if (!colorShade) return;
 
     return (
-      <>
-        <H3 key={colorName} className={capitalize}>
-          {colorName}
-        </H3>
+      <Fragment key={colorName}>
+        <H3 className={capitalize}>{colorName}</H3>
         <ColorSwatchContainer>
           {/* @ts-expect-error */}
           {Object.keys(colorShade).map((shadeStep: ColorShadeVariant) => {
@@ -99,18 +102,20 @@ const renderColorSquares = (
                 <P>
                   {colorName}.{shadeStep}
                 </P>
-                <P
-                  className={css`
-                    font-size: 12px;
-                  `}
-                >
-                  {colorValue}
-                </P>
+                <RenderOnMount>
+                  <P
+                    className={css`
+                      font-size: 0.75rem;
+                    `}
+                  >
+                    {colorValue}
+                  </P>
+                </RenderOnMount>
               </ColorSquare>
             );
           })}
         </ColorSwatchContainer>
-      </>
+      </Fragment>
     );
   });
 };

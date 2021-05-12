@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { styled } from 'goober';
 
 import { space } from '@/flair/theme/space';
-import { A } from '@/flair/components/Anchor/A';
+import { Anchor } from '@/flair/components/Anchor/Anchor';
 import { Button } from '@/flair/components/Button/Button';
 import { useTheme } from '@/flair/context/theme';
 
@@ -40,27 +40,27 @@ export const Layout: React.FC = ({ children }) => {
         <NavList>
           <NavItem>
             <Link href="/" passHref>
-              <A>/</A>
+              <Anchor>/</Anchor>
             </Link>
           </NavItem>
           <NavItem>
             <Link href="/spacing" passHref>
-              <A>/spacing</A>
+              <Anchor>/spacing</Anchor>
             </Link>
           </NavItem>
           <NavItem>
             <Link href="/typography" passHref>
-              <A>/typography</A>
+              <Anchor>/typography</Anchor>
             </Link>
           </NavItem>
           <NavItem>
             <Link href="/colors" passHref>
-              <A>/colors</A>
+              <Anchor>/colors</Anchor>
             </Link>
           </NavItem>
           <NavItem>
             <Link href="/buttons" passHref>
-              <A>/buttons</A>
+              <Anchor>/buttons</Anchor>
             </Link>
           </NavItem>
         </NavList>
