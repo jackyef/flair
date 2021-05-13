@@ -20,8 +20,13 @@ export const GlobalStyles = createGlobalStyles`
     font: inherit;
   }
 
+  a {
+    color: inherit;
+    text-decoration: inherit;
+  }
+
   @media (prefers-reduced-motion: no-preference) {
-    :focus {
+    :focus, a:focus {
       transition: outline-offset .25s ease;
       outline-offset: 4px;
     }

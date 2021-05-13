@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { css } from 'goober';
+import Link from 'next/link';
 
 import { Button } from '@/flair/components/Button/Button';
 import { useTheme } from '@/flair/context/theme';
@@ -24,6 +25,7 @@ export const Header = () => {
         width: 100%;
         background: ${colors.background[700].color};
         transition: ${defaultTransition};
+        z-index: 3;
       `}
     >
       <div
@@ -41,7 +43,11 @@ export const Header = () => {
           }
         `}
       >
-        <H3>FlairKit</H3>
+        <H3>
+          <Link href="/" passHref>
+            <a>FlairKit</a>
+          </Link>
+        </H3>
         <div>
           <Button
             icon={

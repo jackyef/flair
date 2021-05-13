@@ -9,7 +9,11 @@ export const Layout: React.FC = ({ children }) => {
   const { space } = useTheme();
 
   return (
-    <>
+    <div
+      className={css`
+        isolation: isolate;
+      `}
+    >
       <Header />
 
       <div
@@ -25,7 +29,7 @@ export const Layout: React.FC = ({ children }) => {
         </RenderOnMobileUp>
         <div
           className={css`
-            margin-left: ${space.lg};
+            padding: 0 ${space.lg};
             flex: 1;
           `}
         >
@@ -37,6 +41,6 @@ export const Layout: React.FC = ({ children }) => {
           />
         </div>
       </div>
-    </>
+    </div>
   );
 };
