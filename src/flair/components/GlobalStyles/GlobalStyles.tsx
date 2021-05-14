@@ -26,7 +26,7 @@ export const GlobalStyles = createGlobalStyles`
   }
 
   @media (prefers-reduced-motion: no-preference) {
-    :focus, a:focus {
+    *:focus, a:focus {
       transition: outline-offset .25s ease;
       outline-offset: 4px;
     }

@@ -95,6 +95,7 @@ export const CodePlayground = ({ initialCode = '' }: Props) => {
         )}
       >
         <span
+          tabIndex={0}
           className={css`
             cursor: pointer;
             color: ${colors.secondary[400].color};
