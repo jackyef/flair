@@ -23,7 +23,8 @@ export default function Colors() {
           return `
           <Button key="${variant}" variant="${variant}">
             ${variant}
-          </Button>`;
+          </Button>
+        `;
         })
         .join('')}
     </div>
