@@ -4,6 +4,7 @@ import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import { css } from 'goober';
 import nightOwlTheme from 'prism-react-renderer/themes/nightOwl';
 import vsLightTheme from 'prism-react-renderer/themes/vsLight';
+import { AnnouncementIcon } from '@iconicicons/react';
 import prettier from 'prettier/standalone';
 // @ts-expect-error
 import babylon from 'prettier/parser-babylon';
@@ -11,13 +12,12 @@ import babylon from 'prettier/parser-babylon';
 import { Button } from '@/flair/components/Button/Button';
 import { useTheme } from '@/flair/context/theme';
 import { defaultTransition } from '@/flair/theme/transition';
-import { AnnouncementIcon } from '@iconicicons/react';
 
 const scope = {
   Button: Button,
 
   // icons
-  AnnouncementIcon: AnnouncementIcon
+  AnnouncementIcon: AnnouncementIcon,
 };
 
 interface Props {
@@ -33,8 +33,9 @@ const Wrapper: React.FC = ({ children }) => {
         padding: ${space.xl} ${space.lg};
         border: 2px solid;
         border-radius: 8px 8px 0 0;
-        border-color: ${colors.primary[500].color};
+        border-color: ${colors.background[500].color};
         border-bottom: none;
+        transition: ${defaultTransition};
       `}
     >
       {children}
@@ -56,7 +57,8 @@ export const CodePlayground = ({ initialCode = '' }: Props) => {
   const baseClass = css`
     border: 2px solid;
     border-radius: 0 0 8px 8px;
-    border-color: ${colors.primary[500].color};
+    border-color: ${colors.background[500].color};
+    transition: ${defaultTransition};
   `;
 
   return (
@@ -90,7 +92,8 @@ export const CodePlayground = ({ initialCode = '' }: Props) => {
             border-top: none;
             ${isShowingCode ? 'border-bottom: none;' : ''}
             border-radius: 0;
-            background: ${colors.background[600].color};
+            background: ${colors.background[500].color};
+            transition: ${defaultTransition};
           `,
         )}
       >
@@ -119,6 +122,10 @@ export const CodePlayground = ({ initialCode = '' }: Props) => {
                   : 'white'};
                 border-top: none;
                 transition: ${defaultTransition};
+
+                & > div {
+                  transition: ${defaultTransition};
+                }
               `,
             )}
           >
