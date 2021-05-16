@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import cx from 'classnames';
-import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
+import { LiveProvider, LiveError, LivePreview } from 'react-live';
 import { css } from 'goober';
 import nightOwlTheme from 'prism-react-renderer/themes/nightOwl';
 import vsLightTheme from 'prism-react-renderer/themes/vsLight';
@@ -12,6 +12,7 @@ import babylon from 'prettier/parser-babylon';
 import { Button } from '@/flair/components/Button/Button';
 import { useTheme } from '@/flair/context/theme';
 import { defaultTransition } from '@/flair/theme/transition';
+import { CustomEditor } from './CustomEditor';
 
 const scope = {
   Button: Button,
@@ -85,17 +86,12 @@ export const CodePlayground = ({ initialCode = '' }: Props) => {
       </div>
 
       <div
-        className={cx(
-          baseClass,
-          css`
-            padding: ${space.md} ${space.lg};
-            border-top: none;
-            ${isShowingCode ? 'border-bottom: none;' : ''}
-            border-radius: 0;
-            background: ${colors.background[500].color};
-            transition: ${defaultTransition};
-          `,
-        )}
+        className={css`
+          padding: ${space.md} ${space.lg};
+          border-radius: 0;
+          background: ${colors.background[500].color};
+          transition: ${defaultTransition};
+        `}
       >
         <span
           tabIndex={0}
@@ -116,7 +112,6 @@ export const CodePlayground = ({ initialCode = '' }: Props) => {
             className={cx(
               baseClass,
               css`
-                padding: ${space.xl} ${space.lg};
                 background: ${colorScheme === 'dark'
                   ? 'rgb(1, 22, 39)'
                   : 'white'};
@@ -129,7 +124,7 @@ export const CodePlayground = ({ initialCode = '' }: Props) => {
               `,
             )}
           >
-            <LiveEditor />
+            <CustomEditor />
           </div>
         </>
       )}

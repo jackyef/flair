@@ -1,6 +1,7 @@
 import { css } from 'goober';
 
 import { useTheme } from '@/flair/context/theme';
+import { onMobileUp } from '@/flair/theme/mediaQueries';
 import { Header } from './Header';
 import { SideNav } from './SideNav';
 import { RenderOnMobileUp } from '../MediaQuery/RenderOnMobileUp';
@@ -31,6 +32,11 @@ export const Layout: React.FC = ({ children }) => {
           className={css`
             padding: 0 ${space.lg};
             flex: 1;
+            max-width: 100%;
+
+            ${onMobileUp} {
+              max-width: calc(100% - 296px);
+            }
           `}
         >
           {children}

@@ -21,7 +21,7 @@ export default function Colors() {
       ${variantColors
         .map((variant) => {
           return `
-          <Button key="${variant}" variant="${variant}">
+          <Button variant="${variant}">
             ${variant}
           </Button>
         `;
@@ -35,7 +35,7 @@ export default function Colors() {
       ${variantColors
         .map((variant) => {
           return `
-          <Button key="${variant}" variant="${variant}" disabled>
+          <Button variant="${variant}" disabled>
             ${variant}
           </Button>
         `;
@@ -49,7 +49,7 @@ export default function Colors() {
       ${(['sm', 'md', 'lg'] as const)
         .map((size) => {
           return `
-          <Button key="${size}" variant="secondary" size="${size}" >
+          <Button variant="secondary" size="${size}" >
             ${size}
           </Button>
         `;
@@ -64,13 +64,12 @@ export default function Colors() {
         .map((size) => {
           return `
           <Button
-          key="${size}"
-          icon={<AnnouncementIcon />}
-          variant="success"
-          size="${size}"
-        >
-          Announce
-        </Button>
+            icon={<AnnouncementIcon />}
+            variant="success"
+            size="${size}"
+          >
+            Announce
+          </Button>
         `;
         })
         .join('')}
