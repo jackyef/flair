@@ -72,20 +72,6 @@ export const CodePlayground = ({ initialCode = '' }: Props) => {
       <LivePreview Component={Wrapper} />
 
       <div
-        className={cx(
-          baseClass,
-          css`
-            padding: ${space.md} ${space.lg};
-            border-top: none;
-            border-bottom: none;
-            border-radius: 0;
-          `,
-        )}
-      >
-        <LiveError />
-      </div>
-
-      <div
         className={css`
           padding: ${space.md} ${space.lg};
           border-radius: 0;
@@ -124,6 +110,22 @@ export const CodePlayground = ({ initialCode = '' }: Props) => {
               `,
             )}
           >
+            <div
+              className={cx(
+                baseClass,
+                css`
+                  border-top: none;
+                  border-left: none;
+                  border-right: none;
+                  border-radius: 0;
+                  padding: 0 ${space.xl};
+                  overflow-x: scroll;
+                  color: ${colors.error[500].color};
+                `,
+              )}
+            >
+              <LiveError />
+            </div>
             <CustomEditor />
           </div>
         </>

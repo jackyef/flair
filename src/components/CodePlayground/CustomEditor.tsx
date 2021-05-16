@@ -10,6 +10,7 @@ import { css } from 'goober';
 import { useTheme } from '@/flair/context/theme';
 import { Button } from '@/flair/components/Button/Button';
 import { ClipboardIcon } from '@heroicons/react/outline';
+import { defaultTransition } from '@/flair/theme/transition';
 
 interface LiveProps {
   code: string;
@@ -87,6 +88,7 @@ const _CustomEditor = ({ code: _code, onChange, theme }: LiveProps) => {
                   -ms-overflow-style: none;
                   scrollbar-width: none;
                   width: calc(100% - ${space.lg});
+                  transition: ${defaultTransition};
 
                   &::--webkit-scrollbar {
                     height: 0;
