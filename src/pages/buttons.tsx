@@ -1,4 +1,4 @@
-import { H1, H2 } from '@/flair/components/Typography/Typography';
+import { H1, H2, P } from '@/flair/components/Typography/Typography';
 import { useTheme } from '@/flair/context/theme';
 import { ColorVariant } from '@/flair/theme/colors';
 import { MappedColorVariant } from '@/flair/utils/getColorMapping';
@@ -82,6 +82,23 @@ export default function Colors() {
 
       <H2>Variants</H2>
       <CodePlayground initialCode={buttonVariantsCode} />
+
+      <H2>Background and foreground variant</H2>
+      <P>
+        Often, you might want to have a button that follows the
+        background/foreground color. The easiest way would be to use the{' '}
+        background/foreground variant. When on light color scheme, background
+        will automatically refer to the light color variant and foreground to
+        the dark color variant. Same goes for the dark color scheme.
+      </P>
+      <CodePlayground
+        initialCode={`
+        <div style=${wrapperStyle}>
+          <Button variant="foreground">foreground</Button>
+          <Button variant="background">background</Button>
+        </div>
+      `}
+      />
 
       <H2>Disabled</H2>
       <CodePlayground initialCode={disabledButtonsCode} />

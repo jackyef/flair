@@ -163,7 +163,7 @@ export default function Colors() {
 
       <P>
         Because of how the &quot;intensity&quot; concept works in Flair, in dark
-        color-scheme, the order of color for each shades are basically just
+        color scheme, the order of color for each shades are basically just
         reversed! Obviously this will not work well in ALL cases, so you will
         have to adjust according to your needs.
       </P>
@@ -183,9 +183,9 @@ export default function Colors() {
       <H2>Foreground and background colors</H2>
 
       <P>
-        In light color-scheme, background colors will refer to the light-variant
+        In light color scheme, background colors will refer to the light-variant
         colors and foreground colors will refer to the dark-variant colors.
-        Similarly, in dark color-scheme, background colors are dark-variant and
+        Similarly, in dark color scheme, background colors are dark-variant and
         foreground colors are light-variant.
       </P>
 
