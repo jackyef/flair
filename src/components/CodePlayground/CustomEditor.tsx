@@ -8,6 +8,8 @@ import Highlight, {
 import { withLive } from 'react-live';
 import { css } from 'goober';
 import { useTheme } from '@/flair/context/theme';
+import { Button } from '@/flair/components/Button/Button';
+import { ClipboardIcon } from '@heroicons/react/outline';
 
 interface LiveProps {
   code: string;
@@ -36,6 +38,18 @@ const _CustomEditor = ({ code: _code, onChange, theme }: LiveProps) => {
     }
   };
 
+  const handleCopyCode = () => {
+    const el = textAreaRef.current;
+
+    if (!el) return;
+
+    el.select();
+    document.execCommand('copy');
+
+    // Deselect text
+    window.getSelection()?.removeAllRanges();
+  };
+
   return (
     // A quick workaround to get line numbers working.
     // Supports up to 999 lines of code
@@ -44,11 +58,24 @@ const _CustomEditor = ({ code: _code, onChange, theme }: LiveProps) => {
         overflow: auto;
         position: relative;
         padding-left: ${space.lg};
+        isolation: isolate;
       `}
     >
       <Highlight {...defaultProps} code={code} language="jsx" theme={theme}>
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <>
+            <Button
+              className={css`
+                position: absolute;
+                top: ${space.md};
+                right: ${space.md};
+                z-index: 3;
+              `}
+              onClick={handleCopyCode}
+              size="sm"
+              variant="background"
+              icon={<ClipboardIcon />}
+            />
             <pre
               ref={preRef}
               className={cx(
