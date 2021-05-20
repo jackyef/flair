@@ -1,17 +1,21 @@
-# next-preact-typescript template
+# `flair-kit` monorepo
 
-A very simple template for starting a project with Next.js + Preact + TypeScript
-Based on [using-preact example](https://github.com/vercel/next.js/tree/canary/examples/using-preact)
+## Getting started
+We are using `pnpm` with workspaces. If you haven't please install `pnpm@6`
 
-Includes:
+```
+npm install -g pnpm@6
+```
 
-- TypeScript
-- Prettier
-- Eslint
+After that, install the project dependencies using `pnpm`
+```
+pnpm i
+```
 
-Bring whatever else you want on your own.
-
-Meant personal usage, but you can use it too, I guess.
+Start developing!
+```
+pnpm dev
+```
 
 ## Open questions
 
