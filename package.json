@@ -2,6 +2,8 @@
   "name": "flair-kit-monorepo",
   "private": true,
   "scripts": {
+    "dev": "pnpm dev:pkg & pnpm dev:website",
+    "dev:pkg": "pnpm run dev --filter flair-kit",
     "dev:website": "pnpm run dev --filter website",
     "build": "pnpm build:pkg && pnpm build:website",
     "build:website": "pnpm run build --filter website",

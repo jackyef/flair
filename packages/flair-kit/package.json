@@ -2,7 +2,7 @@
   "name": "flair-kit",
   "version": "0.0.1-not-ready-yet",
   "scripts": {
-    "dev": "echo implement-this-please",
+    "dev": "pnpm build:esm -- --watch",
     "build": "concurrently pnpm:build:*",
     "build:esm": "cross-env BABEL_ENV=esm babel src --extensions .ts,.tsx -d dist/esm --source-maps",
     "build:cjs": "cross-env BABEL_ENV=cjs babel src --extensions .ts,.tsx -d dist/cjs --source-maps",
