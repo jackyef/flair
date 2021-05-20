@@ -3,6 +3,8 @@
   "private": true,
   "scripts": {
     "dev:website": "pnpm run dev --filter website",
+    "build": "pnpm build:pkg && pnpm build:website",
+    "build:website": "pnpm run build --filter website",
     "build:pkg": "pnpm run build --filter flair-kit",
     "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix"
   },

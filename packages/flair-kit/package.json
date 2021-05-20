@@ -6,8 +6,7 @@
     "build": "concurrently pnpm:build:*",
     "build:esm": "cross-env BABEL_ENV=esm babel src --extensions .ts,.tsx -d dist/esm --source-maps",
     "build:cjs": "cross-env BABEL_ENV=cjs babel src --extensions .ts,.tsx -d dist/cjs --source-maps",
-    "build:types": "tsc --emitDeclarationOnly --declaration --declarationDir dist/types",
-    "postinstall": "pnpm build"
+    "build:types": "tsc --emitDeclarationOnly --declaration --declarationDir dist/types"
   },
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
