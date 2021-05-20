@@ -1,0 +1,52 @@
+{
+  "name": "flair-kit",
+  "version": "0.0.1-not-ready-yet",
+  "scripts": {
+    "dev": "echo implement-this-please",
+    "build": "concurrently pnpm:build:*",
+    "build:esm": "cross-env BABEL_ENV=esm babel src --extensions .ts,.tsx -d dist/esm --source-maps",
+    "build:cjs": "cross-env BABEL_ENV=cjs babel src --extensions .ts,.tsx -d dist/cjs --source-maps",
+    "build:types": "tsc --emitDeclarationOnly --declaration --declarationDir dist/types"
+  },
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "typings": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/index.js",
+      "default": "./dist/esm/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "devDependencies": {
+    "@babel/cli": "^7.12.0",
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.0",
+    "@babel/preset-react": "^7.12.0",
+    "@babel/preset-typescript": "^7.12.0",
+    "@babel/runtime": "^7.12.0",
+    "@types/next": "^9.0.0",
+    "@types/node": "^13.7.1",
+    "@types/prettier": "^2.2.3",
+    "@types/react-dom": "^17.0.4",
+    "@types/react": "^17.0.5",
+    "classnames": "^2.3.1",
+    "concurrently": "5.3.0",
+    "cross-env": "7.0.3",
+    "goober": "^2.0.37",
+    "react-dom": "^17.0.2",
+    "react": "^17.0.2",
+    "typescript": "^4.2.0"
+  },
+  "peerDependencies": {
+    "classnames": "^2.3.1",
+    "goober": "^2.0.37",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "license": "MIT"
+}

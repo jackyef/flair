@@ -2,6 +2,7 @@
   "name": "flair-kit-monorepo",
   "private": true,
   "scripts": {
+    "build:pkg": "pnpm run build --filter \"flair-kit\"",
     "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix"
   },
   "devDependencies": {
