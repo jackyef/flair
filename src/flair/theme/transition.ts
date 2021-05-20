@@ -1,1 +1,1 @@
-export const defaultTransition = `background 0.15s ease-out, color 0.15s ease-out`;
+export const defaultTransition = `background 0.15s ease-out, color 0.15s ease-out, border-color 0.15s ease-out`;

@@ -1,12 +1,9 @@
-import { css } from 'goober';
-
-import { Button } from '@/flair/components/Button/Button';
-import { H1, H2 } from '@/flair/components/Typography/Typography';
+import { H1, H2, P } from '@/flair/components/Typography/Typography';
 import { useTheme } from '@/flair/context/theme';
 import { ColorVariant } from '@/flair/theme/colors';
 import { MappedColorVariant } from '@/flair/utils/getColorMapping';
-import { AnnouncementIcon } from '@iconicicons/react';
 import { Main } from '@/components/Main/Main';
+import { CodePlayground } from '@/components/CodePlayground/CodePlayground';
 
 export default function Colors() {
   const { colors, space } = useTheme();
@@ -17,65 +14,100 @@ export default function Colors() {
     (c) => c !== 'foreground' && c !== 'background',
   ) as ColorVariant[];
 
-  const buttonContainer = css`
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: ${space.md};
+  const wrapperStyle = `{{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '${space.md}' }}`;
+
+  const buttonVariantsCode = `
+    <div style=${wrapperStyle}>
+      ${variantColors
+        .map((variant) => {
+          return `
+          <Button variant="${variant}">
+            ${variant}
+          </Button>
+        `;
+        })
+        .join('')}
+    </div>
+  `;
+
+  const disabledButtonsCode = `
+    <div style=${wrapperStyle}>
+      ${variantColors
+        .map((variant) => {
+          return `
+          <Button variant="${variant}" disabled>
+            ${variant}
+          </Button>
+        `;
+        })
+        .join('')}
+    </div>
+  `;
+
+  const sizeButtonsCode = `
+    <div style=${wrapperStyle}>
+      ${(['sm', 'md', 'lg'] as const)
+        .map((size) => {
+          return `
+          <Button variant="secondary" size="${size}" >
+            ${size}
+          </Button>
+        `;
+        })
+        .join('')}
+    </div>
+  `;
+
+  const iconButtonsCode = `
+    <div style=${wrapperStyle}>
+      ${(['sm', 'md', 'lg'] as const)
+        .map((size) => {
+          return `
+          <Button
+            icon={<AnnouncementIcon />}
+            variant="success"
+            size="${size}"
+          >
+            Announce
+          </Button>
+        `;
+        })
+        .join('')}
+    </div>
   `;
 
   return (
     <Main>
       <H1>Buttons</H1>
 
-      <div className={buttonContainer}>
-        {variantColors.map((variant) => {
-          return (
-            <Button key={variant} variant={variant}>
-              {variant}
-            </Button>
-          );
-        })}
-      </div>
+      <H2>Variants</H2>
+      <CodePlayground initialCode={buttonVariantsCode} />
+
+      <H2>Background and foreground variant</H2>
+      <P>
+        Often, you might want to have a button that follows the
+        background/foreground color. The easiest way would be to use the{' '}
+        background/foreground variant. When on light color scheme, background
+        will automatically refer to the light color variant and foreground to
+        the dark color variant. Same goes for the dark color scheme.
+      </P>
+      <CodePlayground
+        initialCode={`
+        <div style=${wrapperStyle}>
+          <Button variant="foreground">foreground</Button>
+          <Button variant="background">background</Button>
+        </div>
+      `}
+      />
 
       <H2>Disabled</H2>
-
-      <div className={buttonContainer}>
-        {variantColors.map((variant) => {
-          return (
-            <Button key={variant} variant={variant} disabled>
-              {variant}
-            </Button>
-          );
-        })}
-      </div>
+      <CodePlayground initialCode={disabledButtonsCode} />
 
       <H2>Size</H2>
-      <div className={buttonContainer}>
-        {(['sm', 'md', 'lg'] as const).map((size) => {
-          return (
-            <Button key={size} variant="secondary" size={size}>
-              {size}
-            </Button>
-          );
-        })}
-      </div>
+      <CodePlayground initialCode={sizeButtonsCode} />
 
       <H2>With icon</H2>
-      <div className={buttonContainer}>
-        {(['sm', 'md', 'lg'] as const).map((size) => {
-          return (
-            <Button
-              key={size}
-              icon={<AnnouncementIcon />}
-              variant="success"
-              size={size}
-            >
-              Announce
-            </Button>
-          );
-        })}
-      </div>
+      <CodePlayground initialCode={iconButtonsCode} />
     </Main>
   );
 }

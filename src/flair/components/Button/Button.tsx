@@ -84,7 +84,7 @@ export const Button = ({
   const getIconSize = () => {
     switch (size) {
       case 'sm':
-        return 16;
+        return 20;
       case 'md':
         return 24;
       case 'lg':

@@ -4,7 +4,7 @@ import { css } from 'goober';
 
 import { useTheme } from '@/flair/context/theme';
 
-type Props = React.AnchorHTMLAttributes<HTMLAnchorElement>;
+type Props = React.AnchorHTMLAttributes<HTMLAnchorElement>
 
 export const Anchor = forwardRef<HTMLAnchorElement, Props>(
   ({ className, ...rest }, ref) => {
