@@ -6,8 +6,7 @@ import nightOwlTheme from 'prism-react-renderer/themes/nightOwl';
 import vsLightTheme from 'prism-react-renderer/themes/vsLight';
 import { AnnouncementIcon } from '@iconicicons/react';
 import prettier from 'prettier/standalone';
-// @ts-expect-error
-import babylon from 'prettier/parser-babylon';
+import babylon from 'prettier/parser-babel';
 
 import { Button, useTheme } from 'flair-kit';
 import { CustomEditor } from './CustomEditor';
