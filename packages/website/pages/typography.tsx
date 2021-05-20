@@ -1,22 +1,11 @@
 import React from 'react';
 import { css } from 'goober';
 
-import {
-  H1,
-  H2,
-  H3,
-  H4,
-  H5,
-  H6,
-  P,
-} from 'flair-kit/components/Typography/Typography';
-import { onMobileUp } from 'flair-kit/theme/mediaQueries';
-import { space } from 'flair-kit/theme/space';
-import { useTheme } from 'flair-kit/context/theme';
+import { H1, H2, H3, H4, H5, H6, P, useTheme } from 'flair-kit';
 import { Main } from '@/components/Main/Main';
 
 const Paper = (props: React.HTMLAttributes<HTMLDivElement>) => {
-  const { colors } = useTheme();
+  const { colors, space, mediaQuery } = useTheme();
 
   return (
     <section
@@ -27,7 +16,7 @@ const Paper = (props: React.HTMLAttributes<HTMLDivElement>) => {
         box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
         background: ${colors.background[700].color};
 
-        ${onMobileUp} {
+        ${mediaQuery.onMobileUp} {
           padding: ${space['2xl']};
           margin: ${space['2xl']};
         }

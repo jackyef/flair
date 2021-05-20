@@ -3,10 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import cx from 'classnames';
 
-import { Anchor } from 'flair-kit/components/Anchor/Anchor';
-import { H5 } from 'flair-kit/components/Typography/Typography';
-import { useTheme } from 'flair-kit/context/theme';
-import { defaultTransition } from 'flair-kit/theme/transition';
+import { Anchor, H5, useTheme } from 'flair-kit';
 
 import { Portal } from '../Portal/Portal';
 
@@ -18,7 +15,7 @@ interface Props {
 
 export const MobileNav = ({ onNavClick }: Props) => {
   const router = useRouter();
-  const { space, colors } = useTheme();
+  const { space, colors, transition } = useTheme();
 
   const activeLink = css`
     background: ${colors.background[500].color};
@@ -42,14 +39,14 @@ export const MobileNav = ({ onNavClick }: Props) => {
           display: flex;
           flex-direction: column;
           padding: ${space.lg};
-          transition: ${defaultTransition};
+          transition: ${transition.default};
           background: ${colors.background[800].color};
 
           & li {
             padding: ${space.md} ${space.lg};
             border-radius: 0 8px 8px 0;
             margin-bottom: ${space.md};
-            transition: ${defaultTransition};
+            transition: ${transition.default};
           }
 
           & li:hover {
@@ -63,7 +60,7 @@ export const MobileNav = ({ onNavClick }: Props) => {
 
           & a {
             display: block;
-            transition: ${defaultTransition};
+            transition: ${transition.default};
           }
         `}
       >

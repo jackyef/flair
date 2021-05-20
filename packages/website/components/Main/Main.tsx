@@ -1,7 +1,7 @@
 import React from 'react';
 import { css } from 'goober';
 
-import { useTheme } from 'flair-kit/context/theme';
+import { useTheme } from 'flair-kit';
 
 export const Main: React.FC = ({ children }) => {
   const { space } = useTheme();

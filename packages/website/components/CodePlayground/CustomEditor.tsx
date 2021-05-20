@@ -7,10 +7,9 @@ import Highlight, {
 } from 'prism-react-renderer';
 import { withLive } from 'react-live';
 import { css } from 'goober';
-import { useTheme } from 'flair-kit/context/theme';
-import { Button } from 'flair-kit/components/Button/Button';
+import { useTheme } from 'flair-kit';
+import { Button } from 'flair-kit';
 import { ClipboardIcon } from '@heroicons/react/outline';
-import { defaultTransition } from 'flair-kit/theme/transition';
 
 interface LiveProps {
   code: string;
@@ -22,7 +21,7 @@ interface LiveProps {
 }
 
 const _CustomEditor = ({ code: _code, onChange, theme }: LiveProps) => {
-  const { colors, space } = useTheme();
+  const { colors, space, transition } = useTheme();
   const [code, setCode] = useState(_code);
   const preRef = useRef<HTMLPreElement>(null);
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
@@ -88,7 +87,7 @@ const _CustomEditor = ({ code: _code, onChange, theme }: LiveProps) => {
                   -ms-overflow-style: none;
                   scrollbar-width: none;
                   width: calc(100% - ${space.lg});
-                  transition: ${defaultTransition};
+                  transition: ${transition.default};
 
                   &::--webkit-scrollbar {
                     height: 0;

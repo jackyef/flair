@@ -9,9 +9,7 @@ import prettier from 'prettier/standalone';
 // @ts-expect-error
 import babylon from 'prettier/parser-babylon';
 
-import { Button } from 'flair-kit/components/Button/Button';
-import { useTheme } from 'flair-kit/context/theme';
-import { defaultTransition } from 'flair-kit/theme/transition';
+import { Button, useTheme } from 'flair-kit';
 import { CustomEditor } from './CustomEditor';
 
 const scope = {
@@ -26,7 +24,7 @@ interface Props {
 }
 
 const Wrapper: React.FC = ({ children }) => {
-  const { colors, space } = useTheme();
+  const { colors, space, transition } = useTheme();
 
   return (
     <div
@@ -36,7 +34,7 @@ const Wrapper: React.FC = ({ children }) => {
         border-radius: 8px 8px 0 0;
         border-color: ${colors.background[500].color};
         border-bottom: none;
-        transition: ${defaultTransition};
+        transition: ${transition.default};
       `}
     >
       {children}
@@ -46,7 +44,7 @@ const Wrapper: React.FC = ({ children }) => {
 
 export const CodePlayground = ({ initialCode = '' }: Props) => {
   const [isShowingCode, setIsShowingCode] = useState(false);
-  const { space, colors, colorScheme } = useTheme();
+  const { space, colors, colorScheme, transition } = useTheme();
 
   const formattedCode = useMemo(() => {
     return prettier.format(initialCode, {
@@ -59,7 +57,7 @@ export const CodePlayground = ({ initialCode = '' }: Props) => {
     border: 2px solid;
     border-radius: 0 0 8px 8px;
     border-color: ${colors.background[500].color};
-    transition: ${defaultTransition};
+    transition: ${transition.default};
   `;
 
   return (
@@ -76,7 +74,7 @@ export const CodePlayground = ({ initialCode = '' }: Props) => {
           padding: ${space.md} ${space.lg};
           border-radius: 0;
           background: ${colors.background[500].color};
-          transition: ${defaultTransition};
+          transition: ${transition.default};
         `}
       >
         <span
@@ -102,10 +100,10 @@ export const CodePlayground = ({ initialCode = '' }: Props) => {
                   ? 'rgb(1, 22, 39)'
                   : 'white'};
                 border-top: none;
-                transition: ${defaultTransition};
+                transition: ${transition.default};
 
                 & > div {
-                  transition: ${defaultTransition};
+                  transition: ${transition.default};
                 }
               `,
             )}

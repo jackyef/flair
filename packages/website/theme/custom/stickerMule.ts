@@ -1,9 +1,7 @@
-import type { Colors } from 'flair-kit/theme/colors';
-
 const defaultForegroundColor = 'hsl(0, 0%, 12.5%)';
 const defaultBackgroundColor = 'hsl(0, 0%, 100%)';
 
-export const stickerMuleColors: Colors = {
+export const stickerMuleColors = {
   dark: {
     400: {
       color: defaultForegroundColor,

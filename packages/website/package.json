@@ -1,6 +1,7 @@
 {
-  "name": "using-preact",
+  "name": "website",
   "version": "1.0.0",
+  "private": true,
   "scripts": {
     "dev": "next",
     "build": "next build",

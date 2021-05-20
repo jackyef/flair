@@ -3,16 +3,13 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import cx from 'classnames';
 
-import { Anchor } from 'flair-kit/components/Anchor/Anchor';
-import { H5 } from 'flair-kit/components/Typography/Typography';
-import { useTheme } from 'flair-kit/context/theme';
-import { defaultTransition } from 'flair-kit/theme/transition';
+import { Anchor, H5, useTheme } from 'flair-kit';
 
 const topLevelPages = ['/', '/spacing', '/typography', '/colors', '/buttons'];
 
 export const SideNav = () => {
   const router = useRouter();
-  const { space, colors } = useTheme();
+  const { space, colors, transition } = useTheme();
 
   const activeLink = css`
     background: ${colors.background[500].color};
@@ -39,7 +36,7 @@ export const SideNav = () => {
           padding: ${space.md} ${space.lg};
           border-radius: 0 8px 8px 0;
           margin-bottom: ${space.md};
-          transition: ${defaultTransition};
+          transition: ${transition.default};
         }
 
         & li:hover {
@@ -53,7 +50,7 @@ export const SideNav = () => {
 
         & a {
           display: block;
-          transition: ${defaultTransition};
+          transition: ${transition.default};
         }
       `}
     >

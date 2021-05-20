@@ -1,7 +1,10 @@
 import { createContext, useContext, useState } from 'react';
 
 import { GlobalStyles } from '../components/GlobalStyles/GlobalStyles';
+import { mediaQuery } from '../theme/mediaQuery';
+import { shadow } from '../theme/shadow';
 import { space, Space } from '../theme/space';
+import { defaultTransition } from '../theme/transition';
 import { canUseDOM } from '../utils/canUseDOM';
 import { ColorMapping, getColorMapping } from '../utils/getColorMapping';
 import {
@@ -14,6 +17,13 @@ type ThemeContextValue = {
   toggleColorScheme: () => void;
   colorScheme: ColorScheme;
   space: Space;
+  mediaQuery: typeof mediaQuery;
+  shadow: {
+    subtle: string;
+  };
+  transition: {
+    default: string;
+  };
   colors: ColorMapping;
 };
 
@@ -25,6 +35,11 @@ const defaultContextValue: ThemeContextValue = {
     // no-op
   },
   space,
+  shadow,
+  mediaQuery,
+  transition: {
+    default: defaultTransition,
+  },
   colors: colorMapping,
 };
 
@@ -56,6 +71,11 @@ export const ThemeProvider: React.FC = ({ children }) => {
           colorScheme,
           toggleColorScheme: toggleScheme,
           space,
+          shadow,
+          mediaQuery,
+          transition: {
+            default: defaultTransition,
+          },
           colors: colorMapping,
         }}
       >

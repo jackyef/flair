@@ -4,7 +4,7 @@ import { createGlobalStyles } from 'goober/global';
 
 import { Layout } from '@/components/Layout/Layout';
 
-import { ThemeProvider } from 'flair-kit/context/theme';
+import { ThemeProvider } from 'flair-kit';
 import { NProgressLoader } from '@/components/NProgressLoader/NProgressLoader';
 
 const ResetStyles = createGlobalStyles`

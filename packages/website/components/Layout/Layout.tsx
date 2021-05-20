@@ -1,13 +1,12 @@
 import { css } from 'goober';
 
-import { useTheme } from 'flair-kit/context/theme';
-import { onMobileUp } from 'flair-kit/theme/mediaQueries';
+import { useTheme } from 'flair-kit';
 import { Header } from './Header';
 import { SideNav } from './SideNav';
 import { RenderOnMobileUp } from '../MediaQuery/RenderOnMobileUp';
 
 export const Layout: React.FC = ({ children }) => {
-  const { space } = useTheme();
+  const { space, mediaQuery } = useTheme();
 
   return (
     <div
@@ -34,7 +33,7 @@ export const Layout: React.FC = ({ children }) => {
             flex: 1;
             max-width: 100%;
 
-            ${onMobileUp} {
+            ${mediaQuery.onMobileUp} {
               max-width: calc(100% - 296px);
             }
           `}

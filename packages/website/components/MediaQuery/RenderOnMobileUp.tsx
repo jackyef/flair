@@ -1,7 +1,7 @@
 import { css } from 'goober';
 import { CSSProperties } from 'react';
 
-import { onMobileUp } from 'flair-kit/theme/mediaQueries';
+import { useTheme } from 'flair-kit';
 
 interface Props {
   display?: CSSProperties['display'];
@@ -12,12 +12,14 @@ export const RenderOnMobileUp: React.FC<Props> = ({
   display = 'block',
   ...props
 }) => {
+  const { mediaQuery } = useTheme();
+
   return (
     <div
       className={css`
         display: none;
 
-        ${onMobileUp} {
+        ${mediaQuery.onMobileUp} {
           display: ${display};
         }
       `}

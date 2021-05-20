@@ -7,9 +7,8 @@ import Document, {
 } from 'next/document';
 import { extractCss } from 'goober';
 
-import { generateCssVariables } from 'flair-kit/utils/generateCssVariables';
-import { NoFlashScript } from 'flair-kit/components/NoFlashScript/NoFlashScript';
-// import { stickerMuleColors } from 'flair-kit/theme/custom/stickerMule';
+import { generateCssVariables, NoFlashScript } from 'flair-kit';
+// import { stickerMuleColors } from '@/theme/custom/stickerMule';
 
 // const cssVariables = generateCssVariables(stickerMuleColors);
 const cssVariables = generateCssVariables();

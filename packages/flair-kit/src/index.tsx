@@ -12,3 +12,7 @@ export * from './context/theme';
 export { toggleColorScheme } from './utils/toggleColorScheme';
 export { getColorMapping } from './utils/getColorMapping';
 export { generateCssVariables } from './utils/generateCssVariables';
+
+/* Types */
+export type { ColorVariant, ColorShadeVariant } from './theme/colors';
+export type { MappedColorVariant } from './utils/getColorMapping';

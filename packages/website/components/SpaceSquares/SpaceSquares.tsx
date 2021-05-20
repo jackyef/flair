@@ -1,11 +1,23 @@
 import { css, styled } from 'goober';
-import { useTheme } from 'flair-kit/context/theme';
-import { SPACE_VARIANTS, space, SpaceVariant } from 'flair-kit/theme/space';
+import { useTheme } from 'flair-kit';
+
+export const SPACE_VARIANTS = [
+  'xs',
+  'sm',
+  'md',
+  'lg',
+  'xl',
+  '2xl',
+  '3xl',
+  '4xl',
+] as const;
+
+export type SpaceVariant = typeof SPACE_VARIANTS[number];
 
 const SquareContainer = styled('div')`
   display: flex;
   align-items: center;
-  margin-bottom: ${space.lg};
+  margin-bottom: 16px;
 `;
 
 const Square = ({ size }: { size: SpaceVariant }) => {
@@ -22,6 +34,8 @@ const Square = ({ size }: { size: SpaceVariant }) => {
 };
 
 export const SpaceSquares = () => {
+  const { space } = useTheme();
+
   return (
     <>
       {SPACE_VARIANTS.map((size, index) => {

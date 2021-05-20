@@ -1,19 +1,12 @@
-import { css, styled } from 'goober';
+import React, { Fragment } from 'react';
+import { css } from 'goober';
+import { H1, H2, H3, P, Button, useTheme } from 'flair-kit';
+import type { MappedColorVariant, ColorShadeVariant } from 'flair-kit';
 
-import { Button } from 'flair-kit/components/Button/Button';
-import { H1, H2, H3, P } from 'flair-kit/components/Typography/Typography';
-import { useTheme } from 'flair-kit/context/theme';
-import { ColorShadeVariant } from 'flair-kit/theme/colors';
-import { shadows } from 'flair-kit/theme/shadow';
-import { space } from 'flair-kit/theme/space';
-import { canUseDOM } from 'flair-kit/utils/canUseDOM';
-import {
-  ColorMapping,
-  MappedColorVariant,
-} from 'flair-kit/utils/getColorMapping';
 import { RenderOnMount } from '@/components/RenderOnMount/RenderOnMount';
-import { Fragment } from 'react';
 import { Main } from '@/components/Main/Main';
+
+const canUseDOM = typeof window !== 'undefined';
 
 const copyToClipboard = (str: string) => {
   const el = document.createElement('textarea');
@@ -27,41 +20,67 @@ const copyToClipboard = (str: string) => {
   document.body.removeChild(el);
 };
 
-const ColorSwatchContainer = styled('div')`
-  display: flex;
-  gap: ${space.lg};
-  flex-wrap: wrap;
-`;
+const ColorSwatchContainer: React.FC = ({ children }) => {
+  const { space } = useTheme();
 
-const ColorSquare = styled('div')<{ background: string; color: string }>`
-  width: 176px;
-  height: 100px;
-  border-radius: 8px;
-  padding: ${space['md']};
-  background: ${(props) => props.background};
-  color: ${(props) => props.color};
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  box-shadow: ${shadows.subtle};
-  transition: background 0.15s ease-out, color 0.15s ease-out,
-    transform 0.3s cubic-bezier(0.28, 0.84, 0.42, 1);
+  return (
+    <div
+      className={css`
+        display: flex;
+        gap: ${space.lg};
+        flex-wrap: wrap;
+      `}
+    >
+      {children}
+    </div>
+  );
+};
 
-  & > p {
-    font-weight: 500;
-  }
+interface ColorSquareProps extends React.HTMLAttributes<HTMLDivElement> {
+  background: string;
+  color: string;
+}
 
-  &:focus,
-  &:hover {
-    transform: scale(1.05) translateY(-4px);
-  }
-`;
+const ColorSquare: React.FC<ColorSquareProps> = ({
+  background,
+  color,
+  children,
+}) => {
+  const { space, shadow } = useTheme();
 
-const renderColorSquares = (
-  colorNames: MappedColorVariant[],
-  colors: ColorMapping,
-) => {
+  return (
+    <div
+      className={css`
+        width: 176px;
+        height: 100px;
+        border-radius: 8px;
+        padding: ${space['md']};
+        background: ${background};
+        color: ${color};
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        box-shadow: ${shadow.subtle};
+        transition: background 0.15s ease-out, color 0.15s ease-out,
+          transform 0.3s cubic-bezier(0.28, 0.84, 0.42, 1);
+
+        & > p {
+          font-weight: 500;
+        }
+
+        &:focus,
+        &:hover {
+          transform: scale(1.05) translateY(-4px);
+        }
+      `}
+    >
+      {children}
+    </div>
+  );
+};
+
+const renderColorSquares = (colorNames: MappedColorVariant[], colors: any) => {
   return colorNames.map((colorName) => {
     const colorShade = colors[colorName];
 
@@ -93,7 +112,6 @@ const renderColorSquares = (
             return (
               <ColorSquare
                 key={`${colorName}-${shadeStep}`}
-                // TODO: Colors should come from ThemeProvider
                 background={color}
                 color={contrastingColor}
                 tabIndex={0}

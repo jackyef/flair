@@ -1,7 +1,5 @@
-import { H1, H2, P } from 'flair-kit/components/Typography/Typography';
-import { useTheme } from 'flair-kit/context/theme';
-import { ColorVariant } from 'flair-kit/theme/colors';
-import { MappedColorVariant } from 'flair-kit/utils/getColorMapping';
+import { H1, H2, P, useTheme } from 'flair-kit';
+import type { MappedColorVariant, ColorVariant } from 'flair-kit';
 import { Main } from '@/components/Main/Main';
 import { CodePlayground } from '@/components/CodePlayground/CodePlayground';
 

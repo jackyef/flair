@@ -9,7 +9,6 @@ import {
   lineHeights,
 } from '../../theme/fonts';
 import { SpaceVariant } from '../../theme/space';
-import { onMobileUp } from '../../theme/mediaQueries';
 import { useTheme } from '../../context/theme';
 
 const AVAILABLE_ELEMENTS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'] as const;
@@ -46,7 +45,7 @@ const MARGIN_BOTTOM_MAP: Record<TypographyElement, SpaceVariant> = {
 };
 
 const useTypographyClass = (element: TypographyElement) => {
-  const { space } = useTheme();
+  const { space, mediaQuery } = useTheme();
   const isHeading = element.startsWith('h');
   const isBigHeading = element === 'h1' || element === 'h2';
   const shouldUppercase = element === 'h5';
@@ -74,7 +73,7 @@ const useTypographyClass = (element: TypographyElement) => {
       ? '-1px'
       : 'inherit'};
 
-    ${onMobileUp} {
+    ${mediaQuery.onMobileUp} {
       font-size: ${fontSize};
     }
   `;

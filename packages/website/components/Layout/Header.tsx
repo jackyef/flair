@@ -2,17 +2,16 @@ import { useState } from 'react';
 import { css } from 'goober';
 import Link from 'next/link';
 
-import { Button } from 'flair-kit/components/Button/Button';
-import { useTheme } from 'flair-kit/context/theme';
-import { defaultTransition } from 'flair-kit/theme/transition';
-import { H3 } from 'flair-kit/components/Typography/Typography';
-import { shadows } from 'flair-kit/theme/shadow';
+import { Button } from 'flair-kit';
+import { useTheme } from 'flair-kit';
+import { H3 } from 'flair-kit';
 import { SunIcon, MoonIcon, MenuIcon, XIcon } from '@heroicons/react/solid';
 import { RenderOnMobile } from '../MediaQuery/RenderOnMobile';
 import { MobileNav } from './MobileNav';
 
 export const Header = () => {
-  const { toggleColorScheme, colorScheme, space, colors } = useTheme();
+  const { toggleColorScheme, colorScheme, space, colors, shadow, transition } =
+    useTheme();
   const [showMobileNav, setShowMobileNav] = useState(false);
 
   return (
@@ -20,11 +19,11 @@ export const Header = () => {
       className={css`
         position: sticky;
         top: 0;
-        box-shadow: ${shadows.subtle};
+        box-shadow: ${shadow.subtle};
         margin-bottom: ${space.md};
         width: 100%;
         background: ${colors.background[700].color};
-        transition: ${defaultTransition};
+        transition: ${transition.default};
         z-index: 3;
       `}
     >

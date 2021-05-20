@@ -1,4 +1,4 @@
-import { useTheme } from 'flair-kit/context/theme';
+import { useTheme } from 'flair-kit';
 import { useNProgress } from '@tanem/react-nprogress';
 import { css } from 'goober';
 import { useRouter } from 'next/router';

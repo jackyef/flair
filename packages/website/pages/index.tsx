@@ -1,4 +1,4 @@
-import { H1 } from 'flair-kit/components/Typography/Typography';
+import { H1 } from 'flair-kit';
 import { Main } from '@/components/Main/Main';
 
 export default function Home() {

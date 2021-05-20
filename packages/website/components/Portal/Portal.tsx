@@ -1,6 +1,6 @@
-import { canUseDOM } from 'flair-kit/utils/canUseDOM';
 import { createPortal } from 'react-dom';
 
+const canUseDOM = typeof window !== 'undefined'
 interface Props {
   containerSelector?: string;
 }
