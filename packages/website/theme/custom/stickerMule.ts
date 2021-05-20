@@ -1,4 +1,4 @@
-import type { Colors } from "flair-kit/theme/colors";
+import type { Colors } from 'flair-kit/theme/colors';
 
 const defaultForegroundColor = 'hsl(0, 0%, 12.5%)';
 const defaultBackgroundColor = 'hsl(0, 0%, 100%)';

@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
 export const NProgressLoader = () => {
-  const { colors } = useTheme()
+  const { colors } = useTheme();
   const router = useRouter();
 
   const [state, setState] = useState({

@@ -8,7 +8,7 @@ import { CodePlayground } from '@/components/CodePlayground/CodePlayground';
 export default function Colors() {
   const { colors, space } = useTheme();
 
-  const colorNames = (Object.keys(colors) as unknown) as MappedColorVariant[];
+  const colorNames = Object.keys(colors) as unknown as MappedColorVariant[];
 
   const variantColors = colorNames.filter(
     (c) => c !== 'foreground' && c !== 'background',

@@ -126,7 +126,7 @@ const renderColorSquares = (
 export default function Colors() {
   const { toggleColorScheme, colors, space } = useTheme();
 
-  const colorNames = (Object.keys(colors) as unknown) as MappedColorVariant[];
+  const colorNames = Object.keys(colors) as unknown as MappedColorVariant[];
 
   const variantColors = colorNames.filter(
     (c) => c !== 'foreground' && c !== 'background',

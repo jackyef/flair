@@ -28,10 +28,8 @@ const defaultContextValue: ThemeContextValue = {
   colors: colorMapping,
 };
 
-export const ThemeContext = createContext<ThemeContextValue>(
-  defaultContextValue,
-);
-
+export const ThemeContext =
+  createContext<ThemeContextValue>(defaultContextValue);
 
 export const ThemeProvider: React.FC = ({ children }) => {
   const [colorScheme, setColorScheme] = useState<ColorScheme>(

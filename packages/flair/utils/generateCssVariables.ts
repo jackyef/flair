@@ -3,7 +3,11 @@
 // Based on the theme
 
 import { extractCss, glob } from 'goober';
-import { colors as defaultColors, COLORS_VARIANTS, COLOR_SHADE_VARIANTS } from '../theme/colors';
+import {
+  colors as defaultColors,
+  COLORS_VARIANTS,
+  COLOR_SHADE_VARIANTS,
+} from '../theme/colors';
 import type { Colors } from '../theme/colors';
 
 const generateLightThemeCssVariables = (colors: Colors) => {

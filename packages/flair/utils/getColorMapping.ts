@@ -1,4 +1,9 @@
-import { ColorShade, COLORS_VARIANTS, ColorVariant, COLOR_SHADE_VARIANTS } from "../theme/colors";
+import {
+  ColorShade,
+  COLORS_VARIANTS,
+  ColorVariant,
+  COLOR_SHADE_VARIANTS,
+} from '../theme/colors';
 
 export type MappedColorVariant = ColorVariant | 'foreground' | 'background';
 export type ColorMapping = Record<MappedColorVariant, ColorShade>;
