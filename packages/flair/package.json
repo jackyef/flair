@@ -1,0 +1,27 @@
+{
+  "name": "flair-kit",
+  "version": "0.0.1-not-ready-yet",
+  "scripts": {
+    "dev": "echo implement-this-please",
+    "build": "echo implement-this-please"
+  },
+  "devDependencies": {
+    "@types/next": "^9.0.0",
+    "@types/node": "^13.7.1",
+    "@types/prettier": "^2.2.3",
+    "@types/react-dom": "^17.0.4",
+    "@types/react": "^17.0.5",
+    "classnames": "^2.3.1",
+    "goober": "^2.0.37",
+    "react-dom": "^17.0.2",
+    "react": "^17.0.2",
+    "typescript": "^4.2.0"
+  },
+  "peerDependencies": {
+    "classnames": "^2.3.1",
+    "goober": "^2.0.37",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "license": "MIT"
+}
