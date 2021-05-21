@@ -17,7 +17,9 @@
     "transform": {
       "react": {
         "runtime": "automatic",
-        "importSource": "react/jsx-runtime",
+        "importSource": "react",
+        "pragma": "React.createElement",
+        "pragmaFrag": "React.Fragment",
         "throwIfNamespace": true,
         "development": false,
         "useBuiltins": false

@@ -3,7 +3,7 @@
   "version": "0.0.1-not-ready-yet",
   "scripts": {
     "dev": "concurrently pnpm:dev:*",
-    "dev:esm": "pnpm build:esm -- -C jsc.transform.react.development=true --watch",
+    "dev:esm": "pnpm build:esm -- --watch -C jsc.transform.react.development=true -C jsc.transform.react.runtime=automatic",
     "dev:types": "tsc --emitDeclarationOnly --declaration --declarationDir dist/types --watch",
     "build": "concurrently pnpm:build:*",
     "build:esm": "swc ./src -d dist/esm --config-file .swcrc",
