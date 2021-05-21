@@ -18,6 +18,8 @@ export const GlobalStyles = createGlobalStyles`
 
   button {
     font: inherit;
+    border: none;
+    padding: 0;
   }
 
   a {

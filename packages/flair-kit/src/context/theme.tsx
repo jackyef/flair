@@ -4,7 +4,7 @@ import { GlobalStyles } from '../components/GlobalStyles/GlobalStyles';
 import { mediaQuery } from '../theme/mediaQuery';
 import { shadow } from '../theme/shadow';
 import { space, Space } from '../theme/space';
-import { defaultTransition } from '../theme/transition';
+import { transition } from '../theme/transition';
 import { canUseDOM } from '../utils/canUseDOM';
 import { ColorMapping, getColorMapping } from '../utils/getColorMapping';
 import {
@@ -18,12 +18,8 @@ type ThemeContextValue = {
   colorScheme: ColorScheme;
   space: Space;
   mediaQuery: typeof mediaQuery;
-  shadow: {
-    subtle: string;
-  };
-  transition: {
-    default: string;
-  };
+  shadow: typeof shadow;
+  transition: typeof transition;
   colors: ColorMapping;
 };
 
@@ -37,9 +33,7 @@ const defaultContextValue: ThemeContextValue = {
   space,
   shadow,
   mediaQuery,
-  transition: {
-    default: defaultTransition,
-  },
+  transition,
   colors: colorMapping,
 };
 
@@ -73,9 +67,7 @@ export const ThemeProvider: React.FC = ({ children }) => {
           space,
           shadow,
           mediaQuery,
-          transition: {
-            default: defaultTransition,
-          },
+          transition,
           colors: colorMapping,
         }}
       >
