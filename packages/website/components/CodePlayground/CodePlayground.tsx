@@ -18,10 +18,6 @@ const scope = {
   AnnouncementIcon: AnnouncementIcon,
 };
 
-interface Props {
-  initialCode?: string;
-}
-
 const Wrapper: React.FC = ({ children }) => {
   const { colors, space, transition } = useTheme();
 
@@ -41,7 +37,15 @@ const Wrapper: React.FC = ({ children }) => {
   );
 };
 
-export const CodePlayground = ({ initialCode = '' }: Props) => {
+interface Props {
+  initialCode?: string;
+  noInline?: boolean;
+}
+
+export const CodePlayground = ({
+  initialCode = '',
+  noInline = false,
+}: Props) => {
   const [isShowingCode, setIsShowingCode] = useState(false);
   const { space, colors, colorScheme, transition } = useTheme();
 
@@ -61,6 +65,7 @@ export const CodePlayground = ({ initialCode = '' }: Props) => {
 
   return (
     <LiveProvider
+      noInline={noInline}
       code={formattedCode}
       scope={scope}
       theme={colorScheme === 'dark' ? nightOwlTheme : vsLightTheme}

@@ -5,7 +5,14 @@ import cx from 'classnames';
 
 import { Anchor, H5, useTheme } from 'flair-kit';
 
-const topLevelPages = ['/', '/spacing', '/typography', '/colors', '/buttons'];
+const topLevelPages = [
+  '/',
+  '/spacing',
+  '/typography',
+  '/colors',
+  '/buttons',
+  '/switch',
+];
 
 export const SideNav = () => {
   const router = useRouter();
