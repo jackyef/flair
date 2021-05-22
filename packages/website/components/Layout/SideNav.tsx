@@ -5,7 +5,7 @@ import cx from 'classnames';
 
 import { Anchor, H5, useTheme } from 'flair-kit';
 
-const topLevelPages = [
+export const topLevelPages = [
   '/',
   '/spacing',
   '/typography',
@@ -37,7 +37,7 @@ export const SideNav = () => {
         width: 280px;
         height: calc(100vh - 80px);
         flex-shrink: 0;
-        padding: ${space.lg};
+        padding: ${space.lg} ${space.xl};
 
         & li {
           padding: ${space.md} ${space.lg};

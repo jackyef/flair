@@ -2,9 +2,7 @@ import { useState } from 'react';
 import { css } from 'goober';
 import Link from 'next/link';
 
-import { Button } from 'flair-kit';
-import { useTheme } from 'flair-kit';
-import { H3 } from 'flair-kit';
+import { Button, Switch, useTheme, H3 } from 'flair-kit';
 import { SunIcon, MoonIcon, MenuIcon, XIcon } from '@heroicons/react/solid';
 import { RenderOnMobile } from '../MediaQuery/RenderOnMobile';
 import { MobileNav } from './MobileNav';
@@ -30,7 +28,7 @@ export const Header = () => {
       <div
         className={css`
           display: flex;
-          padding: ${space.lg};
+          padding: ${space.lg} ${space.xl};
           margin: 0 auto;
           max-width: 1440px;
           align-items: center;
@@ -48,17 +46,17 @@ export const Header = () => {
           </Link>
         </H3>
         <div>
-          <Button
+          <Switch
+            enabled={colorScheme === 'light'}
             icon={
               colorScheme === 'light' ? (
-                <SunIcon width={24} height={24} />
+                <SunIcon fill={colors.secondary[400].color} />
               ) : (
-                <MoonIcon width={24} height={24} />
+                <MoonIcon fill={colors.primary[700].color} />
               )
             }
-            size="sm"
-            onClick={toggleColorScheme}
-            variant="background"
+            onChange={toggleColorScheme}
+            label="Toggle color scheme"
           />
           <RenderOnMobile display="inline-block">
             <Button

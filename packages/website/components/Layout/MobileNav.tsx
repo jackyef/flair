@@ -6,8 +6,7 @@ import cx from 'classnames';
 import { Anchor, H5, useTheme } from 'flair-kit';
 
 import { Portal } from '../Portal/Portal';
-
-const topLevelPages = ['/', '/spacing', '/typography', '/colors', '/buttons'];
+import { topLevelPages } from './SideNav';
 
 interface Props {
   onNavClick: () => void;

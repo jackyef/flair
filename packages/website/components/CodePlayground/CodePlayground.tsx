@@ -7,6 +7,7 @@ import vsLightTheme from 'prism-react-renderer/themes/vsLight';
 import { AnnouncementIcon } from '@iconicicons/react';
 import prettier from 'prettier/standalone';
 import babylon from 'prettier/parser-babel';
+import * as HeroIconsSolid from '@heroicons/react/solid'
 
 import { Button, Switch, useTheme } from 'flair-kit';
 import { CustomEditor } from './CustomEditor';
@@ -15,7 +16,10 @@ const scope = {
   Button: Button,
   Switch: Switch,
 
+  // hooks
+  useTheme,
   // icons
+  HeroIconsSolid,
   AnnouncementIcon: AnnouncementIcon,
 };
 
