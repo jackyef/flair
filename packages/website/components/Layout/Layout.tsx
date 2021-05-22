@@ -29,12 +29,12 @@ export const Layout: React.FC = ({ children }) => {
         </RenderOnMobileUp>
         <div
           className={css`
-            padding: 0 0 0 ${space.xl};
+            padding: 0 ${space.lg};
             flex: 1;
             max-width: 100%;
 
             ${mediaQuery.onMobileUp} {
-              max-width: calc(100% - 280px - ${space.xl});
+              max-width: calc(100% - 280px - ${space.lg});
             }
           `}
         >
