@@ -8,11 +8,12 @@ import { AnnouncementIcon } from '@iconicicons/react';
 import prettier from 'prettier/standalone';
 import babylon from 'prettier/parser-babel';
 
-import { Button, useTheme } from 'flair-kit';
+import { Button, Switch, useTheme } from 'flair-kit';
 import { CustomEditor } from './CustomEditor';
 
 const scope = {
   Button: Button,
+  Switch: Switch,
 
   // icons
   AnnouncementIcon: AnnouncementIcon,
@@ -121,7 +122,7 @@ export const CodePlayground = ({
                   border-right: none;
                   border-radius: 0;
                   padding: 0 ${space.xl};
-                  overflow-x: scroll;
+                  overflow-x: auto;
                   color: ${colors.error[500].color};
                 `,
               )}

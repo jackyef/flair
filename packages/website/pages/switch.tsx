@@ -1,23 +1,36 @@
-import { useState } from 'react';
-import { H1, H2, Switch } from 'flair-kit';
+import { H1 } from 'flair-kit';
 import { Main } from '@/components/Main/Main';
-// import { CodePlayground } from '@/components/CodePlayground/CodePlayground';
+import { CodePlayground } from '@/components/CodePlayground/CodePlayground';
 
 export default function Colors() {
-  // const { colors, space } = useTheme();
-  const [enabled, setEnabled] = useState(false);
 
   return (
     <Main>
-      <H1>Tooltip</H1>
+      <H1>Switch</H1>
 
-      <Switch
-        enabled={enabled}
-        onChange={setEnabled}
-        label="Toggle something"
+      <CodePlayground
+        noInline
+        initialCode={`
+          const Example = () => {
+            const [enabled, setEnabled] = React.useState(false);
+
+            return (
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <Switch
+                  enabled={enabled}
+                  onChange={setEnabled}
+                  label="Toggle something"
+                />
+                <span style={{ marginLeft: '1rem' }}>
+                  {enabled ? 'Enabled' : 'Disabled'}
+                </span>
+              </div>
+            )
+          }
+
+          render(<Example />);
+        `}
       />
-      <H2>Variants</H2>
-      {/* <CodePlayground initialCode={buttonVariantsCode} /> */}
     </Main>
   );
 }
