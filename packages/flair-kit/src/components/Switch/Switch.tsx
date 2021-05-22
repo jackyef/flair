@@ -35,7 +35,7 @@ export const Switch = ({
       case 'sm':
         return 12;
       case 'md':
-        return 16;
+        return 18;
       case 'lg':
         return 32;
     }
