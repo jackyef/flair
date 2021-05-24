@@ -49,16 +49,16 @@ export const Header = () => {
         <div>
           <Switch
             size="md"
-            enabled={colorScheme === 'light'}
+            enabled={colorScheme === 'dark'}
             icon={
-              colorScheme === 'light' ? (
-                <SunIcon fill={colors.secondary[400].color} />
-              ) : (
+              colorScheme === 'dark' ? (
                 <MoonIcon fill={colors.primary[700].color} />
+              ) : (
+                <SunIcon fill={colors.secondary[400].color} />
               )
             }
             onChange={toggleColorScheme}
-            label="Toggle color scheme"
+            label="Dark color scheme"
           />
           <Portal>
             <RenderOnMobile>
