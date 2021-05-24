@@ -44,52 +44,56 @@ export const Switch = ({
   const iconSize = getIconSize();
 
   return (
-    <_Switch
-      checked={enabled}
-      onChange={onChange}
-      className={css`
-        transition: ${transition.default};
-        padding: ${offsetSize};
-        position: relative;
-        border-radius: 999px;
-        height: calc(${baseSize} + ${offsetSize});
-        width: calc(2 * ${baseSize});
-        background: ${colors.background[400].color};
-        display: flex;
-        align-items: center;
+    <_Switch.Group>
+      <_Switch
+        checked={enabled}
+        onChange={onChange}
+        className={css`
+          transition: ${transition.default};
+          padding: ${offsetSize};
+          position: relative;
+          border-radius: 999px;
+          height: calc(${baseSize} + ${offsetSize});
+          width: calc(2 * ${baseSize});
+          background: ${colors.background[400].color};
+          display: flex;
+          align-items: center;
 
-        &[aria-checked='true'] {
-          background: ${colors.primary[600].color};
-        }
-      `}
-    >
-      <VisuallyHidden>{label}</VisuallyHidden>
-      <span
-        className={cx(
-          css`
-            transition: ${transition.transform}, ${transition.default};
-            transform: translateX(0);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: calc(${baseSize} - ${offsetSize});
-            height: calc(${baseSize} - ${offsetSize});
-            background: ${colors.light[700].color};
-            border-radius: 50%;
-          `,
-          {
-            [css`
-              transform: translateX(calc(${baseSize} - ${offsetSize}));
-            `]: enabled,
-          },
-        )}
+          &[aria-checked='true'] {
+            background: ${colors.primary[600].color};
+          }
+        `}
       >
-        {icon &&
-          cloneElement(icon, {
-            width: icon.props.width || iconSize,
-            height: icon.props.height || iconSize,
-          })}
-      </span>
-    </_Switch>
+        <VisuallyHidden>
+          <_Switch.Label>{label}</_Switch.Label>
+        </VisuallyHidden>
+        <span
+          className={cx(
+            css`
+              transition: ${transition.transform}, ${transition.default};
+              transform: translateX(0);
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              width: calc(${baseSize} - ${offsetSize});
+              height: calc(${baseSize} - ${offsetSize});
+              background: ${colors.light[700].color};
+              border-radius: 50%;
+            `,
+            {
+              [css`
+                transform: translateX(calc(${baseSize} - ${offsetSize}));
+              `]: enabled,
+            },
+          )}
+        >
+          {icon &&
+            cloneElement(icon, {
+              width: icon.props.width || iconSize,
+              height: icon.props.height || iconSize,
+            })}
+        </span>
+      </_Switch>
+    </_Switch.Group>
   );
 };
