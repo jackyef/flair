@@ -86,18 +86,19 @@ export const CodePlayground = ({
           transition: ${transition.default};
         `}
       >
-        <span
+        <button
           tabIndex={0}
           className={css`
             cursor: pointer;
             color: ${colors.secondary[400].color};
+            background: transparent;
           `}
           onClick={() => {
             setIsShowingCode((prev) => !prev);
           }}
         >
           View code
-        </span>
+        </button>
       </div>
       {isShowingCode && (
         <>
