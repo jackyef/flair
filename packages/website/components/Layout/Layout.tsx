@@ -34,7 +34,7 @@ export const Layout: React.FC = ({ children }) => {
             max-width: 100%;
 
             ${mediaQuery.onMobileUp} {
-              max-width: calc(100% - 296px);
+              max-width: calc(100% - 280px - ${space.lg});
             }
           `}
         >

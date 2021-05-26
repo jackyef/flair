@@ -2,12 +2,11 @@ import { useState } from 'react';
 import { css } from 'goober';
 import Link from 'next/link';
 
-import { Button } from 'flair-kit';
-import { useTheme } from 'flair-kit';
-import { H3 } from 'flair-kit';
+import { Button, Switch, useTheme, H3 } from 'flair-kit';
 import { SunIcon, MoonIcon, MenuIcon, XIcon } from '@heroicons/react/solid';
 import { RenderOnMobile } from '../MediaQuery/RenderOnMobile';
 import { MobileNav } from './MobileNav';
+import { Portal } from '../Portal/Portal';
 
 export const Header = () => {
   const { toggleColorScheme, colorScheme, space, colors, shadow, transition } =
@@ -48,41 +47,52 @@ export const Header = () => {
           </Link>
         </H3>
         <div>
-          <Button
+          <Switch
+            size="md"
+            enabled={colorScheme === 'dark'}
             icon={
-              colorScheme === 'light' ? (
-                <SunIcon width={24} height={24} />
+              colorScheme === 'dark' ? (
+                <MoonIcon fill={colors.primary[700].color} />
               ) : (
-                <MoonIcon width={24} height={24} />
+                <SunIcon fill={colors.secondary[400].color} />
               )
             }
-            size="sm"
-            onClick={toggleColorScheme}
-            variant="background"
+            onChange={toggleColorScheme}
+            label="Dark color scheme"
           />
-          <RenderOnMobile display="inline-block">
-            <Button
-              className={css`
-                margin-left: ${space.md};
-              `}
-              icon={
-                showMobileNav ? (
-                  <XIcon width={24} height={24} />
-                ) : (
-                  <MenuIcon width={24} height={24} />
-                )
-              }
-              size="sm"
-              onClick={() => {
-                setShowMobileNav((prev) => !prev);
-              }}
-              variant="background"
-            />
-
-            {showMobileNav && (
-              <MobileNav onNavClick={() => setShowMobileNav(false)} />
-            )}
-          </RenderOnMobile>
+          <Portal>
+            <RenderOnMobile>
+              {showMobileNav && (
+                <MobileNav onNavClick={() => setShowMobileNav(false)} />
+              )}
+              <div
+                className={css`
+                  position: fixed;
+                  z-index: 15;
+                  bottom: ${space.lg};
+                  right: ${space.lg};
+                `}
+              >
+                <Button
+                  className={css`
+                    margin-left: ${space.md};
+                  `}
+                  icon={
+                    showMobileNav ? (
+                      <XIcon width={24} height={24} />
+                    ) : (
+                      <MenuIcon width={24} height={24} />
+                    )
+                  }
+                  size="sm"
+                  onClick={() => {
+                    setShowMobileNav((prev) => !prev);
+                  }}
+                  variant="background"
+                />
+              </div>
+            </RenderOnMobile>
+          </Portal>
         </div>
       </div>
     </header>

@@ -7,20 +7,21 @@ import vsLightTheme from 'prism-react-renderer/themes/vsLight';
 import { AnnouncementIcon } from '@iconicicons/react';
 import prettier from 'prettier/standalone';
 import babylon from 'prettier/parser-babel';
+import * as HeroIconsSolid from '@heroicons/react/solid';
 
-import { Button, useTheme } from 'flair-kit';
+import { Button, Switch, useTheme } from 'flair-kit';
 import { CustomEditor } from './CustomEditor';
 
 const scope = {
   Button: Button,
+  Switch: Switch,
 
+  // hooks
+  useTheme,
   // icons
+  HeroIconsSolid,
   AnnouncementIcon: AnnouncementIcon,
 };
-
-interface Props {
-  initialCode?: string;
-}
 
 const Wrapper: React.FC = ({ children }) => {
   const { colors, space, transition } = useTheme();
@@ -41,7 +42,15 @@ const Wrapper: React.FC = ({ children }) => {
   );
 };
 
-export const CodePlayground = ({ initialCode = '' }: Props) => {
+interface Props {
+  initialCode?: string;
+  noInline?: boolean;
+}
+
+export const CodePlayground = ({
+  initialCode = '',
+  noInline = false,
+}: Props) => {
   const [isShowingCode, setIsShowingCode] = useState(false);
   const { space, colors, colorScheme, transition } = useTheme();
 
@@ -61,6 +70,7 @@ export const CodePlayground = ({ initialCode = '' }: Props) => {
 
   return (
     <LiveProvider
+      noInline={noInline}
       code={formattedCode}
       scope={scope}
       theme={colorScheme === 'dark' ? nightOwlTheme : vsLightTheme}
@@ -116,7 +126,7 @@ export const CodePlayground = ({ initialCode = '' }: Props) => {
                   border-right: none;
                   border-radius: 0;
                   padding: 0 ${space.xl};
-                  overflow-x: scroll;
+                  overflow-x: auto;
                   color: ${colors.error[500].color};
                 `,
               )}

@@ -4,7 +4,6 @@ import { css } from 'goober';
 
 import { useTheme } from '../../context/theme';
 import { MappedColorVariant } from '../../utils/getColorMapping';
-import { defaultTransition } from '../../theme/transition';
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   icon?: React.ReactElement;
@@ -21,7 +20,7 @@ export const Button = ({
   children,
   ...rest
 }: Props) => {
-  const { colors, space } = useTheme();
+  const { colors, space, transition } = useTheme();
   const hasNoChildren = !Boolean(children);
 
   const base = css`
@@ -29,7 +28,7 @@ export const Button = ({
     border: none;
     display: inline-flex;
     align-items: center;
-    transition: ${defaultTransition};
+    transition: ${transition.default};
 
     background: ${colors[variant][400].color};
     color: ${colors[variant][400].contrastingColor};
