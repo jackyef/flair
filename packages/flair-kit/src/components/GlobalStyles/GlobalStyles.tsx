@@ -33,4 +33,17 @@ export const GlobalStyles = createGlobalStyles`
       outline-offset: 4px;
     }
   }
+
+
+  /* ReachUI related styles */
+  :root {
+    --reach-tooltip: 1;
+  }
+
+  [data-reach-tooltip] {
+    z-index: 1;
+    pointer-events: none;
+    position: absolute;
+    white-space: nowrap;
+  }
 `;
