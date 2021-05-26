@@ -1,6 +1,7 @@
 import { createContext, useContext, useState } from 'react';
 
 import { GlobalStyles } from '../components/GlobalStyles/GlobalStyles';
+import { fontSizes, lineHeights, mobileFontSizes } from '../theme/fonts';
 import { mediaQuery } from '../theme/mediaQuery';
 import { radii } from '../theme/radii';
 import { shadow } from '../theme/shadow';
@@ -22,6 +23,9 @@ type ThemeContextValue = {
   radii: typeof radii;
   shadow: typeof shadow;
   transition: typeof transition;
+  fontSizes: typeof fontSizes;
+  mobileFontSizes: typeof mobileFontSizes;
+  lineHeights: typeof lineHeights;
   colors: ColorMapping;
 };
 
@@ -37,6 +41,9 @@ const defaultContextValue: ThemeContextValue = {
   shadow,
   mediaQuery,
   transition,
+  fontSizes,
+  mobileFontSizes,
+  lineHeights,
   colors: colorMapping,
 };
 
@@ -72,6 +79,9 @@ export const ThemeProvider: React.FC = ({ children }) => {
           shadow,
           mediaQuery,
           transition,
+          fontSizes,
+          mobileFontSizes,
+          lineHeights,
           colors: colorMapping,
         }}
       >

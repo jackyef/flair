@@ -19,7 +19,6 @@ export const Header = () => {
         position: sticky;
         top: 0;
         box-shadow: ${shadow.subtle};
-        margin-bottom: ${space.md};
         width: 100%;
         background: ${colors.background[700].color};
         transition: ${transition.default};

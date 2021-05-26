@@ -35,7 +35,7 @@ export default function Colors() {
                   label="Notification - This is rendered in the UI"
                   ariaLabel="3 notifications - This is announced by screen readers"
                 >
-                  <div tabIndex={0} style={{ position: "relative", display: 'inline-block' }}>
+                  <div tabIndex="0" style={{ position: "relative", display: 'inline-block' }}>
                     <HeroIconsSolid.BellIcon width={48} height={48} />
                     <span 
                       style={{ 
