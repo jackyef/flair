@@ -20,7 +20,7 @@ export const Switch = ({
   icon,
   size = 'md',
 }: Props) => {
-  const { space, colors, transition } = useTheme();
+  const { space, colors, transition, mediaQuery } = useTheme();
   let baseSize: string = space['xl'];
   let offsetSize: string = space.xs;
 
@@ -71,7 +71,7 @@ export const Switch = ({
           className={cx(
             css`
               transition: ${transition.transform}, ${transition.default};
-              transform: translateX(0);
+              transform: translateX(0) rotate(0deg);
               display: inline-flex;
               align-items: center;
               justify-content: center;
@@ -79,10 +79,19 @@ export const Switch = ({
               height: calc(${baseSize} - ${offsetSize});
               background: ${colors.light[700].color};
               border-radius: 50%;
+
+              ${mediaQuery.onReducedMotion} {
+                transition: ${transition.tamerTransform}, ${transition.default};
+              }
             `,
             {
               [css`
-                transform: translateX(calc(${baseSize} - ${offsetSize}));
+                transform: translateX(calc(${baseSize} - ${offsetSize}))
+                  rotate(360deg);
+
+                ${mediaQuery.onReducedMotion} {
+                  transform: translateX(calc(${baseSize} - ${offsetSize}));
+                }
               `]: enabled,
             },
           )}
