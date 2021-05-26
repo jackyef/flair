@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { css } from 'goober';
-import { H1, H2, H3, P, Button, useTheme } from 'flair-kit';
+import { H1, H2, H3, P, Code, Button, useTheme } from 'flair-kit';
 import type { MappedColorVariant, ColorShadeVariant } from 'flair-kit';
 
 import { RenderOnMount } from '@/components/RenderOnMount/RenderOnMount';
@@ -113,7 +113,7 @@ export default function Colors() {
     <Main>
       <H1>Colors</H1>
       <P>
-        Colors in Flair are organized by <code>variants</code>. Each variant has
+        Colors in Flair are organized by <Code>variants</Code>. Each variant has
         different colors for different intensity levels (400—800).
       </P>
       <P>
@@ -149,8 +149,8 @@ export default function Colors() {
         By default, Flair has 7 color variants: primary, secondary, success,
         warning, error, dark and light. All of the colors are accessible from
         the ThemeContext. Accessing a color is as simple as{' '}
-        <code>colors[variant][intensity].color</code>. To get the contrasting
-        color, <code>colors[variant][intensity].contrastingColor</code>.
+        <Code>colors[variant][intensity].color</Code>. To get the contrasting
+        color, <Code>colors[variant][intensity].contrastingColor</Code>.
       </P>
 
       {renderColorSquares(variantColors, colors)}

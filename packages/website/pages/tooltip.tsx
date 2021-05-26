@@ -1,4 +1,4 @@
-import { H1, P } from 'flair-kit';
+import { Anchor, H1, P, Code } from 'flair-kit';
 import { Main } from '@/components/Main/Main';
 import { CodePlayground } from '@/components/CodePlayground/CodePlayground';
 
@@ -13,14 +13,16 @@ export default function Colors() {
       </P>
 
       <P>
-        Flair is using @reach/tooltip under the hood. At the time, the children
-        wrapped by the Tooltip should be a native HTML element (e.g.: div, a,
-        etc.) for it to be working properly.
+        Flair is using{' '}
+        <Anchor href="https://reach.tech/tooltip">@reach/tooltip</Anchor> under
+        the hood. At the time, the children wrapped by the Tooltip should be a
+        native HTML element (e.g.: div, a, etc.) for it to be working properly.
       </P>
 
       <P>
-        The label prop is used to determine what to render in the UI. The
-        ariaLabel prop is the one that will be announced by screen readers.
+        The <Code>label</Code> prop is used to determine what to render in the
+        UI. The <Code>ariaLabel</Code> prop is the one that will be announced by
+        screen readers.
       </P>
       <CodePlayground
         noInline
