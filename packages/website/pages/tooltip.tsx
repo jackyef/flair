@@ -50,8 +50,8 @@ export default function Colors() {
                         alignItems: 'center',
                         justifyContent: 'center',
                         borderRadius: 999,
-                        background: colors.error[700].color,
-                        color: colors.error[700].contrastingColor,
+                        background: colors.error[600].color,
+                        color: colors.error[600].contrastingColor,
                         transition: transition.default
                       }}
                     >
