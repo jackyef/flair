@@ -29,6 +29,7 @@ importers:
   packages/flair-kit:
     specifiers:
       '@headlessui/react': ^1.2.0
+      '@reach/tooltip': ^0.15.0
       '@swc/cli': ^0.1.40
       '@swc/core': ^1.2.58
       '@types/next': ^9.0.0
@@ -46,6 +47,7 @@ importers:
       typescript: ^4.2.0
     dependencies:
       '@headlessui/react': 1.2.0_react@17.0.2
+      '@reach/tooltip': 0.15.0_react-dom@17.0.2+react@17.0.2
       react-popper: 2.2.5_react@17.0.2
     devDependencies:
       '@swc/cli': 0.1.40_@swc+core@1.2.58
@@ -260,6 +262,91 @@ packages:
   /@opentelemetry/context-base/0.14.0:
     resolution: {integrity: sha512-sDOAZcYwynHFTbLo6n8kIbLiVF3a3BLkrmehJUyEbT9F+Smbi47kLGS2gG2g0fjBLR/Lr1InPD7kXL7FaTqEkw==}
     engines: {node: '>=8.0.0'}
+
+  /@reach/auto-id/0.15.0_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-iACaCcZeqAhDf4OOwJpmHHS/LaRj9z3Ip8JmlhpCrFWV2YOIiiZk42amlBZX6CKH66Md+eriYZQk3TyAjk6Oxg==}
+    peerDependencies:
+      react: ^16.8.0 || 17.x
+      react-dom: ^16.8.0 || 17.x
+    dependencies:
+      '@reach/utils': 0.15.0_react-dom@17.0.2+react@17.0.2
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+      tslib: 2.2.0
+    dev: false
+
+  /@reach/observe-rect/1.2.0:
+    resolution: {integrity: sha512-Ba7HmkFgfQxZqqaeIWWkNK0rEhpxVQHIoVyW1YDSkGsGIXzcaW4deC8B0pZrNSSyLTdIk7y+5olKt5+g0GmFIQ==}
+    dev: false
+
+  /@reach/portal/0.15.0_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-Aulqjk/PIRu+R7yhINYAAYfYh++ZdC30qwHDWDtGk2cmTEJT7m9AlvBX+W7T+Q3Ux6Wy5f37eV+TTGid1CcjFw==}
+    peerDependencies:
+      react: ^16.8.0 || 17.x
+      react-dom: ^16.8.0 || 17.x
+    dependencies:
+      '@reach/utils': 0.15.0_react-dom@17.0.2+react@17.0.2
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+      tslib: 2.2.0
+    dev: false
+
+  /@reach/rect/0.15.0_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-Nu0zG4Xq8Z0C3Yr3wbjtj7fvII1q2KopHDStNtmL26oWPzlaZJ9A1K6rZSPIqxKkx1hvl6AUTeom7eHTIKhHjA==}
+    peerDependencies:
+      react: ^16.8.0 || 17.x
+      react-dom: ^16.8.0 || 17.x
+    dependencies:
+      '@reach/observe-rect': 1.2.0
+      '@reach/utils': 0.15.0_react-dom@17.0.2+react@17.0.2
+      prop-types: 15.7.2
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+      tiny-warning: 1.0.3
+      tslib: 2.2.0
+    dev: false
+
+  /@reach/tooltip/0.15.0_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-eFKtelL/iAcYSlNx2buxpxXbgKTQhdcvVxjzfVzkcHkSRFhRbQ+PmDBCdSxPhP89Cq6ULcxlFraH+PvPVN3y/w==}
+    peerDependencies:
+      react: ^16.8.0 || 17.x
+      react-dom: ^16.8.0 || 17.x
+    dependencies:
+      '@reach/auto-id': 0.15.0_react-dom@17.0.2+react@17.0.2
+      '@reach/portal': 0.15.0_react-dom@17.0.2+react@17.0.2
+      '@reach/rect': 0.15.0_react-dom@17.0.2+react@17.0.2
+      '@reach/utils': 0.15.0_react-dom@17.0.2+react@17.0.2
+      '@reach/visually-hidden': 0.15.0_react-dom@17.0.2+react@17.0.2
+      prop-types: 15.7.2
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+      tiny-warning: 1.0.3
+      tslib: 2.2.0
+    dev: false
+
+  /@reach/utils/0.15.0_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-JHHN7T5ucFiuQbqkgv8ECbRWKfRiJxrO/xHR3fHf+f2C7mVs/KkJHhYtovS1iEapR4silygX9PY0+QUmHPOTYw==}
+    peerDependencies:
+      react: ^16.8.0 || 17.x
+      react-dom: ^16.8.0 || 17.x
+    dependencies:
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+      tiny-warning: 1.0.3
+      tslib: 2.2.0
+    dev: false
+
+  /@reach/visually-hidden/0.15.0_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-ZRRBOaRrvSM6iCk+R2/8txFfXLY2DsnZQuaHNqOuSvz8vN2+syUnni1T+hpC93rvBRXtqD36kqdTsu5qihGnFw==}
+    peerDependencies:
+      react: ^16.8.0 || 17.x
+      react-dom: ^16.8.0 || 17.x
+    dependencies:
+      prop-types: 15.7.2
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+      tslib: 2.2.0
+    dev: false
 
   /@swc/cli/0.1.40_@swc+core@1.2.58:
     resolution: {integrity: sha512-lChdXr6qU+wBsHsS+Z8MP/HTNuRTgor5j90OqaY6hCKoQGHoxvbbq0sj5NfaP9fVr4hzqQnJtFJsZbzinrxHDg==}
@@ -3468,6 +3555,10 @@ packages:
     engines: {node: '>=0.6.0'}
     dependencies:
       setimmediate: 1.0.5
+
+  /tiny-warning/1.0.3:
+    resolution: {integrity: sha512-lBN9zLN/oAf68o3zNXYrdCt1kP8WsiGW8Oo2ka41b2IM5JL/S1CTyX1rW0mb/zSuJun0ZUrDxx4sqvYS2FWzPA==}
+    dev: false
 
   /tmp/0.0.33:
     resolution: {integrity: sha512-jRCJlojKnZ3addtTOjdIqoRuPEKBvNXcGYqzO6zWZX8KfKEpnGY5jfggJQ3EjKuu8D4bJRr0y+cYJFmYbImXGw==}

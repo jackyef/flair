@@ -49,6 +49,7 @@
   "license": "MIT",
   "dependencies": {
     "@headlessui/react": "^1.2.0",
+    "@reach/tooltip": "^0.15.0",
     "react-popper": "^2.2.5"
   }
 }
