@@ -5,6 +5,7 @@ import type { MappedColorVariant, ColorShadeVariant } from 'flair-kit';
 
 import { RenderOnMount } from '@/components/RenderOnMount/RenderOnMount';
 import { Main } from '@/components/Main/Main';
+import { ColorSquare } from '@/components/ColorSquare/ColorSquare';
 
 const canUseDOM = typeof window !== 'undefined';
 
@@ -29,50 +30,6 @@ const ColorSwatchContainer: React.FC = ({ children }) => {
         display: flex;
         gap: ${space.lg};
         flex-wrap: wrap;
-      `}
-    >
-      {children}
-    </div>
-  );
-};
-
-interface ColorSquareProps extends React.HTMLAttributes<HTMLDivElement> {
-  background: string;
-  color: string;
-}
-
-const ColorSquare: React.FC<ColorSquareProps> = ({
-  background,
-  color,
-  children,
-}) => {
-  const { space, shadow } = useTheme();
-
-  return (
-    <div
-      className={css`
-        width: 176px;
-        height: 100px;
-        border-radius: 8px;
-        padding: ${space['md']};
-        background: ${background};
-        color: ${color};
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        box-shadow: ${shadow.subtle};
-        transition: background 0.15s ease-out, color 0.15s ease-out,
-          transform 0.3s cubic-bezier(0.28, 0.84, 0.42, 1);
-
-        & > p {
-          font-weight: 500;
-        }
-
-        &:focus,
-        &:hover {
-          transform: scale(1.05) translateY(-4px);
-        }
       `}
     >
       {children}

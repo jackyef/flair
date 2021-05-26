@@ -1,0 +1,1 @@
+export { ColorSquare } from './ColorSquare';
