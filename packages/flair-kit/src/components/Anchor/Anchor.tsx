@@ -8,9 +8,10 @@ type Props = React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
 export const Anchor = forwardRef<HTMLAnchorElement, Props>(
   ({ className, ...rest }, ref) => {
-    const { colors } = useTheme();
+    const { colors, transition } = useTheme();
     const anchorClass = css`
       color: ${colors.primary[500].color};
+      transition: ${transition.default};
 
       &:hover {
         color: ${colors.primary[700].color};

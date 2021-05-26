@@ -236,7 +236,6 @@ export const Code: React.FC<CodeProps> = ({
   ...props
 }) => {
   const { space, colors, radii, transition } = useTheme();
-  const cssClass = useTypographyClass('p');
   const codeClass = css`
     background: ${colors.background[400].color};
     color: ${colors.error[400].color};
@@ -246,7 +245,7 @@ export const Code: React.FC<CodeProps> = ({
   `;
 
   return (
-    <code className={cx(cssClass, codeClass, className)} {...props}>
+    <code className={cx(codeClass, className)} {...props}>
       {children}
     </code>
   );
