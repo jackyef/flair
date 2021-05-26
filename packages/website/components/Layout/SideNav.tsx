@@ -12,6 +12,7 @@ export const topLevelPages = [
   '/colors',
   '/buttons',
   '/switch',
+  '/tooltip',
 ];
 
 export const SideNav = () => {
