@@ -227,3 +227,27 @@ export const Small: React.FC<Props> = ({
     </Element>
   );
 };
+
+type CodeProps = React.HTMLProps<HTMLSpanElement>;
+
+export const Code: React.FC<CodeProps> = ({
+  className,
+  children,
+  ...props
+}) => {
+  const { space, colors, radii, transition } = useTheme();
+  const cssClass = useTypographyClass('p');
+  const codeClass = css`
+    background: ${colors.background[400].color};
+    color: ${colors.error[400].color};
+    padding: ${space.sm};
+    border-radius: ${radii.md};
+    transition: ${transition.default};
+  `;
+
+  return (
+    <code className={cx(cssClass, codeClass, className)} {...props}>
+      {children}
+    </code>
+  );
+};
