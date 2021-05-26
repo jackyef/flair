@@ -9,16 +9,16 @@ import prettier from 'prettier/standalone';
 import babylon from 'prettier/parser-babel';
 import * as HeroIconsSolid from '@heroicons/react/solid';
 
-import { Button, Switch, useTheme } from 'flair-kit';
+import * as FlairKit from 'flair-kit';
 import { CustomEditor } from './CustomEditor';
 
-const scope = {
-  Button: Button,
-  Switch: Switch,
+const { useTheme } = FlairKit;
 
-  // hooks
-  useTheme,
-  // icons
+const scope = {
+  // flair-kit exported modules
+  ...FlairKit,
+
+  // 3rd party icons
   HeroIconsSolid,
   AnnouncementIcon: AnnouncementIcon,
 };

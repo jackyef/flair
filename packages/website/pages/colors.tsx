@@ -1,10 +1,11 @@
 import React, { Fragment } from 'react';
 import { css } from 'goober';
-import { H1, H2, H3, P, Button, useTheme } from 'flair-kit';
+import { H1, H2, H3, P, Code, Button, useTheme } from 'flair-kit';
 import type { MappedColorVariant, ColorShadeVariant } from 'flair-kit';
 
 import { RenderOnMount } from '@/components/RenderOnMount/RenderOnMount';
 import { Main } from '@/components/Main/Main';
+import { ColorSquare } from '@/components/ColorSquare/ColorSquare';
 
 const canUseDOM = typeof window !== 'undefined';
 
@@ -29,50 +30,6 @@ const ColorSwatchContainer: React.FC = ({ children }) => {
         display: flex;
         gap: ${space.lg};
         flex-wrap: wrap;
-      `}
-    >
-      {children}
-    </div>
-  );
-};
-
-interface ColorSquareProps extends React.HTMLAttributes<HTMLDivElement> {
-  background: string;
-  color: string;
-}
-
-const ColorSquare: React.FC<ColorSquareProps> = ({
-  background,
-  color,
-  children,
-}) => {
-  const { space, shadow } = useTheme();
-
-  return (
-    <div
-      className={css`
-        width: 176px;
-        height: 100px;
-        border-radius: 8px;
-        padding: ${space['md']};
-        background: ${background};
-        color: ${color};
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        box-shadow: ${shadow.subtle};
-        transition: background 0.15s ease-out, color 0.15s ease-out,
-          transform 0.3s cubic-bezier(0.28, 0.84, 0.42, 1);
-
-        & > p {
-          font-weight: 500;
-        }
-
-        &:focus,
-        &:hover {
-          transform: scale(1.05) translateY(-4px);
-        }
       `}
     >
       {children}
@@ -156,7 +113,7 @@ export default function Colors() {
     <Main>
       <H1>Colors</H1>
       <P>
-        Colors in Flair are organized by <code>variants</code>. Each variant has
+        Colors in Flair are organized by <Code>variants</Code>. Each variant has
         different colors for different intensity levels (400—800).
       </P>
       <P>
@@ -192,8 +149,8 @@ export default function Colors() {
         By default, Flair has 7 color variants: primary, secondary, success,
         warning, error, dark and light. All of the colors are accessible from
         the ThemeContext. Accessing a color is as simple as{' '}
-        <code>colors[variant][intensity].color</code>. To get the contrasting
-        color, <code>colors[variant][intensity].contrastingColor</code>.
+        <Code>colors[variant][intensity].color</Code>. To get the contrasting
+        color, <Code>colors[variant][intensity].contrastingColor</Code>.
       </P>
 
       {renderColorSquares(variantColors, colors)}

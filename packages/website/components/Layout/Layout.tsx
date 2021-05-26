@@ -18,6 +18,7 @@ export const Layout: React.FC = ({ children }) => {
 
       <div
         className={css`
+          margin-top: ${space.md};
           display: flex;
           max-width: 1440px;
           width: 100%;

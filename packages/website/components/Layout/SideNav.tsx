@@ -12,11 +12,12 @@ export const topLevelPages = [
   '/colors',
   '/buttons',
   '/switch',
+  '/tooltip',
 ];
 
 export const SideNav = () => {
   const router = useRouter();
-  const { space, colors, transition } = useTheme();
+  const { space, colors, transition, fontSizes, lineHeights } = useTheme();
 
   const activeLink = css`
     background: ${colors.background[500].color};
@@ -27,15 +28,19 @@ export const SideNav = () => {
     }
   `;
 
+  // Navbar height isn't fixed. This is so that when user change their browser font settings,
+  // the Navbar container can adjust accordingly.
+  // Because of this, we need to calculate the navbarHeight as follows
+  const navbarHeight = `${space.lg} + ${space.lg} + ${fontSizes.h3} * ${lineHeights.h3}`;
+
   return (
     <nav
       className={css`
         position: sticky;
-        top: 80px;
+        top: calc(${navbarHeight});
         display: flex;
         flex-direction: column;
         width: 280px;
-        height: calc(100vh - 80px);
         flex-shrink: 0;
         padding: ${space.lg} ${space.xl};
 

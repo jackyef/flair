@@ -24,7 +24,7 @@ export default function Colors() {
                     size="sm"
                   />
                   <span style={{ marginLeft: '1rem' }}>
-                    {enabled ? 'Enabled' : 'Disabled'}; Size: <code>"sm"</code>
+                    {enabled ? 'Enabled' : 'Disabled'}; Size: <Code>"sm"</Code>
                   </span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', marginBottom: '16px' }}>
@@ -35,7 +35,7 @@ export default function Colors() {
                     size="md"
                   />
                   <span style={{ marginLeft: '1rem' }}>
-                    {enabled ? 'Enabled' : 'Disabled'}; Size: <code>"md"</code>
+                    {enabled ? 'Enabled' : 'Disabled'}; Size: <Code>"md"</Code>
                   </span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -46,7 +46,7 @@ export default function Colors() {
                     size="lg"
                   />
                   <span style={{ marginLeft: '1rem' }}>
-                    {enabled ? 'Enabled' : 'Disabled'}; Size: <code>"lg"</code>
+                    {enabled ? 'Enabled' : 'Disabled'}; Size: <Code>"lg"</Code>
                   </span>
                 </div>
               </>
@@ -79,7 +79,7 @@ export default function Colors() {
                     size="sm"
                   />
                   <span style={{ marginLeft: '1rem' }}>
-                    {enabled ? 'Enabled' : 'Disabled'}; Size: <code>"sm"</code>
+                    {enabled ? 'Enabled' : 'Disabled'}; Size: <Code>"sm"</Code>
                   </span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', marginBottom: '16px' }}>
@@ -91,7 +91,7 @@ export default function Colors() {
                     size="md"
                   />
                   <span style={{ marginLeft: '1rem' }}>
-                    {enabled ? 'Enabled' : 'Disabled'}; Size: <code>"md"</code>
+                    {enabled ? 'Enabled' : 'Disabled'}; Size: <Code>"md"</Code>
                   </span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -103,7 +103,7 @@ export default function Colors() {
                     size="lg"
                   />
                   <span style={{ marginLeft: '1rem' }}>
-                    {enabled ? 'Enabled' : 'Disabled'}; Size: <code>"lg"</code>
+                    {enabled ? 'Enabled' : 'Disabled'}; Size: <Code>"lg"</Code>
                   </span>
                 </div>
               </>

@@ -11,7 +11,16 @@ import {
 import { SpaceVariant } from '../../theme/space';
 import { useTheme } from '../../context/theme';
 
-const AVAILABLE_ELEMENTS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'] as const;
+const AVAILABLE_ELEMENTS = [
+  'h1',
+  'h2',
+  'h3',
+  'h4',
+  'h5',
+  'h6',
+  'p',
+  'small',
+] as const;
 type TypographyElement = typeof AVAILABLE_ELEMENTS[number];
 
 const SIZE_MAP: Record<TypographyElement, FontSizeVariant> = {
@@ -22,6 +31,7 @@ const SIZE_MAP: Record<TypographyElement, FontSizeVariant> = {
   h5: 'subheading',
   h6: 'body',
   p: 'body',
+  small: 'small',
 };
 
 const MARGIN_TOP_MAP: Record<TypographyElement, SpaceVariant> = {
@@ -32,6 +42,7 @@ const MARGIN_TOP_MAP: Record<TypographyElement, SpaceVariant> = {
   h5: 'lg',
   h6: 'lg',
   p: 'lg',
+  small: 'xs',
 };
 
 const MARGIN_BOTTOM_MAP: Record<TypographyElement, SpaceVariant> = {
@@ -42,6 +53,7 @@ const MARGIN_BOTTOM_MAP: Record<TypographyElement, SpaceVariant> = {
   h5: 'md',
   h6: 'md',
   p: 'md',
+  small: 'xs',
 };
 
 const useTypographyClass = (element: TypographyElement) => {
@@ -197,5 +209,44 @@ export const P: React.FC<Props> = ({
     <Element className={cx(cssClass, className)} {...props}>
       {children}
     </Element>
+  );
+};
+
+export const Small: React.FC<Props> = ({
+  as = 'small',
+  className,
+  children,
+  ...props
+}) => {
+  const cssClass = useTypographyClass('small');
+  const Element = as;
+
+  return (
+    <Element className={cx(cssClass, className)} {...props}>
+      {children}
+    </Element>
+  );
+};
+
+type CodeProps = React.HTMLProps<HTMLSpanElement>;
+
+export const Code: React.FC<CodeProps> = ({
+  className,
+  children,
+  ...props
+}) => {
+  const { space, colors, radii, transition } = useTheme();
+  const codeClass = css`
+    background: ${colors.background[400].color};
+    color: ${colors.error[400].color};
+    padding: ${space.sm};
+    border-radius: ${radii.md};
+    transition: ${transition.default};
+  `;
+
+  return (
+    <code className={cx(codeClass, className)} {...props}>
+      {children}
+    </code>
   );
 };

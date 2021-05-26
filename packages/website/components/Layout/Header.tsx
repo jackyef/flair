@@ -7,6 +7,7 @@ import { SunIcon, MoonIcon, MenuIcon, XIcon } from '@heroicons/react/solid';
 import { RenderOnMobile } from '../MediaQuery/RenderOnMobile';
 import { MobileNav } from './MobileNav';
 import { Portal } from '../Portal/Portal';
+import { RenderOnMount } from '../RenderOnMount/RenderOnMount';
 
 export const Header = () => {
   const { toggleColorScheme, colorScheme, space, colors, shadow, transition } =
@@ -19,7 +20,6 @@ export const Header = () => {
         position: sticky;
         top: 0;
         box-shadow: ${shadow.subtle};
-        margin-bottom: ${space.md};
         width: 100%;
         background: ${colors.background[700].color};
         transition: ${transition.default};
@@ -47,19 +47,21 @@ export const Header = () => {
           </Link>
         </H3>
         <div>
-          <Switch
-            size="md"
-            enabled={colorScheme === 'dark'}
-            icon={
-              colorScheme === 'dark' ? (
-                <MoonIcon fill={colors.primary[700].color} />
-              ) : (
-                <SunIcon fill={colors.secondary[400].color} />
-              )
-            }
-            onChange={toggleColorScheme}
-            label="Dark color scheme"
-          />
+          <RenderOnMount>
+            <Switch
+              size="md"
+              enabled={colorScheme === 'dark'}
+              icon={
+                colorScheme === 'dark' ? (
+                  <MoonIcon fill={colors.primary[700].color} />
+                ) : (
+                  <SunIcon fill={colors.secondary[400].color} />
+                )
+              }
+              onChange={toggleColorScheme}
+              label="Dark color scheme"
+            />
+          </RenderOnMount>
           <Portal>
             <RenderOnMobile>
               {showMobileNav && (
