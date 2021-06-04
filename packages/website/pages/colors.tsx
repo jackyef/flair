@@ -116,7 +116,7 @@ export default function Colors() {
         Colors in Flair are organized by <Code>variants</Code>. Each variant has
         different colors for different intensity levels (400—800). 400 and 500
         colors always have sufficient contrast (1:4.5) when paired with{' '}
-        <Code>foreground[400]</Code>, while 600-800 always have sufficient
+        <Code>foreground[400]</Code>, while 600—800 always have sufficient
         contrast when paired with <Code>background[400]</Code>.
       </P>
       <div
