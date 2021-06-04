@@ -8,6 +8,7 @@ import { RenderOnMobile } from '../MediaQuery/RenderOnMobile';
 import { MobileNav } from './MobileNav';
 import { Portal } from '../Portal/Portal';
 import { RenderOnMount } from '../RenderOnMount/RenderOnMount';
+import { Logo } from '../Logo/Logo';
 
 export const Header = () => {
   const { toggleColorScheme, colorScheme, space, colors, shadow, transition } =
@@ -29,7 +30,7 @@ export const Header = () => {
       <div
         className={css`
           display: flex;
-          padding: ${space.lg};
+          padding: ${space.lg} ${space.xl};
           margin: 0 auto;
           max-width: 1440px;
           align-items: center;
@@ -43,7 +44,19 @@ export const Header = () => {
       >
         <H3>
           <Link href="/" passHref>
-            <a>FlairKit</a>
+            <a
+              className={css`
+                display: inline-flex;
+                align-items: center;
+              `}
+            >
+              <Logo
+                className={css`
+                  margin-right: ${space.lg};
+                `}
+              />{' '}
+              FlairKit
+            </a>
           </Link>
         </H3>
         <div>
