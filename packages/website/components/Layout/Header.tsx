@@ -53,9 +53,9 @@ export const Header = () => {
               enabled={colorScheme === 'dark'}
               icon={
                 colorScheme === 'dark' ? (
-                  <MoonIcon fill={colors.primary[700].color} />
+                  <MoonIcon fill={colors.primary[500].color} />
                 ) : (
-                  <SunIcon fill={colors.secondary[400].color} />
+                  <SunIcon fill={colors.secondary[700].color} />
                 )
               }
               onChange={toggleColorScheme}

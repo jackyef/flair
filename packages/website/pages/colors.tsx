@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { css } from 'goober';
-import { H1, H2, H3, P, Code, Button, useTheme } from 'flair-kit';
+import { H1, H2, H3, P, Code, Button, useTheme, Anchor } from 'flair-kit';
 import type { MappedColorVariant, ColorShadeVariant } from 'flair-kit';
 
 import { RenderOnMount } from '@/components/RenderOnMount/RenderOnMount';
@@ -62,7 +62,7 @@ const renderColorSquares = (colorNames: MappedColorVariant[], colors: any) => {
             const colorValue = canUseDOM
               ? getComputedStyle(document.body).getPropertyValue(
                   // Remove the `var()` enclosing the CSS variable name
-                  color.slice(4, color.length - 1),
+                  color.slice(4, color.length - 1)
                 )
               : '';
 
@@ -104,7 +104,7 @@ export default function Colors() {
   const colorNames = Object.keys(colors) as unknown as MappedColorVariant[];
 
   const variantColors = colorNames.filter(
-    (c) => c !== 'foreground' && c !== 'background',
+    (c) => c !== 'foreground' && c !== 'background'
   );
 
   const fgAndBgColors = ['foreground', 'background'] as MappedColorVariant[];
@@ -114,20 +114,11 @@ export default function Colors() {
       <H1>Colors</H1>
       <P>
         Colors in Flair are organized by <Code>variants</Code>. Each variant has
-        different colors for different intensity levels (400—800).
+        different colors for different intensity levels (400—800). 400 and 500
+        colors always have sufficient contrast (1:4.5) when paired with{' '}
+        <Code>foreground[400]</Code>, while 600-800 always have sufficient
+        contrast when paired with <Code>background[400]</Code>.
       </P>
-      <P>
-        In <i>light</i> color scheme, the higher the intensity, the lighter the
-        color is. To put it simply, a lighter color have the same hue and
-        saturation level, but higher lightness.
-      </P>
-
-      <P>
-        In <i>dark</i> color scheme, the higher the intensity, the darker the
-        color is. Try toggling the color scheme using the button below and
-        observe the differences.
-      </P>
-
       <div
         className={css`
           margin: ${space.lg} 0;
@@ -137,10 +128,23 @@ export default function Colors() {
       </div>
 
       <P>
-        Because of how the &quot;intensity&quot; concept works in Flair, in dark
-        color scheme, the order of color for each shades are basically just
-        reversed! Obviously this will not work well in ALL cases, so you will
-        have to adjust according to your needs.
+        The colors are generated using{' '}
+        <Anchor href="https://colorbox.io" target="_blank">
+          ColorBox
+        </Anchor>
+        , using the approach Lyft explained splendidly in their article:{' '}
+        <Anchor
+          href="https://design.lyft.com/re-approaching-color-9e604ba22c88"
+          target="_blank"
+        >
+          Re-approaching Color
+        </Anchor>
+        .
+      </P>
+
+      <P>
+        In dark color scheme, the order of color for each shades are just
+        reversed.
       </P>
 
       <H2>Variants</H2>
@@ -148,9 +152,9 @@ export default function Colors() {
       <P>
         By default, Flair has 7 color variants: primary, secondary, success,
         warning, error, dark and light. All of the colors are accessible from
-        the ThemeContext. Accessing a color is as simple as{' '}
+        the <Code>ThemeContext</Code>. Accessing a color is as simple as{' '}
         <Code>colors[variant][intensity].color</Code>. To get the contrasting
-        color, <Code>colors[variant][intensity].contrastingColor</Code>.
+        color: <Code>colors[variant][intensity].contrastingColor</Code>.
       </P>
 
       {renderColorSquares(variantColors, colors)}

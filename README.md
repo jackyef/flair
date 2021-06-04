@@ -26,6 +26,7 @@ pnpm dev
 
 ## References
 
+- https://design.lyft.com/re-approaching-color-9e604ba22c88
 - https://github.com/adobe/react-spectrum/tree/main/packages/%40react-spectrum
 - https://medium.com/sfl-newsroom/typography-scaling-from-the-design-perspective-45d82f77ba95
 - https://www.invisionapp.com/inside-design/guide-to-design-systems/

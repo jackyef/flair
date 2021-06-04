@@ -30,13 +30,13 @@ export const Button = ({
     align-items: center;
     transition: ${transition.default};
 
-    background: ${colors[variant][400].color};
-    color: ${colors[variant][400].contrastingColor};
+    background: ${colors[variant][500].color};
+    color: ${colors[variant][500].contrastingColor};
 
     &:hover,
     &:focus {
-      background: ${colors[variant][500].color};
-      color: ${colors[variant][500].contrastingColor};
+      background: ${colors[variant][400].color};
+      color: ${colors[variant][400].contrastingColor};
     }
 
     &[disabled] {

@@ -10,16 +10,16 @@ export const Anchor = forwardRef<HTMLAnchorElement, Props>(
   ({ className, ...rest }, ref) => {
     const { colors, transition } = useTheme();
     const anchorClass = css`
-      color: ${colors.primary[500].color};
+      color: ${colors.primary[700].color};
       transition: ${transition.default};
 
       &:hover {
-        color: ${colors.primary[700].color};
+        color: ${colors.primary[800].color};
       }
     `;
 
     return <a ref={ref} className={cx(anchorClass, className)} {...rest} />;
-  },
+  }
 );
 
 if (process.env.NODE_ENV === 'development') {
