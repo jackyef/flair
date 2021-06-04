@@ -90,7 +90,7 @@ export const CodePlayground = ({
           tabIndex={0}
           className={css`
             cursor: pointer;
-            color: ${colors.secondary[400].color};
+            color: ${colors.secondary[700].color};
             background: transparent;
           `}
           onClick={() => {
@@ -115,7 +115,7 @@ export const CodePlayground = ({
                 & > div {
                   transition: ${transition.default};
                 }
-              `,
+              `
             )}
           >
             <div
@@ -129,7 +129,7 @@ export const CodePlayground = ({
                   padding: 0 ${space.xl};
                   overflow-x: auto;
                   color: ${colors.error[500].color};
-                `,
+                `
               )}
             >
               <LiveError />

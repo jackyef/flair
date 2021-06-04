@@ -237,8 +237,8 @@ export const Code: React.FC<CodeProps> = ({
 }) => {
   const { space, colors, radii, transition } = useTheme();
   const codeClass = css`
-    background: ${colors.background[400].color};
-    color: ${colors.error[400].color};
+    background: ${colors.background[700].color};
+    color: ${colors.error[700].color};
     padding: ${space.sm};
     border-radius: ${radii.md};
     transition: ${transition.default};

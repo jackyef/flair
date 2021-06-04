@@ -62,7 +62,7 @@ const renderColorSquares = (colorNames: MappedColorVariant[], colors: any) => {
             const colorValue = canUseDOM
               ? getComputedStyle(document.body).getPropertyValue(
                   // Remove the `var()` enclosing the CSS variable name
-                  color.slice(4, color.length - 1),
+                  color.slice(4, color.length - 1)
                 )
               : '';
 
@@ -104,7 +104,7 @@ export default function Colors() {
   const colorNames = Object.keys(colors) as unknown as MappedColorVariant[];
 
   const variantColors = colorNames.filter(
-    (c) => c !== 'foreground' && c !== 'background',
+    (c) => c !== 'foreground' && c !== 'background'
   );
 
   const fgAndBgColors = ['foreground', 'background'] as MappedColorVariant[];
