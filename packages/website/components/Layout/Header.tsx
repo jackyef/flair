@@ -51,6 +51,7 @@ export const Header = () => {
               `}
             >
               <Logo
+                size={20}
                 className={css`
                   margin-right: ${space.lg};
                 `}
