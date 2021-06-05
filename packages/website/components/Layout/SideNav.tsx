@@ -33,7 +33,7 @@ export const SideNav = () => {
   // Navbar height isn't fixed. This is so that when user change their browser font settings,
   // the Navbar container can adjust accordingly.
   // Because of this, we need to calculate the navbarHeight as follows
-  const navbarHeight = `${space.lg} + ${space.lg} + ${fontSizes.h3} * ${lineHeights.h3}`;
+  const navbarHeight = `4px + ${space.lg} + ${space.lg} + ${fontSizes.h3} * ${lineHeights.h3}`;
 
   return (
     <nav
