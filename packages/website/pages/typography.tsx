@@ -5,7 +5,7 @@ import { H1, H2, H3, H4, H5, H6, P, useTheme } from 'flair-kit';
 import { Main } from '@/components/Main/Main';
 
 const Paper = (props: React.HTMLAttributes<HTMLDivElement>) => {
-  const { colors, space, mediaQuery } = useTheme();
+  const { colors, space, mediaQuery, transition } = useTheme();
 
   return (
     <section
@@ -15,6 +15,7 @@ const Paper = (props: React.HTMLAttributes<HTMLDivElement>) => {
         margin: 0;
         box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
         background: ${colors.background[700].color};
+        transition: ${transition.default};
 
         ${mediaQuery.onMobileUp} {
           padding: ${space['2xl']};
