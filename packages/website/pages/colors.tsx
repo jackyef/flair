@@ -77,17 +77,18 @@ const renderColorSquares = (colorNames: MappedColorVariant[], colors: any) => {
                   // TODO: Add a toast showing that the color value has been copied
                 }}
               >
-                <P>
+                <div>
                   {colorName}.{shadeStep}
-                </P>
+                </div>
                 <RenderOnMount>
-                  <P
+                  <div
                     className={css`
+                      margin-top: 0.8rem;
                       font-size: 0.75rem;
                     `}
                   >
                     {colorValue}
-                  </P>
+                  </div>
                 </RenderOnMount>
               </ColorSquare>
             );
