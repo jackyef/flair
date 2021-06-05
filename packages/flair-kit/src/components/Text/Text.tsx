@@ -15,20 +15,28 @@ export const Text: React.FC<Props> = ({
   ...props
 }) => {
   const { colors } = useTheme();
+  const getGradient = () => {
+    if (gradient.length === 1) {
+      const c = gradient[0];
+      return `linear-gradient(90deg, ${colors[c][700].color}, ${colors[c][800].color})`;
+    }
+
+    return `linear-gradient(90deg, ${gradient
+      .map((c) => colors[c][700].color)
+      .join(',')});`;
+  };
   const baseClass = css`
     ${gradient.length > 0
       ? `
-        background-image: linear-gradient(90deg, ${gradient
-          .map((c) => colors[c][700].color)
-          .join(',')});
-        background-size: 100%;
-        background-clip: text;
-        -webkit-background-clip: text;
-        -moz-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        -moz-text-fill-color: transparent;
-        -webkit-box-decoration-break: clone;
-      `
+          background-image: ${getGradient()};
+          background-size: 100%;
+          background-clip: text;
+          -webkit-background-clip: text;
+          -moz-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          -moz-text-fill-color: transparent;
+          -webkit-box-decoration-break: clone;
+        `
       : `color: ${colors[variant][500].color};`}
   `;
 

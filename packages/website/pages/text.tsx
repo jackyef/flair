@@ -52,8 +52,6 @@ export default function Text() {
         noInline
         initialCode={`
           const Example = () => {
-            const { colors } = useTheme();
-
             return (
               <div>
                 <H2>
@@ -71,6 +69,39 @@ export default function Text() {
                     warning &rarr; success &rarr; foreground &rarr; secondary &rarr; primary
                   </Text>
                 </H2>
+              </div>
+            )
+          }
+
+          render(<Example />);
+        `}
+      />
+
+      <P>
+        When the <Code>variant</Code> array only contains 1 element, the 700 and
+        800 level colors of the <Code>variant</Code> will be used to create a
+        color gradient.
+      </P>
+      <CodePlayground
+        noInline
+        initialCode={`
+          const Example = () => {
+            const { colors } = useTheme();
+            const variants = ['primary', 'secondary', 'success', 'error', 'warning', 'foreground', 'background'];
+
+            return (
+              <div>
+                {variants.map(v => (
+                  <div key={v} className={css({
+                    background: v === 'background' ? colors.foreground[400].color : 'transparent',
+                  })}>
+                    <H2>
+                      <Text gradient={[v]}>
+                        {v}
+                      </Text>
+                    </H2>
+                  </div>
+                ))}
               </div>
             )
           }
