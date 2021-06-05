@@ -13,39 +13,49 @@ export default function Colors() {
         initialCode={`
           const Example = () => {
             const [enabled, setEnabled] = React.useState(false);
+            const row = css(\`
+              display: flex; 
+              align-items: center; 
+
+              &:not(:last-child) {
+                margin-bottom: 16px;
+              }
+            \`);
+
+            const label = css(\`margin-left: 16px;\`);
 
             return (
               <>
-                <div style={{ display: 'flex', alignItems: 'center', marginBottom: '16px' }}>
+                <div className={row}>
                   <Switch
                     enabled={enabled}
                     onChange={setEnabled}
                     label="Toggle something"
                     size="sm"
                   />
-                  <span style={{ marginLeft: '1rem' }}>
+                  <span className={label}>
                     {enabled ? 'Enabled' : 'Disabled'}; Size: <Code>"sm"</Code>
                   </span>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', marginBottom: '16px' }}>
+                <div className={row}>
                   <Switch
                     enabled={enabled}
                     onChange={setEnabled}
                     label="Toggle something"
                     size="md"
                   />
-                  <span style={{ marginLeft: '1rem' }}>
+                  <span className={label}>
                     {enabled ? 'Enabled' : 'Disabled'}; Size: <Code>"md"</Code>
                   </span>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center' }}>
+                <div className={row}>
                   <Switch
                     enabled={enabled}
                     onChange={setEnabled}
                     label="Toggle something"
                     size="lg"
                   />
-                  <span style={{ marginLeft: '1rem' }}>
+                  <span className={label}>
                     {enabled ? 'Enabled' : 'Disabled'}; Size: <Code>"lg"</Code>
                   </span>
                 </div>
@@ -68,9 +78,19 @@ export default function Colors() {
               ? <HeroIconsSolid.CheckCircleIcon fill={colors.success[500].color} /> 
               : <HeroIconsSolid.XCircleIcon fill={colors.error[500].color} />;
 
+            const row = css(\`
+              display: flex; 
+              align-items: center; 
+
+              &:not(:last-child) {
+                margin-bottom: 16px;
+              }
+            \`);
+            const label = css(\`margin-left: 16px;\`);
+
             return (
               <>
-                <div style={{ display: 'flex', alignItems: 'center', marginBottom: '16px' }}>
+                <div className={row}>
                   <Switch
                     icon={icon}
                     enabled={enabled}
@@ -78,11 +98,11 @@ export default function Colors() {
                     label="Toggle something"
                     size="sm"
                   />
-                  <span style={{ marginLeft: '1rem' }}>
+                  <span className={label}>
                     {enabled ? 'Enabled' : 'Disabled'}; Size: <Code>"sm"</Code>
                   </span>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', marginBottom: '16px' }}>
+                <div className={row}>
                   <Switch
                     icon={icon}
                     enabled={enabled}
@@ -90,11 +110,11 @@ export default function Colors() {
                     label="Toggle something"
                     size="md"
                   />
-                  <span style={{ marginLeft: '1rem' }}>
+                  <span className={label}>
                     {enabled ? 'Enabled' : 'Disabled'}; Size: <Code>"md"</Code>
                   </span>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center' }}>
+                <div className={row}>
                   <Switch
                     icon={icon}
                     enabled={enabled}
@@ -102,7 +122,7 @@ export default function Colors() {
                     label="Toggle something"
                     size="lg"
                   />
-                  <span style={{ marginLeft: '1rem' }}>
+                  <span className={label}>
                     {enabled ? 'Enabled' : 'Disabled'}; Size: <Code>"lg"</Code>
                   </span>
                 </div>

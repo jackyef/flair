@@ -93,7 +93,7 @@ const _CustomEditor = ({ code: _code, onChange, theme }: LiveProps) => {
                     height: 0;
                     width: 0;
                   }
-                `,
+                `
               )}
               style={style}
             >
@@ -108,7 +108,7 @@ const _CustomEditor = ({ code: _code, onChange, theme }: LiveProps) => {
                       lineProps.className,
                       css`
                         display: table-row;
-                      `,
+                      `
                     )}
                   >
                     <span

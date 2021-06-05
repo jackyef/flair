@@ -32,15 +32,15 @@ export default function Tooltip() {
             const { colors, space, transition } = useTheme();
 
             return (
-              <div style={{ display: 'flex', alignItems: 'center' }}>
+              <div className={css({ display: 'flex', alignItems: 'center' })}>
                 <Tooltip
                   label="Notification - This is rendered in the UI"
                   ariaLabel="3 notifications - This is announced by screen readers"
                 >
-                  <div tabIndex="0" style={{ position: "relative", display: 'inline-block' }}>
+                  <div tabIndex="0" className={css({ position: "relative", display: 'inline-block' })}>
                     <HeroIconsSolid.BellIcon width={48} height={48} />
                     <span 
-                      style={{ 
+                      className={css({ 
                         position: "absolute",
                         top: \`-\${space.md}\`,
                         right: \`-\${space.sm}\`,
@@ -49,17 +49,17 @@ export default function Tooltip() {
                         display: 'inline-flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        borderRadius: 999,
+                        borderRadius: '999px',
                         background: colors.error[600].color,
                         color: colors.error[600].contrastingColor,
                         transition: transition.default
-                      }}
+                      })}
                     >
                       3
                     </span>
                   </div>
                 </Tooltip>
-                <span style={{ marginLeft: space.lg }}>
+                <span className={css({ marginLeft: space.lg })}>
                   &larr; Try hovering on me!
                 </span>
               </div>

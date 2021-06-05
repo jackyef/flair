@@ -27,10 +27,11 @@ export default function Text() {
                 <Text variant="warning">warning</Text>{' '}
                 <Text variant="foreground">foreground</Text>{' '}
                 <div 
-                  style={{ 
+                  className={css({
                     display: 'inline-block',
-                    background: colors.foreground[400].color 
-                  }}>
+                    background: colors.foreground[400].color,
+                  })}
+                >
                   <Text variant="background">background</Text>
                 </div>
               </div>
@@ -55,7 +56,7 @@ export default function Text() {
 
             return (
               <div>
-                <H2 style={{ marginTop: 0 }}>
+                <H2>
                   <Text gradient={['success', 'primary']}>
                     primary &rarr; success
                   </Text>
