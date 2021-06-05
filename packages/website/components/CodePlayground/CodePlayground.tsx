@@ -18,6 +18,9 @@ const scope = {
   // flair-kit exported modules
   ...FlairKit,
 
+  // goober css function
+  css,
+
   // 3rd party icons
   HeroIconsSolid,
   AnnouncementIcon: AnnouncementIcon,
