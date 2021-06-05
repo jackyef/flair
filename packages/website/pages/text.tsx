@@ -19,14 +19,18 @@ export default function Text() {
             const { colors } = useTheme();
 
             return (
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Text variant="primary">primary</Text>
-                <Text variant="secondary">secondary</Text>
-                <Text variant="success">success</Text>
-                <Text variant="error">error</Text>
-                <Text variant="warning">warning</Text>
-                <Text variant="foreground">foreground</Text>
-                <div style={{ background: colors.foreground[400].color }}>
+              <div>
+                <Text variant="primary">primary</Text>{' '}
+                <Text variant="secondary">secondary</Text>{' '}
+                <Text variant="success">success</Text>{' '}
+                <Text variant="error">error</Text>{' '}
+                <Text variant="warning">warning</Text>{' '}
+                <Text variant="foreground">foreground</Text>{' '}
+                <div 
+                  style={{ 
+                    display: 'inline-block',
+                    background: colors.foreground[400].color 
+                  }}>
                   <Text variant="background">background</Text>
                 </div>
               </div>

@@ -1,5 +1,6 @@
 /* Components */
 export * from './components/Anchor';
+export * from './components/Box';
 export * from './components/Button';
 export * from './components/GlobalStyles';
 export * from './components/NoFlashScript';

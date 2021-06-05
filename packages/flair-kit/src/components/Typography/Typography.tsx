@@ -38,9 +38,9 @@ const MARGIN_TOP_MAP: Record<TypographyElement, SpaceVariant> = {
   h1: '2xl',
   h2: '2xl',
   h3: 'xl',
-  h4: 'lg',
-  h5: 'lg',
-  h6: 'lg',
+  h4: 'xl',
+  h5: 'xl',
+  h6: 'xl',
   p: 'lg',
   small: 'xs',
 };
@@ -49,10 +49,10 @@ const MARGIN_BOTTOM_MAP: Record<TypographyElement, SpaceVariant> = {
   h1: 'xl',
   h2: 'xl',
   h3: 'lg',
-  h4: 'md',
-  h5: 'md',
-  h6: 'md',
-  p: 'md',
+  h4: 'lg',
+  h5: 'lg',
+  h6: 'lg',
+  p: 'lg',
   small: 'xs',
 };
 
@@ -84,6 +84,10 @@ const useTypographyClass = (element: TypographyElement) => {
       : isBigHeading
       ? '-1px'
       : 'inherit'};
+
+    &:first-child {
+      margin-top: 0;
+    }
 
     ${mediaQuery.onMobileUp} {
       font-size: ${fontSize};

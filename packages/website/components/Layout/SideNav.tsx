@@ -10,8 +10,9 @@ export const topLevelPages = [
   '/spacing',
   '/typography',
   '/colors',
-  '/buttons',
+  '/box',
   '/text',
+  '/buttons',
   '/switch',
   '/tooltip',
 ];
@@ -43,7 +44,9 @@ export const SideNav = () => {
         flex-direction: column;
         width: 280px;
         flex-shrink: 0;
-        padding: ${space.lg} ${space.xl};
+
+        /* Some manual stuffs required to achieve alignment */
+        padding: calc(${space.xl} + 4px) ${space.xl};
 
         & li {
           padding: ${space.md} ${space.lg};
