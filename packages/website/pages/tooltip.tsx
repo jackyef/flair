@@ -2,7 +2,7 @@ import { Anchor, H1, P, Code } from 'flair-kit';
 import { Main } from '@/components/Main/Main';
 import { CodePlayground } from '@/components/CodePlayground/CodePlayground';
 
-export default function Colors() {
+export default function Tooltip() {
   return (
     <Main>
       <H1>Tooltip</H1>

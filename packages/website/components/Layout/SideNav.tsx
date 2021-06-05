@@ -11,6 +11,7 @@ export const topLevelPages = [
   '/typography',
   '/colors',
   '/buttons',
+  '/text',
   '/switch',
   '/tooltip',
 ];
