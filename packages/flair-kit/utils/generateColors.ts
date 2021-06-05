@@ -164,14 +164,14 @@ variants.forEach((v) => {
   generatedColors[variantName] = {};
 
   v[0].colors.forEach((c, index) => {
-    if (index === 1) {
+    if (index === 2) {
       generatedColors[variantName][400] = {
         color: `hsl(${c.hsl[0]}, ${Math.round(c.hsl[1] * 100)}%, ${Math.round(
           c.hsl[2] * 100
         )}%)`,
         contrastingColor: defaultForegroundColor,
       };
-    } else if (index === 2) {
+    } else if (index === 3) {
       generatedColors[variantName][500] = {
         color: `hsl(${c.hsl[0]}, ${Math.round(c.hsl[1] * 100)}%, ${Math.round(
           c.hsl[2] * 100

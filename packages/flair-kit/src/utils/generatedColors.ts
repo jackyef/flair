@@ -2,11 +2,11 @@
 export const generatedColors = {
   primary: {
     '400': {
-      color: 'hsl(230, 98%, 82%)',
+      color: 'hsl(230, 96%, 77%)',
       contrastingColor: 'hsl(233, 22%, 10%)',
     },
     '500': {
-      color: 'hsl(230, 96%, 77%)',
+      color: 'hsl(230, 94%, 72%)',
       contrastingColor: 'hsl(233, 22%, 10%)',
     },
     '600': {
@@ -24,11 +24,11 @@ export const generatedColors = {
   },
   secondary: {
     '400': {
-      color: 'hsl(330, 85%, 80%)',
+      color: 'hsl(330, 79%, 72%)',
       contrastingColor: 'hsl(233, 22%, 10%)',
     },
     '500': {
-      color: 'hsl(330, 79%, 72%)',
+      color: 'hsl(330, 75%, 65%)',
       contrastingColor: 'hsl(233, 22%, 10%)',
     },
     '600': {
@@ -46,11 +46,11 @@ export const generatedColors = {
   },
   success: {
     '400': {
-      color: 'hsl(160, 81%, 56%)',
+      color: 'hsl(160, 80%, 47%)',
       contrastingColor: 'hsl(233, 22%, 10%)',
     },
     '500': {
-      color: 'hsl(160, 80%, 47%)',
+      color: 'hsl(160, 99%, 38%)',
       contrastingColor: 'hsl(233, 22%, 10%)',
     },
     '600': {
@@ -68,11 +68,11 @@ export const generatedColors = {
   },
   warning: {
     '400': {
-      color: 'hsl(50.99999999999999, 60%, 66%)',
+      color: 'hsl(51.000000000000014, 51%, 57%)',
       contrastingColor: 'hsl(233, 22%, 10%)',
     },
     '500': {
-      color: 'hsl(51.000000000000014, 51%, 57%)',
+      color: 'hsl(50.99999999999999, 44%, 50%)',
       contrastingColor: 'hsl(233, 22%, 10%)',
     },
     '600': {
@@ -90,11 +90,11 @@ export const generatedColors = {
   },
   error: {
     '400': {
-      color: 'hsl(353, 88%, 73%)',
+      color: 'hsl(353.00000000000006, 81%, 68%)',
       contrastingColor: 'hsl(233, 22%, 10%)',
     },
     '500': {
-      color: 'hsl(353.00000000000006, 81%, 68%)',
+      color: 'hsl(353.00000000000006, 75%, 63%)',
       contrastingColor: 'hsl(233, 22%, 10%)',
     },
     '600': {

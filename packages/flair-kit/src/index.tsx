@@ -4,6 +4,7 @@ export * from './components/Button';
 export * from './components/GlobalStyles';
 export * from './components/NoFlashScript';
 export * from './components/Switch';
+export * from './components/Text';
 export * from './components/Tooltip';
 export * from './components/Typography';
 export * from './components/VisuallyHidden';
