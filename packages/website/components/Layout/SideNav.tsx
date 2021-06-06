@@ -3,18 +3,35 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import cx from 'classnames';
 
-import { Anchor, H5, useTheme } from 'flair-kit';
+import { Anchor, H5, H6, useTheme } from 'flair-kit';
 
-export const topLevelPages = [
-  '/',
-  '/spacing',
-  '/typography',
-  '/colors',
-  '/box',
-  '/text',
-  '/buttons',
-  '/switch',
-  '/tooltip',
+export const docsSections = [
+  {
+    sectionTitle: 'Foundation',
+    pages: [
+      { label: 'Space', href: '/docs/space' },
+      { label: 'Typography', href: '/docs/typography' },
+      { label: 'Colors', href: '/docs/colors' },
+    ],
+  },
+  {
+    sectionTitle: 'Primitives',
+    pages: [
+      { label: 'Box', href: '/docs/box' },
+      { label: 'Text', href: '/docs/text' },
+    ],
+  },
+  {
+    sectionTitle: 'Form',
+    pages: [
+      { label: 'Button', href: '/docs/button' },
+      { label: 'Switch', href: '/docs/switch' },
+    ],
+  },
+  {
+    sectionTitle: 'Feedback',
+    pages: [{ label: 'Tooltip', href: '/docs/tooltip' }],
+  },
 ];
 
 export const SideNav = () => {
@@ -71,19 +88,26 @@ export const SideNav = () => {
       `}
     >
       <H5>Directory</H5>
-      <ul>
-        {topLevelPages.map((page) => {
-          const isActive = router.pathname === page;
+      {docsSections.map((section) => {
+        return (
+          <>
+            <H6>{section.sectionTitle}</H6>
+            <ul>
+              {section.pages.map(({ label, href }) => {
+                const isActive = router.pathname === href;
 
-          return (
-            <li key={page} className={cx({ [activeLink]: isActive })}>
-              <Link href={page} passHref>
-                <Anchor>{page}</Anchor>
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+                return (
+                  <li key={href} className={cx({ [activeLink]: isActive })}>
+                    <Link href={href} passHref>
+                      <Anchor>{label}</Anchor>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </>
+        );
+      })}
     </nav>
   );
 };

@@ -3,9 +3,9 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import cx from 'classnames';
 
-import { Anchor, H5, useTheme } from 'flair-kit';
+import { Anchor, H5, H6, useTheme } from 'flair-kit';
 
-import { topLevelPages } from './SideNav';
+import { docsSections } from './SideNav';
 
 interface Props {
   onNavClick: () => void;
@@ -62,19 +62,26 @@ export const MobileNav = ({ onNavClick }: Props) => {
       `}
     >
       <H5>Directory</H5>
-      <ul>
-        {topLevelPages.map((page) => {
-          const isActive = router.pathname === page;
+      {docsSections.map((section) => {
+        return (
+          <>
+            <H6>{section.sectionTitle}</H6>
+            <ul>
+              {section.pages.map(({ label, href }) => {
+                const isActive = router.pathname === href;
 
-          return (
-            <li key={page} className={cx({ [activeLink]: isActive })}>
-              <Link href={page} passHref>
-                <Anchor onClick={onNavClick}>{page}</Anchor>
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+                return (
+                  <li key={href} className={cx({ [activeLink]: isActive })}>
+                    <Link href={href} passHref>
+                      <Anchor onClick={onNavClick}>{label}</Anchor>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </>
+        );
+      })}
     </nav>
   );
 };

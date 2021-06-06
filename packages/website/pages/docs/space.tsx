@@ -5,7 +5,7 @@ import { Main } from '@/components/Main/Main';
 export default function Home() {
   return (
     <Main>
-      <H1>Spacing</H1>
+      <H1>Space</H1>
 
       <SpaceSquares />
     </Main>
