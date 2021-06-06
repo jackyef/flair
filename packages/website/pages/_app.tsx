@@ -1,11 +1,13 @@
 import Head from 'next/head';
 import { AppProps } from 'next/app';
 import { createGlobalStyles } from 'goober/global';
+import { useRouter } from 'next/router';
 
-import { Layout } from '@/components/Layout/Layout';
+import { DocsLayout } from '@/components/Layout/DocsLayout';
 
 import { ThemeProvider } from 'flair-kit';
 import { NProgressLoader } from '@/components/NProgressLoader/NProgressLoader';
+import { HomeLayout } from '@/components/Layout/HomeLayout';
 
 const ResetStyles = createGlobalStyles`
   html {
@@ -37,10 +39,15 @@ const ResetStyles = createGlobalStyles`
 const GlobalStyles = createGlobalStyles`
   body {
     transition: background 0.15s ease-out, color 0.15s ease-out;
-}
+  }
 `;
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
+  const router = useRouter();
+  const isDocsPage = router.pathname.startsWith('/docs');
+
+  const Layout = isDocsPage ? DocsLayout : HomeLayout;
+
   return (
     <>
       <Head>

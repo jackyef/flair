@@ -1,3 +1,3 @@
 export const shadow = {
-  subtle: '0 3px 6px rgba(0, 0, 0, 0.16)',
+  subtle: '0 0 6px 2px var(--color-background-600)',
 } as const;

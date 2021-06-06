@@ -5,7 +5,9 @@ import { css } from 'goober';
 import { useTheme } from '../../context/theme';
 import { MappedColorVariant } from '../../utils/getColorMapping';
 
-interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface Props
+  extends React.ButtonHTMLAttributes<HTMLButtonElement | HTMLAnchorElement> {
+  isAnchorButton?: boolean;
   icon?: React.ReactElement;
   iconPosition?: 'left' | 'right';
   size?: 'sm' | 'md' | 'lg';
@@ -14,6 +16,7 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export const Button = ({
+  isAnchorButton = false,
   className,
   icon,
   iconPosition = 'left',
@@ -150,9 +153,11 @@ export const Button = ({
 
   const iconSize = getIconSize();
 
+  const Element = isAnchorButton ? 'a' : 'button';
+
   return (
     <>
-      <button
+      <Element
         className={cx(base, getSizeClass(), className)}
         disabled={disabled}
         {...rest}
@@ -170,7 +175,7 @@ export const Button = ({
             width: icon.props.width || iconSize,
             height: icon.props.height || iconSize,
           })}
-      </button>
+      </Element>
     </>
   );
 };

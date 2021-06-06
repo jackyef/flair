@@ -22,9 +22,11 @@ export const Header = () => {
         top: 0;
         box-shadow: ${shadow.subtle};
         width: 100%;
-        background: ${colors.background[700].color};
+        background: ${colors.background[800].color};
         transition: ${transition.default};
         z-index: 3;
+        backdrop-filter: blur(3px);
+        opacity: 0.9;
       `}
     >
       <div
