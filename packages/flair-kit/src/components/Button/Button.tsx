@@ -89,11 +89,11 @@ export const Button = ({
       case 'sm':
         return css`
           font-size: 1rem;
-          padding: ${space.md} ${space.md};
-          border-radius: 4px;
+          padding: ${space.md} ${space.lg};
+          border-radius: 12px;
 
           &::after {
-            border-radius: 4px;
+            border-radius: 12px;
           }
 
           & svg {
@@ -106,10 +106,10 @@ export const Button = ({
         return css`
           font-size: 1rem;
           padding: ${space.lg} ${space.lg};
-          border-radius: 8px;
+          border-radius: 16px;
 
           &::after {
-            border-radius: 8px;
+            border-radius: 16px;
           }
 
           & svg {
@@ -121,11 +121,11 @@ export const Button = ({
       case 'lg':
         return css`
           font-size: 1.3rem;
-          padding: ${space.xl} ${space.xl};
-          border-radius: 12px;
+          padding: ${space.xl} ${space['2xl']};
+          border-radius: 20px;
 
           &::after {
-            border-radius: 12px;
+            border-radius: 20px;
           }
 
           & svg {
@@ -153,7 +153,7 @@ export const Button = ({
   return (
     <>
       <button
-        className={cx(base, className, getSizeClass())}
+        className={cx(base, getSizeClass(), className)}
         disabled={disabled}
         {...rest}
       >
