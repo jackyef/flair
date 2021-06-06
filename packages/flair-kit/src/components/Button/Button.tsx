@@ -55,7 +55,7 @@ export const Button = ({
         width: 100%;
         height: 100%;
         opacity: 0;
-        box-shadow: 0 3px 6px ${colors[variant][400].color};
+        box-shadow: 0 12px 6px -6px ${colors[variant][400].color};
         transition: ${transition.default};
       }
       
