@@ -9,7 +9,7 @@ export default function Colors() {
   const colorNames = Object.keys(colors) as unknown as MappedColorVariant[];
 
   const variantColors = colorNames.filter(
-    (c) => c !== 'foreground' && c !== 'background',
+    (c) => c !== 'foreground' && c !== 'background'
   ) as ColorVariant[];
 
   const wrapperStyle = `{{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '${space.md}' }}`;
@@ -20,6 +20,20 @@ export default function Colors() {
         .map((variant) => {
           return `
           <Button variant="${variant}">
+            ${variant}
+          </Button>
+        `;
+        })
+        .join('')}
+    </div>
+  `;
+
+  const buttonSingleGradientCode = `
+    <div style=${wrapperStyle}>
+      ${variantColors
+        .map((variant) => {
+          return `
+          <Button variant="${variant}" isCTA>
             ${variant}
           </Button>
         `;
@@ -57,6 +71,7 @@ export default function Colors() {
   `;
 
   const iconButtonsCode = `
+  <>
     <div style=${wrapperStyle}>
       ${(['sm', 'md', 'lg'] as const)
         .map((size) => {
@@ -66,12 +81,30 @@ export default function Colors() {
             variant="success"
             size="${size}"
           >
-            Announce
+            Left
           </Button>
         `;
         })
         .join('')}
     </div>
+    <br />
+    <div style=${wrapperStyle}>
+      ${(['sm', 'md', 'lg'] as const)
+        .map((size) => {
+          return `
+          <Button
+            icon={<AnnouncementIcon />}
+            iconPosition="right"
+            variant="success"
+            size="${size}"
+          >
+            Right
+          </Button>
+        `;
+        })
+        .join('')}
+    </div>
+  </>
   `;
 
   return (
@@ -97,6 +130,14 @@ export default function Colors() {
         </div>
       `}
       />
+
+      <H2>CTA Button</H2>
+      <P>
+        CTA (call-to-action) buttons usually need a bit more of a <i>oomph</i>{' '}
+        to get users more likely to click on them. This is usually achieved by
+        making the button more eye-catching.
+      </P>
+      <CodePlayground initialCode={buttonSingleGradientCode} />
 
       <H2>Disabled</H2>
       <CodePlayground initialCode={disabledButtonsCode} />

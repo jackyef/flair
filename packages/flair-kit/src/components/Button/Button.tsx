@@ -7,37 +7,76 @@ import { MappedColorVariant } from '../../utils/getColorMapping';
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   icon?: React.ReactElement;
+  iconPosition?: 'left' | 'right';
   size?: 'sm' | 'md' | 'lg';
   variant?: MappedColorVariant;
+  isCTA?: boolean;
 }
 
 export const Button = ({
   className,
   icon,
+  iconPosition = 'left',
   size = 'md',
   variant = 'primary',
+  isCTA = false,
   disabled,
   children,
   ...rest
 }: Props) => {
   const { colors, space, transition } = useTheme();
   const hasNoChildren = !Boolean(children);
+  const getGradient = () => {
+    const c = variant;
+
+    return `linear-gradient(70deg, ${colors[c][500].color}, ${colors[c][700].color}, ${colors[c][500].color})`;
+  };
 
   const base = css`
     cursor: pointer;
     border: none;
     display: inline-flex;
     align-items: center;
-    transition: ${transition.default};
+    transition: ${transition.default}, ${transition.transform};
 
-    background: ${colors[variant][500].color};
-    color: ${colors[variant][500].contrastingColor};
+    ${isCTA
+      ? `background-image: ${getGradient()};
+      background-size: 200%;
+      color: ${colors[variant][700].contrastingColor};
+      background-position: 0% 50%;
+      transform: translateY(0) scale(1);
+      position: relative;
 
-    &:hover,
-    &:focus {
-      background: ${colors[variant][400].color};
-      color: ${colors[variant][400].contrastingColor};
-    }
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        box-shadow: 0 3px 6px ${colors[variant][400].color};
+        transition: ${transition.default};
+      }
+      
+      &:hover, &:focus {
+        background-position: 100% 50%;
+        transform: translateY(-4px) scale(1.1);
+      }
+
+      &:hover&::after, &:focus&::after {
+        opacity: 1;
+      }
+      `
+      : `background: ${colors[variant][500].color};
+      color: ${colors[variant][500].contrastingColor};
+      
+      &:hover,
+      &:focus {
+        background: ${colors[variant][400].color};
+        color: ${colors[variant][400].contrastingColor};
+      }
+      `}
 
     &[disabled] {
       opacity: 0.7;
@@ -53,8 +92,14 @@ export const Button = ({
           padding: ${space.md} ${space.md};
           border-radius: 4px;
 
+          &::after {
+            border-radius: 4px;
+          }
+
           & svg {
-            margin-right: ${hasNoChildren ? '0' : space.sm};
+            margin-${iconPosition === 'left' ? 'right' : 'left'}: ${
+          hasNoChildren ? '0' : space.sm
+        };
           }
         `;
       case 'md':
@@ -63,8 +108,14 @@ export const Button = ({
           padding: ${space.lg} ${space.lg};
           border-radius: 8px;
 
+          &::after {
+            border-radius: 8px;
+          }
+
           & svg {
-            margin-right: ${hasNoChildren ? '0' : space.md};
+            margin-${iconPosition === 'left' ? 'right' : 'left'}: ${
+          hasNoChildren ? '0' : space.md
+        };
           }
         `;
       case 'lg':
@@ -73,8 +124,14 @@ export const Button = ({
           padding: ${space.xl} ${space.xl};
           border-radius: 12px;
 
+          &::after {
+            border-radius: 12px;
+          }
+
           & svg {
-            margin-right: ${hasNoChildren ? '0' : space.lg};
+            margin-${iconPosition === 'left' ? 'right' : 'left'}: ${
+          hasNoChildren ? '0' : space.lg
+        };
           }
         `;
     }
@@ -101,11 +158,18 @@ export const Button = ({
         {...rest}
       >
         {icon &&
+          iconPosition === 'left' &&
           cloneElement(icon, {
             width: icon.props.width || iconSize,
             height: icon.props.height || iconSize,
           })}
         {children}
+        {icon &&
+          iconPosition === 'right' &&
+          cloneElement(icon, {
+            width: icon.props.width || iconSize,
+            height: icon.props.height || iconSize,
+          })}
       </button>
     </>
   );
