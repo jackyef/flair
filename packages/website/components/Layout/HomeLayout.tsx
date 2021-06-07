@@ -12,7 +12,7 @@ export const HomeLayout: React.FC = ({ children }) => {
         isolation: isolate;
       `}
     >
-      <Header />
+      <Header isHomepage />
 
       <div
         className={css`

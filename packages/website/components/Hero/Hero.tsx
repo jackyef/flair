@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { css } from 'goober';
+import { css, keyframes } from 'goober';
 import type { MappedColorVariant } from 'flair-kit';
 import { useTheme } from 'flair-kit';
 
@@ -8,6 +8,7 @@ interface RandomBlobProps {
 }
 
 // @ts-expect-error
+// eslint-disable-next-line
 const RandomBlob = ({ variant = 'primary' }: RandomBlobProps) => {
   const [style] = useState(() => {
     const leftOrRight = Math.random() > 0.5 ? 'left' : 'right';
@@ -73,6 +74,18 @@ const Blob = ({
 }: BlobProps) => {
   const { colors } = useTheme();
 
+  const float = keyframes`
+    from, to {
+        transform: rotate(${rotation}deg) translate(0);
+    }
+
+    50% {
+        transform: rotate(${rotation}deg) translate(${Math.random() * 100}px, ${
+    Math.random() * 100
+  }px)
+    }
+`;
+
   return (
     <div
       style={{
@@ -80,6 +93,8 @@ const Blob = ({
       }}
       className={css`
         position: absolute;
+        filter: blur(1px);
+        opacity: 0.5;
         width: clamp(80px, ${sizeFactor}vw, 200px);
         height: clamp(80px, ${sizeFactor}vw, 200px);
         content: '';
@@ -93,7 +108,9 @@ const Blob = ({
           ${Math.max(radiiFactor, sizeFactor / 3)}vw,
           70px
         );
+
         transform: rotate(${rotation}deg);
+        animation: ${float} 5s infinite;
       `}
     />
   );
@@ -114,14 +131,14 @@ export const HeroBackground = () => {
         variant="primary"
         sizeFactor={17}
         radiiFactor={3}
-        position={{ right: '30vw', bottom: '42px' }}
-        rotation={253}
+        position={{ right: '25vw', bottom: '-20px' }}
+        rotation={30}
       />
       <Blob
         variant="secondary"
         sizeFactor={6}
         radiiFactor={18}
-        position={{ left: '42vw', top: '33px' }}
+        position={{ left: '22vw', top: '33px' }}
         rotation={116}
       />
       <Blob
@@ -142,7 +159,7 @@ export const HeroBackground = () => {
         variant="warning"
         sizeFactor={12}
         radiiFactor={19}
-        position={{ left: '4vw', bottom: '12px' }}
+        position={{ left: '15vw', bottom: '12px' }}
         rotation={16}
       />
     </div>

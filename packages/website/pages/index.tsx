@@ -1,21 +1,13 @@
 import { css } from 'goober';
-import { useTheme, Box, H1, H3, H4, Text, Button, Switch } from 'flair-kit';
+import { useTheme, Box, H1, H3, Text, Button, Small } from 'flair-kit';
 
 import Link from 'next/link';
-import { ArrowRightIcon, SunIcon, MoonIcon } from '@heroicons/react/solid';
+import { ArrowRightIcon } from '@heroicons/react/solid';
 
-import { RenderOnMount } from '@/components/RenderOnMount/RenderOnMount';
 import { HeroBackground } from '@/components/Hero/Hero';
 
 export default function Home() {
-  const {
-    space,
-    colors,
-    mediaQuery,
-    transition,
-    colorScheme,
-    toggleColorScheme,
-  } = useTheme();
+  const { space, mediaQuery } = useTheme();
 
   return (
     <div>
@@ -27,6 +19,7 @@ export default function Home() {
           max-width: 1440px;
           width: 100%;
           margin: 0 auto;
+          isolation: isolate;
 
           ${mediaQuery.onTabletUp} {
             flex-direction: row;
@@ -36,31 +29,31 @@ export default function Home() {
         <HeroBackground />
         <div
           className={css`
-            flex: 4;
-            backdrop-filter: blur(2px);
             padding: ${space['3xl']} ${space['xl']};
+            margin: 0 auto;
+            width: 100%;
+            max-width: 70ch;
+            text-align: center;
+            z-index: 1;
           `}
         >
           <H1>
-            <Text gradient={['primary', 'secondary']}>FlairKit</Text> <br />
+            Build React apps with some{' '}
+            <Text gradient={['primary', 'secondary']}>flair</Text> ✨<br />
           </H1>
           <H3
             as="p"
             className={css`
-              font-weight: regular;
+              font-weight: 500;
             `}
           >
-            Collections of accessible React components to add some design{' '}
-            <Text
-              className={css`
-                font-weight: 700;
-              `}
-              gradient={['primary', 'secondary']}
-            >
-              flair
-            </Text>{' '}
-            ✨ to your websites.
+            Collections of <Text gradient={['secondary']}>ready-to-use</Text>,{' '}
+            <Text gradient={['success']}>accessible</Text> React components.
           </H3>
+
+          <Small as="p">
+            (Initially written as exercise. Well, you could use it too, I guess)
+          </Small>
 
           <Box margin={['2xl', '0']}>
             <Link href="/docs/space" passHref>
@@ -76,54 +69,6 @@ export default function Home() {
               </Button>
             </Link>
           </Box>
-        </div>
-        <div
-          className={css`
-            padding: ${space['3xl']} ${space['xl']};
-            flex: 3;
-            backdrop-filter: blur(2px);
-          `}
-        >
-          <div
-            className={css`
-              padding: ${space['3xl']};
-              margin: ${space['xl']};
-              border-radius: ${space['3xl']};
-              text-align: center;
-              transition: ${transition.default};
-              display: none;
-
-              ${mediaQuery.onTabletUp} {
-                margin: ${space['3xl']};
-                display: block;
-              }
-            `}
-          >
-            <H4 as="p">Comes with dark mode!</H4>
-            <div
-              className={css`
-                margin-top: ${space['2xl']};
-                display: flex;
-                justify-content: center;
-              `}
-            >
-              <RenderOnMount>
-                <Switch
-                  size="lg"
-                  enabled={colorScheme === 'dark'}
-                  icon={
-                    colorScheme === 'dark' ? (
-                      <MoonIcon fill={colors.primary[500].color} />
-                    ) : (
-                      <SunIcon fill={colors.secondary[700].color} />
-                    )
-                  }
-                  onChange={toggleColorScheme}
-                  label="Dark color scheme"
-                />
-              </RenderOnMount>
-            </div>
-          </div>
         </div>
       </div>
     </div>

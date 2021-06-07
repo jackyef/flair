@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { css } from 'goober';
 import Link from 'next/link';
 
@@ -10,29 +10,62 @@ import { Portal } from '../Portal/Portal';
 import { RenderOnMount } from '../RenderOnMount/RenderOnMount';
 import { Logo } from '../Logo/Logo';
 
-export const Header = () => {
+interface Props {
+  isHomepage?: boolean;
+}
+
+export const Header = ({ isHomepage = false }: Props) => {
+  const headerRef = useRef<HTMLDivElement>(null);
+  const [showingShadow, setShowingShadow] = useState(false);
   const { toggleColorScheme, colorScheme, space, colors, shadow, transition } =
     useTheme();
   const [showMobileNav, setShowMobileNav] = useState(false);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (headerRef.current) {
+        if (headerRef.current.offsetTop >= 20) {
+          if (!showingShadow) {
+            setShowingShadow(true);
+          }
+        } else {
+          if (showingShadow) {
+            setShowingShadow(false);
+          }
+        }
+      }
+    };
+
+    document.addEventListener('scroll', handleScroll);
+
+    return () => {
+      document.removeEventListener('scroll', handleScroll);
+    };
+  }, [showingShadow]);
+
   return (
     <header
+      ref={headerRef}
       className={css`
         position: sticky;
-        top: 0;
-        box-shadow: ${shadow.subtle};
+        top: ${isHomepage ? '-20px' : '0'};
+        box-shadow: ${!isHomepage || showingShadow
+          ? `${shadow.subtle}`
+          : 'none'};
         width: 100%;
         background: ${colors.background[800].color};
         transition: ${transition.default};
         z-index: 3;
         backdrop-filter: blur(3px);
-        opacity: 0.9;
+        opacity: 0.8;
       `}
     >
       <div
         className={css`
           display: flex;
-          padding: ${space.lg} ${space.xl};
+          padding: ${isHomepage
+            ? `calc(${space.lg} + 20px) ${space.xl} ${space.lg}`
+            : `${space.lg} ${space.xl}`};
           margin: 0 auto;
           max-width: 1440px;
           align-items: center;
@@ -58,7 +91,7 @@ export const Header = () => {
                   margin-right: ${space.lg};
                 `}
               />{' '}
-              FlairKit
+              {isHomepage ? '' : 'FlairKit'}
             </a>
           </Link>
         </H3>
