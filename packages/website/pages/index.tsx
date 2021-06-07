@@ -5,12 +5,14 @@ import Link from 'next/link';
 import { ArrowRightIcon } from '@heroicons/react/solid';
 
 import { HeroBackground } from '@/components/Hero/Hero';
+import { PageMetaTags } from '@/components/Seo/PageMetaTags';
 
 export default function Home() {
   const { space, mediaQuery } = useTheme();
 
   return (
     <div>
+      <PageMetaTags />
       <div
         className={css`
           position: relative;
@@ -29,7 +31,7 @@ export default function Home() {
         <HeroBackground />
         <div
           className={css`
-            padding: ${space['3xl']} ${space['xl']};
+            padding: clamp(${space['xl']}, 5vw, ${space['3xl']}) ${space['xl']};
             margin: 0 auto;
             width: 100%;
             max-width: 70ch;

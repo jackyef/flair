@@ -2,11 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { css } from 'goober';
 import Link from 'next/link';
 
-import { Button, Switch, useTheme, H3 } from 'flair-kit';
-import { SunIcon, MoonIcon, MenuIcon, XIcon } from '@heroicons/react/solid';
-import { RenderOnMobile } from '../MediaQuery/RenderOnMobile';
-import { MobileNav } from './MobileNav';
-import { Portal } from '../Portal/Portal';
+import { Switch, useTheme, H3 } from 'flair-kit';
+import { SunIcon, MoonIcon } from '@heroicons/react/solid';
 import { RenderOnMount } from '../RenderOnMount/RenderOnMount';
 import { Logo } from '../Logo/Logo';
 
@@ -19,7 +16,6 @@ export const Header = ({ isHomepage = false }: Props) => {
   const [showingShadow, setShowingShadow] = useState(false);
   const { toggleColorScheme, colorScheme, space, colors, shadow, transition } =
     useTheme();
-  const [showMobileNav, setShowMobileNav] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,7 +53,7 @@ export const Header = ({ isHomepage = false }: Props) => {
         transition: ${transition.default};
         z-index: 3;
         backdrop-filter: blur(3px);
-        opacity: 0.8;
+        opacity: 0.9;
       `}
     >
       <div
@@ -91,7 +87,7 @@ export const Header = ({ isHomepage = false }: Props) => {
                   margin-right: ${space.lg};
                 `}
               />{' '}
-              {isHomepage ? '' : 'FlairKit'}
+              {isHomepage ? '' : 'Flair'}
             </a>
           </Link>
         </H3>
@@ -111,39 +107,6 @@ export const Header = ({ isHomepage = false }: Props) => {
               label="Dark color scheme"
             />
           </RenderOnMount>
-          <Portal>
-            <RenderOnMobile>
-              {showMobileNav && (
-                <MobileNav onNavClick={() => setShowMobileNav(false)} />
-              )}
-              <div
-                className={css`
-                  position: fixed;
-                  z-index: 15;
-                  bottom: ${space.lg};
-                  right: ${space.lg};
-                `}
-              >
-                <Button
-                  className={css`
-                    margin-left: ${space.md};
-                  `}
-                  icon={
-                    showMobileNav ? (
-                      <XIcon width={24} height={24} />
-                    ) : (
-                      <MenuIcon width={24} height={24} />
-                    )
-                  }
-                  size="sm"
-                  onClick={() => {
-                    setShowMobileNav((prev) => !prev);
-                  }}
-                  variant="background"
-                />
-              </div>
-            </RenderOnMobile>
-          </Portal>
         </div>
       </div>
     </header>
