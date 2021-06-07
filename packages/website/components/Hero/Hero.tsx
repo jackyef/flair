@@ -131,35 +131,35 @@ export const HeroBackground = () => {
         variant="primary"
         sizeFactor={17}
         radiiFactor={3}
-        position={{ right: '25vw', bottom: '-20px' }}
+        position={{ right: '11vw', bottom: '-20px' }}
         rotation={30}
       />
       <Blob
         variant="secondary"
         sizeFactor={6}
         radiiFactor={18}
-        position={{ left: '22vw', top: '33px' }}
+        position={{ left: '8vw', top: '33px' }}
         rotation={116}
       />
       <Blob
         variant="error"
         sizeFactor={6}
         radiiFactor={4}
-        position={{ right: '21vw', top: '9px' }}
+        position={{ right: '7vw', top: '9px' }}
         rotation={193}
       />
       <Blob
         variant="success"
         sizeFactor={10}
         radiiFactor={6}
-        position={{ right: '18vw', bottom: '24px' }}
+        position={{ right: '4vw', bottom: '24px' }}
         rotation={193}
       />
       <Blob
         variant="warning"
         sizeFactor={12}
         radiiFactor={19}
-        position={{ left: '15vw', bottom: '12px' }}
+        position={{ left: '2vw', bottom: '12px' }}
         rotation={16}
       />
     </div>

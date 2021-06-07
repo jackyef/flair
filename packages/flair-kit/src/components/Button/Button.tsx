@@ -61,7 +61,7 @@ export const Button = ({
         box-shadow: 0 12px 6px -6px ${colors[variant][400].color};
         transition: ${transition.default};
       }
-      
+
       &:hover, &:focus {
         background-position: 100% 50%;
         transform: translateY(-4px) scale(1.1);
@@ -69,6 +69,11 @@ export const Button = ({
 
       &:hover&::after, &:focus&::after {
         opacity: 1;
+      }
+
+      &:active {
+        background-position: 0% 50%;
+        transform: translateY(0) scale(1);
       }
       `
       : `background: ${colors[variant][500].color};
