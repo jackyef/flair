@@ -8,6 +8,7 @@ import { DocsLayout } from '@/components/Layout/DocsLayout';
 import { ThemeProvider } from 'flair-kit';
 import { NProgressLoader } from '@/components/NProgressLoader/NProgressLoader';
 import { HomeLayout } from '@/components/Layout/HomeLayout';
+import { CommonMetaTags } from '@/components/Seo/CommonMetaTags';
 
 const ResetStyles = createGlobalStyles`
   html {
@@ -60,6 +61,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       <ResetStyles />
       <GlobalStyles />
       <ThemeProvider>
+        <CommonMetaTags />
         <NProgressLoader />
         <Layout>
           <Component {...pageProps} />
