@@ -1,7 +1,11 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const withOffline = require('next-offline');
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
+const { flowRight } = require('./utils/flow.js');
 
-module.exports = withOffline({
+const config = {
   /* regular next.js config options here */
   workboxOpts: {
     swDest: 'static/service-worker.js',
@@ -32,4 +36,6 @@ module.exports = withOffline({
       },
     ],
   },
-});
+};
+
+module.exports = flowRight(withOffline, withBundleAnalyzer)(config);

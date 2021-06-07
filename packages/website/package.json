@@ -5,9 +5,11 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "analyze": "ANALYZE=true next build"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^10.2.3",
     "@types/next": "^9.0.0",
     "@types/node": "^13.7.1",
     "@types/prettier": "^2.2.3",
