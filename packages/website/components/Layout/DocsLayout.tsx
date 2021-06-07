@@ -5,7 +5,7 @@ import { Header } from './Header';
 import { SideNav } from './SideNav';
 import { RenderOnMobileUp } from '../MediaQuery/RenderOnMobileUp';
 
-export const Layout: React.FC = ({ children }) => {
+export const DocsLayout: React.FC = ({ children }) => {
   const { space, mediaQuery } = useTheme();
 
   return (
@@ -32,7 +32,7 @@ export const Layout: React.FC = ({ children }) => {
           className={css`
             padding: 0 ${space.lg};
             flex: 1;
-            max-width: 100%;
+            width: 100%;
 
             ${mediaQuery.onMobileUp} {
               max-width: calc(100% - 280px - ${space.lg});

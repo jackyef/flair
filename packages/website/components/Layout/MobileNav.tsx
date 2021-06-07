@@ -38,6 +38,7 @@ export const MobileNav = ({ onNavClick }: Props) => {
         padding: ${space.lg};
         transition: ${transition.default};
         background: ${colors.background[800].color};
+        overflow-y: auto;
 
         & li {
           padding: ${space.md} ${space.lg};

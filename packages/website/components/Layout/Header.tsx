@@ -1,36 +1,77 @@
-import { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { css } from 'goober';
 import Link from 'next/link';
 
-import { Button, Switch, useTheme, H3 } from 'flair-kit';
-import { SunIcon, MoonIcon, MenuIcon, XIcon } from '@heroicons/react/solid';
-import { RenderOnMobile } from '../MediaQuery/RenderOnMobile';
-import { MobileNav } from './MobileNav';
-import { Portal } from '../Portal/Portal';
+import { Switch, useTheme, H3 } from 'flair-kit';
+import { SunIcon, MoonIcon } from '@heroicons/react/solid';
 import { RenderOnMount } from '../RenderOnMount/RenderOnMount';
 import { Logo } from '../Logo/Logo';
 
-export const Header = () => {
+interface Props {
+  isHomepage?: boolean;
+}
+
+export const Header = ({ isHomepage = false }: Props) => {
+  const headerRef = useRef<HTMLDivElement>(null);
+  const [showingShadow, setShowingShadow] = useState(false);
   const { toggleColorScheme, colorScheme, space, colors, shadow, transition } =
     useTheme();
-  const [showMobileNav, setShowMobileNav] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (headerRef.current) {
+        if (headerRef.current.offsetTop >= 20) {
+          if (!showingShadow) {
+            setShowingShadow(true);
+          }
+        } else {
+          if (showingShadow) {
+            setShowingShadow(false);
+          }
+        }
+      }
+    };
+
+    document.addEventListener('scroll', handleScroll);
+
+    return () => {
+      document.removeEventListener('scroll', handleScroll);
+    };
+  }, [showingShadow]);
 
   return (
     <header
+      ref={headerRef}
       className={css`
         position: sticky;
-        top: 0;
-        box-shadow: ${shadow.subtle};
+        top: ${isHomepage ? '-20px' : '0'};
         width: 100%;
-        background: ${colors.background[700].color};
+        background: ${colors.background[800].color};
         transition: ${transition.default};
         z-index: 3;
+        backdrop-filter: blur(3px);
+        opacity: 0.9;
+
+        &::after {
+          content: ' ';
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          box-shadow: ${shadow.subtle};
+          opacity: ${!isHomepage || showingShadow ? '1' : '0'};
+          transition: ${transition.default};
+          pointer-events: none;
+        }
       `}
     >
       <div
         className={css`
           display: flex;
-          padding: ${space.lg} ${space.xl};
+          padding: ${isHomepage
+            ? `calc(${space.lg} + 20px) ${space.xl} ${space.lg}`
+            : `${space.lg} ${space.xl}`};
           margin: 0 auto;
           max-width: 1440px;
           align-items: center;
@@ -56,7 +97,7 @@ export const Header = () => {
                   margin-right: ${space.lg};
                 `}
               />{' '}
-              FlairKit
+              {isHomepage ? '' : 'Flair'}
             </a>
           </Link>
         </H3>
@@ -76,39 +117,6 @@ export const Header = () => {
               label="Dark color scheme"
             />
           </RenderOnMount>
-          <Portal>
-            <RenderOnMobile>
-              {showMobileNav && (
-                <MobileNav onNavClick={() => setShowMobileNav(false)} />
-              )}
-              <div
-                className={css`
-                  position: fixed;
-                  z-index: 15;
-                  bottom: ${space.lg};
-                  right: ${space.lg};
-                `}
-              >
-                <Button
-                  className={css`
-                    margin-left: ${space.md};
-                  `}
-                  icon={
-                    showMobileNav ? (
-                      <XIcon width={24} height={24} />
-                    ) : (
-                      <MenuIcon width={24} height={24} />
-                    )
-                  }
-                  size="sm"
-                  onClick={() => {
-                    setShowMobileNav((prev) => !prev);
-                  }}
-                  variant="background"
-                />
-              </div>
-            </RenderOnMobile>
-          </Portal>
         </div>
       </div>
     </header>
