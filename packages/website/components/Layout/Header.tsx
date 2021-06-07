@@ -45,15 +45,25 @@ export const Header = ({ isHomepage = false }: Props) => {
       className={css`
         position: sticky;
         top: ${isHomepage ? '-20px' : '0'};
-        box-shadow: ${!isHomepage || showingShadow
-          ? `${shadow.subtle}`
-          : 'none'};
         width: 100%;
         background: ${colors.background[800].color};
         transition: ${transition.default};
         z-index: 3;
         backdrop-filter: blur(3px);
         opacity: 0.9;
+
+        &::after {
+          content: ' ';
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          box-shadow: ${shadow.subtle};
+          opacity: ${!isHomepage || showingShadow ? '1' : '0'};
+          transition: ${transition.default};
+          pointer-events: none;
+        }
       `}
     >
       <div
