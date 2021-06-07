@@ -73,7 +73,8 @@ export default function Home() {
         >
           <H1>
             Build React apps with some{' '}
-            <Text gradient={['primary', 'secondary']}>flair</Text> ✨<br />
+            <Text gradient={['primary', 'secondary']}>flair</Text>
+            <br />
           </H1>
           <H3
             as="p"
