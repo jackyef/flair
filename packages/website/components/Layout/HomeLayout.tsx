@@ -1,10 +1,14 @@
 import { css } from 'goober';
 
-import { useTheme } from 'flair-kit';
+import { Anchor, useTheme } from 'flair-kit';
+import { GlobeAltIcon } from '@heroicons/react/solid';
+
 import { Header } from './Header';
+import { GitHubIcon } from '../icons/GitHubIcon';
+import { TwitterIcon } from '../icons/TwitterIcon';
 
 export const HomeLayout: React.FC = ({ children }) => {
-  const { space } = useTheme();
+  const { space, colors, mediaQuery } = useTheme();
 
   return (
     <div
@@ -29,9 +33,40 @@ export const HomeLayout: React.FC = ({ children }) => {
           {children}
           <footer
             className={css`
-              height: ${space['4xl']};
+              text-align: center;
+              padding: ${space['xl']} 0;
+
+              > a:not(:last-child) {
+                margin-right: ${space.xl};
+              }
+
+              ${mediaQuery.onTabletUp} {
+                padding: ${space['xl']} 0 ${space['3xl']};
+              }
             `}
-          />
+          >
+            <Anchor href="https://jackyef.com/">
+              <GlobeAltIcon
+                fill={colors.foreground[800].color}
+                width={20}
+                height={20}
+              />
+            </Anchor>
+            <Anchor href="https://github.com/jackyef/flair">
+              <GitHubIcon
+                fill={colors.foreground[800].color}
+                width={20}
+                height={20}
+              />
+            </Anchor>
+            <Anchor href="https://twitter.com/jackyef__">
+              <TwitterIcon
+                fill={colors.foreground[800].color}
+                width={20}
+                height={20}
+              />
+            </Anchor>
+          </footer>
         </div>
       </div>
     </div>
