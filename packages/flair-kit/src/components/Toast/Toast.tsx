@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { css } from 'goober';
 import { useTheme } from '../../context/theme';
+import { Button } from '../Button';
 import { H6 } from '../Typography';
 
 import type { Toast as ToastType } from './context';
@@ -57,17 +58,22 @@ export const Toast: React.FC<Props> = ({
         `}
       >
         <H6 aria-live="assertive">{title}</H6>
-        <button
+        <Button
           aria-label="Dismiss toast notification"
           onClick={onDismiss}
           className={css`
-            background: inherit;
-            color: inherit;
-            font-size: ${fontSizes.h3};
+            width: 40px;
+            height: 40px;
+            font-size: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transform: translateX(10px);
           `}
+          variant={variant}
         >
           &times;
-        </button>
+        </Button>
       </div>
       <div aria-live="polite">{description}</div>
     </motion.div>
