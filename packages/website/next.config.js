@@ -7,6 +7,7 @@ const { flowRight } = require('./utils/flow.js');
 const isProd = process.env.NODE_ENV !== 'development';
 
 const config = {
+  target: 'serverless',
   /* regular next.js config options here */
   workboxOpts: {
     swDest: 'static/service-worker.js',
