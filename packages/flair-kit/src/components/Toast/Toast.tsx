@@ -16,7 +16,7 @@ export const Toast: React.FC<Props> = ({
   title,
   onDismiss,
 }) => {
-  const { space, colors, mediaQuery, radii, fontSizes } = useTheme();
+  const { space, colors, mediaQuery, radii } = useTheme();
 
   return (
     <motion.div
