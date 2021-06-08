@@ -1,11 +1,17 @@
 {
   "version": 2,
+  "rewrites": [
+    {
+      "source": "/service-worker.js",
+      "destination": "/_next/static/service-worker.js"
+    }
+  ],
   "headers": [
     {
       "source": "/service-worker.js",
       "headers": [
         {
-          "key": "cache-control",
+          "key": "Cache-Control",
           "value": "public, max-age=43200, immutable"
         },
         {
@@ -13,16 +19,6 @@
           "value": "/"
         }
       ]
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/service-worker.js",
-      "destination": "/_next/static/service-worker.js"
-    },
-    {
-      "source": "/sitemap.xml",
-      "destination": "/_next/static/sitemap.xml"
     }
   ]
 }
