@@ -44,6 +44,6 @@ const config = {
 const passThrough = (c) => c;
 
 module.exports = flowRight(
-  isProd ? withOffline : passThrough,
-  isProd ? withBundleAnalyzer : passThrough
+  withOffline,
+  process.env.ANALYZE === 'true' ? withBundleAnalyzer : passThrough
 )(config);
