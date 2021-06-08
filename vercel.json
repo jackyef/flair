@@ -14,5 +14,15 @@
         }
       ]
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/service-worker.js",
+      "destination": "/_next/static/service-worker.js"
+    },
+    {
+      "source": "/sitemap.xml",
+      "destination": "/_next/static/sitemap.xml"
+    }
   ]
 }
