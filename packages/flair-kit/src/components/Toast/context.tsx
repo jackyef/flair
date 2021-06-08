@@ -8,7 +8,6 @@ export type Toast = {
   id: string;
   title?: string;
   description?: string;
-  icon?: JSX.Element;
   variant?: MappedColorVariant;
 };
 

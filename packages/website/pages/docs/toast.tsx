@@ -9,7 +9,14 @@ export default function Text() {
 
       <P>
         <Code>Toast</Code> components are usually used to provide a feedback
-        after a user interaction.
+        after a user interaction. A <Code>Toast</Code> can be added by calling{' '}
+        <Code>addToast()</Code> provided by the <Code>useToast()</Code> hook.
+      </P>
+
+      <P>
+        Similar to how it is with most components, a<Code>variant</Code> can be
+        passed to <Code>addToast()</Code> to customize the look of the{' '}
+        <Code>Toast</Code>.
       </P>
 
       <CodePlayground
@@ -20,52 +27,31 @@ export default function Text() {
 
             const toastData = {
               title: 'Some toast title',
-              description: 'The description of the toast',
-              icon: null,
+              description: 'The description of the toast'
             }
 
+            const variants = ['primary', 'secondary', 'success', 'error', 'warning', 'foreground', 'background', 'dark', 'light'];
+
             return (
-              <div>
-                <Button 
-                  onClick={() => {
-                    addToast({ variant: "primary", ...toastData })
-                  }} 
-                  variant="primary"
-                >
-                  Primary toast
-                </Button>
-                <Button 
-                  onClick={() => {
-                    addToast({ variant: "secondary", ...toastData })
-                  }} 
-                  variant="secondary"
-                >
-                  Secondary toast
-                </Button>
-                <Button 
-                  onClick={() => {
-                    addToast({ variant: "success", ...toastData })
-                  }} 
-                  variant="success"
-                >
-                  Success toast ✅ 
-                </Button>
-                <Button 
-                  onClick={() => {
-                    addToast({ variant: "error", ...toastData })
-                  }} 
-                  variant="error"
-                >
-                  Success toast ❌ 
-                </Button>
-                <Button 
-                  onClick={() => {
-                    addToast({ variant: "warning", ...toastData })
-                  }} 
-                  variant="warning"
-                >
-                  Warning toast ⚠️ 
-                </Button>
+              <div className={css({
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: '16px',
+              })}>
+                {variants.map((v, i) => (
+                  <Button 
+                    onClick={() => {
+                      addToast({ 
+                        variant: v, 
+                        title: \`\${v} toast title\`,
+                        description: 'The description of the toast' 
+                      })
+                    }} 
+                    variant={v}
+                  >
+                    {v} toast
+                  </Button>
+                ))}
               </div>
             )
           }

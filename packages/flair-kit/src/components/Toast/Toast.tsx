@@ -1,4 +1,5 @@
-import { css, keyframes } from 'goober';
+import { motion } from 'framer-motion';
+import { css } from 'goober';
 import { useTheme } from '../../context/theme';
 import { H6 } from '../Typography';
 
@@ -16,20 +17,20 @@ export const Toast: React.FC<Props> = ({
 }) => {
   const { space, colors, mediaQuery, radii, fontSizes } = useTheme();
 
-  const entering = keyframes`
-    from {
-      transform: translateX(400px) scale(0.2);
-      opacity: 0;
-    }
-
-    to {
-      transform: translateX(0) scale(1);
-      opacity: 1;
-    }
-  `;
-
   return (
-    <div
+    <motion.div
+      layout
+      transition={{ duration: 0.3 }}
+      initial={{
+        opacity: 0,
+        x: 400,
+        y: 200,
+      }}
+      animate={{
+        opacity: 1,
+        x: 0,
+        y: 0,
+      }}
       className={css`
         background: ${colors[variant][500].color};
         color: ${colors[variant][500].contrastingColor};
@@ -37,7 +38,6 @@ export const Toast: React.FC<Props> = ({
         margin-bottom: ${space.md};
         max-width: 100%;
         border-radius: ${radii.lg};
-        animation: ${entering} 0.5s;
 
         ${mediaQuery.onMobileUp} {
           max-width: 400px;
@@ -70,6 +70,6 @@ export const Toast: React.FC<Props> = ({
         </button>
       </div>
       <div aria-live="polite">{description}</div>
-    </div>
+    </motion.div>
   );
 };
