@@ -12,8 +12,8 @@ export const Tooltip: React.FC<Props> = ({ children, label, ariaLabel }) => {
   return (
     <_Tooltip
       className={css`
-        padding: ${space.sm};
-        border-radius: ${radii.sm};
+        padding: ${space.sm} ${space.md};
+        border-radius: ${radii.md};
         box-shadow: ${shadow.subtle};
         background: ${colors.background[500].color};
         color: ${colors.background[500].contrastingColor};

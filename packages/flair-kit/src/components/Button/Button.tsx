@@ -27,7 +27,7 @@ export const Button = ({
   children,
   ...rest
 }: Props) => {
-  const { colors, space, transition } = useTheme();
+  const { colors, space, transition, radii } = useTheme();
   const hasNoChildren = !Boolean(children);
   const getGradient = () => {
     const c = variant;
@@ -98,10 +98,10 @@ export const Button = ({
         return css`
           font-size: 1rem;
           padding: ${space.md} ${space.lg};
-          border-radius: 12px;
+          border-radius: ${radii.lg};
 
           &::after {
-            border-radius: 12px;
+            border-radius: ${radii.lg};
           }
 
           & svg {
@@ -114,10 +114,10 @@ export const Button = ({
         return css`
           font-size: 1rem;
           padding: ${space.lg} ${space.lg};
-          border-radius: 16px;
+          border-radius: ${radii['xl']};
 
           &::after {
-            border-radius: 16px;
+            border-radius: ${radii['xl']};
           }
 
           & svg {
@@ -130,10 +130,10 @@ export const Button = ({
         return css`
           font-size: 1.3rem;
           padding: ${space.xl} ${space['2xl']};
-          border-radius: 20px;
+          border-radius: ${radii['2xl']};
 
           &::after {
-            border-radius: 20px;
+            border-radius: ${radii['2xl']};
           }
 
           & svg {
