@@ -1,6 +1,7 @@
 import { createContext, useContext, useState } from 'react';
 
 import { GlobalStyles } from '../components/GlobalStyles/GlobalStyles';
+import { ToastProvider } from '../components/Toast';
 import { fontSizes, lineHeights, mobileFontSizes } from '../theme/fonts';
 import { mediaQuery } from '../theme/mediaQuery';
 import { radii } from '../theme/radii';
@@ -54,9 +55,9 @@ export const ThemeProvider: React.FC = ({ children }) => {
   const [colorScheme, setColorScheme] = useState<ColorScheme>(
     canUseDOM
       ? (document.documentElement.getAttribute(
-          DOCUMENT_DATA_ATTRIBUTE,
+          DOCUMENT_DATA_ATTRIBUTE
         ) as ColorScheme)
-      : 'light',
+      : 'light'
   );
 
   const toggleScheme = () => {
@@ -85,7 +86,7 @@ export const ThemeProvider: React.FC = ({ children }) => {
           colors: colorMapping,
         }}
       >
-        {children}
+        <ToastProvider>{children}</ToastProvider>
       </ThemeContext.Provider>
     </>
   );

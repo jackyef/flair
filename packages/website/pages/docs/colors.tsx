@@ -1,6 +1,16 @@
 import React, { Fragment } from 'react';
 import { css } from 'goober';
-import { H1, H2, H3, P, Code, Button, useTheme, Anchor } from 'flair-kit';
+import {
+  H1,
+  H2,
+  H3,
+  P,
+  Code,
+  Button,
+  useTheme,
+  Anchor,
+  useToast,
+} from 'flair-kit';
 import type { MappedColorVariant, ColorShadeVariant } from 'flair-kit';
 
 import { RenderOnMount } from '@/components/RenderOnMount/RenderOnMount';
@@ -37,7 +47,15 @@ const ColorSwatchContainer: React.FC = ({ children }) => {
   );
 };
 
-const renderColorSquares = (colorNames: MappedColorVariant[], colors: any) => {
+const renderColorSquares = (
+  colorNames: MappedColorVariant[],
+  colors: any,
+  onCopy: (
+    colorCode: string,
+    variant: MappedColorVariant,
+    shadeStep: ColorShadeVariant
+  ) => void
+) => {
   return colorNames.map((colorName) => {
     const colorShade = colors[colorName];
 
@@ -74,7 +92,7 @@ const renderColorSquares = (colorNames: MappedColorVariant[], colors: any) => {
                 tabIndex={0}
                 onClick={() => {
                   copyToClipboard(colorValue);
-                  // TODO: Add a toast showing that the color value has been copied
+                  onCopy(colorValue, colorName, shadeStep);
                 }}
               >
                 <div>
@@ -100,7 +118,8 @@ const renderColorSquares = (colorNames: MappedColorVariant[], colors: any) => {
 };
 
 export default function Colors() {
-  const { toggleColorScheme, colors, space } = useTheme();
+  const { colorScheme, toggleColorScheme, colors, space } = useTheme();
+  const { addToast } = useToast();
 
   const colorNames = Object.keys(colors) as unknown as MappedColorVariant[];
 
@@ -109,6 +128,39 @@ export default function Colors() {
   );
 
   const fgAndBgColors = ['foreground', 'background'] as MappedColorVariant[];
+
+  const onCopy = (
+    colorValue: string,
+    variant: MappedColorVariant,
+    shadeStep: ColorShadeVariant
+  ) => {
+    let shouldUseLightToast =
+      colorScheme === 'dark' ? shadeStep <= 500 : shadeStep > 500;
+
+    if (variant === 'dark' || variant === 'foreground')
+      shouldUseLightToast = true;
+    else if (variant === 'light' || variant === 'background')
+      shouldUseLightToast = false;
+
+    addToast({
+      variant: shouldUseLightToast ? 'light' : 'dark',
+      title: 'Copied!',
+      description: (
+        <>
+          The color code{' '}
+          <span
+            style={{
+              color: colorValue,
+              fontFamily: 'monospace',
+            }}
+          >
+            {colorValue}
+          </span>{' '}
+          has been copied to your clipboard.
+        </>
+      ),
+    });
+  };
 
   return (
     <Main>
@@ -158,7 +210,7 @@ export default function Colors() {
         color: <Code>colors[variant][intensity].contrastingColor</Code>.
       </P>
 
-      {renderColorSquares(variantColors, colors)}
+      {renderColorSquares(variantColors, colors, onCopy)}
 
       <H2>Foreground and background colors</H2>
 
@@ -169,7 +221,7 @@ export default function Colors() {
         foreground colors are light-variant.
       </P>
 
-      {renderColorSquares(fgAndBgColors, colors)}
+      {renderColorSquares(fgAndBgColors, colors, onCopy)}
     </Main>
   );
 }

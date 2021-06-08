@@ -4,6 +4,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
 const { flowRight } = require('./utils/flow.js');
+const isProd = process.env.NODE_ENV !== 'development';
 
 const config = {
   /* regular next.js config options here */
@@ -38,4 +39,9 @@ const config = {
   },
 };
 
-module.exports = flowRight(withOffline, withBundleAnalyzer)(config);
+const passThrough = (c) => c;
+
+module.exports = flowRight(
+  isProd ? withOffline : passThrough,
+  isProd ? withBundleAnalyzer : passThrough
+)(config);

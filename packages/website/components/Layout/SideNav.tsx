@@ -36,7 +36,10 @@ export const docsSections = [
   },
   {
     sectionTitle: 'Feedback',
-    pages: [{ label: 'Tooltip', href: '/docs/tooltip' }],
+    pages: [
+      { label: 'Tooltip', href: '/docs/tooltip' },
+      { label: 'Toast', href: '/docs/toast' },
+    ],
   },
 ];
 
