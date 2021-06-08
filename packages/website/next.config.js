@@ -7,6 +7,8 @@ const { flowRight } = require('./utils/flow.js');
 const isProd = !!process.env.AWS_REGION; // This variable only exist on vercel deployments
 
 const config = {
+  target: 'serverless',
+
   /* regular next.js config options here */
   workboxOpts: {
     swDest: 'static/service-worker.js',
