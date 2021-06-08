@@ -8,6 +8,7 @@ import type { Toast as ToastType } from './context';
 
 interface Props extends ToastType {
   onDismiss: () => void;
+  isLatest?: boolean;
 }
 
 export const Toast: React.FC<Props> = ({
@@ -15,22 +16,25 @@ export const Toast: React.FC<Props> = ({
   description,
   title,
   onDismiss,
+  isLatest = false,
 }) => {
   const { space, colors, mediaQuery, radii } = useTheme();
+  const hiddenState = {
+    opacity: 0,
+    x: 400,
+    scale: 0.5,
+  };
 
   return (
     <motion.div
       layout
       transition={{ duration: 0.3 }}
-      initial={{
-        opacity: 0,
-        x: 400,
-        y: 200,
-      }}
+      initial={hiddenState}
+      exit={hiddenState}
       animate={{
         opacity: 1,
         x: 0,
-        y: 0,
+        scale: isLatest ? 1 : 0.95,
       }}
       className={css`
         background: ${colors[variant][500].color};
@@ -39,6 +43,7 @@ export const Toast: React.FC<Props> = ({
         margin-bottom: ${space.md};
         max-width: 100%;
         border-radius: ${radii.lg};
+        pointer-events: auto;
 
         ${mediaQuery.onMobileUp} {
           max-width: 400px;

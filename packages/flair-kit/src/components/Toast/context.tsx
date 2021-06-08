@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 
 import { MappedColorVariant } from '../../utils/getColorMapping';
 import { Toast } from './Toast';
@@ -46,6 +46,27 @@ export const ToastProvider: React.FC = ({ children }) => {
     setToasts((prev) => prev.filter((toast) => toast.id !== toastId));
   };
 
+  useEffect(() => {
+    const handler = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        // Remove oldest toast when 'Escape' is pressed
+        setToasts((prev) => {
+          const newToasts = [...prev];
+
+          newToasts.shift();
+
+          return newToasts;
+        });
+      }
+    };
+
+    document.addEventListener('keydown', handler);
+
+    return () => {
+      document.removeEventListener('keydown', handler);
+    };
+  }, []);
+
   return (
     <ToastContext.Provider
       value={{
@@ -56,13 +77,14 @@ export const ToastProvider: React.FC = ({ children }) => {
     >
       {children}
       <ToastContainer>
-        {toasts.map((toast) => (
+        {toasts.map((toast, index) => (
           <Toast
             key={toast.id}
             {...toast}
             onDismiss={() => {
               removeToast(toast.id);
             }}
+            isLatest={index === toasts.length - 1}
           />
         ))}
       </ToastContainer>

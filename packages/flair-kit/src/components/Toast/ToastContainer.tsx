@@ -1,4 +1,4 @@
-import { AnimateSharedLayout, motion } from 'framer-motion';
+import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
 import { css } from 'goober';
 import { useTheme } from '../../context/theme';
 
@@ -11,6 +11,12 @@ export const ToastContainer: React.FC = ({ children }) => {
         layout
         className={css`
           position: fixed;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          pointer-events: none;
+          max-height: 100%;
+          top: 0;
           bottom: ${space['lg']};
           left: ${space['lg']};
           right: ${space['lg']};
@@ -22,13 +28,7 @@ export const ToastContainer: React.FC = ({ children }) => {
           }
         `}
       >
-        <div
-          className={css`
-            position: relative;
-          `}
-        >
-          {children}
-        </div>
+        <AnimatePresence>{children}</AnimatePresence>
       </motion.div>
     </AnimateSharedLayout>
   );
