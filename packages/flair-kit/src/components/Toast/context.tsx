@@ -7,7 +7,7 @@ import { ToastContainer } from './ToastContainer';
 export type Toast = {
   id: string;
   title?: string;
-  description?: string;
+  description?: string | JSX.Element;
   variant?: MappedColorVariant;
 };
 
@@ -45,8 +45,6 @@ export const ToastProvider: React.FC = ({ children }) => {
   const removeToast: ToastContext['removeToast'] = (toastId) => {
     setToasts((prev) => prev.filter((toast) => toast.id !== toastId));
   };
-
-  console.log({ toasts });
 
   return (
     <ToastContext.Provider

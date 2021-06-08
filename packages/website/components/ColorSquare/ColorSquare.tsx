@@ -10,11 +10,13 @@ export const ColorSquare: React.FC<ColorSquareProps> = ({
   background,
   color,
   children,
+  ...props
 }) => {
   const { space, shadow } = useTheme();
 
   return (
     <button
+      {...props}
       className={css`
         width: 176px;
         height: 100px;
