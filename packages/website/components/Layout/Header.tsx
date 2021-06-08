@@ -73,7 +73,7 @@ export const Header = ({ isHomepage = false }: Props) => {
             ? `calc(${space.lg} + 20px) ${space.xl} ${space.lg}`
             : `${space.lg} ${space.xl}`};
           margin: 0 auto;
-          max-width: 1440px;
+          max-width: ${isHomepage ? '1100px' : '1440px'};
           align-items: center;
           justify-content: space-between;
           width: 100%;
