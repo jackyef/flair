@@ -2,7 +2,7 @@
  "name": "Flair",
  "short_name": "Flair",
  "start_url": "/",
- "description: "Flair (flair-kit) is a library of ready-to-use, accessible React components",
+ "description": "Flair (flair-kit) is a library of ready-to-use, accessible React components",
  "background_color": "#fff",
  "theme_color": "#445FE9",
  "display": "standalone",
