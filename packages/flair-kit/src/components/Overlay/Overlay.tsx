@@ -1,22 +1,14 @@
-import { css, keyframes } from 'goober';
+import { css } from 'goober';
+import { forwardRef } from 'react';
 
 import { useTheme } from '../../context/theme';
 
-export const Overlay: React.FC = (props) => {
+export const Overlay = forwardRef<HTMLDivElement>((props, ref) => {
   const { colors } = useTheme();
-
-  const enterAnimation = keyframes`
-    from {
-      opacity: 0;
-    }
-
-    to {
-      opacity: 0.3;
-    }
-  `;
 
   return (
     <div
+      ref={ref}
       className={css`
         position: fixed;
         backdrop-filter: blur(3px);
@@ -26,9 +18,12 @@ export const Overlay: React.FC = (props) => {
         left: 0;
         right: 0;
         bottom: 0;
-        animation: ${enterAnimation} 0.3s;
       `}
       {...props}
     />
   );
-};
+});
+
+if (process.env.NODE_ENV === 'development') {
+  Overlay.displayName = 'Overlay';
+}
