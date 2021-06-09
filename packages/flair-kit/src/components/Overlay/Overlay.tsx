@@ -1,9 +1,19 @@
-import { css } from 'goober';
+import { css, keyframes } from 'goober';
 
 import { useTheme } from '../../context/theme';
 
 export const Overlay: React.FC = (props) => {
   const { colors } = useTheme();
+
+  const enterAnimation = keyframes`
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 0.3;
+    }
+  `;
 
   return (
     <div
@@ -16,6 +26,7 @@ export const Overlay: React.FC = (props) => {
         left: 0;
         right: 0;
         bottom: 0;
+        animation: ${enterAnimation} 0.3s;
       `}
       {...props}
     />

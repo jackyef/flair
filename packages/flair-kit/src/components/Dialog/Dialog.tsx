@@ -5,6 +5,7 @@ import { css } from 'goober';
 import { useTheme } from '../../context/theme';
 import { H3 } from '../Typography';
 import { Overlay } from '../Overlay';
+import { AnimatePresence, motion } from 'framer-motion';
 
 interface Props {
   isOpen: boolean;
@@ -12,13 +13,18 @@ interface Props {
   onClose: () => void;
 }
 
+const hiddenState = {
+  opacity: 0,
+  y: -20,
+};
+
 export const Dialog: React.FC<Props> = ({
   children,
   title,
   onClose,
   isOpen = false,
 }) => {
-  const { space, colors, shadow, radii } = useTheme();
+  const { space, colors, shadow, radii, mediaQuery } = useTheme();
 
   const hidden = css`
     display: none;
@@ -37,6 +43,7 @@ export const Dialog: React.FC<Props> = ({
             left: 0;
             right: 0;
             bottom: 0;
+            padding: 0 ${space.lg};
           `,
           {
             [hidden]: !isOpen,
@@ -64,25 +71,39 @@ export const Dialog: React.FC<Props> = ({
             &#8203;
           </span>
 
-          <div
-            className={css`
-              display: inline-block;
-              width: 100%;
-              max-width: 500px;
-              padding: ${space.xl};
-              margin: ${space['2xl']} 0;
-              overflow: hidden;
-              text-align: left;
-              vertical-align: middle;
-              box-shadow: ${shadow.subtle};
-              border-radius: ${radii.xl};
-              background: ${colors.background[700].color};
-              isolation: isolate;
-            `}
-          >
-            <_Dialog.Title as={H3}>{title}</_Dialog.Title>
-            {children}
-          </div>
+          <AnimatePresence>
+            <motion.div
+              transition={{ duration: 0.3 }}
+              initial={hiddenState}
+              exit={hiddenState}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              className={css`
+                display: inline-block;
+                width: 100%;
+                max-width: 100%;
+                padding: ${space.xl};
+                margin: ${space['2xl']} 0;
+                overflow: hidden;
+                text-align: left;
+                vertical-align: middle;
+                box-shadow: ${shadow.subtle};
+                border-radius: ${radii.xl};
+                background: ${colors.background[700].color};
+                isolation: isolate;
+
+                ${mediaQuery.onMobileUp} {
+                  max-width: 50vw;
+                  max-width: clamp(400px, 50vw, 600px);
+                }
+              `}
+            >
+              <_Dialog.Title as={H3}>{title}</_Dialog.Title>
+              {children}
+            </motion.div>
+          </AnimatePresence>
         </div>
       </_Dialog>
     </>
