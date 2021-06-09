@@ -1,4 +1,4 @@
-import React, { cloneElement } from 'react';
+import React, { cloneElement, forwardRef } from 'react';
 import cx from 'classnames';
 import { css } from 'goober';
 
@@ -15,35 +15,39 @@ interface Props
   isCTA?: boolean;
 }
 
-export const Button = ({
-  isAnchorButton = false,
-  className,
-  icon,
-  iconPosition = 'left',
-  size = 'md',
-  variant = 'primary',
-  isCTA = false,
-  disabled,
-  children,
-  ...rest
-}: Props) => {
-  const { colors, space, transition, radii } = useTheme();
-  const hasNoChildren = !Boolean(children);
-  const getGradient = () => {
-    const c = variant;
+export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, Props>(
+  (
+    {
+      isAnchorButton = false,
+      className,
+      icon,
+      iconPosition = 'left',
+      size = 'md',
+      variant = 'primary',
+      isCTA = false,
+      disabled,
+      children,
+      ...rest
+    },
+    ref
+  ) => {
+    const { colors, space, transition, radii } = useTheme();
+    const hasNoChildren = !Boolean(children);
+    const getGradient = () => {
+      const c = variant;
 
-    return `linear-gradient(70deg, ${colors[c][500].color}, ${colors[c][700].color}, ${colors[c][500].color})`;
-  };
+      return `linear-gradient(70deg, ${colors[c][500].color}, ${colors[c][700].color}, ${colors[c][500].color})`;
+    };
 
-  const base = css`
-    cursor: pointer;
-    border: none;
-    display: inline-flex;
-    align-items: center;
-    transition: ${transition.default}, ${transition.transform};
+    const base = css`
+      cursor: pointer;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      transition: ${transition.default}, ${transition.transform};
 
-    ${isCTA
-      ? `background-image: ${getGradient()};
+      ${isCTA
+        ? `background-image: ${getGradient()};
       background-size: 200%;
       color: ${colors[variant][700].contrastingColor};
       background-position: 0% 50%;
@@ -76,7 +80,7 @@ export const Button = ({
         transform: translateY(0) scale(1);
       }
       `
-      : `background: ${colors[variant][500].color};
+        : `background: ${colors[variant][500].color};
       color: ${colors[variant][500].contrastingColor};
       
       &:hover,
@@ -86,16 +90,16 @@ export const Button = ({
       }
       `}
 
-    &[disabled] {
-      opacity: 0.7;
-      cursor: not-allowed;
-    }
-  `;
+      &[disabled] {
+        opacity: 0.7;
+        cursor: not-allowed;
+      }
+    `;
 
-  const getSizeClass = () => {
-    switch (size) {
-      case 'sm':
-        return css`
+    const getSizeClass = () => {
+      switch (size) {
+        case 'sm':
+          return css`
           font-size: 1rem;
           padding: ${space.md} ${space.lg};
           border-radius: ${radii.lg};
@@ -106,12 +110,12 @@ export const Button = ({
 
           & svg {
             margin-${iconPosition === 'left' ? 'right' : 'left'}: ${
-          hasNoChildren ? '0' : space.sm
-        };
+            hasNoChildren ? '0' : space.sm
+          };
           }
         `;
-      case 'md':
-        return css`
+        case 'md':
+          return css`
           font-size: 1rem;
           padding: ${space.lg} ${space.lg};
           border-radius: ${radii['xl']};
@@ -122,12 +126,12 @@ export const Button = ({
 
           & svg {
             margin-${iconPosition === 'left' ? 'right' : 'left'}: ${
-          hasNoChildren ? '0' : space.md
-        };
+            hasNoChildren ? '0' : space.md
+          };
           }
         `;
-      case 'lg':
-        return css`
+        case 'lg':
+          return css`
           font-size: 1.3rem;
           padding: ${space.xl} ${space['2xl']};
           border-radius: ${radii['2xl']};
@@ -138,49 +142,56 @@ export const Button = ({
 
           & svg {
             margin-${iconPosition === 'left' ? 'right' : 'left'}: ${
-          hasNoChildren ? '0' : space.lg
-        };
+            hasNoChildren ? '0' : space.lg
+          };
           }
         `;
-    }
-  };
+      }
+    };
 
-  const getIconSize = () => {
-    switch (size) {
-      case 'sm':
-        return 20;
-      case 'md':
-        return 24;
-      case 'lg':
-        return 40;
-    }
-  };
+    const getIconSize = () => {
+      switch (size) {
+        case 'sm':
+          return 20;
+        case 'md':
+          return 24;
+        case 'lg':
+          return 40;
+      }
+    };
 
-  const iconSize = getIconSize();
+    const iconSize = getIconSize();
 
-  const Element = isAnchorButton ? 'a' : 'button';
+    const Element = isAnchorButton ? 'a' : 'button';
 
-  return (
-    <>
-      <Element
-        className={cx(base, getSizeClass(), className)}
-        disabled={disabled}
-        {...rest}
-      >
-        {icon &&
-          iconPosition === 'left' &&
-          cloneElement(icon, {
-            width: icon.props.width || iconSize,
-            height: icon.props.height || iconSize,
-          })}
-        {children}
-        {icon &&
-          iconPosition === 'right' &&
-          cloneElement(icon, {
-            width: icon.props.width || iconSize,
-            height: icon.props.height || iconSize,
-          })}
-      </Element>
-    </>
-  );
-};
+    return (
+      <>
+        <Element
+          // @ts-expect-error
+          ref={ref}
+          className={cx(base, getSizeClass(), className)}
+          disabled={disabled}
+          {...rest}
+        >
+          {icon &&
+            iconPosition === 'left' &&
+            cloneElement(icon, {
+              width: icon.props.width || iconSize,
+              height: icon.props.height || iconSize,
+            })}
+          {children}
+          {icon &&
+            iconPosition === 'right' &&
+            cloneElement(icon, {
+              width: icon.props.width || iconSize,
+              height: icon.props.height || iconSize,
+            })}
+        </Element>
+      </>
+    );
+  }
+);
+
+if (process.env.NODE_ENV === 'development') {
+  Button.displayName = 'Button';
+}

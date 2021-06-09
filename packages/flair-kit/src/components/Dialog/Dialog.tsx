@@ -11,6 +11,7 @@ interface Props {
   isOpen: boolean;
   title: string;
   onClose: () => void;
+  initialFocus?: React.MutableRefObject<HTMLElement | null> | undefined;
 }
 
 const hiddenState = {
@@ -23,6 +24,7 @@ export const Dialog: React.FC<Props> = ({
   title,
   onClose,
   isOpen = false,
+  initialFocus,
 }) => {
   const { space, colors, shadow, radii, mediaQuery } = useTheme();
 
@@ -33,6 +35,7 @@ export const Dialog: React.FC<Props> = ({
   return (
     <>
       <_Dialog
+        initialFocus={initialFocus}
         open={isOpen}
         as="div"
         className={cx(
@@ -73,7 +76,7 @@ export const Dialog: React.FC<Props> = ({
 
           <AnimatePresence>
             <motion.div
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.2 }}
               initial={hiddenState}
               exit={hiddenState}
               animate={{
@@ -91,7 +94,7 @@ export const Dialog: React.FC<Props> = ({
                 vertical-align: middle;
                 box-shadow: ${shadow.subtle};
                 border-radius: ${radii.xl};
-                background: ${colors.background[700].color};
+                background: ${colors.background[600].color};
                 isolation: isolate;
 
                 ${mediaQuery.onMobileUp} {
