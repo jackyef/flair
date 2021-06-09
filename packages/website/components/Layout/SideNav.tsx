@@ -41,6 +41,10 @@ export const docsSections = [
       { label: 'Toast', href: '/docs/toast' },
     ],
   },
+  {
+    sectionTitle: 'Overlay',
+    pages: [{ label: 'Dialog', href: '/docs/dialog' }],
+  },
 ];
 
 const MobileNavWrapper = () => {

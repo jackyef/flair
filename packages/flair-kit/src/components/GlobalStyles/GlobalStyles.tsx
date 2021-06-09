@@ -27,13 +27,10 @@ export const GlobalStyles = createGlobalStyles`
     text-decoration: inherit;
   }
 
-  @media (prefers-reduced-motion: no-preference) {
-    *:focus, a:focus {
-      transition: outline-offset .25s ease;
-      outline-offset: 4px;
-    }
+  *:focus {
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.6) !important;
+    outline: none !important;
   }
-
 
   /* ReachUI related styles */
   :root {
