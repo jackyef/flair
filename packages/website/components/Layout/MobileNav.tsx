@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, useRef, useEffect } from 'react';
 import { css } from 'goober';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -14,6 +14,7 @@ interface Props {
 }
 
 export const MobileNav = ({ onClose, isOpen = false }: Props) => {
+  const activeAnchorRef = useRef<HTMLAnchorElement>(null);
   const router = useRouter();
   const { space, colors, transition } = useTheme();
 
@@ -26,8 +27,26 @@ export const MobileNav = ({ onClose, isOpen = false }: Props) => {
     }
   `;
 
+  // Make sure the active link is visible in viewport
+  useEffect(() => {
+    if (isOpen) {
+      requestAnimationFrame(() => {
+        if (activeAnchorRef.current) {
+          activeAnchorRef.current.scrollIntoView({
+            block: 'end',
+          });
+        }
+      });
+    }
+  }, [isOpen]);
+
   return (
-    <Drawer isOpen={isOpen} onClose={onClose} title="Directory">
+    <Drawer
+      isOpen={isOpen}
+      onClose={onClose}
+      title="Directory"
+      initialFocus={activeAnchorRef}
+    >
       <nav
         className={css`
           transition: ${transition.default};
@@ -65,7 +84,12 @@ export const MobileNav = ({ onClose, isOpen = false }: Props) => {
                   return (
                     <li key={href} className={cx({ [activeLink]: isActive })}>
                       <Link href={href} passHref>
-                        <Anchor onClick={onClose}>{label}</Anchor>
+                        <Anchor
+                          ref={isActive ? activeAnchorRef : undefined}
+                          onClick={onClose}
+                        >
+                          {label}
+                        </Anchor>
                       </Link>
                     </li>
                   );
