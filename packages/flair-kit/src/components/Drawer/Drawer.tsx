@@ -104,7 +104,7 @@ export const Drawer: React.FC<Props> = ({
                 width: 100%;
                 max-width: 100%;
                 max-height: 70vh;
-                padding: 0 ${space.xl} ${space.xl};
+                padding: 0 0 ${space.xl};
                 overflow-y: auto;
                 text-align: left;
                 vertical-align: middle;
@@ -127,9 +127,8 @@ export const Drawer: React.FC<Props> = ({
                   justify-content: space-between;
                   align-items: center;
                   top: 0;
-                  padding-right: ${space['md']};
+                  padding: ${space['lg']} ${space['xl']};
                   padding-top: calc(${space['xl']} + 3px);
-                  padding-bottom: ${space['lg']};
                   background: inherit;
 
                   > h3 {
@@ -155,7 +154,13 @@ export const Drawer: React.FC<Props> = ({
                   &times;
                 </Button>
               </div>
-              {children}
+              <div
+                className={css`
+                  padding: 0 ${space.xl};
+                `}
+              >
+                {children}
+              </div>
             </div>
           </Transition.Child>
         </div>
