@@ -1,88 +1,92 @@
+import { Fragment, useRef, useEffect } from 'react';
 import { css } from 'goober';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import cx from 'classnames';
 
-import { Anchor, H5, H6, useTheme } from 'flair-kit';
+import { Anchor, Drawer, H6, useTheme } from 'flair-kit';
 
 import { docsSections } from './SideNav';
 
 interface Props {
-  onNavClick: () => void;
+  onClose: () => void;
+  isOpen?: boolean;
 }
 
-export const MobileNav = ({ onNavClick }: Props) => {
+export const MobileNav = ({ onClose, isOpen = false }: Props) => {
+  const activeAnchorRef = useRef<HTMLAnchorElement>(null);
   const router = useRouter();
   const { space, colors, transition } = useTheme();
 
   const activeLink = css`
     background: ${colors.background[500].color};
-
-    & > a,
-    & > a:hover {
-      color: ${colors.background[500].contrastingColor};
-    }
+    color: ${colors.background[500].contrastingColor} !important;
   `;
 
-  return (
-    <nav
-      className={css`
-        position: fixed;
-        z-index: 10;
-        top: 60px;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        display: flex;
-        flex-direction: column;
-        padding: ${space.lg};
-        transition: ${transition.default};
-        background: ${colors.background[800].color};
-        overflow-y: auto;
-
-        & li {
-          padding: ${space.md} ${space.lg};
-          border-radius: 0 8px 8px 0;
-          margin-bottom: ${space.md};
-          transition: ${transition.default};
+  // Make sure the active link is visible in viewport
+  useEffect(() => {
+    if (isOpen) {
+      requestAnimationFrame(() => {
+        if (activeAnchorRef.current) {
+          activeAnchorRef.current.scrollIntoView(false);
         }
+      });
+    }
+  }, [isOpen]);
 
-        & li:hover {
-          background: ${colors.background[600].color};
+  return (
+    <Drawer
+      isOpen={isOpen}
+      onClose={onClose}
+      title="Directory"
+      initialFocus={activeAnchorRef}
+    >
+      <nav
+        className={css`
+          transition: ${transition.default};
 
-          & > a,
-          & > a:hover {
+          & a {
+            display: block;
+            transition: ${transition.default};
+            padding: ${space.md} ${space.lg};
+            border-radius: 0 8px 8px 0;
+            margin-bottom: ${space.md};
+            transition: ${transition.default};
+          }
+
+          & a:hover {
+            background: ${colors.background[600].color};
             color: ${colors.background[600].contrastingColor};
           }
-        }
+        `}
+      >
+        {docsSections.map((section) => {
+          return (
+            <Fragment key={section.sectionTitle}>
+              <H6>{section.sectionTitle}</H6>
+              <ul>
+                {section.pages.map(({ label, href }) => {
+                  const isActive = router.pathname === href;
 
-        & a {
-          display: block;
-          transition: ${transition.default};
-        }
-      `}
-    >
-      <H5>Directory</H5>
-      {docsSections.map((section) => {
-        return (
-          <>
-            <H6>{section.sectionTitle}</H6>
-            <ul>
-              {section.pages.map(({ label, href }) => {
-                const isActive = router.pathname === href;
-
-                return (
-                  <li key={href} className={cx({ [activeLink]: isActive })}>
-                    <Link href={href} passHref>
-                      <Anchor onClick={onNavClick}>{label}</Anchor>
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </>
-        );
-      })}
-    </nav>
+                  return (
+                    <li key={href}>
+                      <Link href={href} passHref>
+                        <Anchor
+                          ref={isActive ? activeAnchorRef : undefined}
+                          className={cx({ [activeLink]: isActive })}
+                          onClick={onClose}
+                        >
+                          {label}
+                        </Anchor>
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </Fragment>
+          );
+        })}
+      </nav>
+    </Drawer>
   );
 };

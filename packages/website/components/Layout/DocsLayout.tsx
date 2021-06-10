@@ -3,7 +3,6 @@ import { css } from 'goober';
 import { useTheme } from 'flair-kit';
 import { Header } from './Header';
 import { SideNav } from './SideNav';
-import { RenderOnMobileUp } from '../MediaQuery/RenderOnMobileUp';
 
 export const DocsLayout: React.FC = ({ children }) => {
   const { space, mediaQuery } = useTheme();
@@ -25,9 +24,7 @@ export const DocsLayout: React.FC = ({ children }) => {
           margin: 0 auto;
         `}
       >
-        <RenderOnMobileUp>
-          <SideNav />
-        </RenderOnMobileUp>
+        <SideNav />
         <div
           className={css`
             padding: 0 ${space.lg};

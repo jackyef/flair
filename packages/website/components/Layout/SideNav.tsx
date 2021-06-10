@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useState } from 'react';
 import { css } from 'goober';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -8,8 +8,8 @@ import { MenuIcon, XIcon } from '@heroicons/react/solid';
 import { Button, Anchor, H5, H6, useTheme } from 'flair-kit';
 
 import { RenderOnMobile } from '../MediaQuery/RenderOnMobile';
+import { RenderOnMobileUp } from '../MediaQuery/RenderOnMobileUp';
 import { MobileNav } from './MobileNav';
-import { Portal } from '../Portal/Portal';
 
 export const docsSections = [
   {
@@ -43,7 +43,10 @@ export const docsSections = [
   },
   {
     sectionTitle: 'Overlay',
-    pages: [{ label: 'Dialog', href: '/docs/dialog' }],
+    pages: [
+      { label: 'Dialog', href: '/docs/dialog' },
+      { label: 'Drawer', href: '/docs/drawer' },
+    ],
   },
 ];
 
@@ -51,31 +54,13 @@ const MobileNavWrapper = () => {
   const [showMobileNav, setShowMobileNav] = useState(false);
   const { space } = useTheme();
 
-  /* Scroll-locking */
-  useEffect(() => {
-    if (!showMobileNav) return;
-
-    const overflow = document.documentElement.style.overflow;
-    const paddingRight = document.documentElement.style.paddingRight;
-
-    const scrollbarWidth =
-      window.innerWidth - document.documentElement.clientWidth;
-
-    document.documentElement.style.overflow = 'hidden';
-    document.documentElement.style.paddingRight = `${scrollbarWidth}px`;
-
-    return () => {
-      document.documentElement.style.overflow = overflow;
-      document.documentElement.style.paddingRight = paddingRight;
-    };
-  }, [showMobileNav]);
-
   return (
-    <Portal>
-      <RenderOnMobile>
-        {showMobileNav && (
-          <MobileNav onNavClick={() => setShowMobileNav(false)} />
-        )}
+    <RenderOnMobile>
+      <MobileNav
+        onClose={() => setShowMobileNav(false)}
+        isOpen={showMobileNav}
+      />
+      {!showMobileNav && (
         <div
           className={css`
             position: fixed;
@@ -102,8 +87,8 @@ const MobileNavWrapper = () => {
             variant="background"
           />
         </div>
-      </RenderOnMobile>
-    </Portal>
+      )}
+    </RenderOnMobile>
   );
 };
 
@@ -113,7 +98,7 @@ export const SideNav = () => {
 
   const activeLink = css`
     background: ${colors.background[500].color};
-    color: ${colors.background[500].contrastingColor};
+    color: ${colors.background[500].contrastingColor} !important;
   `;
 
   // Navbar height isn't fixed. This is so that when user change their browser font settings,
@@ -123,57 +108,59 @@ export const SideNav = () => {
 
   return (
     <>
-      <nav
-        className={css`
-          position: sticky;
-          top: calc(${navbarHeight});
-          display: flex;
-          flex-direction: column;
-          width: 280px;
-          flex-shrink: 0;
+      <RenderOnMobileUp>
+        <nav
+          className={css`
+            position: sticky;
+            top: calc(${navbarHeight});
+            display: flex;
+            flex-direction: column;
+            width: 280px;
+            flex-shrink: 0;
 
-          /* Some manual stuffs required to achieve alignment */
-          padding: calc(${space.xl} + 4px) ${space.xl};
+            /* Some manual stuffs required to achieve alignment */
+            padding: calc(${space.xl} + 4px) ${space.xl};
 
-          & a {
-            display: block;
-            transition: ${transition.default};
-            padding: ${space.md} ${space.lg};
-            border-radius: 0 8px 8px 0;
-            margin-bottom: ${space.md};
-            transition: ${transition.default};
-          }
+            & a {
+              display: block;
+              transition: ${transition.default};
+              padding: ${space.md} ${space.lg};
+              border-radius: 0 8px 8px 0;
+              margin-bottom: ${space.md};
+              transition: ${transition.default};
+            }
 
-          & a:hover {
-            background: ${colors.background[600].color};
-            color: ${colors.background[600].contrastingColor};
-          }
-        `}
-      >
-        <H5>Directory</H5>
-        {docsSections.map((section) => {
-          return (
-            <Fragment key={section.sectionTitle}>
-              <H6>{section.sectionTitle}</H6>
-              <ul>
-                {section.pages.map(({ label, href }) => {
-                  const isActive = router.pathname === href;
+            & a:hover {
+              background: ${colors.background[600].color};
+              color: ${colors.background[600].contrastingColor};
+            }
+          `}
+        >
+          <H5>Directory</H5>
+          {docsSections.map((section) => {
+            return (
+              <Fragment key={section.sectionTitle}>
+                <H6>{section.sectionTitle}</H6>
+                <ul>
+                  {section.pages.map(({ label, href }) => {
+                    const isActive = router.pathname === href;
 
-                  return (
-                    <li key={href}>
-                      <Link href={href} passHref>
-                        <Anchor className={cx({ [activeLink]: isActive })}>
-                          {label}
-                        </Anchor>
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
-            </Fragment>
-          );
-        })}
-      </nav>
+                    return (
+                      <li key={href}>
+                        <Link href={href} passHref>
+                          <Anchor className={cx({ [activeLink]: isActive })}>
+                            {label}
+                          </Anchor>
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </Fragment>
+            );
+          })}
+        </nav>
+      </RenderOnMobileUp>
 
       <MobileNavWrapper />
     </>
