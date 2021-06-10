@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useState } from 'react';
 import { css } from 'goober';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -54,59 +54,45 @@ const MobileNavWrapper = () => {
   const [showMobileNav, setShowMobileNav] = useState(false);
   const { space } = useTheme();
 
-  /* Scroll-locking */
-  useEffect(() => {
-    if (!showMobileNav) return;
-
-    const overflow = document.documentElement.style.overflow;
-    const paddingRight = document.documentElement.style.paddingRight;
-
-    const scrollbarWidth =
-      window.innerWidth - document.documentElement.clientWidth;
-
-    document.documentElement.style.overflow = 'hidden';
-    document.documentElement.style.paddingRight = `${scrollbarWidth}px`;
-
-    return () => {
-      document.documentElement.style.overflow = overflow;
-      document.documentElement.style.paddingRight = paddingRight;
-    };
-  }, [showMobileNav]);
-
   return (
-    <Portal>
-      <RenderOnMobile>
-        {showMobileNav && (
-          <MobileNav onNavClick={() => setShowMobileNav(false)} />
-        )}
-        <div
-          className={css`
-            position: fixed;
-            z-index: 15;
-            bottom: ${space.lg};
-            right: ${space.lg};
-          `}
-        >
-          <Button
-            className={css`
-              margin-left: ${space.md};
-            `}
-            icon={
-              showMobileNav ? (
-                <XIcon width={24} height={24} />
-              ) : (
-                <MenuIcon width={24} height={24} />
-              )
-            }
-            size="sm"
-            onClick={() => {
-              setShowMobileNav((prev) => !prev);
-            }}
-            variant="background"
-          />
-        </div>
-      </RenderOnMobile>
-    </Portal>
+    <RenderOnMobile>
+      <MobileNav
+        onClose={() => setShowMobileNav(false)}
+        isOpen={showMobileNav}
+      />
+      {!showMobileNav && (
+        <Portal>
+          <RenderOnMobile>
+            <div
+              className={css`
+                position: fixed;
+                z-index: 15;
+                bottom: ${space.lg};
+                right: ${space.lg};
+              `}
+            >
+              <Button
+                className={css`
+                  margin-left: ${space.md};
+                `}
+                icon={
+                  showMobileNav ? (
+                    <XIcon width={24} height={24} />
+                  ) : (
+                    <MenuIcon width={24} height={24} />
+                  )
+                }
+                size="sm"
+                onClick={() => {
+                  setShowMobileNav((prev) => !prev);
+                }}
+                variant="background"
+              />
+            </div>
+          </RenderOnMobile>
+        </Portal>
+      )}
+    </RenderOnMobile>
   );
 };
 

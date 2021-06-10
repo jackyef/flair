@@ -144,7 +144,7 @@ export const Drawer: React.FC<Props> = ({
                   className={css`
                     width: 40px;
                     height: 40px;
-                    font-size: 1.5rem;
+                    font-size: 1.5rem !important;
                     display: inline-flex;
                     align-items: center;
                     justify-content: center;
