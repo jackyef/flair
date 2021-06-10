@@ -41,6 +41,10 @@ export const docsSections = [
       { label: 'Toast', href: '/docs/toast' },
     ],
   },
+  {
+    sectionTitle: 'Overlay',
+    pages: [{ label: 'Dialog', href: '/docs/dialog' }],
+  },
 ];
 
 const MobileNavWrapper = () => {
@@ -109,11 +113,7 @@ export const SideNav = () => {
 
   const activeLink = css`
     background: ${colors.background[500].color};
-
-    & > a,
-    & > a:hover {
-      color: ${colors.background[500].contrastingColor};
-    }
+    color: ${colors.background[500].contrastingColor};
   `;
 
   // Navbar height isn't fixed. This is so that when user change their browser font settings,
@@ -135,25 +135,18 @@ export const SideNav = () => {
           /* Some manual stuffs required to achieve alignment */
           padding: calc(${space.xl} + 4px) ${space.xl};
 
-          & li {
+          & a {
+            display: block;
+            transition: ${transition.default};
             padding: ${space.md} ${space.lg};
             border-radius: 0 8px 8px 0;
             margin-bottom: ${space.md};
             transition: ${transition.default};
           }
 
-          & li:hover {
+          & a:hover {
             background: ${colors.background[600].color};
-
-            & > a,
-            & > a:hover {
-              color: ${colors.background[600].contrastingColor};
-            }
-          }
-
-          & a {
-            display: block;
-            transition: ${transition.default};
+            color: ${colors.background[600].contrastingColor};
           }
         `}
       >
@@ -167,9 +160,11 @@ export const SideNav = () => {
                   const isActive = router.pathname === href;
 
                   return (
-                    <li key={href} className={cx({ [activeLink]: isActive })}>
+                    <li key={href}>
                       <Link href={href} passHref>
-                        <Anchor>{label}</Anchor>
+                        <Anchor className={cx({ [activeLink]: isActive })}>
+                          {label}
+                        </Anchor>
                       </Link>
                     </li>
                   );

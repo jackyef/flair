@@ -36,8 +36,14 @@ export const HomeLayout: React.FC = ({ children }) => {
               text-align: center;
               padding: ${space['xl']} 0;
 
+              > a {
+                padding: ${space.md};
+                display: inline-flex;
+                align-items: center;
+              }
+
               > a:not(:last-child) {
-                margin-right: ${space.xl};
+                margin-right: ${space.lg};
               }
 
               ${mediaQuery.onTabletUp} {

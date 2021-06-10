@@ -2,7 +2,7 @@ import { H1, P, Code } from 'flair-kit';
 import { Main } from '@/components/Main/Main';
 import { CodePlayground } from '@/components/CodePlayground/CodePlayground';
 
-export default function Text() {
+export default function Toast() {
   return (
     <Main>
       <H1>Toast</H1>
