@@ -162,6 +162,10 @@ const _CustomEditor = ({ code: _code, onChange, theme }: LiveProps) => {
                 left: ${space.lg};
                 white-space: pre;
                 width: calc(100% - ${space.lg});
+
+                &:focus {
+                  box-shadow: none !important;
+                }
               `}
               onChange={(e) => updateContent(e.target.value)}
               onScroll={handleScroll}
