@@ -59,7 +59,6 @@ export const Drawer: React.FC<Props> = ({
         as="div"
         className={css`
           position: fixed;
-          overflow-y: auto;
           left: 0;
           right: 0;
           bottom: 0;
@@ -105,24 +104,12 @@ export const Drawer: React.FC<Props> = ({
                 width: 100%;
                 max-width: 100%;
                 max-height: 70vh;
-                overflow-y: auto;
                 padding: 0 ${space.xl} ${space.xl};
-                overflow: hidden;
+                overflow-y: auto;
                 text-align: left;
                 vertical-align: middle;
                 border-radius: ${radii.xl} ${radii.xl} 0 0;
-                isolation: isolate;
-
-                &::before {
-                  z-index: -1;
-                  content: ' ';
-                  position: absolute;
-                  top: 0;
-                  bottom: 0;
-                  left: 0;
-                  right: 0;
-                  background: ${colors.background[700].color};
-                }
+                background: ${colors.background[700].color};
 
                 ${mediaQuery.onMobileUp} {
                   height: 100vh;
@@ -133,34 +120,41 @@ export const Drawer: React.FC<Props> = ({
                 }
               `}
             >
-              <Button
-                aria-label="Close drawer"
-                onClick={onClose}
+              <div
                 className={css`
-                  position: absolute;
-                  top: ${space['xl']};
-                  right: ${space['2xl']};
-                  width: 40px;
-                  height: 40px;
-                  font-size: 1.5rem;
-                  display: inline-flex;
+                  position: sticky;
+                  display: flex;
+                  justify-content: space-between;
                   align-items: center;
-                  justify-content: center;
-                  transform: translateX(10px);
-                `}
-                variant="background"
-              >
-                &times;
-              </Button>
-              <_Dialog.Title
-                as={H3}
-                className={css`
-                  padding-right: ${space['3xl']};
-                  margin-top: calc(${space['xl']} + 3px);
+                  top: 0;
+                  padding-right: ${space['md']};
+                  padding-top: calc(${space['xl']} + 3px);
+                  padding-bottom: ${space['lg']};
+                  background: inherit;
+
+                  > h3 {
+                    margin: 0;
+                  }
                 `}
               >
-                {title}&#8203;
-              </_Dialog.Title>
+                <_Dialog.Title as={H3}>{title}&#8203;</_Dialog.Title>
+                <Button
+                  aria-label="Close drawer"
+                  onClick={onClose}
+                  className={css`
+                    width: 40px;
+                    height: 40px;
+                    font-size: 1.5rem;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    transform: translateX(10px);
+                  `}
+                  variant="background"
+                >
+                  &times;
+                </Button>
+              </div>
               {children}
             </div>
           </Transition.Child>

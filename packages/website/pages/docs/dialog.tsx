@@ -25,9 +25,9 @@ export default function DialogPage() {
       </P>
 
       <P>
-        Click anywhere on the overlay will call the <Code>onClose</Code> prop to
-        close the <Code>Dialog</Code>. Pressing the <kbd>Esc</kbd> key also has
-        the same effect.
+        Clicking anywhere on the overlay will call the <Code>onClose</Code> prop
+        to close the <Code>Dialog</Code>. Pressing the <kbd>Esc</kbd> key also
+        has the same effect.
       </P>
 
       <CodePlayground
