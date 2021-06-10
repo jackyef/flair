@@ -28,9 +28,7 @@ export const MobileNav = ({ onClose, isOpen = false }: Props) => {
     if (isOpen) {
       requestAnimationFrame(() => {
         if (activeAnchorRef.current) {
-          activeAnchorRef.current.scrollIntoView({
-            block: 'end',
-          });
+          activeAnchorRef.current.scrollIntoView(false);
         }
       });
     }
