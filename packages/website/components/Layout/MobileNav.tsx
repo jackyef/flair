@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { css } from 'goober';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -55,7 +56,7 @@ export const MobileNav = ({ onClose, isOpen = false }: Props) => {
       >
         {docsSections.map((section) => {
           return (
-            <>
+            <Fragment key={section.sectionTitle}>
               <H6>{section.sectionTitle}</H6>
               <ul>
                 {section.pages.map(({ label, href }) => {
@@ -70,7 +71,7 @@ export const MobileNav = ({ onClose, isOpen = false }: Props) => {
                   );
                 })}
               </ul>
-            </>
+            </Fragment>
           );
         })}
       </nav>
