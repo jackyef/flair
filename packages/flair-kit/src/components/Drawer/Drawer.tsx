@@ -28,12 +28,20 @@ export const Drawer: React.FC<Props> = ({
   `;
   const hiddenCss = css`
     opacity: 0;
-    transform: translateX(-200px);
+    transform: translateY(20vh);
+
+    ${mediaQuery.onMobileUp} {
+      transform: translateX(-200px);
+    }
   `;
 
   const visibleCss = css`
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
+
+    ${mediaQuery.onMobileUp} {
+      transform: translateX(0);
+    }
   `;
 
   const overlayHiddenCss = css`
@@ -52,17 +60,20 @@ export const Drawer: React.FC<Props> = ({
         className={css`
           position: fixed;
           overflow-y: auto;
-          top: 0;
           left: 0;
           right: 0;
           bottom: 0;
           padding: 0;
+          top: 0;
         `}
         onClose={onClose}
       >
         <div
           className={css`
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
           `}
         >
           <Transition.Child
@@ -93,13 +104,13 @@ export const Drawer: React.FC<Props> = ({
                 display: inline-block;
                 width: 100%;
                 max-width: 100%;
-                height: 100vh;
+                max-height: 70vh;
                 overflow-y: auto;
-                padding: 0 ${space.xl};
+                padding: 0 ${space.xl} ${space.xl};
                 overflow: hidden;
                 text-align: left;
                 vertical-align: middle;
-                border-radius: 0 ${radii.xl} ${radii.xl} 0;
+                border-radius: ${radii.xl} ${radii.xl} 0 0;
                 isolation: isolate;
 
                 &::before {
@@ -110,14 +121,15 @@ export const Drawer: React.FC<Props> = ({
                   bottom: 0;
                   left: 0;
                   right: 0;
-                  backdrop-filter: blur(8px);
                   background: ${colors.background[700].color};
-                  opacity: 0.8;
                 }
 
                 ${mediaQuery.onMobileUp} {
+                  height: 100vh;
+                  max-height: 100vh;
                   max-width: 50vw;
                   max-width: clamp(400px, 50vw, 600px);
+                  border-radius: 0 ${radii.xl} ${radii.xl} 0;
                 }
               `}
             >
