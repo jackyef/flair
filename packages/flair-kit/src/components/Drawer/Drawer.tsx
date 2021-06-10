@@ -89,6 +89,7 @@ export const Drawer: React.FC<Props> = ({
             <div
               className={css`
                 position: relative;
+                isolation: isolate;
                 display: inline-block;
                 width: 100%;
                 max-width: 100%;
@@ -99,8 +100,20 @@ export const Drawer: React.FC<Props> = ({
                 text-align: left;
                 vertical-align: middle;
                 border-radius: 0 ${radii.xl} ${radii.xl} 0;
-                background: ${colors.background[700].color};
                 isolation: isolate;
+
+                &::before {
+                  z-index: -1;
+                  content: ' ';
+                  position: absolute;
+                  top: 0;
+                  bottom: 0;
+                  left: 0;
+                  right: 0;
+                  backdrop-filter: blur(8px);
+                  background: ${colors.background[700].color};
+                  opacity: 0.8;
+                }
 
                 ${mediaQuery.onMobileUp} {
                   max-width: 50vw;
