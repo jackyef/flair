@@ -120,7 +120,7 @@ export default function DrawerPage() {
             return (
               <div>
                 <Button onClick={openDrawer}>
-                  Open dialog
+                  Open drawer
                 </Button>
                 <Drawer 
                   isOpen={isOpen}
