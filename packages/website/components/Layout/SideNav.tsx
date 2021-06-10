@@ -43,7 +43,10 @@ export const docsSections = [
   },
   {
     sectionTitle: 'Overlay',
-    pages: [{ label: 'Dialog', href: '/docs/dialog' }],
+    pages: [
+      { label: 'Dialog', href: '/docs/dialog' },
+      { label: 'Drawer', href: '/docs/drawer' },
+    ],
   },
 ];
 
