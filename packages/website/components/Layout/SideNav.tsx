@@ -8,8 +8,8 @@ import { MenuIcon, XIcon } from '@heroicons/react/solid';
 import { Button, Anchor, H5, H6, useTheme } from 'flair-kit';
 
 import { RenderOnMobile } from '../MediaQuery/RenderOnMobile';
+import { RenderOnMobileUp } from '../MediaQuery/RenderOnMobileUp';
 import { MobileNav } from './MobileNav';
-import { Portal } from '../Portal/Portal';
 
 export const docsSections = [
   {
@@ -61,36 +61,32 @@ const MobileNavWrapper = () => {
         isOpen={showMobileNav}
       />
       {!showMobileNav && (
-        <Portal>
-          <RenderOnMobile>
-            <div
-              className={css`
-                position: fixed;
-                z-index: 15;
-                bottom: ${space.lg};
-                right: ${space.lg};
-              `}
-            >
-              <Button
-                className={css`
-                  margin-left: ${space.md};
-                `}
-                icon={
-                  showMobileNav ? (
-                    <XIcon width={24} height={24} />
-                  ) : (
-                    <MenuIcon width={24} height={24} />
-                  )
-                }
-                size="sm"
-                onClick={() => {
-                  setShowMobileNav((prev) => !prev);
-                }}
-                variant="background"
-              />
-            </div>
-          </RenderOnMobile>
-        </Portal>
+        <div
+          className={css`
+            position: fixed;
+            z-index: 15;
+            bottom: ${space.lg};
+            right: ${space.lg};
+          `}
+        >
+          <Button
+            className={css`
+              margin-left: ${space.md};
+            `}
+            icon={
+              showMobileNav ? (
+                <XIcon width={24} height={24} />
+              ) : (
+                <MenuIcon width={24} height={24} />
+              )
+            }
+            size="sm"
+            onClick={() => {
+              setShowMobileNav((prev) => !prev);
+            }}
+            variant="background"
+          />
+        </div>
       )}
     </RenderOnMobile>
   );
@@ -112,57 +108,59 @@ export const SideNav = () => {
 
   return (
     <>
-      <nav
-        className={css`
-          position: sticky;
-          top: calc(${navbarHeight});
-          display: flex;
-          flex-direction: column;
-          width: 280px;
-          flex-shrink: 0;
+      <RenderOnMobileUp>
+        <nav
+          className={css`
+            position: sticky;
+            top: calc(${navbarHeight});
+            display: flex;
+            flex-direction: column;
+            width: 280px;
+            flex-shrink: 0;
 
-          /* Some manual stuffs required to achieve alignment */
-          padding: calc(${space.xl} + 4px) ${space.xl};
+            /* Some manual stuffs required to achieve alignment */
+            padding: calc(${space.xl} + 4px) ${space.xl};
 
-          & a {
-            display: block;
-            transition: ${transition.default};
-            padding: ${space.md} ${space.lg};
-            border-radius: 0 8px 8px 0;
-            margin-bottom: ${space.md};
-            transition: ${transition.default};
-          }
+            & a {
+              display: block;
+              transition: ${transition.default};
+              padding: ${space.md} ${space.lg};
+              border-radius: 0 8px 8px 0;
+              margin-bottom: ${space.md};
+              transition: ${transition.default};
+            }
 
-          & a:hover {
-            background: ${colors.background[600].color};
-            color: ${colors.background[600].contrastingColor};
-          }
-        `}
-      >
-        <H5>Directory</H5>
-        {docsSections.map((section) => {
-          return (
-            <Fragment key={section.sectionTitle}>
-              <H6>{section.sectionTitle}</H6>
-              <ul>
-                {section.pages.map(({ label, href }) => {
-                  const isActive = router.pathname === href;
+            & a:hover {
+              background: ${colors.background[600].color};
+              color: ${colors.background[600].contrastingColor};
+            }
+          `}
+        >
+          <H5>Directory</H5>
+          {docsSections.map((section) => {
+            return (
+              <Fragment key={section.sectionTitle}>
+                <H6>{section.sectionTitle}</H6>
+                <ul>
+                  {section.pages.map(({ label, href }) => {
+                    const isActive = router.pathname === href;
 
-                  return (
-                    <li key={href}>
-                      <Link href={href} passHref>
-                        <Anchor className={cx({ [activeLink]: isActive })}>
-                          {label}
-                        </Anchor>
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
-            </Fragment>
-          );
-        })}
-      </nav>
+                    return (
+                      <li key={href}>
+                        <Link href={href} passHref>
+                          <Anchor className={cx({ [activeLink]: isActive })}>
+                            {label}
+                          </Anchor>
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </Fragment>
+            );
+          })}
+        </nav>
+      </RenderOnMobileUp>
 
       <MobileNavWrapper />
     </>
