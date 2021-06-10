@@ -20,7 +20,7 @@ export const Dialog: React.FC<Props> = ({
   isOpen = false,
   initialFocus,
 }) => {
-  const { space, colors, shadow, radii, mediaQuery, transition } = useTheme();
+  const { space, colors, radii, mediaQuery, transition } = useTheme();
 
   const transitionCss = css`
     transition: ${transition.default}, ${transition.tamerTransform};
@@ -40,7 +40,7 @@ export const Dialog: React.FC<Props> = ({
   `;
 
   const overlayVisibleCss = css`
-    opacity: 0.3;
+    opacity: 1;
   `;
 
   return (
@@ -108,9 +108,8 @@ export const Dialog: React.FC<Props> = ({
                 overflow: hidden;
                 text-align: left;
                 vertical-align: middle;
-                box-shadow: ${shadow.subtle};
                 border-radius: ${radii.xl};
-                background: ${colors.background[600].color};
+                background: ${colors.background[700].color};
                 isolation: isolate;
 
                 ${mediaQuery.onMobileUp} {
