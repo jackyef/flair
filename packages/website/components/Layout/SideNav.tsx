@@ -98,7 +98,7 @@ export const SideNav = () => {
 
   const activeLink = css`
     background: ${colors.background[500].color};
-    color: ${colors.background[500].contrastingColor};
+    color: ${colors.background[500].contrastingColor} !important;
   `;
 
   // Navbar height isn't fixed. This is so that when user change their browser font settings,

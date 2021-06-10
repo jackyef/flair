@@ -20,11 +20,7 @@ export const MobileNav = ({ onClose, isOpen = false }: Props) => {
 
   const activeLink = css`
     background: ${colors.background[500].color};
-
-    & > a,
-    & > a:hover {
-      color: ${colors.background[500].contrastingColor};
-    }
+    color: ${colors.background[500].contrastingColor} !important;
   `;
 
   // Make sure the active link is visible in viewport
@@ -51,25 +47,18 @@ export const MobileNav = ({ onClose, isOpen = false }: Props) => {
         className={css`
           transition: ${transition.default};
 
-          & li {
+          & a {
+            display: block;
+            transition: ${transition.default};
             padding: ${space.md} ${space.lg};
             border-radius: 0 8px 8px 0;
             margin-bottom: ${space.md};
             transition: ${transition.default};
           }
 
-          & li:hover {
+          & a:hover {
             background: ${colors.background[600].color};
-
-            & > a,
-            & > a:hover {
-              color: ${colors.background[600].contrastingColor};
-            }
-          }
-
-          & a {
-            display: block;
-            transition: ${transition.default};
+            color: ${colors.background[600].contrastingColor};
           }
         `}
       >
@@ -82,10 +71,11 @@ export const MobileNav = ({ onClose, isOpen = false }: Props) => {
                   const isActive = router.pathname === href;
 
                   return (
-                    <li key={href} className={cx({ [activeLink]: isActive })}>
+                    <li key={href}>
                       <Link href={href} passHref>
                         <Anchor
                           ref={isActive ? activeAnchorRef : undefined}
+                          className={cx({ [activeLink]: isActive })}
                           onClick={onClose}
                         >
                           {label}
