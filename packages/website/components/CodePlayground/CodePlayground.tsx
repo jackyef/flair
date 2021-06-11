@@ -10,7 +10,8 @@ import babylon from 'prettier/parser-babel';
 import * as HeroIconsSolid from '@heroicons/react/solid';
 
 import * as FlairKit from 'flair-kit';
-import { CustomEditor } from './CustomEditor';
+// import { CustomEditor } from './CustomEditor';
+import { MonacoEditor } from './MonacoEditor';
 
 const { useTheme } = FlairKit;
 
@@ -114,6 +115,11 @@ export const CodePlayground = ({
                   : 'white'};
                 border-top: none;
                 transition: ${transition.default};
+                height: 40vh;
+
+                & *:focus {
+                  box-shadow: none !important;
+                }
 
                 & > div {
                   transition: ${transition.default};
@@ -137,7 +143,9 @@ export const CodePlayground = ({
             >
               <LiveError />
             </div>
-            <CustomEditor />
+
+            <MonacoEditor />
+            {/* <CustomEditor /> */}
           </div>
         </>
       )}
