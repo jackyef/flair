@@ -70,7 +70,7 @@ export const MobileNav = ({ onClose, isOpen = false }: Props) => {
 
                   return (
                     <li key={href}>
-                      <Link href={href} passHref>
+                      <Link href={href} passHref replace>
                         <Anchor
                           ref={isActive ? activeAnchorRef : undefined}
                           className={cx({ [activeLink]: isActive })}
