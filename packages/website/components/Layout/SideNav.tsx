@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import { css } from 'goober';
 import Link from 'next/link';
 import { useRouter } from 'next/router';

@@ -10,33 +10,6 @@ import { NProgressLoader } from '@/components/NProgressLoader/NProgressLoader';
 import { HomeLayout } from '@/components/Layout/HomeLayout';
 import { CommonMetaTags } from '@/components/Seo/CommonMetaTags';
 
-const ResetStyles = createGlobalStyles`
-  html {
-    box-sizing: border-box;
-    font-size: 16px;
-  }
-
-
-  *, *:before, *:after {
-    box-sizing: inherit;
-  }
-
-  body, h1, h2, h3, h4, h5, h6, p, ol, ul {
-    margin: 0;
-    padding: 0;
-    font-weight: normal;
-  }
-
-  ol, ul {
-    list-style: none;
-  }
-
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-`;
-
 const GlobalStyles = createGlobalStyles`
   body {
     transition: background 0.15s ease-out, color 0.15s ease-out;
@@ -63,7 +36,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           }}
         />
       </Head>
-      <ResetStyles />
       <GlobalStyles />
       <ThemeProvider>
         <CommonMetaTags />

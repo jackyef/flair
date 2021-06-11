@@ -2,10 +2,22 @@ import { createElement } from 'react';
 import { setup } from 'goober';
 import { createGlobalStyles } from 'goober/global';
 import { colors } from '../../theme/colors';
+import {
+  generateLightThemeCssVariables,
+  generateDarkThemeCssVariables,
+} from '../../utils/generateCssVariables';
 
 setup(createElement);
 
 export const GlobalStyles = createGlobalStyles`
+    :root {
+    ${generateLightThemeCssVariables(colors)}
+  }
+
+  [data-flair-theme='dark'] {
+    ${generateDarkThemeCssVariables(colors)}
+  }
+
   body {
     font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI',
       Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -25,6 +37,31 @@ export const GlobalStyles = createGlobalStyles`
   a {
     color: inherit;
     text-decoration: inherit;
+  }
+
+    html {
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+
+
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+  body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+  }
+
+  ol, ul {
+    list-style: none;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
   }
 
   *:focus {

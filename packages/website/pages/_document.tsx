@@ -7,11 +7,11 @@ import Document, {
 } from 'next/document';
 import { extractCss } from 'goober';
 
-import { generateCssVariables, NoFlashScript } from 'flair-kit';
+import { NoFlashScript } from 'flair-kit';
 // import { stickerMuleColors } from '@/theme/custom/stickerMule';
 
 // const cssVariables = generateCssVariables(stickerMuleColors);
-const cssVariables = generateCssVariables();
+// const cssVariables = generateCssVariables();
 
 export default class MyDocument extends Document {
   static async getInitialProps({ renderPage }: DocumentContext) {
@@ -26,7 +26,7 @@ export default class MyDocument extends Document {
         <style
           id="_goober"
           // And defined it in here
-          dangerouslySetInnerHTML={{ __html: `${cssVariables}${css}` }}
+          dangerouslySetInnerHTML={{ __html: css }}
         />
       ),
     };
