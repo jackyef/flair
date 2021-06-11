@@ -25,7 +25,6 @@ export default function Tooltip() {
         screen readers.
       </P>
       <CodePlayground
-        noInline
         initialCode={`
           const Example = () => {
             const [enabled, setEnabled] = React.useState(false);

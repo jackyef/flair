@@ -20,7 +20,6 @@ export default function Toast() {
       </P>
 
       <CodePlayground
-        noInline
         initialCode={`
           const Example = () => {
             const { addToast } = useToast();

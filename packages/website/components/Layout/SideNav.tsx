@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import { css } from 'goober';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -10,47 +9,7 @@ import { Button, Anchor, H5, H6, useTheme } from 'flair-kit';
 import { RenderOnMobile } from '../MediaQuery/RenderOnMobile';
 import { RenderOnMobileUp } from '../MediaQuery/RenderOnMobileUp';
 import { MobileNav } from './MobileNav';
-
-export const docsSections = [
-  {
-    sectionTitle: 'Foundation',
-    pages: [
-      { label: 'Space', href: '/docs/space' },
-      { label: 'Typography', href: '/docs/typography' },
-      { label: 'Colors', href: '/docs/colors' },
-    ],
-  },
-  {
-    sectionTitle: 'Primitives',
-    pages: [
-      { label: 'Box', href: '/docs/box' },
-      { label: 'Text', href: '/docs/text' },
-    ],
-  },
-  {
-    sectionTitle: 'Form',
-    pages: [
-      { label: 'Button', href: '/docs/button' },
-      // TODO: Enable this once we have better Input components
-      // { label: 'Input', href: '/docs/input' },
-      { label: 'Switch', href: '/docs/switch' },
-    ],
-  },
-  {
-    sectionTitle: 'Feedback',
-    pages: [
-      { label: 'Tooltip', href: '/docs/tooltip' },
-      { label: 'Toast', href: '/docs/toast' },
-    ],
-  },
-  {
-    sectionTitle: 'Overlay',
-    pages: [
-      { label: 'Dialog', href: '/docs/dialog' },
-      { label: 'Drawer', href: '/docs/drawer' },
-    ],
-  },
-];
+import { docsSections, isSection } from './helpers';
 
 const MobileNavWrapper = () => {
   const router = useRouter();
@@ -109,7 +68,7 @@ export const SideNav = () => {
   // Navbar height isn't fixed. This is so that when user change their browser font settings,
   // the Navbar container can adjust accordingly.
   // Because of this, we need to calculate the navbarHeight as follows
-  const navbarHeight = `4px + ${space.lg} + ${space.lg} + ${fontSizes.h3} * ${lineHeights.h3}`;
+  const navbarHeight = `4px + ${space.md} + ${space.lg} + ${fontSizes.h3} * ${lineHeights.h3}`;
 
   return (
     <>
@@ -131,7 +90,6 @@ export const SideNav = () => {
               transition: ${transition.default};
               padding: ${space.md} ${space.lg};
               border-radius: 0 8px 8px 0;
-              margin-bottom: ${space.md};
               transition: ${transition.default};
             }
 
@@ -142,12 +100,22 @@ export const SideNav = () => {
           `}
         >
           <H5>Directory</H5>
-          {docsSections.map((section) => {
-            return (
-              <Fragment key={section.sectionTitle}>
-                <H6>{section.sectionTitle}</H6>
+          {docsSections.map((sectionOrPage) => {
+            return isSection(sectionOrPage) ? (
+              <div
+                key={sectionOrPage.sectionTitle}
+                className={css`
+                  padding: ${space.md} ${space.lg};
+
+                  & > h6:first-child {
+                    margin-top: ${space.md};
+                    margin-bottom: ${space.sm};
+                  }
+                `}
+              >
+                <H6 className={css``}>{sectionOrPage.sectionTitle}</H6>
                 <ul>
-                  {section.pages.map(({ label, href }) => {
+                  {sectionOrPage.pages.map(({ label, href }) => {
                     const isActive = router.pathname === href;
 
                     return (
@@ -161,7 +129,17 @@ export const SideNav = () => {
                     );
                   })}
                 </ul>
-              </Fragment>
+              </div>
+            ) : (
+              <Link key={sectionOrPage.href} href={sectionOrPage.href} passHref>
+                <Anchor
+                  className={cx({
+                    [activeLink]: router.pathname === sectionOrPage.href,
+                  })}
+                >
+                  {sectionOrPage.label}
+                </Anchor>
+              </Link>
             );
           })}
         </nav>

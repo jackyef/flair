@@ -39,7 +39,7 @@ export const Toast: React.FC<Props> = ({
       className={css`
         background: ${colors[variant][500].color};
         color: ${colors[variant][500].contrastingColor};
-        padding: ${space.lg} ${space.xl};
+        padding: ${space.md} ${space.xl} ${space.lg};
         margin-bottom: ${space.md};
         max-width: 100%;
         border-radius: ${radii.lg};

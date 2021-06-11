@@ -10,7 +10,7 @@ import {
 } from '../theme/colors';
 import type { Colors } from '../theme/colors';
 
-const generateLightThemeCssVariables = (colors: Colors) => {
+export const generateLightThemeCssVariables = (colors: Colors) => {
   const declarations: string[] = [];
 
   COLORS_VARIANTS.forEach((colorName) => {
@@ -47,7 +47,7 @@ const generateLightThemeCssVariables = (colors: Colors) => {
 
 const REVERSED_SHADE_VARIANTS = [...COLOR_SHADE_VARIANTS].reverse();
 
-const generateDarkThemeCssVariables = (colors: Colors) => {
+export const generateDarkThemeCssVariables = (colors: Colors) => {
   const declarations: string[] = [
     `--color-foreground: ${colors.light[800].color};`,
     `--color-background: ${colors.light[800].contrastingColor};`,

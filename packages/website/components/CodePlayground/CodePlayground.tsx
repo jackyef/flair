@@ -10,7 +10,8 @@ import babylon from 'prettier/parser-babel';
 import * as HeroIconsSolid from '@heroicons/react/solid';
 
 import * as FlairKit from 'flair-kit';
-import { CustomEditor } from './CustomEditor';
+// import { CustomEditor } from './CustomEditor';
+import { MonacoEditor } from './MonacoEditor';
 
 const { useTheme } = FlairKit;
 
@@ -47,13 +48,9 @@ const Wrapper: React.FC = ({ children }) => {
 
 interface Props {
   initialCode?: string;
-  noInline?: boolean;
 }
 
-export const CodePlayground = ({
-  initialCode = '',
-  noInline = false,
-}: Props) => {
+export const CodePlayground = ({ initialCode = '' }: Props) => {
   const [isShowingCode, setIsShowingCode] = useState(false);
   const { space, colors, colorScheme, transition } = useTheme();
 
@@ -73,7 +70,7 @@ export const CodePlayground = ({
 
   return (
     <LiveProvider
-      noInline={noInline}
+      noInline
       code={formattedCode}
       scope={scope}
       theme={colorScheme === 'dark' ? paleNightTheme : vsLightTheme}
@@ -114,6 +111,11 @@ export const CodePlayground = ({
                   : 'white'};
                 border-top: none;
                 transition: ${transition.default};
+                height: 40vh;
+
+                & *:focus {
+                  box-shadow: none !important;
+                }
 
                 & > div {
                   transition: ${transition.default};
@@ -137,7 +139,9 @@ export const CodePlayground = ({
             >
               <LiveError />
             </div>
-            <CustomEditor />
+
+            <MonacoEditor />
+            {/* <CustomEditor /> */}
           </div>
         </>
       )}
