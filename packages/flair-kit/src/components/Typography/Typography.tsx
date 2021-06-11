@@ -254,3 +254,19 @@ export const Code: React.FC<CodeProps> = ({
     </code>
   );
 };
+
+export const Pre: React.FC<React.HTMLAttributes<HTMLPreElement>> = ({
+  className,
+  ...props
+}) => {
+  const { colors, space, radii } = useTheme();
+  const preClass = css`
+    padding: ${space.lg};
+    border-radius: ${radii.lg};
+    background: ${colors.background[500].color};
+    color: ${colors.background[500].contrastingColor};
+    overflow-x: auto;
+  `;
+
+  return <pre className={cx(preClass, className)} {...props} />;
+};
