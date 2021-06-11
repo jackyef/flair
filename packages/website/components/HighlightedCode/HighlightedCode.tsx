@@ -48,8 +48,8 @@ export const HighlightedCode = ({ code }: { code: string }) => {
           <Button
             className={css`
               position: absolute;
-              top: ${space.xl};
-              right: ${space.xl};
+              bottom: ${space.lg};
+              right: ${space.lg};
               z-index: 3;
               opacity: 0.5;
 
