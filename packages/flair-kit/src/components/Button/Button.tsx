@@ -44,6 +44,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, Props>(
       border: none;
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       transition: ${transition.default}, ${transition.transform};
 
       ${isCTA

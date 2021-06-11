@@ -31,6 +31,8 @@ export const docsSections = [
     sectionTitle: 'Form',
     pages: [
       { label: 'Button', href: '/docs/button' },
+      // TODO: Enable this once we have better Input components
+      // { label: 'Input', href: '/docs/input' },
       { label: 'Switch', href: '/docs/switch' },
     ],
   },

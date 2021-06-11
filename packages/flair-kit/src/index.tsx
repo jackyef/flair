@@ -5,6 +5,7 @@ export * from './components/Button';
 export * from './components/Dialog';
 export * from './components/Drawer';
 export * from './components/GlobalStyles';
+export * from './components/Input';
 export * from './components/NoFlashScript';
 export * from './components/Switch';
 export * from './components/Text';
