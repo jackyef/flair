@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import cx from 'classnames';
 import { LiveProvider, LiveError, LivePreview } from 'react-live';
 import { css } from 'goober';
-import nightOwlTheme from 'prism-react-renderer/themes/nightOwl';
+import paleNightTheme from 'prism-react-renderer/themes/palenight';
 import vsLightTheme from 'prism-react-renderer/themes/vsLight';
 import { AnnouncementIcon } from '@iconicicons/react';
 import prettier from 'prettier/standalone';
@@ -76,7 +76,7 @@ export const CodePlayground = ({
       noInline={noInline}
       code={formattedCode}
       scope={scope}
-      theme={colorScheme === 'dark' ? nightOwlTheme : vsLightTheme}
+      theme={colorScheme === 'dark' ? paleNightTheme : vsLightTheme}
     >
       {/* @ts-expect-error */}
       <LivePreview Component={Wrapper} />
@@ -110,7 +110,7 @@ export const CodePlayground = ({
               baseClass,
               css`
                 background: ${colorScheme === 'dark'
-                  ? 'rgb(1, 22, 39)'
+                  ? 'rgb(41, 45, 62)'
                   : 'white'};
                 border-top: none;
                 transition: ${transition.default};
