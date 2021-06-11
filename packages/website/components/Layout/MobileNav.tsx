@@ -1,4 +1,4 @@
-import { Fragment, useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import { css } from 'goober';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -6,7 +6,7 @@ import cx from 'classnames';
 
 import { Anchor, Drawer, H6, useTheme } from 'flair-kit';
 
-import { docsSections } from './SideNav';
+import { docsSections, isSection } from './helpers';
 
 interface Props {
   onClose: () => void;
@@ -60,21 +60,23 @@ export const MobileNav = ({ onClose, isOpen = false }: Props) => {
           }
         `}
       >
-        {docsSections.map((section) => {
-          return (
-            <Fragment key={section.sectionTitle}>
-              <H6>{section.sectionTitle}</H6>
+        {docsSections.map((sectionOrPage) => {
+          return isSection(sectionOrPage) ? (
+            <div
+              key={sectionOrPage.sectionTitle}
+              className={css`
+                padding: ${space.sm} ${space.lg};
+              `}
+            >
+              <H6>{sectionOrPage.sectionTitle}</H6>
               <ul>
-                {section.pages.map(({ label, href }) => {
+                {sectionOrPage.pages.map(({ label, href }) => {
                   const isActive = router.pathname === href;
 
                   return (
                     <li key={href}>
-                      <Link href={href} passHref replace>
-                        <Anchor
-                          ref={isActive ? activeAnchorRef : undefined}
-                          className={cx({ [activeLink]: isActive })}
-                        >
+                      <Link href={href} passHref>
+                        <Anchor className={cx({ [activeLink]: isActive })}>
                           {label}
                         </Anchor>
                       </Link>
@@ -82,7 +84,17 @@ export const MobileNav = ({ onClose, isOpen = false }: Props) => {
                   );
                 })}
               </ul>
-            </Fragment>
+            </div>
+          ) : (
+            <Link key={sectionOrPage.href} href={sectionOrPage.href} passHref>
+              <Anchor
+                className={cx({
+                  [activeLink]: router.pathname === sectionOrPage.href,
+                })}
+              >
+                {sectionOrPage.label}
+              </Anchor>
+            </Link>
           );
         })}
       </nav>
