@@ -1,9 +1,9 @@
-import { Fragment, useState } from 'react';
+import { Fragment } from 'react';
 import { css } from 'goober';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import cx from 'classnames';
-import { MenuIcon, XIcon } from '@heroicons/react/solid';
+import { MenuIcon } from '@heroicons/react/solid';
 
 import { Button, Anchor, H5, H6, useTheme } from 'flair-kit';
 
@@ -51,43 +51,46 @@ export const docsSections = [
 ];
 
 const MobileNavWrapper = () => {
-  const [showMobileNav, setShowMobileNav] = useState(false);
+  const router = useRouter();
   const { space } = useTheme();
+
+  const handleShowMobileNav = () => {
+    router.push({
+      pathname: router.pathname,
+      query: {
+        ...router.query,
+        showMobileNav: true,
+      },
+    });
+  };
+
+  const handleHideMobileNav = () => {
+    router.back();
+  };
+
+  const showMobileNav = Boolean(router.query.showMobileNav);
 
   return (
     <RenderOnMobile>
-      <MobileNav
-        onClose={() => setShowMobileNav(false)}
-        isOpen={showMobileNav}
-      />
-      {!showMobileNav && (
-        <div
+      <MobileNav onClose={handleHideMobileNav} isOpen={showMobileNav} />
+      <div
+        className={css`
+          position: fixed;
+          z-index: 15;
+          bottom: ${space.lg};
+          right: ${space.lg};
+        `}
+      >
+        <Button
           className={css`
-            position: fixed;
-            z-index: 15;
-            bottom: ${space.lg};
-            right: ${space.lg};
+            margin-left: ${space.md};
           `}
-        >
-          <Button
-            className={css`
-              margin-left: ${space.md};
-            `}
-            icon={
-              showMobileNav ? (
-                <XIcon width={24} height={24} />
-              ) : (
-                <MenuIcon width={24} height={24} />
-              )
-            }
-            size="sm"
-            onClick={() => {
-              setShowMobileNav((prev) => !prev);
-            }}
-            variant="background"
-          />
-        </div>
-      )}
+          icon={<MenuIcon width={24} height={24} />}
+          size="sm"
+          onClick={handleShowMobileNav}
+          variant="background"
+        />
+      </div>
     </RenderOnMobile>
   );
 };
