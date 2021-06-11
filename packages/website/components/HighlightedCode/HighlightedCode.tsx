@@ -51,6 +51,12 @@ export const HighlightedCode = ({ code }: { code: string }) => {
               top: ${space.xl};
               right: ${space.xl};
               z-index: 3;
+              opacity: 0.5;
+
+              &:hover,
+              &:focus {
+                opacity: 1;
+              }
             `}
             onClick={() => {
               copyToClipboard(formattedCode);

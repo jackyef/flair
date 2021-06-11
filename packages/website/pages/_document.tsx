@@ -6,12 +6,7 @@ import Document, {
   DocumentContext,
 } from 'next/document';
 import { extractCss } from 'goober';
-
 import { NoFlashScript } from 'flair-kit';
-// import { stickerMuleColors } from '@/theme/custom/stickerMule';
-
-// const cssVariables = generateCssVariables(stickerMuleColors);
-// const cssVariables = generateCssVariables();
 
 export default class MyDocument extends Document {
   static async getInitialProps({ renderPage }: DocumentContext) {

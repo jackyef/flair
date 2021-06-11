@@ -91,7 +91,7 @@ export default function Home() {
           </Small>
 
           <Box margin={['2xl', '0']}>
-            <Link href="/docs/space" passHref>
+            <Link href="/docs/getting-started" passHref>
               <Button
                 variant="primary"
                 icon={<ArrowRightIcon />}

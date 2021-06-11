@@ -54,69 +54,60 @@ export default function GettingStartedPage() {
                 )
             }`}
         />
-        <H3>Static CSS</H3>
+        <H3>Server rendering</H3>
         <P>
-          Flair utilizes CSS custom properties (commonly known as CSS variables)
-          to manage colors. Colors are entirely static and are not generated on
-          runtime, because of this, it can be injected to your document on build
-          or server-render time.
-        </P>
-
-        <P>
-          You can use <Code>generateCssVariables()</Code> to get all the CSS
-          declarations as a string.
-        </P>
-
-        <HighlightedCode
-          code={`
-            import { generateCssVariables } from 'flair-kit';
-
-            const cssRules = generateCssVariables();
-            // ->
-            // :root { /* CSS variables declaration here */}
-          `}
-        />
-
-        <P>
-          This string should be injected to the document{' '}
-          <Code>&lt;head /&gt;</Code>. Consider the following example for
+          Flair is powered by <Code>goober</Code> under the hood. Critical CSS
+          can be extracted via <Code>extractCss()</Code> function provided by{' '}
+          <Code>goober</Code>. <Code>&lt;NoFlashScript /&gt;</Code> should be
+          used to prevent flickering. Consider the following example for
           Next.js.
         </P>
 
         <HighlightedCode
           code={`
-          import Document, {
-            Html,
-            Head,
-            Main,
-            NextScript,
-            DocumentContext,
-          } from 'next/document';
-          import { extractCss } from 'goober';
-          import { generateCssVariables } from 'flair-kit';
-          
-          const cssRules = generateCssVariables();
+            import Document, {
+              Html,
+              Head,
+              Main,
+              NextScript,
+              DocumentContext,
+            } from 'next/document';
+            import { extractCss } from 'goober';
+            import { NoFlashScript } from 'flair-kit';
 
-          export default class MyDocument extends Document {
-            static async getInitialProps({ renderPage }: DocumentContext) {
-              const page = await renderPage();
+            export default class MyDocument extends Document {
+              static async getInitialProps({ renderPage }: DocumentContext) {
+                const page = await renderPage();
 
-              // Extract the css for each page render
-              const css = extractCss();
+                // Extract the css for each page render
+                const css = extractCss();
 
-              return {
-                ...page,
-                styles: (
-                  <style
-                    id="_goober"
-                    // And defined it in here
-                    dangerouslySetInnerHTML={{ __html: \`\${cssVariables}\${css}\` }}
-                  />
-                ),
-              };
+                return {
+                  ...page,
+                  styles: (
+                    <style
+                      id="_goober"
+                      // And inject it in here
+                      dangerouslySetInnerHTML={{ __html: css }}
+                    />
+                  ),
+                };
+              }
+
+              render() {
+                return (
+                  <Html>
+                    <Head />
+                    <NoFlashScript />
+                    <body>
+                      <Main />
+                      <NextScript />
+                    </body>
+                  </Html>
+                );
+              }
             }
-          }
-        `}
+          `}
         />
       </section>
     </Main>
