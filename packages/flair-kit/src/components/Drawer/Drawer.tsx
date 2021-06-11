@@ -104,7 +104,11 @@ export const Drawer: React.FC<Props> = ({
                 width: 100%;
                 max-width: 100%;
                 max-height: 70vh;
-                padding: 0 0 ${space['2xl']};
+                /* 
+                  Adding some paddings when address bar is shown on chrome Android
+                  the elements there would still be visible
+                */
+                padding: 0 0 calc(${space.xl} + ${space['3xl']});
                 overflow-y: auto;
                 text-align: left;
                 vertical-align: middle;
@@ -114,6 +118,7 @@ export const Drawer: React.FC<Props> = ({
                 ${mediaQuery.onMobileUp} {
                   height: 100vh;
                   max-height: 100vh;
+                  padding: 0 0 ${space.xl};
                   max-width: 50vw;
                   max-width: clamp(400px, 50vw, 600px);
                   border-radius: 0 ${radii.xl} ${radii.xl} 0;
