@@ -104,7 +104,7 @@ export const Drawer: React.FC<Props> = ({
                 width: 100%;
                 max-width: 100%;
                 max-height: 70vh;
-                padding: 0 0 ${space.xl};
+                padding: 0 0 ${space['2xl']};
                 overflow-y: auto;
                 text-align: left;
                 vertical-align: middle;
