@@ -265,6 +265,7 @@ export const Pre: React.FC<React.HTMLAttributes<HTMLPreElement>> = ({
     border-radius: ${radii.lg};
     background: ${colors.background[500].color};
     color: ${colors.background[500].contrastingColor};
+    min-width: 0px;
     overflow-x: auto;
   `;
 
