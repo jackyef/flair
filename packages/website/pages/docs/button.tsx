@@ -112,7 +112,9 @@ export default function Colors() {
       <H1>Buttons</H1>
 
       <H2>Variants</H2>
-      <CodePlayground initialCode={buttonVariantsCode} />
+      <CodePlayground
+        initialCode={`const Example = () => ( ${buttonVariantsCode} ); render(<Example />)`}
+      />
 
       <H2>Background and foreground variant</H2>
       <P>
@@ -124,10 +126,14 @@ export default function Colors() {
       </P>
       <CodePlayground
         initialCode={`
-        <div style=${wrapperStyle}>
-          <Button variant="foreground">foreground</Button>
-          <Button variant="background">background</Button>
-        </div>
+        const Example = () => (
+          <div style=${wrapperStyle}>
+            <Button variant="foreground">foreground</Button>
+            <Button variant="background">background</Button>
+          </div>
+        );
+
+        render(<Example />)
       `}
       />
 
@@ -137,16 +143,24 @@ export default function Colors() {
         to get users more likely to click on them. This is usually achieved by
         making the button more eye-catching.
       </P>
-      <CodePlayground initialCode={buttonSingleGradientCode} />
+      <CodePlayground
+        initialCode={`const Example = () => ( ${buttonSingleGradientCode} ); render(<Example />)`}
+      />
 
       <H2>Disabled</H2>
-      <CodePlayground initialCode={disabledButtonsCode} />
+      <CodePlayground
+        initialCode={`const Example = () => ( ${disabledButtonsCode} ); render(<Example />)`}
+      />
 
       <H2>Size</H2>
-      <CodePlayground initialCode={sizeButtonsCode} />
+      <CodePlayground
+        initialCode={`const Example = () => ( ${sizeButtonsCode} ); render(<Example />)`}
+      />
 
       <H2>With icon</H2>
-      <CodePlayground initialCode={iconButtonsCode} />
+      <CodePlayground
+        initialCode={`const Example = () => ( ${iconButtonsCode} ); render(<Example />)`}
+      />
     </Main>
   );
 }

@@ -31,7 +31,6 @@ export default function DialogPage() {
       </P>
 
       <CodePlayground
-        noInline
         initialCode={`
           const Example = () => {
             const [isOpen, setIsOpen] = React.useState(false);
@@ -76,7 +75,6 @@ export default function DialogPage() {
       </P>
 
       <CodePlayground
-        noInline
         initialCode={`
           const Example = () => {
             const [isOpen, setIsOpen] = React.useState(false);

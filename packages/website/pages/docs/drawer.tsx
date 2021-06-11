@@ -35,7 +35,6 @@ export default function DrawerPage() {
       </P>
 
       <CodePlayground
-        noInline
         initialCode={`
           const Example = () => {
             const [isOpen, setIsOpen] = React.useState(false);
@@ -103,7 +102,6 @@ export default function DrawerPage() {
       </P>
 
       <CodePlayground
-        noInline
         initialCode={`
           const Example = () => {
             const [isOpen, setIsOpen] = React.useState(false);

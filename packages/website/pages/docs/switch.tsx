@@ -9,7 +9,6 @@ export default function Colors() {
 
       <H2>Sizes</H2>
       <CodePlayground
-        noInline
         initialCode={`
           const Example = () => {
             const [enabled, setEnabled] = React.useState(false);
@@ -69,7 +68,6 @@ export default function Colors() {
 
       <H2>With icon</H2>
       <CodePlayground
-        noInline
         initialCode={`
           const Example = () => {
             const [enabled, setEnabled] = React.useState(false);

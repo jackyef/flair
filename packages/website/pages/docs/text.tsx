@@ -13,7 +13,6 @@ export default function Text() {
       </P>
 
       <CodePlayground
-        noInline
         initialCode={`
           const Example = () => {
             const { colors } = useTheme();
@@ -49,7 +48,6 @@ export default function Text() {
       </P>
 
       <CodePlayground
-        noInline
         initialCode={`
           const Example = () => {
             return (
@@ -83,7 +81,6 @@ export default function Text() {
         color gradient.
       </P>
       <CodePlayground
-        noInline
         initialCode={`
           const Example = () => {
             const { colors } = useTheme();

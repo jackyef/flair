@@ -48,13 +48,9 @@ const Wrapper: React.FC = ({ children }) => {
 
 interface Props {
   initialCode?: string;
-  noInline?: boolean;
 }
 
-export const CodePlayground = ({
-  initialCode = '',
-  noInline = false,
-}: Props) => {
+export const CodePlayground = ({ initialCode = '' }: Props) => {
   const [isShowingCode, setIsShowingCode] = useState(false);
   const { space, colors, colorScheme, transition } = useTheme();
 
@@ -74,7 +70,7 @@ export const CodePlayground = ({
 
   return (
     <LiveProvider
-      noInline={noInline}
+      noInline
       code={formattedCode}
       scope={scope}
       theme={colorScheme === 'dark' ? paleNightTheme : vsLightTheme}

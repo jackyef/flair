@@ -21,7 +21,6 @@ export default function Text() {
         <Code>&quot;0&quot;</Code> is also a valid value.
       </P>
       <CodePlayground
-        noInline
         initialCode={`
           const Example = () => {
             const { colors } = useTheme();
