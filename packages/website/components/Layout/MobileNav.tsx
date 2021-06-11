@@ -74,7 +74,6 @@ export const MobileNav = ({ onClose, isOpen = false }: Props) => {
                         <Anchor
                           ref={isActive ? activeAnchorRef : undefined}
                           className={cx({ [activeLink]: isActive })}
-                          onClick={onClose}
                         >
                           {label}
                         </Anchor>
