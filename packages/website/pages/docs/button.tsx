@@ -1,4 +1,4 @@
-import { H1, H2, P, useTheme } from 'flair-kit';
+import { Code, H1, H2, P, useTheme } from 'flair-kit';
 import type { MappedColorVariant, ColorVariant } from 'flair-kit';
 import { Main } from '@/components/Main/Main';
 import { CodePlayground } from '@/components/CodePlayground/CodePlayground';
@@ -118,11 +118,13 @@ export default function Colors() {
 
       <H2>Background and foreground variant</H2>
       <P>
-        Often, you might want to have a button that follows the
-        background/foreground color. The easiest way would be to use the{' '}
-        background/foreground variant. When on light color scheme, background
-        will automatically refer to the light color variant and foreground to
-        the dark color variant. Same goes for the dark color scheme.
+        In case a button needs to follow the background/foreground color,{' '}
+        <Code>&quot;background&quot;</Code> or{' '}
+        <Code>&quot;foreground&quot;</Code>
+        can be passed to <Code>variant</Code> prop. On light color scheme,
+        background will automatically refer to the light color variant and
+        foreground to the dark color variant. Same goes for the dark color
+        scheme.
       </P>
       <CodePlayground
         initialCode={`
