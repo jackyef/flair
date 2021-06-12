@@ -1,9 +1,9 @@
-type Page = {
+export type Page = {
   label: string;
   href: string;
 };
 
-type Section = {
+export type Section = {
   sectionTitle: string;
   pages: Page[];
 };

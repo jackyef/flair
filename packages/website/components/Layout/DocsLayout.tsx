@@ -3,6 +3,7 @@ import { css } from 'goober';
 import { useTheme } from 'flair-kit';
 import { Header } from './Header';
 import { SideNav } from './SideNav';
+import { DocsNavButtons } from '../DocsNavButtons/DocsNavButtons';
 
 export const DocsLayout: React.FC = ({ children }) => {
   const { space, mediaQuery } = useTheme();
@@ -37,6 +38,8 @@ export const DocsLayout: React.FC = ({ children }) => {
           `}
         >
           {children}
+
+          <DocsNavButtons />
           <footer
             className={css`
               height: ${space['4xl']};

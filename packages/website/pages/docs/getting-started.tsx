@@ -4,8 +4,6 @@ import { Main } from '@/components/Main/Main';
 import { HighlightedCode } from '@/components/HighlightedCode/HighlightedCode';
 
 export default function GettingStartedPage() {
-  // const { space, transition, colors } = useTheme();
-
   return (
     <Main>
       <H1>Getting started</H1>
