@@ -111,9 +111,14 @@ export const SideNav = () => {
                     margin-top: ${space.md};
                     margin-bottom: ${space.sm};
                   }
+
+                  li {
+                    margin-top: 0;
+                    margin-bottom: ${space.sm};
+                  }
                 `}
               >
-                <H6 className={css``}>{sectionOrPage.sectionTitle}</H6>
+                <H6>{sectionOrPage.sectionTitle}</H6>
                 <ul>
                   {sectionOrPage.pages.map(({ label, href }) => {
                     const isActive = router.pathname === href;

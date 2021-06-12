@@ -66,6 +66,16 @@ export const MobileNav = ({ onClose, isOpen = false }: Props) => {
               key={sectionOrPage.sectionTitle}
               className={css`
                 padding: ${space.sm} ${space.lg};
+
+                & > h6:first-child {
+                  margin-top: ${space.md};
+                  margin-bottom: ${space.sm};
+                }
+
+                & li {
+                  margin-top: 0;
+                  margin-bottom: ${space.sm};
+                }
               `}
             >
               <H6>{sectionOrPage.sectionTitle}</H6>
