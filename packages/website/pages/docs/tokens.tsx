@@ -1,4 +1,4 @@
-import { Anchor, Code, H1, H2, P, useTheme } from 'flair-kit';
+import { Anchor, Code, H1, H3, P, useTheme } from 'flair-kit';
 
 import { Main } from '@/components/Main/Main';
 import { HighlightedCode } from '@/components/HighlightedCode/HighlightedCode';
@@ -28,9 +28,9 @@ export default function TokensPage() {
         <Code>useTheme()</Code> hook.
       </P>
 
-      <H2>
+      <H3>
         <Code>colorScheme</Code>
-      </H2>
+      </H3>
 
       <P>
         <Code>colorScheme</Code> can be either <Code>&quot;light&quot;</Code> or{' '}
@@ -52,9 +52,9 @@ export default function TokensPage() {
 
       {tokenNames.map((token) => (
         <Fragment key={token}>
-          <H2>
+          <H3>
             <Code>{token}</Code>
-          </H2>
+          </H3>
           {token === 'colors' && (
             <P>
               Color tokens are simple map to the correlated CSS variables.{' '}

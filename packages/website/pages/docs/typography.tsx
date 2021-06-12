@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { css } from 'goober';
 
-import { H1, H2, H3, H4, H5, H6, P, useTheme } from 'flair-kit';
+import { Code, H1, H2, H3, H4, H5, H6, P, Pre, useTheme } from 'flair-kit';
 import { Main } from '@/components/Main/Main';
+import { HighlightedCode } from '@/components/HighlightedCode/HighlightedCode';
+import { CodePlayground } from '@/components/CodePlayground/CodePlayground';
 
 const Paper = (props: React.HTMLAttributes<HTMLDivElement>) => {
   const { colors, space, mediaQuery, transition } = useTheme();
@@ -17,6 +19,10 @@ const Paper = (props: React.HTMLAttributes<HTMLDivElement>) => {
         background: ${colors.background[700].color};
         transition: ${transition.default};
 
+        & > h1 {
+          margin-top: 0 !important;
+        }
+
         ${mediaQuery.onMobileUp} {
           padding: ${space['2xl']};
           margin: ${space['2xl']};
@@ -27,18 +33,69 @@ const Paper = (props: React.HTMLAttributes<HTMLDivElement>) => {
 };
 
 export default function Home() {
+  const typographyElements = {
+    H1,
+    H2,
+    H3,
+    H4,
+    H5,
+    H6,
+    P,
+    Pre,
+    Code,
+  } as const;
+
   return (
     <Main>
       <H1>Typography</H1>
 
-      <Paper>
-        <H1
-          className={css`
-            margin-top: 0;
-          `}
+      <P>
+        Flair exposes several typography elements that can be used directly.
+      </P>
+
+      <HighlightedCode
+        code={`
+        import { H1, H2, H3, H4, H5, H6, P, Pre, Code } from 'flair-kit'
+      `}
+      />
+
+      {(
+        Object.keys(typographyElements) as unknown as Array<
+          keyof typeof typographyElements
         >
-          The quick brown fox jumps over the lazy dog (h1)
-        </H1>
+      ).map((elementName) => {
+        let content: string = elementName;
+
+        if (elementName === 'Pre') {
+          content = `Name: John Doe<br \/>Email: foo@bar.com`;
+        } else if (elementName === 'Code') {
+          content = 'console.log("The best debugging tool")';
+        } else if (elementName === 'P') {
+          content = 'Some paragraph body text';
+        } else if (elementName.startsWith('H')) {
+          const [, headingLevel] = elementName.split('');
+
+          content = `Heading ${headingLevel} (${elementName})`;
+        }
+
+        return (
+          <Fragment key={elementName}>
+            <H3>
+              <Code>{elementName}</Code>
+            </H3>
+            <CodePlayground
+              initialCode={`
+              render(<${elementName}>${content}</${elementName}>)
+            `}
+            />
+          </Fragment>
+        );
+      })}
+
+      <P>Following is an example of how they look in a text.</P>
+
+      <Paper>
+        <H1>The quick brown fox jumps over the lazy dog (h1)</H1>
         <P>
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry&apos;s standard dummy text

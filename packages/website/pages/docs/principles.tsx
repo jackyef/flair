@@ -1,4 +1,5 @@
-import { Anchor, Code, H1, H2, H3, P } from 'flair-kit';
+import { Anchor, Code, H1, H2, H3, P, useTheme } from 'flair-kit';
+import { css } from 'goober';
 
 import { Main } from '@/components/Main/Main';
 import { HighlightedCode } from '@/components/HighlightedCode/HighlightedCode';
@@ -7,21 +8,39 @@ import { GooberAnchor } from '@/components/CommonAnchors/Goober';
 import { CodePlayground } from '@/components/CodePlayground/CodePlayground';
 
 export default function PrinciplesPage() {
+  const { space, lineHeights } = useTheme();
+
   return (
     <Main>
       <H1>Principles</H1>
 
       <P>
-        This articles talk about the design thinking of Flair. Understanding
-        these principles will help you work with Flair easier. The Tl;dr version
-        is as follow:
+        This page talks about the design thinking of Flair. Understanding these
+        principles will help you work with Flair easier. The Tl;dr version is as
+        follows:
       </P>
 
-      <ol>
+      <ol
+        className={css`
+          list-style-type: decimal;
+          line-height: ${lineHeights.body};
+
+          & li {
+            margin-left: ${space['2xl']};
+            margin-bottom: ${space['md']};
+          }
+        `}
+      >
         <li>
-          Flair exposes tokens via <Code>useTheme()</Code> hook
+          Flair exposes{' '}
+          <Link href="/docs/tokens" passHref>
+            <Anchor>tokens</Anchor>
+          </Link>{' '}
+          via the <Code>useTheme()</Code> hook
         </li>
-        <li>Flair uses goober to write CSS in JS </li>
+        <li>
+          Flair uses <GooberAnchor /> to write CSS in JS{' '}
+        </li>
         <li>
           Flair understands that customization is envitable and allow its
           components to be modifiable using the tokens and goober APIs.
