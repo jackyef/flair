@@ -2,6 +2,7 @@ import Editor from '@monaco-editor/react';
 import { withLive } from 'react-live';
 import { Language, PrismTheme } from 'prism-react-renderer';
 import { useTheme } from 'flair-kit';
+import { nightOwl } from './themes/nightOwl';
 
 interface LiveProps {
   code: string;
@@ -21,7 +22,11 @@ const _MonacoEditor = ({ code, onChange }: LiveProps) => {
       defaultLanguage="javascript"
       defaultValue={code}
       onChange={onChange}
-      theme={colorScheme === 'light' ? 'light' : 'vs-dark'}
+      theme={colorScheme === 'light' ? 'light' : 'night-owl'}
+      onMount={(_, monaco) => {
+        monaco.editor.defineTheme('night-owl', nightOwl);
+        monaco.editor.setTheme(colorScheme === 'light' ? 'light' : 'night-owl');
+      }}
       loading={'Loading editor...'}
     />
   );

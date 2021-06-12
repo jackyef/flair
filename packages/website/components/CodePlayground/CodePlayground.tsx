@@ -1,10 +1,9 @@
 import { useMemo, useState } from 'react';
 import cx from 'classnames';
 import { LiveProvider, LiveError, LivePreview } from 'react-live';
-import { css } from 'goober';
+import { css, styled } from 'goober';
 import paleNightTheme from 'prism-react-renderer/themes/palenight';
 import vsLightTheme from 'prism-react-renderer/themes/vsLight';
-import { AnnouncementIcon } from '@iconicicons/react';
 import prettier from 'prettier/standalone';
 import babylon from 'prettier/parser-babel';
 import * as HeroIconsSolid from '@heroicons/react/solid';
@@ -19,12 +18,12 @@ const scope = {
   // flair-kit exported modules
   ...FlairKit,
 
-  // goober css function
+  // goober functions
   css,
+  styled,
 
   // 3rd party icons
   HeroIconsSolid,
-  AnnouncementIcon: AnnouncementIcon,
 };
 
 const Wrapper: React.FC = ({ children }) => {

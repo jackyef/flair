@@ -93,7 +93,7 @@ export const Switch = ({
                   transform: translateX(calc(${baseSize} - ${offsetSize}));
                 }
               `]: enabled,
-            },
+            }
           )}
         >
           {icon &&

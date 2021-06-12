@@ -93,6 +93,8 @@ export const SideNav = () => {
               padding: ${space.md} ${space.lg};
               border-radius: 0 8px 8px 0;
               transition: ${transition.default};
+              margin-top: 0;
+              margin-bottom: ${space.sm};
             }
 
             & a:hover {
@@ -111,11 +113,6 @@ export const SideNav = () => {
 
                   & > h6:first-child {
                     margin-top: ${space.md};
-                    margin-bottom: ${space.sm};
-                  }
-
-                  li {
-                    margin-top: 0;
                     margin-bottom: ${space.sm};
                   }
                 `}

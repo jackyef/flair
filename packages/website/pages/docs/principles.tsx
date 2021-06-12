@@ -1,115 +1,258 @@
-import { Box, Code, H1, H2, H3, P, Pre } from 'flair-kit';
+import { Anchor, Code, H1, H2, H3, P } from 'flair-kit';
 
 import { Main } from '@/components/Main/Main';
 import { HighlightedCode } from '@/components/HighlightedCode/HighlightedCode';
+import Link from 'next/link';
+import { GooberAnchor } from '@/components/CommonAnchors/Goober';
+import { CodePlayground } from '@/components/CodePlayground/CodePlayground';
 
 export default function PrinciplesPage() {
-  // const { space, transition, colors } = useTheme();
-
   return (
     <Main>
-      <H1>Getting started</H1>
+      <H1>Principles</H1>
 
-      <H2>Installation</H2>
       <P>
-        To get started building with Flair, install <Code>flair-kit</Code> along
-        with its peer dependencies with your package manager of choice.
+        This articles talk about the design thinking of Flair. Understanding
+        these principles will help you work with Flair easier. The Tl;dr version
+        is as follow:
       </P>
 
-      <Box margin={['lg', '0']}>
-        <Pre>npm install flair-kit classnames framer-motion goober</Pre>
-      </Box>
+      <ol>
+        <li>
+          Flair exposes tokens via <Code>useTheme()</Code> hook
+        </li>
+        <li>Flair uses goober to write CSS in JS </li>
+        <li>
+          Flair understands that customization is envitable and allow its
+          components to be modifiable using the tokens and goober APIs.
+        </li>
+      </ol>
 
-      <Box margin={['lg', '0']}>
-        <Pre>yarn add flair-kit classnames framer-motion goober</Pre>
-      </Box>
+      <H2>Tokens</H2>
+      <P>
+        Flair exposes various tokens to use via the <Code>ThemeProvider</Code>.
+        The tokens can be accessed using the <Code>useTheme()</Code> hook.
+      </P>
 
-      <Box margin={['lg', '0']}>
-        <Pre>pnpm add flair-kit classnames framer-motion goober</Pre>
-      </Box>
+      <HighlightedCode
+        code={`
+        import { useTheme } from 'flair-kit';
 
-      <section>
-        <H2>Setting up</H2>
+        const Component = () => {
+          const {
+            colorScheme,
 
-        <H3>
-          <Code>ThemeProvider</Code>
-        </H3>
+            space,
+            radii,
 
-        <P>
-          Flair uses React context to provides values to components. These
-          values are colors, space tokens, radii tokens, etc.{' '}
-          <Code>ThemeProvider</Code> also injects some global CSS using{' '}
-          <Code>goober</Code>
-        </P>
+            shadow,
+            mediaQuery,
+            transition,
 
-        <HighlightedCode
-          code={`
-              import { ThemeProvider } from 'flair-kit';
+            fontSizes,
+            mobileFontSizes,
+            lineHeights,
 
-              function App({ Component }) {
-                return (
-                  <ThemeProvider>
-                    <Component />
-                  </ThemeProvider>
-                )
-            }`}
-        />
-        <H3>Server rendering</H3>
-        <P>
-          Flair is powered by <Code>goober</Code> under the hood. Critical CSS
-          can be extracted via <Code>extractCss()</Code> function provided by{' '}
-          <Code>goober</Code>. <Code>&lt;NoFlashScript /&gt;</Code> should be
-          used to prevent flickering. Consider the following example for
-          Next.js.
-        </P>
+            colors,
+          } = useTheme()    
+          
+          return <div>Foo bar baz</div>
+        }
+      `}
+      />
 
-        <HighlightedCode
-          code={`
-            import Document, {
-              Html,
-              Head,
-              Main,
-              NextScript,
-              DocumentContext,
-            } from 'next/document';
-            import { extractCss } from 'goober';
-            import { NoFlashScript } from 'flair-kit';
+      <P>
+        The values of these tokens are available in the{' '}
+        <Link href="/docs/tokens" passHref>
+          <Anchor>Tokens page</Anchor>
+        </Link>
+        .
+      </P>
 
-            export default class MyDocument extends Document {
-              static async getInitialProps({ renderPage }: DocumentContext) {
-                const page = await renderPage();
+      <P>
+        Following is an example of how the tokens could be used to build your
+        own components. This is how most components in Flair are written.
+      </P>
 
-                // Extract the css for each page render
-                const css = extractCss();
+      <HighlightedCode
+        code={`
+        import { useTheme } from 'flair-kit';
+ 
+        const FancyContainer = ({ children }) => {
+          const { space, colors, mediaQuery, radii } = useTheme();
 
-                return {
-                  ...page,
-                  styles: (
-                    <style
-                      id="_goober"
-                      // And inject it in here
-                      dangerouslySetInnerHTML={{ __html: css }}
-                    />
-                  ),
-                };
-              }
+          const containerClass = css\`
+            background: \${colors['primary'][500].color};
+            color: \${colors['primary'][500].contrastingColor};
+            padding: \${space.xl} \${space.lg};
+            margin: \${space.md};
+            max-width: 100%;
+            border-radius: \${radii.lg};
 
-              render() {
-                return (
-                  <Html>
-                    <Head />
-                    <NoFlashScript />
-                    <body>
-                      <Main />
-                      <NextScript />
-                    </body>
-                  </Html>
-                );
-              }
+            \${mediaQuery.onMobileUp} {
+              max-width: 400px;
             }
-          `}
-        />
-      </section>
+          \`;
+
+          return <div className={containerClass}>{children}</div>;
+        }
+      `}
+      />
+
+      <H2>CSS in JS</H2>
+
+      <P>
+        Flair uses <GooberAnchor /> under the hood. It uses the <Code>css</Code>{' '}
+        function to inject styles into the stylesheet. In the code editors you
+        will find on this site, the <Code>css</Code> function is made available
+        in the global scope so it is ready to be used. Try modifying{' '}
+        <Code>containerClass</Code> below!
+      </P>
+
+      <CodePlayground
+        initialCode={`
+        const Example = () => {
+          const { space, colors, radii, transition } = useTheme();
+
+          const containerClass = css({
+            background: colors['primary'][500].color,
+            color: colors['primary'][500].contrastingColor,
+            padding: \`\${space.xl} \${space.lg}\`,
+            margin: space.md,
+            maxWidth: '100%',
+            borderRadius: radii.lg,
+            transition: transition.default,
+          })
+
+          return (
+            <div className={containerClass}>
+              This container uses the <Code>primary</Code> color as the background color.
+            </div>
+          );
+        }
+
+        render(<Example />)
+      `}
+      />
+      <P>
+        Note: it is actually possible to pass{' '}
+        <Anchor href="https://goober.js.org/api/css#passing-props-to-css-tagged-templates">
+          template literals to the <Code>css</Code> function
+        </Anchor>
+        , but it does not work well in the editor in this documentation site.
+      </P>
+
+      <H2>Customizing style</H2>
+
+      <P>
+        While most components in Flair can be used as-is, it is inevitable that
+        at some point, customizations will be needed. Using goober, there are 2
+        main approaches to customizing Flair components.
+      </P>
+
+      <H3>
+        Passing <Code>className</Code>
+      </H3>
+
+      <P>
+        Most components can be passed <Code>className</Code> prop to define or
+        override styles. The <Code>css</Code> function can be used to generate a
+        new CSS class to be used.
+      </P>
+
+      <CodePlayground
+        initialCode={`
+        const Example = () => {
+          const customClass = css({
+            background: 'green !important',
+            color: 'white !important',
+            height: '100px',
+          });
+
+          return <Button className={customClass}>I am a button with different colors and 100px height</Button>
+        }
+
+        render(<Example />);
+      `}
+      />
+      <P>
+        Note that in some cases, <Code>!important</Code> would need to be used
+        to override the existing values. This is because the built-in classes
+        are actually inserted later than the <Code>customClass</Code>, due to
+        the order of how the components are rendered.
+      </P>
+
+      <H3>
+        Using <Code>styled</Code>
+      </H3>
+
+      <P>
+        One way to avoid the issue described above would be to use the{' '}
+        <Code>styled()</Code> function to create new components based on
+        existing ones.
+      </P>
+
+      <CodePlayground
+        initialCode={`
+        const CustomButton = styled(Button)(() => ({
+          background: 'green',
+          color: 'white',
+          height: '100px',
+        }))
+        
+        const Example = () => {
+          return <CustomButton>I am a button with different colors and 100px height</CustomButton>
+        }
+
+        render(<Example />);
+      `}
+      />
+
+      <P>
+        You can{' '}
+        <Anchor href="https://goober.js.org/api/styled">
+          learn more about the <Code>styled</Code> function on goober
+          documentation
+        </Anchor>
+        .
+      </P>
+
+      <P>
+        Overriding or adding styles can be useful for more generic components
+        like{' '}
+        <Link href="/docs/button" passHref>
+          <Anchor>
+            <Code>Button</Code>
+          </Anchor>
+        </Link>{' '}
+        ,{' '}
+        <Link href="/docs/text" passHref>
+          <Anchor>
+            <Code>Text</Code>
+          </Anchor>
+        </Link>{' '}
+        and{' '}
+        <Link href="/docs/box" passHref>
+          <Anchor>
+            <Code>Box</Code>
+          </Anchor>
+        </Link>
+        . But Flair does not recommend adding styles for more complex components
+        such as{' '}
+        <Link href="/docs/switch" passHref>
+          <Anchor>
+            <Code>Switch</Code>
+          </Anchor>
+        </Link>{' '}
+        and{' '}
+        <Link href="/docs/dialog" passHref>
+          <Anchor>
+            <Code>Dialog</Code>
+          </Anchor>
+        </Link>
+        . In cases where you are considering doing so, it might be more sensible
+        to write your own components using the tokens provided by Flair instead.
+      </P>
     </Main>
   );
 }

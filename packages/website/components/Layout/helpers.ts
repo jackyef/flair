@@ -17,7 +17,8 @@ export const isSection = (
 
 export const docsSections: Array<Section | Page> = [
   { label: 'Getting started', href: '/docs/getting-started' },
-  // { label: 'Principles', href: '/docs/principles' },
+  { label: 'Principles', href: '/docs/principles' },
+  { label: 'Tokens', href: '/docs/tokens' },
   {
     sectionTitle: 'Foundation',
     pages: [

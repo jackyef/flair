@@ -71,11 +71,6 @@ export const MobileNav = ({ onClose, isOpen = false }: Props) => {
                   margin-top: ${space.md};
                   margin-bottom: ${space.sm};
                 }
-
-                & li {
-                  margin-top: 0;
-                  margin-bottom: ${space.sm};
-                }
               `}
             >
               <H6>{sectionOrPage.sectionTitle}</H6>

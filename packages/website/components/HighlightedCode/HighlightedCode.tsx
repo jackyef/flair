@@ -1,7 +1,7 @@
 import { Button, useTheme, useToast } from 'flair-kit';
 import cx from 'classnames';
 import Highlight, { defaultProps } from 'prism-react-renderer';
-import vsDarkTheme from 'prism-react-renderer/themes/nightOwl';
+import nightOwlTheme from 'prism-react-renderer/themes/nightOwl';
 import { css } from 'goober';
 import prettier from 'prettier/standalone';
 import babylon from 'prettier/parser-babel';
@@ -36,7 +36,7 @@ export const HighlightedCode = ({ code }: { code: string }) => {
       {...defaultProps}
       code={formattedCode}
       language="jsx"
-      theme={vsDarkTheme}
+      theme={nightOwlTheme}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <div

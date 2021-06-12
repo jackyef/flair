@@ -18,7 +18,7 @@ export const ColorSquare: React.FC<ColorSquareProps> = ({
     <button
       {...props}
       className={css`
-        width: 176px;
+        width: 150px;
         height: 100px;
         border-radius: 8px;
         padding: ${space['md']};

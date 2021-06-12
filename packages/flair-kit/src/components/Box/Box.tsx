@@ -16,32 +16,34 @@ interface Props extends React.HTMLAttributes<HTMLDivElement> {
 export const Box = forwardRef<HTMLDivElement, Props>(
   ({ radii: pickedRadii, margin, padding, className, ...props }, ref) => {
     const { space, radii } = useTheme();
-    const getSpace = (spaceVariant?: Space) => {
+    const getSpace = (spaceVariant?: Space, type = 'padding') => {
       if (Array.isArray(spaceVariant)) {
-        return spaceVariant.map((p) => space[p] || p).join(' ');
+        return `${type}: ${spaceVariant.map((p) => space[p] || p).join(' ')};`;
       }
 
       if (typeof spaceVariant === 'string') {
-        return space[spaceVariant];
+        return `${type}: ${space[spaceVariant]};`;
       }
 
-      return '0';
+      return '';
     };
     const getRadii = () => {
       if (Array.isArray(pickedRadii)) {
-        return pickedRadii.map((p) => radii[p] || p).join(' ');
+        return `border-radius: ${pickedRadii
+          .map((p) => radii[p] || p)
+          .join(' ')}`;
       }
 
       if (typeof pickedRadii === 'string') {
-        return radii[pickedRadii];
+        return `border-radius: ${radii[pickedRadii]};`;
       }
 
-      return '0';
+      return '';
     };
     const baseClass = css`
-      padding: ${getSpace(padding)};
-      margin: ${getSpace(margin)};
-      border-radius: ${getRadii()};
+      ${getSpace(padding, 'padding')}
+      ${getSpace(margin, 'margin')}
+      ${getRadii()}
     `;
 
     return <div ref={ref} className={cx(baseClass, className)} {...props} />;

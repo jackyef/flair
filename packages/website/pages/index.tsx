@@ -1,21 +1,15 @@
 import { css } from 'goober';
-import {
-  useTheme,
-  Box,
-  H1,
-  H3,
-  P,
-  Text,
-  Button,
-  Small,
-  Anchor,
-} from 'flair-kit';
+import { useTheme, Box, H1, H3, P, Text, Button, Small } from 'flair-kit';
 
 import Link from 'next/link';
 import { ArrowRightIcon } from '@heroicons/react/solid';
 
 import { HeroBackground } from '@/components/Hero/Hero';
 import { PageMetaTags } from '@/components/Seo/PageMetaTags';
+import { GooberAnchor } from '@/components/CommonAnchors/Goober';
+import { ReachUIAnchor } from '@/components/CommonAnchors/ReachUI';
+import { HeadlessUIAnchor } from '@/components/CommonAnchors/HeadlessUI';
+import { NextJSAnchor } from '@/components/CommonAnchors/NextJS';
 
 export default function Home() {
   const { space, mediaQuery } = useTheme();
@@ -113,17 +107,15 @@ export default function Home() {
           <P>
             Flair components are built with accessibility in mind. All
             components are written to be accessible, leveraging some popular
-            third-party libraries like{' '}
-            <Anchor href="https://reach.tech/">Reach UI</Anchor> and{' '}
-            <Anchor href="https://headlessui.dev/">Headless UI</Anchor>.{' '}
+            third-party libraries like <ReachUIAnchor /> and{' '}
+            <HeadlessUIAnchor />.{' '}
           </P>
         </div>
 
         <div className={featureCss}>
           <H3>Lightweight</H3>
           <P>
-            Under the hood, Flair is powered by{' '}
-            <Anchor href="https://goober.rocks/">goober</Anchor>, a 1 KB
+            Under the hood, Flair is powered by <GooberAnchor />, a 1 KB
             CSS-in-JS library with easy-to-use APIs.
           </P>
         </div>
@@ -137,8 +129,7 @@ export default function Home() {
           <H3>SSR ready</H3>
           <P>
             Flair is compatible with server-rendering. It works well with static
-            rendering framework like{' '}
-            <Anchor href="https://nextjs.org/">Next.js</Anchor>.
+            rendering framework like <NextJSAnchor />.
           </P>
         </div>
       </section>

@@ -77,7 +77,7 @@ export default function Colors() {
         .map((size) => {
           return `
           <Button
-            icon={<AnnouncementIcon />}
+            icon={<HeroIconsSolid.BellIcon />}
             variant="success"
             size="${size}"
           >
@@ -93,7 +93,7 @@ export default function Colors() {
         .map((size) => {
           return `
           <Button
-            icon={<AnnouncementIcon />}
+            icon={<HeroIconsSolid.BellIcon />}
             iconPosition="right"
             variant="success"
             size="${size}"

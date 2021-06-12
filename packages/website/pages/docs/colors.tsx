@@ -172,6 +172,16 @@ export default function Colors() {
         <Code>foreground[400]</Code>, while 600—800 always have sufficient
         contrast when paired with <Code>background[400]</Code>.
       </P>
+
+      <P>
+        Flair does not aim to achieve the WCAG AAA color contrast ratio (1:7).
+        It has been determined that{' '}
+        <Anchor href="https://github.com/w3c/wcag/issues/695">
+          contrast ratio are not necessarily the best indicator for readability
+        </Anchor>
+        , but achieving the minimum contrast ratio of 1:4.5 is still
+        recommended.
+      </P>
       <div
         className={css`
           margin: ${space.lg} 0;
