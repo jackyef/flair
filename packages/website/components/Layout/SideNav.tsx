@@ -81,6 +81,8 @@ export const SideNav = () => {
             flex-direction: column;
             width: 280px;
             flex-shrink: 0;
+            overflow-y: auto;
+            max-height: 90vh;
 
             /* Some manual stuffs required to achieve alignment */
             padding: calc(${space.xl} + 4px) ${space.xl};
