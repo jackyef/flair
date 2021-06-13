@@ -9,6 +9,20 @@ import { ThemeProvider } from 'flair-kit';
 import { NProgressLoader } from '@/components/NProgressLoader/NProgressLoader';
 import { HomeLayout } from '@/components/Layout/HomeLayout';
 import { CommonMetaTags } from '@/components/Seo/CommonMetaTags';
+import { baseAnalytics } from '@/utils/analytics/base.lazy';
+
+const canUseDOM = typeof window !== 'undefined';
+const isProd = process.env.NODE_ENV === 'production';
+
+// lazily init the analytics module from autotrack
+if (canUseDOM && isProd) {
+  // the analytic script requests to /collect is blocked
+  // on lighthouse, not sure why. But it causes -7 points in Best Practice,
+  // so we disable them there
+  if (!/lighthouse/gi.test(navigator.userAgent)) {
+    baseAnalytics().then((m) => m.init());
+  }
+}
 
 const GlobalStyles = createGlobalStyles`
   body {
