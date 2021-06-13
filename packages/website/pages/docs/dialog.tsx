@@ -8,13 +8,13 @@ export default function DialogPage() {
     <Main>
       <PageMetaTags
         title="Dialog"
-        description="Dialog components are usually used to ask for user explicit interaction."
+        description="Dialog components are commonly used to ask for user explicit interaction."
       />
       <H1>Dialog</H1>
 
       <P>
-        <Code>Dialog</Code> components are usually used to ask for user explicit
-        interaction. Flair uses{' '}
+        <Code>Dialog</Code> components are commonly used to ask for user
+        explicit interaction. Flair uses{' '}
         <Anchor href="https://headlessui.dev/react/dialog">
           <Code>@headlessui/react</Code> Dialog
         </Anchor>{' '}

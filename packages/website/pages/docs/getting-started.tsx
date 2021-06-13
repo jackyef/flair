@@ -140,6 +140,13 @@ export default function GettingStartedPage() {
 />
       `}
       />
+
+      <P>
+        <Anchor href="https://github.com/jackyef/flair/tree/main/examples/nextjs">
+          An example of a Next.js project
+        </Anchor>{' '}
+        is also available in the repository.
+      </P>
     </Main>
   );
 }

@@ -146,9 +146,9 @@ export default function Colors() {
 
       <H2>CTA Button</H2>
       <P>
-        CTA (call-to-action) buttons usually need a bit more of a <i>oomph</i>{' '}
-        to get users more likely to click on them. This is usually achieved by
-        making the button more eye-catching.
+        It is common for CTA (call-to-action) buttons to have a bit more of an{' '}
+        <i>oomph</i> to get users more likely to click on them. This is can
+        achieved by making the button more eye-catching.
       </P>
       <CodePlayground
         initialCode={`const Example = () => ( ${buttonSingleGradientCode} ); render(<Example />)`}
