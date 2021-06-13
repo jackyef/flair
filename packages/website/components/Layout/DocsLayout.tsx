@@ -28,12 +28,13 @@ export const DocsLayout: React.FC = ({ children }) => {
         <SideNav />
         <div
           className={css`
-            padding: 0 ${space.lg};
             flex: 1;
+            padding: 0 ${space.lg};
             width: 100%;
 
             ${mediaQuery.onMobileUp} {
               max-width: calc(100% - 280px - ${space.lg});
+              padding: 0 ${space.lg} 0 ${space['2xl']};
             }
           `}
         >
