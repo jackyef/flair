@@ -1,5 +1,5 @@
 import { Dialog as _Dialog, Transition } from '@headlessui/react';
-import { css } from 'goober';
+import { css, styled } from 'goober';
 import { Fragment } from 'react';
 
 import { useTheme } from '../../context/theme';
@@ -13,6 +13,16 @@ interface Props {
   onClose: () => void;
   initialFocus?: React.MutableRefObject<HTMLElement | null> | undefined;
 }
+
+const CloseButton = styled(Button)`
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateX(10px);
+`;
 
 export const Drawer: React.FC<Props> = ({
   children,
@@ -142,22 +152,13 @@ export const Drawer: React.FC<Props> = ({
                 `}
               >
                 <_Dialog.Title as={H3}>{title}&#8203;</_Dialog.Title>
-                <Button
+                <CloseButton
                   aria-label="Close drawer"
                   onClick={onClose}
-                  className={css`
-                    width: 40px;
-                    height: 40px;
-                    font-size: 1.5rem !important;
-                    display: inline-flex;
-                    align-items: center;
-                    justify-content: center;
-                    transform: translateX(10px);
-                  `}
                   variant="background"
                 >
                   &times;
-                </Button>
+                </CloseButton>
               </div>
               <div
                 className={css`
