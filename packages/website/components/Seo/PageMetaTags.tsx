@@ -6,7 +6,7 @@ export const publicUrl = 'https://flair.jackyef.com';
 const defaultTitle = 'Flair | Build React apps with some flair ✨';
 const defaultDescription =
   'Flair (flair-kit) is a library of ready-to-use, accessible React components';
-const defaultOgImage = 'https://jackyef-og-img.vercel.app/**Flair**.png';
+const defaultOgImage = 'https://flair.jackyef.com/flair-og.png';
 
 interface Props {
   image?: string;
