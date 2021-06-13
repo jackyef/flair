@@ -17,7 +17,7 @@ const DOC_PAGES = docsSections.reduce((acc: Page[], pageOrSection) => {
 
 export const DocsNavButtons = () => {
   const router = useRouter();
-  const { space, fontSizes } = useTheme();
+  const { space, fontSizes, mobileFontSizes, mediaQuery } = useTheme();
   const currentPageIndex = DOC_PAGES.findIndex(
     ({ href }) => href === router.pathname
   );
@@ -29,11 +29,20 @@ export const DocsNavButtons = () => {
     display: block;
     margin-bottom: ${space.md};
     opacity: 0.5;
-    font-size: ${fontSizes.small};
+    font-size: ${mobileFontSizes.body};
+
+    ${mediaQuery.onMobileUp} {
+      font-size: ${fontSizes.body};
+    }
   `;
 
-  const bold = css`
+  const bigAndBold = css`
     font-weight: 700;
+    font-size: ${mobileFontSizes.subheading};
+
+    ${mediaQuery.onMobileUp} {
+      font-size: ${fontSizes.subheading};
+    }
   `;
 
   return (
@@ -48,7 +57,7 @@ export const DocsNavButtons = () => {
         <Link href={prevPage.href}>
           <a>
             <Text className={paginationHeading}>Previous</Text>
-            <Text gradient={['primary', 'secondary']} className={bold}>
+            <Text gradient={['primary', 'secondary']} className={bigAndBold}>
               &larr; {prevPage.label}
             </Text>
           </a>
@@ -69,7 +78,7 @@ export const DocsNavButtons = () => {
             >
               Next
             </Text>
-            <Text gradient={['secondary', 'primary']} className={bold}>
+            <Text gradient={['secondary', 'primary']} className={bigAndBold}>
               {nextPage.label} &rarr;
             </Text>
           </a>
