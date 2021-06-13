@@ -16,27 +16,27 @@ export const generateLightThemeCssVariables = (colors: Colors) => {
   COLORS_VARIANTS.forEach((colorName) => {
     COLOR_SHADE_VARIANTS.forEach((shadeStep) => {
       declarations.push(
-        `--color-${colorName}-${shadeStep}: ${colors[colorName][shadeStep].color};`,
+        `--color-${colorName}-${shadeStep}: ${colors[colorName][shadeStep].color};`
       );
       declarations.push(
-        `--contrasting-color-${colorName}-${shadeStep}: ${colors[colorName][shadeStep].contrastingColor};`,
+        `--contrasting-color-${colorName}-${shadeStep}: ${colors[colorName][shadeStep].contrastingColor};`
       );
 
       if (colorName === 'light') {
         declarations.push(
-          `--color-background-${shadeStep}: ${colors[colorName][shadeStep].color};`,
+          `--color-background-${shadeStep}: ${colors[colorName][shadeStep].color};`
         );
         declarations.push(
-          `--contrasting-color-background-${shadeStep}: ${colors[colorName][shadeStep].contrastingColor};`,
+          `--contrasting-color-background-${shadeStep}: ${colors[colorName][shadeStep].contrastingColor};`
         );
       }
 
       if (colorName === 'dark') {
         declarations.push(
-          `--color-foreground-${shadeStep}: ${colors[colorName][shadeStep].color};`,
+          `--color-foreground-${shadeStep}: ${colors[colorName][shadeStep].color};`
         );
         declarations.push(
-          `--contrasting-color-foreground-${shadeStep}: ${colors[colorName][shadeStep].contrastingColor};`,
+          `--contrasting-color-foreground-${shadeStep}: ${colors[colorName][shadeStep].contrastingColor};`
         );
       }
     });
@@ -58,27 +58,27 @@ export const generateDarkThemeCssVariables = (colors: Colors) => {
       const oppositeShadeStep = REVERSED_SHADE_VARIANTS[index];
 
       declarations.push(
-        `--color-${colorName}-${shadeStep}: ${colors[colorName][oppositeShadeStep].color};`,
+        `--color-${colorName}-${shadeStep}: ${colors[colorName][oppositeShadeStep].color};`
       );
       declarations.push(
-        `--contrasting-color-${colorName}-${shadeStep}: ${colors[colorName][oppositeShadeStep].contrastingColor};`,
+        `--contrasting-color-${colorName}-${shadeStep}: ${colors[colorName][oppositeShadeStep].contrastingColor};`
       );
 
       if (colorName === 'dark') {
         declarations.push(
-          `--color-background-${shadeStep}: ${colors[colorName][oppositeShadeStep].color};`,
+          `--color-background-${shadeStep}: ${colors[colorName][oppositeShadeStep].color};`
         );
         declarations.push(
-          `--contrasting-color-background-${shadeStep}: ${colors[colorName][oppositeShadeStep].contrastingColor};`,
+          `--contrasting-color-background-${shadeStep}: ${colors[colorName][oppositeShadeStep].contrastingColor};`
         );
       }
 
       if (colorName === 'light') {
         declarations.push(
-          `--color-foreground-${shadeStep}: ${colors[colorName][oppositeShadeStep].color};`,
+          `--color-foreground-${shadeStep}: ${colors[colorName][oppositeShadeStep].color};`
         );
         declarations.push(
-          `--contrasting-color-foreground-${shadeStep}: ${colors[colorName][oppositeShadeStep].contrastingColor};`,
+          `--contrasting-color-foreground-${shadeStep}: ${colors[colorName][oppositeShadeStep].contrastingColor};`
         );
       }
     });
