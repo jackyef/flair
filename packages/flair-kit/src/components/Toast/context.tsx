@@ -77,14 +77,13 @@ export const ToastProvider: React.FC = ({ children }) => {
     >
       {children}
       <ToastContainer>
-        {toasts.map((toast, index) => (
+        {toasts.map((toast) => (
           <Toast
             key={toast.id}
             {...toast}
             onDismiss={() => {
               removeToast(toast.id);
             }}
-            isLatest={index === toasts.length - 1}
           />
         ))}
       </ToastContainer>

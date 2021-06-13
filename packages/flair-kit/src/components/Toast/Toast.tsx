@@ -1,5 +1,4 @@
-import { motion } from 'framer-motion';
-import { css } from 'goober';
+import { css, keyframes } from 'goober';
 import { useTheme } from '../../context/theme';
 import { Button } from '../Button';
 import { H6 } from '../Typography';
@@ -8,34 +7,30 @@ import type { Toast as ToastType } from './context';
 
 interface Props extends ToastType {
   onDismiss: () => void;
-  isLatest?: boolean;
 }
 
-export const Toast: React.FC<Props> = ({
+export const Toast = ({
   variant = 'primary',
   description,
   title,
   onDismiss,
-  isLatest = false,
-}) => {
-  const { space, colors, mediaQuery, radii } = useTheme();
-  const hiddenState = {
-    opacity: 0,
-    x: 400,
-    scale: 0.5,
-  };
+}: Props) => {
+  const { space, colors, mediaQuery, radii, transition } = useTheme();
+
+  const enterAnimation = keyframes`
+    from { 
+      opacity: 0;
+      transform: translateX(400px) scale(0.5);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
+  `;
 
   return (
-    <motion.div
-      layout
-      transition={{ duration: 0.3 }}
-      initial={hiddenState}
-      exit={hiddenState}
-      animate={{
-        opacity: 1,
-        x: 0,
-        scale: isLatest ? 1 : 0.95,
-      }}
+    <div
       className={css`
         background: ${colors[variant][500].color};
         color: ${colors[variant][500].contrastingColor};
@@ -43,7 +38,9 @@ export const Toast: React.FC<Props> = ({
         margin-bottom: ${space.md};
         max-width: 100%;
         border-radius: ${radii.lg};
+        transition: ${transition.default}, ${transition.tamerTransform};
         pointer-events: auto;
+        animation: ${enterAnimation} 0.3s;
 
         ${mediaQuery.onMobileUp} {
           max-width: 400px;
@@ -81,6 +78,6 @@ export const Toast: React.FC<Props> = ({
         </Button>
       </div>
       <div aria-live="polite">{description}</div>
-    </motion.div>
+    </div>
   );
 };

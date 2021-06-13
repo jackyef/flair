@@ -15,15 +15,15 @@ export default function GettingStartedPage() {
       </P>
 
       <Box margin={['lg', '0']}>
-        <Pre>npm install flair-kit classnames framer-motion goober</Pre>
+        <Pre>npm install flair-kit classnames goober</Pre>
       </Box>
 
       <Box margin={['lg', '0']}>
-        <Pre>yarn add flair-kit classnames framer-motion goober</Pre>
+        <Pre>yarn add flair-kit classnames goober</Pre>
       </Box>
 
       <Box margin={['lg', '0']}>
-        <Pre>pnpm add flair-kit classnames framer-motion goober</Pre>
+        <Pre>pnpm add flair-kit classnames goober</Pre>
       </Box>
 
       <section>

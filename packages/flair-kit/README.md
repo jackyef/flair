@@ -6,5 +6,5 @@
 Install `flair-kit` along with its peer dependencies using package manager of your choice.
 
 ```
-yarn add flair-kit classnames framer-motion goober react react-dom
+yarn add flair-kit classnames goober
 ```
