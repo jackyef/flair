@@ -47,6 +47,22 @@ pnpm dev
   packages/website
   ```
 
+## Releasing
+Releasing is done manually currently by following these steps.
+- Bump `packages/flair-kit/package.json` version number
+- Create a git tag based on the version number
+  ```
+  git tag flair-kit@0.0.1
+  ```
+- Push the git tag
+  ```
+  git push origin flair-kit@0.0.1
+  ```
+- Publish package to `npm`
+  ```
+  pnpm publish --filter flair-kit
+  ```
+
 ## References
 
 - https://design.lyft.com/re-approaching-color-9e604ba22c88
