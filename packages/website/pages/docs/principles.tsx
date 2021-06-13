@@ -204,7 +204,11 @@ export default function PrinciplesPage() {
         Note that in some cases, <Code>!important</Code> would need to be used
         to override the existing values. This is because the built-in classes
         are actually inserted later than the <Code>customClass</Code>, due to
-        the order of how the components are rendered.
+        the order of how the components are rendered. Currently,{' '}
+        <Anchor href="https://github.com/cristianbote/goober/pull/236">
+          a PR has been created on goober
+        </Anchor>{' '}
+        to solve this specific issue.
       </P>
 
       <H3>
@@ -212,7 +216,7 @@ export default function PrinciplesPage() {
       </H3>
 
       <P>
-        One way to avoid the issue described above would be to use the{' '}
+        Another approach is to use goober
         <Code>styled()</Code> function to create new components based on
         existing ones.
       </P>
@@ -220,8 +224,8 @@ export default function PrinciplesPage() {
       <CodePlayground
         initialCode={`
         const CustomButton = styled(Button)(() => ({
-          background: 'green',
-          color: 'white',
+          background: 'green !important',
+          color: 'white !important',
           height: '100px',
         }))
         
