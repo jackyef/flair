@@ -1,4 +1,4 @@
-import { Box, Code, H1, H2, H3, P, Pre } from 'flair-kit';
+import { Anchor, Box, Code, H1, H2, H3, P } from 'flair-kit';
 
 import { Main } from '@/components/Main/Main';
 import { HighlightedCode } from '@/components/HighlightedCode/HighlightedCode';
@@ -21,33 +21,40 @@ export default function GettingStartedPage() {
       </P>
 
       <Box margin={['lg', '0']}>
-        <Pre>npm install flair-kit classnames goober</Pre>
-      </Box>
-
-      <Box margin={['lg', '0']}>
-        <Pre>yarn add flair-kit classnames goober</Pre>
-      </Box>
-
-      <Box margin={['lg', '0']}>
-        <Pre>pnpm add flair-kit classnames goober</Pre>
-      </Box>
-
-      <section>
-        <H2>Setting up</H2>
-
-        <H3>
-          <Code>ThemeProvider</Code>
-        </H3>
-
-        <P>
-          Flair uses React context to provides values to components. These
-          values are colors, space tokens, radii tokens, etc.{' '}
-          <Code>ThemeProvider</Code> also injects some global CSS using{' '}
-          <Code>goober</Code>
-        </P>
-
         <HighlightedCode
-          code={`
+          language="bash"
+          code={`npm install flair-kit classnames goober`}
+        />
+      </Box>
+
+      <Box margin={['lg', '0']}>
+        <HighlightedCode
+          language="bash"
+          code={`yarn add flair-kit classnames goober`}
+        />
+      </Box>
+
+      <Box margin={['lg', '0']}>
+        <HighlightedCode
+          language="bash"
+          code={`pnpm add flair-kit classnames goober`}
+        />
+      </Box>
+
+      <H2>Setting up</H2>
+
+      <H3>
+        <Code>ThemeProvider</Code>
+      </H3>
+
+      <P>
+        Flair uses React context to provides values to components. These values
+        are colors, space tokens, radii tokens, etc. <Code>ThemeProvider</Code>{' '}
+        also injects some global CSS using <Code>goober</Code>
+      </P>
+
+      <HighlightedCode
+        code={`
               import { ThemeProvider } from 'flair-kit';
 
               function App({ Component }) {
@@ -57,18 +64,17 @@ export default function GettingStartedPage() {
                   </ThemeProvider>
                 )
             }`}
-        />
-        <H3>Server rendering</H3>
-        <P>
-          Flair is powered by <Code>goober</Code> under the hood. Critical CSS
-          can be extracted via <Code>extractCss()</Code> function provided by{' '}
-          <Code>goober</Code>. <Code>&lt;NoFlashScript /&gt;</Code> should be
-          used to prevent flickering. Consider the following example for
-          Next.js.
-        </P>
+      />
+      <H3>Server rendering</H3>
+      <P>
+        Flair is powered by <Code>goober</Code> under the hood. Critical CSS can
+        be extracted via <Code>extractCss()</Code> function provided by{' '}
+        <Code>goober</Code>. <Code>&lt;NoFlashScript /&gt;</Code> should be used
+        to prevent flickering. Consider the following example for Next.js.
+      </P>
 
-        <HighlightedCode
-          code={`
+      <HighlightedCode
+        code={`
             import Document, {
               Html,
               Head,
@@ -112,8 +118,28 @@ export default function GettingStartedPage() {
               }
             }
           `}
-        />
-      </section>
+      />
+
+      <H3>Fonts</H3>
+      <P>
+        Flair uses{' '}
+        <Anchor href="https://fonts.google.com/specimen/Work+Sans">
+          the free <Code>Work Sans</Code> font
+        </Anchor>
+        . The easiest way to load these fonts is by adding the following tags to
+        your HTML document head.
+      </P>
+
+      <HighlightedCode
+        language="markup"
+        code={`
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+<link
+  href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+  rel="stylesheet"
+/>
+      `}
+      />
     </Main>
   );
 }

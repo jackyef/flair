@@ -50,10 +50,19 @@ export default function Home() {
     <Main>
       <PageMetaTags
         title="Typography"
-        description="Flair exposes several typography elements that can be used in texts."
+        description="Fonts and typography elements in Flair."
       />
 
       <H1>Typography</H1>
+
+      <P>
+        Flair uses the following <Code>font-family</Code> setup.
+      </P>
+
+      <HighlightedCode
+        language="css"
+        code={`font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;`}
+      />
 
       <P>
         Flair exposes several typography elements that can be used in texts.

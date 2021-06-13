@@ -10,7 +10,7 @@ import {
 setup(createElement);
 
 export const GlobalStyles = createGlobalStyles`
-    :root {
+  :root {
     ${generateLightThemeCssVariables(colors)}
   }
 

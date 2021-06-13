@@ -1,6 +1,6 @@
 import { Button, useTheme, useToast } from 'flair-kit';
 import cx from 'classnames';
-import Highlight, { defaultProps } from 'prism-react-renderer';
+import Highlight, { defaultProps, Language } from 'prism-react-renderer';
 import nightOwlTheme from 'prism-react-renderer/themes/nightOwl';
 import { css } from 'goober';
 import prettier from 'prettier/standalone';
@@ -21,21 +21,30 @@ const copyToClipboard = (str: string) => {
   document.body.removeChild(el);
 };
 
-export const HighlightedCode = ({ code }: { code: string }) => {
+interface Props {
+  code: string;
+  language?: Language;
+}
+
+export const HighlightedCode = ({ code, language = 'jsx' }: Props) => {
   const { addToast } = useToast();
   const { space, transition, radii } = useTheme();
   const formattedCode = useMemo(() => {
-    return prettier.format(code, {
-      parser: 'babel',
-      plugins: [babylon],
-    });
-  }, [code]);
+    if (language === 'jsx') {
+      return prettier.format(code, {
+        parser: 'babel',
+        plugins: [babylon],
+      });
+    }
+
+    return code.trim();
+  }, [code, language]);
 
   return (
     <Highlight
       {...defaultProps}
       code={formattedCode}
-      language="jsx"
+      language={language}
       theme={nightOwlTheme}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (

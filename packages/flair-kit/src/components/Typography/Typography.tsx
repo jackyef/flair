@@ -259,7 +259,7 @@ export const Pre: React.FC<React.HTMLAttributes<HTMLPreElement>> = ({
   className,
   ...props
 }) => {
-  const { colors, space, radii } = useTheme();
+  const { colors, space, radii, transition } = useTheme();
   const preClass = css`
     padding: ${space.lg};
     border-radius: ${radii.lg};
@@ -267,6 +267,7 @@ export const Pre: React.FC<React.HTMLAttributes<HTMLPreElement>> = ({
     color: ${colors.background[500].contrastingColor};
     min-width: 0px;
     overflow-x: auto;
+    transition: ${transition.default};
   `;
 
   return <pre className={cx(preClass, className)} {...props} />;
