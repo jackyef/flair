@@ -35,6 +35,10 @@ export default function Home() {
     margin: 0 auto;
     padding: ${space['lg']};
 
+    & h2:first-child {
+      text-align: center;
+    }
+
     ${mediaQuery.onMobileUp} {
       padding: ${space['3xl']};
     }
@@ -45,7 +49,6 @@ export default function Home() {
     max-width: 1000px;
     width: 100%;
     margin: 0 auto;
-    padding: ${space['lg']};
     grid-gap: ${space['lg']};
     grid-template-columns: repeat(
       auto-fit,
@@ -114,30 +117,6 @@ export default function Home() {
       </section>
 
       <section className={sectionCss}>
-        <H1 as="h2">Should you use this?</H1>
-        <div>
-          <H3 as="p">
-            Absolutely! <Small>(not)</Small>
-          </H3>
-          <P>
-            Flair was initially written as a personal practice. It is an attempt
-            to learn more about design, UX and accessibility side of the web.
-            The existing components works, but it is by no means, complete. Some
-            components that are quite commonly used such as <Code>Input</Code>,{' '}
-            <Code>CheckBox</Code>, <Code>RadioButton</Code>, etc. are not
-            implemented yet.
-          </P>
-
-          <P>
-            With that being said though, you are free to use this on
-            non-critical projects. Feel free to open issues on the{' '}
-            <RepoAnchor>GitHub repository</RepoAnchor> to report bugs or request
-            new components!
-          </P>
-        </div>
-      </section>
-
-      <section className={sectionCss}>
         <div
           className={css`
             text-align: center;
@@ -176,6 +155,30 @@ export default function Home() {
               static rendering framework like <NextJSAnchor />.
             </P>
           </div>
+        </div>
+      </section>
+
+      <section className={sectionCss}>
+        <H1 as="h2">Should you use this?</H1>
+        <div>
+          <H3 as="p">
+            Absolutely! <Small>(not)</Small>
+          </H3>
+          <P>
+            Flair was initially written as a personal practice. It is an attempt
+            to learn more about design, UX and accessibility sides of the web.
+            The existing components works, but it is by no means, complete. Some
+            components that are quite commonly used such as <Code>Input</Code>,{' '}
+            <Code>CheckBox</Code>, <Code>RadioButton</Code>, etc. are not
+            implemented yet.
+          </P>
+
+          <P>
+            With that being said though, you are free to use this on
+            non-critical projects. Feel free to open issues on the{' '}
+            <RepoAnchor>GitHub repository</RepoAnchor> to report bugs or request
+            new components!
+          </P>
         </div>
       </section>
     </div>
