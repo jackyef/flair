@@ -120,7 +120,7 @@ export default function Home() {
             Absolutely! <Small>(not)</Small>
           </H3>
           <P>
-            Flair was initially written as a personal exercise. It is an attempt
+            Flair was initially written as a personal practice. It is an attempt
             to learn more about design, UX and accessibility side of the web.
             The existing components works, but it is by no means, complete. Some
             components that are quite commonly used such as <Code>Input</Code>,{' '}
