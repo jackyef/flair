@@ -23,21 +23,21 @@ export default function GettingStartedPage() {
       <Box margin={['lg', '0']}>
         <HighlightedCode
           language="bash"
-          code={`npm install flair-kit classnames goober`}
+          code={`npm install flair-kit classnames@2 goober@2`}
         />
       </Box>
 
       <Box margin={['lg', '0']}>
         <HighlightedCode
           language="bash"
-          code={`yarn add flair-kit classnames goober`}
+          code={`yarn add flair-kit classnames@2 goober@2`}
         />
       </Box>
 
       <Box margin={['lg', '0']}>
         <HighlightedCode
           language="bash"
-          code={`pnpm add flair-kit classnames goober`}
+          code={`pnpm add flair-kit classnames@2 goober@2`}
         />
       </Box>
 

@@ -1,6 +1,7 @@
 # `flair-kit` monorepo
 
 ## Getting started
+
 We are using `pnpm` with workspaces. If you haven't please install `pnpm@6`
 
 ```
@@ -8,21 +9,43 @@ npm install -g pnpm@6
 ```
 
 After that, install the project dependencies using `pnpm`
+
 ```
 pnpm i
 ```
 
 Start developing!
+
 ```
 pnpm dev
 ```
 
-## Open questions
+## Tools used
 
-- Components we need in our own docs site:
-  - Toast feedback
-  - Tooltip on button?
-  - Allow icon on the right of the button
+- [goober](https://github.com/cristianbote/goober)
+- [swc](https://github.com/swc-project/swc)
+- [Headless UI](https://github.com/tailwindlabs/headlessui)
+- [Reach UI](https://github.com/reach/reach-ui)
+- [ColorBox](https://colorbox.io/)
+
+## Deploying on Vercel
+
+- Set build command to:
+
+  ```
+  cd ../../ && pnpm build
+  ```
+
+- Set install command to:
+
+  ```
+  npm i pnpm -g && cd ../../ && pnpm i
+  ```
+
+- Set root directory to:
+  ```
+  packages/website
+  ```
 
 ## References
 
@@ -36,19 +59,3 @@ pnpm dev
 - https://www.figma.com/file/RJ7UawmJppVqby1o3qbkBK/Starter-Design-System-(Community)?node-id=0%3A1
 - https://coolors.co/ffee88-758bfd-00cc99-ef233c-2d3047
 - https://houdini.how/
-
-## Deploying on Vercel
-- Set build command to:
-  ```
-  cd ../../ && pnpm build
-  ```
-
-- Set install command to:
-  ```
-  npm i pnpm -g && cd ../../ && pnpm i
-  ```
-
-- Set root directory to:
-  ```
-  packages/website
-  ```
