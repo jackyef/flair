@@ -2,7 +2,7 @@
 
 ## Getting started
 
-We are using `pnpm` with workspaces. If you haven't please install `pnpm@6`
+We are using `pnpm` with workspaces. If you haven't, please install `pnpm@6`
 
 ```
 npm install -g pnpm@6
