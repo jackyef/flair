@@ -9,7 +9,8 @@
     "build:esm": "swc ./src -d dist/esm --config-file .swcrc",
     "build:cjs": "swc ./src -d dist/cjs --config-file .swcrc -C module.type=commonjs",
     "build:types": "tsc --emitDeclarationOnly --declaration --declarationDir dist/types",
-    "generate-colors": "ts-node ./utils/generateColors --skip-project"
+    "generate-colors": "ts-node ./utils/generateColors --skip-project",
+    "prepublish": "pnpm build"
   },
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -49,9 +50,18 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
-  "license": "MIT",
   "dependencies": {
     "@headlessui/react": "^1.2.0",
     "@reach/tooltip": "^0.15.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jackyef/flair.git"
+  },
+  "author": "Jacky Efendi",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }
