@@ -1,6 +1,6 @@
 {
   "name": "flair-kit",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "scripts": {
     "dev": "concurrently pnpm:dev:*",
     "dev:esm": "pnpm build:esm -- --watch -C jsc.transform.react.development=true -C jsc.transform.react.runtime=automatic",
