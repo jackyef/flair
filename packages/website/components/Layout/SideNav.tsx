@@ -16,13 +16,20 @@ const MobileNavWrapper = () => {
   const { space } = useTheme();
 
   const handleShowMobileNav = () => {
-    router.push({
-      pathname: router.pathname,
-      query: {
-        ...router.query,
-        showMobileNav: true,
+    router.push(
+      {
+        pathname: router.pathname,
+        query: {
+          ...router.query,
+          showMobileNav: true,
+        },
       },
-    });
+      undefined,
+      {
+        // prevent next from automatically scrolling to top on navigation
+        scroll: false,
+      }
+    );
   };
 
   const handleHideMobileNav = () => {

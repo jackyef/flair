@@ -11,21 +11,26 @@ export const NProgressLoader = () => {
   const [state, setState] = useState({
     isRouteChanging: false,
     loadingKey: 0,
+    pathname: router.pathname,
   });
 
   useEffect(() => {
     const handleRouteChangeStart = () => {
-      setState((prevState) => ({
-        ...prevState,
-        isRouteChanging: true,
-        loadingKey: prevState.loadingKey ^ 1,
-      }));
+      if (router.pathname !== state.pathname) {
+        setState((prevState) => ({
+          ...prevState,
+          isRouteChanging: true,
+          loadingKey: prevState.loadingKey ^ 1,
+          pathname: router.pathname,
+        }));
+      }
     };
 
     const handleRouteChangeEnd = () => {
       setState((prevState) => ({
         ...prevState,
         isRouteChanging: false,
+        pathname: router.pathname,
       }));
     };
 
