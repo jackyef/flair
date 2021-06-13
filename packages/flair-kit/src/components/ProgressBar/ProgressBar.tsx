@@ -61,7 +61,7 @@ export const ProgressBar = ({
     }
 
     50% {
-      /*
+      /**
         * %-value in transforms refers to the element's own width/height,
         * instead of the parent element's like top/left does.
         *

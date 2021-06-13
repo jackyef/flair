@@ -49,6 +49,7 @@ export const docsSections: Array<Section | Page> = [
       { label: 'Tooltip', href: '/docs/tooltip' },
       { label: 'Toast', href: '/docs/toast' },
       { label: 'ProgressBar', href: '/docs/progress-bar' },
+      { label: 'Spinner', href: '/docs/spinner' },
     ],
   },
   {
