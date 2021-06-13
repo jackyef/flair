@@ -69,6 +69,23 @@ export const GlobalStyles = createGlobalStyles`
     outline: none !important;
   }
 
+  /* make scrollbar consistent across different platform */
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+    background-color: var(--color-background-700);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: var(--color-background-400);
+  }
+
+  ::-webkit-scrollbar-track {
+    border-radius: 3px;
+    background-color: transparent;
+  }
+
   /* ReachUI related styles */
   :root {
     --reach-tooltip: 1;
