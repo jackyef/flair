@@ -1,4 +1,4 @@
-import { H1, H2 } from 'flair-kit';
+import { Anchor, Code, H1, H2, P } from 'flair-kit';
 import { Main } from '@/components/Main/Main';
 import { CodePlayground } from '@/components/CodePlayground/CodePlayground';
 import { PageMetaTags } from '@/components/Seo/PageMetaTags';
@@ -11,6 +11,11 @@ export default function Colors() {
         description="Switch is a component that can be used to toggle between 2 values."
       />
       <H1>Switch</H1>
+
+      <P>
+        <Code>Switch</Code> is a component that can be used to toggle between 2
+        values.
+      </P>
 
       <H2>Sizes</H2>
       <CodePlayground
@@ -72,6 +77,16 @@ export default function Colors() {
       />
 
       <H2>With icon</H2>
+
+      <P>
+        The code editor in this site comes with{' '}
+        <Anchor href="https://github.com/tailwindlabs/heroicons#react">
+          heroicons
+        </Anchor>{' '}
+        in the global scope. You can access them via{' '}
+        <Code>HeroIconsSolid.IconName</Code>. For the full list of icons, visit{' '}
+        <Anchor href="https://heroicons.com/">heroicons site</Anchor>.
+      </P>
       <CodePlayground
         initialCode={`
           const Example = () => {

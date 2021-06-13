@@ -1,4 +1,4 @@
-import { Code, H1, H2, P, useTheme } from 'flair-kit';
+import { Anchor, Code, H1, H2, P, useTheme } from 'flair-kit';
 import type { MappedColorVariant, ColorVariant } from 'flair-kit';
 import { Main } from '@/components/Main/Main';
 import { CodePlayground } from '@/components/CodePlayground/CodePlayground';
@@ -165,6 +165,15 @@ export default function Colors() {
       />
 
       <H2>With icon</H2>
+      <P>
+        The code editor in this site comes with{' '}
+        <Anchor href="https://github.com/tailwindlabs/heroicons#react">
+          heroicons
+        </Anchor>{' '}
+        in the global scope. You can access them via{' '}
+        <Code>HeroIconsSolid.IconName</Code>. For the full list of icons, visit{' '}
+        <Anchor href="https://heroicons.com/">heroicons site</Anchor>.
+      </P>
       <CodePlayground
         initialCode={`const Example = () => ( ${iconButtonsCode} ); render(<Example />)`}
       />
