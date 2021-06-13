@@ -7,6 +7,7 @@ export * from './components/Drawer';
 export * from './components/GlobalStyles';
 export * from './components/Input';
 export * from './components/NoFlashScript';
+export * from './components/ProgressBar';
 export * from './components/Switch';
 export * from './components/Text';
 export * from './components/Toast';
