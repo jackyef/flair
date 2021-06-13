@@ -1,4 +1,4 @@
-import { css, keyframes } from 'goober';
+import { css, keyframes, styled } from 'goober';
 import { useTheme } from '../../context/theme';
 import { Button } from '../Button';
 import { H6 } from '../Typography';
@@ -8,6 +8,16 @@ import type { Toast as ToastType } from './context';
 interface Props extends ToastType {
   onDismiss: () => void;
 }
+
+const DismissButton = styled(Button)`
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateX(10px);
+`;
 
 export const Toast = ({
   variant = 'primary',
@@ -60,22 +70,13 @@ export const Toast = ({
         `}
       >
         <H6 aria-live="assertive">{title}</H6>
-        <Button
+        <DismissButton
           aria-label="Dismiss toast notification"
           onClick={onDismiss}
-          className={css`
-            width: 40px;
-            height: 40px;
-            font-size: 1.5rem;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            transform: translateX(10px);
-          `}
           variant={variant}
         >
           &times;
-        </Button>
+        </DismissButton>
       </div>
       <div aria-live="polite">{description}</div>
     </div>
