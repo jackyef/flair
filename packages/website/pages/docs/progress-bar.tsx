@@ -2,10 +2,15 @@ import { H1, P, Code, H2 } from 'flair-kit';
 import { Main } from '@/components/Main/Main';
 import { CodePlayground } from '@/components/CodePlayground/CodePlayground';
 import { FlairComponentsAnchor } from '@/components/CommonAnchors/FlairComponentsAnchor';
+import { PageMetaTags } from '@/components/Seo/PageMetaTags';
 
 export default function ProgressBarPage() {
   return (
     <Main>
+      <PageMetaTags
+        title="ProgressBar"
+        description="ProgressBar can be used to show a progress of an ongoing operation."
+      />
       <H1>ProgressBar</H1>
       <P>
         <Code>ProgressBar</Code> can be used to show a progress of an ongoing

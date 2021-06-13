@@ -5,6 +5,7 @@ import { Code, H1, H2, H3, H4, H5, H6, P, Pre, useTheme } from 'flair-kit';
 import { Main } from '@/components/Main/Main';
 import { HighlightedCode } from '@/components/HighlightedCode/HighlightedCode';
 import { CodePlayground } from '@/components/CodePlayground/CodePlayground';
+import { PageMetaTags } from '@/components/Seo/PageMetaTags';
 
 const Paper = (props: React.HTMLAttributes<HTMLDivElement>) => {
   const { colors, space, mediaQuery, transition } = useTheme();
@@ -47,10 +48,15 @@ export default function Home() {
 
   return (
     <Main>
+      <PageMetaTags
+        title="Typography"
+        description="Flair exposes several typography elements that can be used in texts."
+      />
+
       <H1>Typography</H1>
 
       <P>
-        Flair exposes several typography elements that can be used directly.
+        Flair exposes several typography elements that can be used in texts.
       </P>
 
       <HighlightedCode

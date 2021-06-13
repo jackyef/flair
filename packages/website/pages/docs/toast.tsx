@@ -1,14 +1,19 @@
 import { H1, P, Code } from 'flair-kit';
 import { Main } from '@/components/Main/Main';
 import { CodePlayground } from '@/components/CodePlayground/CodePlayground';
+import { PageMetaTags } from '@/components/Seo/PageMetaTags';
 
 export default function Toast() {
   return (
     <Main>
+      <PageMetaTags
+        title="Toast"
+        description="Toast is commonly used to provide a feedback after a user interaction."
+      />
       <H1>Toast</H1>
 
       <P>
-        <Code>Toast</Code> components are usually used to provide a feedback
+        <Code>Toast</Code> components are commonly used to provide a feedback
         after a user interaction. A <Code>Toast</Code> can be added by calling{' '}
         <Code>addToast()</Code> provided by the <Code>useToast()</Code> hook.
       </P>

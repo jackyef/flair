@@ -16,6 +16,7 @@ import type { MappedColorVariant, ColorShadeVariant } from 'flair-kit';
 import { RenderOnMount } from '@/components/RenderOnMount/RenderOnMount';
 import { Main } from '@/components/Main/Main';
 import { ColorSquare } from '@/components/ColorSquare/ColorSquare';
+import { PageMetaTags } from '@/components/Seo/PageMetaTags';
 
 const canUseDOM = typeof window !== 'undefined';
 
@@ -164,6 +165,10 @@ export default function Colors() {
 
   return (
     <Main>
+      <PageMetaTags
+        title="Colors"
+        description="Learn about how colors are organized in Flair."
+      />
       <H1>Colors</H1>
       <P>
         Colors in Flair are organized by <Code>variants</Code>. Each variant has

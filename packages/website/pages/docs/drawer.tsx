@@ -2,16 +2,21 @@ import Link from 'next/link';
 import { H1, P, Code, Anchor, H2 } from 'flair-kit';
 import { Main } from '@/components/Main/Main';
 import { CodePlayground } from '@/components/CodePlayground/CodePlayground';
+import { PageMetaTags } from '@/components/Seo/PageMetaTags';
 
 export default function DrawerPage() {
   return (
     <Main>
+      <PageMetaTags
+        title="Drawer"
+        description="Drawer can be used to show additional UI to the users that are not necessarily needs to be part of the main page."
+      />
       <H1>Drawer</H1>
 
       <P>
         <Code>Drawer</Code> can be used to show additional UI to the users that
-        are not necessarily needs to be part of the page. Internally, it works a
-        lot like{' '}
+        are not necessarily needs to be part of the main page. Internally, it
+        works a lot like{' '}
         <Link href="/docs/dialog" passHref>
           <Anchor>
             <Code>Dialog</Code>

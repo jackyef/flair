@@ -4,6 +4,7 @@ import { Main } from '@/components/Main/Main';
 import { HighlightedCode } from '@/components/HighlightedCode/HighlightedCode';
 import { Fragment } from 'react';
 import Link from 'next/link';
+import { PageMetaTags } from '@/components/Seo/PageMetaTags';
 
 export default function TokensPage() {
   const theme = useTheme();
@@ -22,6 +23,11 @@ export default function TokensPage() {
 
   return (
     <Main>
+      <PageMetaTags
+        title="Tokens"
+        description="In this page you will find the values of all the tokens exposed via the useTheme() hook."
+      />
+
       <H1>Tokens</H1>
       <P>
         In this page you will find the values of all the tokens exposed via the{' '}

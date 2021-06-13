@@ -1,15 +1,20 @@
 import { H1, H2, P, Code } from 'flair-kit';
 import { Main } from '@/components/Main/Main';
 import { CodePlayground } from '@/components/CodePlayground/CodePlayground';
+import { PageMetaTags } from '@/components/Seo/PageMetaTags';
 
 export default function Text() {
   return (
     <Main>
+      <PageMetaTags
+        title="Text"
+        description="Text is essentially a span element, with some additional props to determine color and gradient."
+      />
       <H1>Text</H1>
 
       <P>
-        <Code>Text</Code> is simply a <Code>span</Code> with super-power! It
-        accepts <Code>variant</Code> props like a <Code>Button</Code> does.
+        <Code>Text</Code> is simply a <Code>span</Code> with additional props.
+        It accepts <Code>variant</Code> props like a <Code>Button</Code> does.
       </P>
 
       <CodePlayground

@@ -1,10 +1,12 @@
 import { H1, P, Code, Anchor } from 'flair-kit';
 import { Main } from '@/components/Main/Main';
 import { CodePlayground } from '@/components/CodePlayground/CodePlayground';
+import { PageMetaTags } from '@/components/Seo/PageMetaTags';
 
 export default function InputPage() {
   return (
     <Main>
+      <PageMetaTags title="Input" description="Input - WIP" />
       <H1>Input</H1>
 
       <P>

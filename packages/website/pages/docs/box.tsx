@@ -2,13 +2,18 @@ import Link from 'next/link';
 import { H1, P, Code, Anchor } from 'flair-kit';
 import { Main } from '@/components/Main/Main';
 import { CodePlayground } from '@/components/CodePlayground/CodePlayground';
+import { PageMetaTags } from '@/components/Seo/PageMetaTags';
 
 export default function Text() {
   return (
     <Main>
+      <PageMetaTags
+        title="Box"
+        description="Box is a div with additional props. It can be used to quickly create a container with a predefined margins/paddings/radii."
+      />
       <H1>Box</H1>
       <P>
-        <Code>Box</Code> is simply a <Code>div</Code> with additional props! It
+        <Code>Box</Code> is simply a <Code>div</Code> with additional props. It
         accepts <Code>margin</Code>, <Code>padding</Code> and <Code>radii</Code>{' '}
         props. Similar to CSS, you can pass up to 4 values to these props. Any{' '}
         <Link href="/spacing">

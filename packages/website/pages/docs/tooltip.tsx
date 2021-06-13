@@ -1,10 +1,16 @@
 import { Anchor, H1, P, Code } from 'flair-kit';
 import { Main } from '@/components/Main/Main';
 import { CodePlayground } from '@/components/CodePlayground/CodePlayground';
+import { PageMetaTags } from '@/components/Seo/PageMetaTags';
 
 export default function Tooltip() {
   return (
     <Main>
+      <PageMetaTags
+        title="Tooltip"
+        description="Tooltip can be used to provide some extra information. Information that are considered crucial should not be put in the Tooltip."
+      />
+
       <H1>Tooltip</H1>
 
       <P>

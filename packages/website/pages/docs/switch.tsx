@@ -1,10 +1,15 @@
 import { H1, H2 } from 'flair-kit';
 import { Main } from '@/components/Main/Main';
 import { CodePlayground } from '@/components/CodePlayground/CodePlayground';
+import { PageMetaTags } from '@/components/Seo/PageMetaTags';
 
 export default function Colors() {
   return (
     <Main>
+      <PageMetaTags
+        title="Switch"
+        description="Switch is a component that can be used to toggle between 2 values."
+      />
       <H1>Switch</H1>
 
       <H2>Sizes</H2>

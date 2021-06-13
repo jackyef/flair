@@ -6,12 +6,18 @@ import { HighlightedCode } from '@/components/HighlightedCode/HighlightedCode';
 import Link from 'next/link';
 import { GooberAnchor } from '@/components/CommonAnchors/Goober';
 import { CodePlayground } from '@/components/CodePlayground/CodePlayground';
+import { PageMetaTags } from '@/components/Seo/PageMetaTags';
 
 export default function PrinciplesPage() {
   const { space, lineHeights } = useTheme();
 
   return (
     <Main>
+      <PageMetaTags
+        title="Principles"
+        description="Learn about the principles that Flair works with."
+      />
+
       <H1>Principles</H1>
 
       <P>

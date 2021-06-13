@@ -1,15 +1,20 @@
 import { H1, P, Code, Anchor, H2 } from 'flair-kit';
 import { Main } from '@/components/Main/Main';
 import { CodePlayground } from '@/components/CodePlayground/CodePlayground';
+import { PageMetaTags } from '@/components/Seo/PageMetaTags';
 
 export default function DialogPage() {
   return (
     <Main>
+      <PageMetaTags
+        title="Dialog"
+        description="Dialog components are usually used to ask for user explicit interaction."
+      />
       <H1>Dialog</H1>
 
       <P>
-        <Code>Dialog</Code> components are usually used to ask for a user
-        explicit interaction. Flair uses{' '}
+        <Code>Dialog</Code> components are usually used to ask for user explicit
+        interaction. Flair uses{' '}
         <Anchor href="https://headlessui.dev/react/dialog">
           <Code>@headlessui/react</Code> Dialog
         </Anchor>{' '}

@@ -2,6 +2,7 @@ import { Code, H1, H2, P, useTheme } from 'flair-kit';
 import type { MappedColorVariant, ColorVariant } from 'flair-kit';
 import { Main } from '@/components/Main/Main';
 import { CodePlayground } from '@/components/CodePlayground/CodePlayground';
+import { PageMetaTags } from '@/components/Seo/PageMetaTags';
 
 export default function Colors() {
   const { colors, space } = useTheme();
@@ -109,7 +110,11 @@ export default function Colors() {
 
   return (
     <Main>
-      <H1>Buttons</H1>
+      <PageMetaTags
+        title="Button"
+        description="Button can be used to trigger various kinds of actions based on user click."
+      />
+      <H1>Button</H1>
 
       <H2>Variants</H2>
       <CodePlayground

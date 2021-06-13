@@ -1,10 +1,15 @@
 import { H1, P, Code, H2, Anchor } from 'flair-kit';
 import { Main } from '@/components/Main/Main';
 import { CodePlayground } from '@/components/CodePlayground/CodePlayground';
+import { PageMetaTags } from '@/components/Seo/PageMetaTags';
 
 export default function SpinnerPage() {
   return (
     <Main>
+      <PageMetaTags
+        title="Spinner"
+        description="Spinner can be used to show that an indeterminate-length operation is currently on going."
+      />
       <H1>Spinner</H1>
       <P>
         <Code>Spinner</Code> can be used to show a progress of an ongoing

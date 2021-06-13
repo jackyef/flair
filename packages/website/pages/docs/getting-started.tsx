@@ -2,10 +2,16 @@ import { Box, Code, H1, H2, H3, P, Pre } from 'flair-kit';
 
 import { Main } from '@/components/Main/Main';
 import { HighlightedCode } from '@/components/HighlightedCode/HighlightedCode';
+import { PageMetaTags } from '@/components/Seo/PageMetaTags';
 
 export default function GettingStartedPage() {
   return (
     <Main>
+      <PageMetaTags
+        title="Getting started"
+        description="Installing and setting up Flair in your React app"
+      />
+
       <H1>Getting started</H1>
 
       <H2>Installation</H2>
