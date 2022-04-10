@@ -60,7 +60,7 @@ export const NProgressLoader = () => {
     >
       <div
         className={css`
-          background: ${colors.primary[700].color};
+          background: ${colors.cyan[50]};
           z-index: 50;
         `}
         style={{

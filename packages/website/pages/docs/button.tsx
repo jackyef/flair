@@ -62,7 +62,7 @@ export default function Colors() {
       ${(['sm', 'md', 'lg'] as const)
         .map((size) => {
           return `
-          <Button variant="secondary" size="${size}" >
+          <Button variant="magenta" size="${size}" >
             ${size}
           </Button>
         `;
@@ -79,7 +79,7 @@ export default function Colors() {
           return `
           <Button
             icon={<HeroIconsSolid.BellIcon />}
-            variant="success"
+            variant="mint"
             size="${size}"
           >
             Left
@@ -96,7 +96,7 @@ export default function Colors() {
           <Button
             icon={<HeroIconsSolid.BellIcon />}
             iconPosition="right"
-            variant="success"
+            variant="mint"
             size="${size}"
           >
             Right

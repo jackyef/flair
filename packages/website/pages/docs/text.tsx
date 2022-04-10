@@ -24,16 +24,16 @@ export default function Text() {
 
             return (
               <div>
-                <Text variant="primary">primary</Text>{' '}
-                <Text variant="secondary">secondary</Text>{' '}
-                <Text variant="success">success</Text>{' '}
-                <Text variant="error">error</Text>{' '}
-                <Text variant="warning">warning</Text>{' '}
+                <Text variant="cyan">primary</Text>{' '}
+                <Text variant="magenta">secondary</Text>{' '}
+                <Text variant="mint">success</Text>{' '}
+                <Text variant="coolred">error</Text>{' '}
+                <Text variant="yellow">warning</Text>{' '}
                 <Text variant="foreground">foreground</Text>{' '}
                 <div 
                   className={css({
                     display: 'inline-block',
-                    background: colors.foreground[400].color,
+                    background: colors.foreground[20],
                   })}
                 >
                   <Text variant="background">background</Text>
@@ -58,17 +58,17 @@ export default function Text() {
             return (
               <div>
                 <H2>
-                  <Text gradient={['success', 'primary']}>
+                  <Text gradient={['mint', 'cyan']}>
                     primary &rarr; success
                   </Text>
                 </H2>
                 <H2>
-                  <Text gradient={['primary', 'secondary', 'error']}>
+                  <Text gradient={['cyan', 'magenta', 'coolred']}>
                     primary &rarr; secondary &rarr; error
                   </Text>
                 </H2>
                 <H2>
-                  <Text gradient={['warning', 'success', 'foreground', 'secondary', 'primary']}>
+                  <Text gradient={['yellow', 'mint', 'foreground', 'magenta', 'cyan']}>
                     warning &rarr; success &rarr; foreground &rarr; secondary &rarr; primary
                   </Text>
                 </H2>
@@ -89,13 +89,13 @@ export default function Text() {
         initialCode={`
           const Example = () => {
             const { colors } = useTheme();
-            const variants = ['primary', 'secondary', 'success', 'error', 'warning', 'foreground', 'background'];
+            const variants = ['cyan', 'magenta', 'mint', 'coolred', 'yellow', 'foreground', 'background'];
 
             return (
               <div>
                 {variants.map(v => (
                   <div key={v} className={css({
-                    background: v === 'background' ? colors.foreground[400].color : 'transparent',
+                    background: v === 'background' ? colors.foreground[20] : 'transparent',
                   })}>
                     <H2>
                       <Text gradient={[v]}>

@@ -6,6 +6,9 @@
     "build": "next build",
     "start": "next start"
   },
+  "devDependencies": {
+    "csstype": "^2.6.2"
+  },
   "dependencies": {
     "classnames": "2",
     "flair-kit": "0.0.3",

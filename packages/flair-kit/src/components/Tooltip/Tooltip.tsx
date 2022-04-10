@@ -15,8 +15,8 @@ export const Tooltip: React.FC<Props> = ({ children, label, ariaLabel }) => {
         padding: ${space.sm} ${space.md};
         border-radius: ${radii.md};
         box-shadow: ${shadow.subtle};
-        background: ${colors.background[500].color};
-        color: ${colors.background[500].contrastingColor};
+        background: ${colors.background[30]};
+        color: ${colors.foreground[40]};
       `}
       label={<Small>{label}</Small>}
       aria-label={ariaLabel}

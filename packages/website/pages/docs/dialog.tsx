@@ -108,15 +108,15 @@ export default function DialogPage() {
                     This dialog has 3 buttons inside of it. The yellow button will be initially focused.
                   </P>
 
-                  <Button variant="success" type="button" onClick={closeModal}>
+                  <Button variant="mint" type="button" onClick={closeModal}>
                     Green
                   </Button>
                   {' '}
-                  <Button ref={yellowButtonRef} variant="warning" type="button" onClick={closeModal}>
+                  <Button ref={yellowButtonRef} variant="yellow" type="button" onClick={closeModal}>
                     Yellow
                   </Button>
                   {' '}
-                  <Button variant="error" type="button" onClick={closeModal}>
+                  <Button variant="coolred" type="button" onClick={closeModal}>
                     Red
                   </Button>
                 </Dialog>

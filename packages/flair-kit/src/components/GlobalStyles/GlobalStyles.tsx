@@ -22,10 +22,10 @@ export const GlobalStyles = createGlobalStyles`
     font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI',
       Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
-    background: ${colors.light[800].color};
-    background: var(--color-background-800);
-    color: ${colors.dark[400].color};
-    color: var(--color-foreground-400);
+    background: ${colors.light[20]};
+    background: var(--color-background-20);
+    color: ${colors.dark[80]};
+    color: var(--color-foreground-80);
   }
 
   button {
@@ -73,12 +73,12 @@ export const GlobalStyles = createGlobalStyles`
   ::-webkit-scrollbar {
     width: 12px;
     height: 12px;
-    background-color: var(--color-background-700);
+    background-color: var(--color-background-80);
   }
 
   ::-webkit-scrollbar-thumb {
     border-radius: 5px;
-    background-color: var(--color-background-400);
+    background-color: var(--color-background-30);
   }
 
   ::-webkit-scrollbar-track {

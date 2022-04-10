@@ -86,7 +86,7 @@ export default function Home() {
         >
           <H1>
             Build React apps with some{' '}
-            <Text gradient={['primary', 'secondary']}>flair</Text>
+            <Text gradient={['cyan', 'magenta']}>flair</Text>
             <br />
           </H1>
           <H3
@@ -95,14 +95,14 @@ export default function Home() {
               font-weight: 500;
             `}
           >
-            Collections of <Text gradient={['secondary']}>ready-to-use</Text>,{' '}
-            <Text gradient={['success']}>accessible</Text> React components.
+            Collections of <Text gradient={['magenta']}>ready-to-use</Text>,{' '}
+            <Text gradient={['mint']}>accessible</Text> React components.
           </H3>
 
           <Box margin={['2xl', '0']}>
             <Link href="/docs/getting-started" passHref>
               <Button
-                variant="primary"
+                variant="cyan"
                 icon={<ArrowRightIcon />}
                 iconPosition="right"
                 size="md"

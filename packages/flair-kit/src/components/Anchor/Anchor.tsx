@@ -10,13 +10,13 @@ export const Anchor = forwardRef<HTMLAnchorElement, Props>(
   ({ className, ...rest }, ref) => {
     const { colors, transition } = useTheme();
     const anchorClass = css`
-      color: ${colors.primary[700].color};
+      color: ${colors.cyan[50]};
       transition: ${transition.default};
       cursor: pointer;
       text-decoration: underline;
 
       &:hover {
-        color: ${colors.primary[800].color};
+        color: ${colors.cyan[60]};
       }
     `;
 

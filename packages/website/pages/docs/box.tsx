@@ -34,8 +34,8 @@ export default function Text() {
               <div>
                 <Box
                   className={css(\`
-                    background: \${colors.primary[700].color};
-                    color: \${colors.primary[700].contrastingColor};
+                    background: \${colors.cyan[80]};
+                    color: \${colors.cyan[80]};
                   \`)}
                   padding="lg"
                   radii="md"
@@ -52,8 +52,8 @@ export default function Text() {
                 </Box>
                 <Box 
                   className={css(\`
-                    background: \${colors.secondary[700].color};
-                    color: \${colors.secondary[700].contrastingColor};
+                    background: \${colors.magenta[80]};
+                    color: \${colors.magenta[80]};
                   \`)}
                   padding={['lg', '2xl']}
                   radii={['lg', '0', 'lg']}

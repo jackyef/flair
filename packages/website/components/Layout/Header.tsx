@@ -46,7 +46,7 @@ export const Header = ({ isHomepage = false }: Props) => {
         position: sticky;
         top: ${isHomepage ? '-20px' : '0'};
         width: 100%;
-        background: ${colors.background[800].color};
+        background: ${colors.background[10]};
         transition: ${transition.default};
         z-index: 3;
         backdrop-filter: blur(3px);
@@ -108,9 +108,9 @@ export const Header = ({ isHomepage = false }: Props) => {
               enabled={colorScheme === 'dark'}
               icon={
                 colorScheme === 'dark' ? (
-                  <MoonIcon fill={colors.primary[500].color} />
+                  <MoonIcon fill={colors.cyan[50]} />
                 ) : (
-                  <SunIcon fill={colors.secondary[700].color} />
+                  <SunIcon fill={colors.magenta[50]} />
                 )
               }
               onChange={toggleColorScheme}

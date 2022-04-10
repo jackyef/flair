@@ -9,7 +9,7 @@ interface RandomBlobProps {
 
 // @ts-expect-error
 // eslint-disable-next-line
-const RandomBlob = ({ variant = 'primary' }: RandomBlobProps) => {
+const RandomBlob = ({ variant = 'cyan' }: RandomBlobProps) => {
   const [style] = useState(() => {
     const leftOrRight = Math.random() > 0.5 ? 'left' : 'right';
     const topOrBottom = Math.random() > 0.5 ? 'top' : 'bottom';
@@ -38,8 +38,8 @@ const RandomBlob = ({ variant = 'primary' }: RandomBlobProps) => {
         content: '';
         background: linear-gradient(
           90deg,
-          ${colors[variant][400].color},
-          ${colors[variant][700].color}
+          ${colors[variant][20]},
+          ${colors[variant][80]}
         );
         border-radius: clamp(
           28px,
@@ -100,8 +100,8 @@ const Blob = ({
         content: '';
         background: linear-gradient(
           90deg,
-          ${colors[variant][400].color},
-          ${colors[variant][700].color}
+          ${colors[variant][20]},
+          ${colors[variant][80]}
         );
         border-radius: clamp(
           28px,
@@ -128,35 +128,35 @@ export const HeroBackground = () => {
       `}
     >
       <Blob
-        variant="primary"
+        variant="cyan"
         sizeFactor={17}
         radiiFactor={3}
         position={{ right: '11vw', bottom: '-20px' }}
         rotation={30}
       />
       <Blob
-        variant="secondary"
+        variant="magenta"
         sizeFactor={6}
         radiiFactor={18}
         position={{ left: '8vw', top: '33px' }}
         rotation={116}
       />
       <Blob
-        variant="error"
+        variant="coolred"
         sizeFactor={6}
         radiiFactor={4}
         position={{ right: '7vw', top: '9px' }}
         rotation={193}
       />
       <Blob
-        variant="success"
+        variant="mint"
         sizeFactor={10}
         radiiFactor={6}
         position={{ right: '4vw', bottom: '24px' }}
         rotation={193}
       />
       <Blob
-        variant="warning"
+        variant="yellow"
         sizeFactor={12}
         radiiFactor={19}
         position={{ left: '2vw', bottom: '12px' }}

@@ -144,7 +144,7 @@ const _CustomEditor = ({ code: _code, onChange, theme }: LiveProps) => {
               className={css`
                 padding-left: calc(3ch + 1em);
                 background-color: transparent;
-                caret-color: ${colors.background[400].contrastingColor};
+                caret-color: ${colors.background[30]};
                 color: transparent;
                 border: 0;
                 display: block;

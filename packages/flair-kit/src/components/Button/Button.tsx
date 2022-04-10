@@ -23,7 +23,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, Props>(
       icon,
       iconPosition = 'left',
       size = 'md',
-      variant = 'primary',
+      variant = 'cyan',
       isCTA = false,
       disabled,
       children,
@@ -32,12 +32,26 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, Props>(
     ref
   ) => {
     const { colors, space, transition, radii } = useTheme();
+
     const hasNoChildren = !Boolean(children);
     const getGradient = () => {
       const c = variant;
 
-      return `linear-gradient(70deg, ${colors[c][500].color}, ${colors[c][700].color}, ${colors[c][500].color})`;
+      return `linear-gradient(70deg, ${colors[c][40]}, ${colors[c][50]}, ${colors[c][50]})`;
     };
+
+    let variantForColor = variant;
+
+    if (variant === 'dark') variantForColor = 'light';
+    else if (variant === 'light') variantForColor = 'dark';
+    else if (variant === 'foreground') variantForColor = 'background';
+    else if (variant === 'background') variantForColor = 'foreground';
+
+    const isDarkLightFgBg =
+      variant === 'dark' ||
+      variant === 'light' ||
+      variant === 'foreground' ||
+      variant === 'background';
 
     const base = css`
       cursor: pointer;
@@ -50,7 +64,11 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, Props>(
       ${isCTA
         ? `background-image: ${getGradient()};
       background-size: 200%;
-      color: ${colors[variant][700].contrastingColor};
+      color: ${
+        colors[isDarkLightFgBg ? variantForColor : 'background'][
+          isDarkLightFgBg ? 40 : 20
+        ]
+      };
       background-position: 0% 50%;
       transform: translateY(0) scale(1);
       position: relative;
@@ -63,7 +81,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, Props>(
         width: 100%;
         height: 100%;
         opacity: 0;
-        box-shadow: 0 12px 6px -6px ${colors[variant][400].color};
+        box-shadow: 0 12px 6px -6px ${colors[variant][20]};
         transition: ${transition.default};
       }
 
@@ -81,13 +99,13 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, Props>(
         transform: translateY(0) scale(1);
       }
       `
-        : `background: ${colors[variant][500].color};
-      color: ${colors[variant][500].contrastingColor};
+        : `background: ${colors[variant][20]};
+      color: ${colors[variantForColor][90]};
       
       &:hover,
       &:focus {
-        background: ${colors[variant][400].color};
-        color: ${colors[variant][400].contrastingColor};
+        background: ${colors[variant][10]};
+        color: ${colors[variantForColor][80]};
       }
       `}
 

@@ -93,8 +93,8 @@ export default function Colors() {
             const [enabled, setEnabled] = React.useState(false);
             const { colors } = useTheme()
             const icon = enabled 
-              ? <HeroIconsSolid.CheckCircleIcon fill={colors.success[500].color} /> 
-              : <HeroIconsSolid.XCircleIcon fill={colors.error[500].color} />;
+              ? <HeroIconsSolid.CheckCircleIcon fill={colors.mint[30]} /> 
+              : <HeroIconsSolid.XCircleIcon fill={colors.coolred[30]} />;
 
             const row = css(\`
               display: flex; 

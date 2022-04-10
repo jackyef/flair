@@ -25,5 +25,5 @@ export { getColorMapping } from './utils/getColorMapping';
 export { generateCssVariables } from './utils/generateCssVariables';
 
 /* Types */
-export type { ColorVariant, ColorShadeVariant } from './theme/colors';
+export type { ColorVariant, ColorScaleStep } from './theme/colors';
 export type { MappedColorVariant } from './utils/getColorMapping';

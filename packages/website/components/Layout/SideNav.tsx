@@ -68,8 +68,8 @@ export const SideNav = () => {
   const { space, colors, transition, fontSizes, lineHeights } = useTheme();
 
   const activeLink = css`
-    background: ${colors.background[500].color};
-    color: ${colors.background[500].contrastingColor} !important;
+    background: ${colors.background[30]};
+    color: ${colors.foreground[40]} !important;
   `;
 
   // Navbar height isn't fixed. This is so that when user change their browser font settings,
@@ -105,8 +105,8 @@ export const SideNav = () => {
             }
 
             & a:hover {
-              background: ${colors.background[600].color};
-              color: ${colors.background[600].contrastingColor};
+              background: ${colors.background[50]};
+              color: ${colors.foreground[50]};
             }
           `}
         >

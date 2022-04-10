@@ -10,22 +10,22 @@ export const Input = forwardRef<HTMLInputElement, Props>(
     const { colors, transition, radii, space } = useTheme();
 
     const base = css`
-      border: 1px solid ${colors['background'][400].color};
+      border: 1px solid ${colors.background[20]};
       display: inline-flex;
       align-items: center;
       transition: ${transition.default}, ${transition.transform};
 
-      background: ${colors['background'][700].color};
-      color: ${colors['background'][700].contrastingColor};
+      background: ${colors.background[60]};
+      color: ${colors.background[80]};
 
       &:hover,
       &:focus {
-        background: ${colors['background'][800].color};
-        color: ${colors['background'][800].contrastingColor};
+        background: ${colors.background[70]};
+        color: ${colors.background[90]};
       }
 
       &::placeholder {
-        color: ${colors['background'][700].contrastingColor};
+        color: ${colors.background[80]};
         opacity: 0.4;
       }
 
