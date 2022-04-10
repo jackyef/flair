@@ -145,7 +145,7 @@ export const trackError = (err = {}, fieldsObj = {}) => {
     'event',
     Object.assign(
       {
-        eventCategory: 'Error',
+        eventCategory: 'coolred',
         eventAction: err.name || '(no error name)',
         eventLabel: `${err.message}\n${err.stack || '(no stack trace)'}`,
         nonInteraction: true,
@@ -169,7 +169,7 @@ const trackErrors = () => {
     const fieldsObj = { eventCategory: 'Uncaught Error' };
 
     // Some browsers don't have an error property, so we fake it.
-    const err = event.error || {
+    const err = event.coolred || {
       message: `${event.message} (${event.lineno}:${event.colno})`,
     };
 
@@ -182,7 +182,7 @@ const trackErrors = () => {
   }
 
   // Add a new listener to track event immediately.
-  window.addEventListener('error', trackErrorEvent);
+  window.addEventListener('coolred', trackErrorEvent);
 };
 
 /**

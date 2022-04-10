@@ -12,17 +12,18 @@ export const ColorSquare: React.FC<ColorSquareProps> = ({
   children,
   ...props
 }) => {
-  const { space, shadow } = useTheme();
+  const { space, shadow, colors } = useTheme();
 
   return (
     <button
       {...props}
       className={css`
-        width: 150px;
-        height: 100px;
+        width: 40px;
+        height: 40px;
         border-radius: 8px;
         padding: ${space['md']};
         background: ${background};
+        border: 2px solid ${colors.background[90]};
         color: ${color};
         display: flex;
         flex-direction: column;

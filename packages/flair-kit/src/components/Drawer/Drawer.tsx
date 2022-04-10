@@ -123,7 +123,7 @@ export const Drawer: React.FC<Props> = ({
                 text-align: left;
                 vertical-align: middle;
                 border-radius: ${radii.xl} ${radii.xl} 0 0;
-                background: ${colors.background[700].color};
+                background: ${colors.background[10]};
 
                 ${mediaQuery.onMobileUp} {
                   height: 100vh;

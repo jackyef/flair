@@ -17,7 +17,7 @@ export const ProgressBar = ({
   value = 0,
   indeterminate = false,
   size = 'md',
-  variant = 'primary',
+  variant = 'cyan',
 }: Props) => {
   const { colors, transition } = useTheme();
 
@@ -37,7 +37,7 @@ export const ProgressBar = ({
   }
 
   const containerClass = css`
-    background-color: ${colors.background[500].color};
+    background-color: ${colors.background[30]};
     border-radius: ${sizeMap[size]};
     height: ${sizeMap[size]};
     transition: ${transition.default};
@@ -51,7 +51,7 @@ export const ProgressBar = ({
 
   const barClass = css`
     height: 100%;
-    background-color: ${colors[variant][700].color};
+    background-color: ${colors[variant][40]};
     transition: ${transition.default};
   `;
 

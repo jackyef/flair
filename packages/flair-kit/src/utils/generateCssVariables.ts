@@ -3,40 +3,31 @@
 // Based on the theme
 
 import { extractCss, glob } from 'goober';
-import {
-  colors as defaultColors,
-  COLORS_VARIANTS,
-  COLOR_SHADE_VARIANTS,
-} from '../theme/colors';
+import { colors as defaultColors, HUES } from '../theme/colors';
 import type { Colors } from '../theme/colors';
+import { COLOR_SCALE_STEPS, REVERSED_COLOR_STEPS } from './reverseColorStep';
 
 export const generateLightThemeCssVariables = (colors: Colors) => {
-  const declarations: string[] = [];
+  const declarations: string[] = [
+    `--color-foreground: ${colors.dark[70]};`,
+    `--color-background: ${colors.light[20]};`,
+  ];
 
-  COLORS_VARIANTS.forEach((colorName) => {
-    COLOR_SHADE_VARIANTS.forEach((shadeStep) => {
+  HUES.forEach((colorName) => {
+    COLOR_SCALE_STEPS.forEach((scaleStep) => {
       declarations.push(
-        `--color-${colorName}-${shadeStep}: ${colors[colorName][shadeStep].color};`
-      );
-      declarations.push(
-        `--contrasting-color-${colorName}-${shadeStep}: ${colors[colorName][shadeStep].contrastingColor};`
+        `--color-${colorName}-${scaleStep}: ${colors[colorName][scaleStep]};`
       );
 
       if (colorName === 'light') {
         declarations.push(
-          `--color-background-${shadeStep}: ${colors[colorName][shadeStep].color};`
-        );
-        declarations.push(
-          `--contrasting-color-background-${shadeStep}: ${colors[colorName][shadeStep].contrastingColor};`
+          `--color-background-${scaleStep}: ${colors[colorName][scaleStep]};`
         );
       }
 
       if (colorName === 'dark') {
         declarations.push(
-          `--color-foreground-${shadeStep}: ${colors[colorName][shadeStep].color};`
-        );
-        declarations.push(
-          `--contrasting-color-foreground-${shadeStep}: ${colors[colorName][shadeStep].contrastingColor};`
+          `--color-foreground-${scaleStep}: ${colors[colorName][scaleStep]};`
         );
       }
     });
@@ -45,40 +36,29 @@ export const generateLightThemeCssVariables = (colors: Colors) => {
   return declarations.join('');
 };
 
-const REVERSED_SHADE_VARIANTS = [...COLOR_SHADE_VARIANTS].reverse();
-
 export const generateDarkThemeCssVariables = (colors: Colors) => {
   const declarations: string[] = [
-    `--color-foreground: ${colors.light[800].color};`,
-    `--color-background: ${colors.light[800].contrastingColor};`,
+    `--color-background: ${colors.dark[70]};`,
+    `--color-foreground: ${colors.light[20]};`,
   ];
 
-  COLORS_VARIANTS.forEach((colorName) => {
-    COLOR_SHADE_VARIANTS.forEach((shadeStep, index) => {
-      const oppositeShadeStep = REVERSED_SHADE_VARIANTS[index];
+  HUES.forEach((colorName) => {
+    COLOR_SCALE_STEPS.forEach((scaleStep, index) => {
+      const oppositeScaleStep = REVERSED_COLOR_STEPS[index];
 
       declarations.push(
-        `--color-${colorName}-${shadeStep}: ${colors[colorName][oppositeShadeStep].color};`
+        `--color-${colorName}-${scaleStep}: ${colors[colorName][oppositeScaleStep]};`
       );
-      declarations.push(
-        `--contrasting-color-${colorName}-${shadeStep}: ${colors[colorName][oppositeShadeStep].contrastingColor};`
-      );
-
-      if (colorName === 'dark') {
-        declarations.push(
-          `--color-background-${shadeStep}: ${colors[colorName][oppositeShadeStep].color};`
-        );
-        declarations.push(
-          `--contrasting-color-background-${shadeStep}: ${colors[colorName][oppositeShadeStep].contrastingColor};`
-        );
-      }
 
       if (colorName === 'light') {
         declarations.push(
-          `--color-foreground-${shadeStep}: ${colors[colorName][oppositeShadeStep].color};`
+          `--color-foreground-${scaleStep}: ${colors[colorName][oppositeScaleStep]};`
         );
+      }
+
+      if (colorName === 'dark') {
         declarations.push(
-          `--contrasting-color-foreground-${shadeStep}: ${colors[colorName][oppositeShadeStep].contrastingColor};`
+          `--color-background-${scaleStep}: ${colors[colorName][oppositeScaleStep]};`
         );
       }
     });
@@ -88,14 +68,12 @@ export const generateDarkThemeCssVariables = (colors: Colors) => {
 };
 
 export const generateCssVariables = (colors = defaultColors) => {
-  glob`
-  :root {
-    ${generateLightThemeCssVariables(colors)}
-  }
-
-  [data-flair-theme='dark'] {
-    ${generateDarkThemeCssVariables(colors)}
-  }
+  glob`:root {
+  ${generateLightThemeCssVariables(colors)}
+}
+[data-flair-theme='dark'] {
+  ${generateDarkThemeCssVariables(colors)}
+}
 `;
 
   return extractCss();

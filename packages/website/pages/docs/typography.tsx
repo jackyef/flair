@@ -17,7 +17,7 @@ const Paper = (props: React.HTMLAttributes<HTMLDivElement>) => {
         padding: ${space['lg']};
         margin: 0;
         box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-        background: ${colors.background[700].color};
+        background: ${colors.background[80]};
         transition: ${transition.default};
 
         & > h1 {

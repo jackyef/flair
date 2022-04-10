@@ -20,7 +20,7 @@ export default function ProgressBarPage() {
       <CodePlayground
         initialCode={`
           const Example = () => {
-            const variants = ['primary', 'secondary', 'success', 'error', 'warning'];
+            const variants = ['cyan', 'magenta', 'mint', 'coolred', 'yellow'];
 
             return (
               <div className={css({
@@ -63,7 +63,7 @@ export default function ProgressBarPage() {
       <CodePlayground
         initialCode={`
           const Example = () => {
-            const variants = ['primary', 'secondary', 'success', 'error', 'warning'];
+            const variants = ['cyan', 'magenta', 'mint', 'coolred', 'yellow'];
 
             return (
               <div className={css({

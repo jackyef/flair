@@ -58,7 +58,7 @@ export const Spinner = ({ size = 48, statusMessage = 'loading' }: Props) => {
         className={cx(
           getCircleClass(5),
           css`
-            background-color: ${colors.warning[400].color};
+            background-color: ${colors.yellow[20]};
           `
         )}
       />
@@ -66,7 +66,7 @@ export const Spinner = ({ size = 48, statusMessage = 'loading' }: Props) => {
         className={cx(
           getCircleClass(4),
           css`
-            background-color: ${colors.error[400].color};
+            background-color: ${colors.coolred[20]};
           `
         )}
       />
@@ -74,7 +74,7 @@ export const Spinner = ({ size = 48, statusMessage = 'loading' }: Props) => {
         className={cx(
           getCircleClass(3),
           css`
-            background-color: ${colors.success[400].color};
+            background-color: ${colors.mint[20]};
           `
         )}
       />
@@ -82,7 +82,7 @@ export const Spinner = ({ size = 48, statusMessage = 'loading' }: Props) => {
         className={cx(
           getCircleClass(2),
           css`
-            background-color: ${colors.secondary[400].color};
+            background-color: ${colors.magenta[20]};
           `
         )}
       />
@@ -90,7 +90,7 @@ export const Spinner = ({ size = 48, statusMessage = 'loading' }: Props) => {
         className={cx(
           getCircleClass(1),
           css`
-            background-color: ${colors.primary[400].color};
+            background-color: ${colors.cyan[20]};
           `
         )}
       />

@@ -35,7 +35,7 @@ const Wrapper: React.FC = ({ children }) => {
         padding: ${space.xl} ${space.lg};
         border: 2px solid;
         border-radius: 8px 8px 0 0;
-        border-color: ${colors.background[500].color};
+        border-color: ${colors.background[80]};
         border-bottom: none;
         transition: ${transition.default};
       `}
@@ -63,7 +63,7 @@ export const CodePlayground = ({ initialCode = '' }: Props) => {
   const baseClass = css`
     border: 2px solid;
     border-radius: 0 0 8px 8px;
-    border-color: ${colors.background[500].color};
+    border-color: ${colors.background[80]};
     transition: ${transition.default};
   `;
 
@@ -81,7 +81,7 @@ export const CodePlayground = ({ initialCode = '' }: Props) => {
         className={css`
           padding: ${space.md} ${space.lg};
           border-radius: 0;
-          background: ${colors.background[500].color};
+          background: ${colors.background[80]};
           transition: ${transition.default};
         `}
       >
@@ -89,7 +89,7 @@ export const CodePlayground = ({ initialCode = '' }: Props) => {
           tabIndex={0}
           className={css`
             cursor: pointer;
-            color: ${colors.secondary[700].color};
+            color: ${colors.magenta[60]};
             background: transparent;
           `}
           onClick={() => {
@@ -132,7 +132,7 @@ export const CodePlayground = ({ initialCode = '' }: Props) => {
                   border-radius: 0;
                   padding: 0 ${space.xl};
                   overflow-x: auto;
-                  color: ${colors.error[500].color};
+                  color: ${colors.coolred[30]};
                 `
               )}
             >

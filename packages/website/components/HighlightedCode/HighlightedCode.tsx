@@ -72,7 +72,7 @@ export const HighlightedCode = ({ code, language = 'jsx' }: Props) => {
               addToast({
                 title: 'Copied!',
                 description: 'The code snippet has been copied to clipboard.',
-                variant: 'success',
+                variant: 'mint',
               });
             }}
             size="sm"

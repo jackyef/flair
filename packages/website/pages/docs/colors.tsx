@@ -10,10 +10,10 @@ import {
   useTheme,
   Anchor,
   useToast,
+  Tooltip,
 } from 'flair-kit';
-import type { MappedColorVariant, ColorShadeVariant } from 'flair-kit';
+import type { MappedColorVariant, ColorScaleStep } from 'flair-kit';
 
-import { RenderOnMount } from '@/components/RenderOnMount/RenderOnMount';
 import { Main } from '@/components/Main/Main';
 import { ColorSquare } from '@/components/ColorSquare/ColorSquare';
 import { PageMetaTags } from '@/components/Seo/PageMetaTags';
@@ -54,7 +54,7 @@ const renderColorSquares = (
   onCopy: (
     colorCode: string,
     variant: MappedColorVariant,
-    shadeStep: ColorShadeVariant
+    scaleStep: ColorScaleStep
   ) => void
 ) => {
   return colorNames.map((colorName) => {
@@ -71,12 +71,22 @@ const renderColorSquares = (
         >
           {colorName}
         </H3>
-        <ColorSwatchContainer>
+        <ColorSwatchContainer key={colorName}>
           {/* @ts-expect-error */}
-          {Object.keys(colorShade).map((shadeStep: ColorShadeVariant) => {
-            const color = colorShade[shadeStep]?.color ?? '';
-            const contrastingColor =
-              colorShade[shadeStep]?.contrastingColor ?? '';
+          {Object.keys(colorShade).map((scaleStep: ColorScaleStep) => {
+            const color = colorShade[scaleStep] ?? '';
+            let contrastingColor =
+              scaleStep <= 30 ? colors.foreground[90] : colors.background[20];
+
+            if (colorName === 'dark') {
+              contrastingColor = colors.light[20];
+            } else if (colorName === 'light') {
+              contrastingColor = colors.dark[90];
+            } else if (colorName === 'foreground') {
+              contrastingColor = colors.background[20];
+            } else if (colorName === 'background') {
+              contrastingColor = colors.foreground[90];
+            }
 
             const colorValue = canUseDOM
               ? getComputedStyle(document.body).getPropertyValue(
@@ -86,30 +96,23 @@ const renderColorSquares = (
               : '';
 
             return (
-              <ColorSquare
-                key={`${colorName}-${shadeStep}`}
-                background={color}
-                color={contrastingColor}
-                tabIndex={0}
-                onClick={() => {
-                  copyToClipboard(colorValue);
-                  onCopy(colorValue, colorName, shadeStep);
-                }}
+              <Tooltip
+                key={`${colorName}-${scaleStep}`}
+                label={`${colorName}.${scaleStep} – ${colorValue}`}
+                ariaLabel={`${colorName}.${scaleStep} – ${colorValue}`}
               >
                 <div>
-                  {colorName}.{shadeStep}
+                  <ColorSquare
+                    background={color}
+                    color={contrastingColor}
+                    tabIndex={0}
+                    onClick={() => {
+                      copyToClipboard(colorValue);
+                      onCopy(colorValue, colorName, scaleStep);
+                    }}
+                  />
                 </div>
-                <RenderOnMount>
-                  <div
-                    className={css`
-                      margin-top: 0.8rem;
-                      font-size: 0.75rem;
-                    `}
-                  >
-                    {colorValue}
-                  </div>
-                </RenderOnMount>
-              </ColorSquare>
+              </Tooltip>
             );
           })}
         </ColorSwatchContainer>
@@ -133,10 +136,10 @@ export default function Colors() {
   const onCopy = (
     colorValue: string,
     variant: MappedColorVariant,
-    shadeStep: ColorShadeVariant
+    scaleStep: ColorScaleStep
   ) => {
     let shouldUseLightToast =
-      colorScheme === 'dark' ? shadeStep <= 500 : shadeStep > 500;
+      colorScheme === 'dark' ? scaleStep <= 30 : scaleStep > 30;
 
     if (variant === 'dark' || variant === 'foreground')
       shouldUseLightToast = true;

@@ -135,15 +135,15 @@ export default function DrawerPage() {
                     This drawer has 3 buttons inside of it. The yellow button will be initially focused.
                   </P>
 
-                  <Button variant="success" type="button" onClick={closeDrawer}>
+                  <Button variant="mint" type="button" onClick={closeDrawer}>
                     Green
                   </Button>
                   {' '}
-                  <Button ref={yellowButtonRef} variant="warning" type="button" onClick={closeDrawer}>
+                  <Button ref={yellowButtonRef} variant="yellow" type="button" onClick={closeDrawer}>
                     Yellow
                   </Button>
                   {' '}
-                  <Button variant="error" type="button" onClick={closeDrawer}>
+                  <Button variant="coolred" type="button" onClick={closeDrawer}>
                     Red
                   </Button>
                 </Drawer>

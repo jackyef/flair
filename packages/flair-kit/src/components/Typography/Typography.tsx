@@ -241,8 +241,8 @@ export const Code: React.FC<CodeProps> = ({
 }) => {
   const { space, colors, radii, transition } = useTheme();
   const codeClass = css`
-    background: ${colors.background[700].color};
-    color: ${colors.error[700].color};
+    background: ${colors.background[80]};
+    color: ${colors.coolred[50]};
     padding: ${space.sm};
     border-radius: ${radii.md};
     transition: ${transition.default};
@@ -263,8 +263,8 @@ export const Pre: React.FC<React.HTMLAttributes<HTMLPreElement>> = ({
   const preClass = css`
     padding: ${space.lg};
     border-radius: ${radii.lg};
-    background: ${colors.background[500].color};
-    color: ${colors.background[500].contrastingColor};
+    background: ${colors.background[10]};
+    color: ${colors.foreground[40]};
     min-width: 0px;
     overflow-x: auto;
     transition: ${transition.default};

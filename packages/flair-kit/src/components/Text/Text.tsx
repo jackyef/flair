@@ -15,11 +15,11 @@ export const Text = forwardRef<HTMLSpanElement, Props>(
     const getGradient = () => {
       if (gradient.length === 1) {
         const c = gradient[0];
-        return `linear-gradient(90deg, ${colors[c][700].color}, ${colors[c][800].color})`;
+        return `linear-gradient(90deg, ${colors[c][40]}, ${colors[c][50]})`;
       }
 
       return `linear-gradient(90deg, ${gradient
-        .map((c) => colors[c][700].color)
+        .map((c) => colors[c][40])
         .join(',')});`;
     };
     const baseClass = css`
@@ -34,7 +34,7 @@ export const Text = forwardRef<HTMLSpanElement, Props>(
           -moz-text-fill-color: transparent;
           -webkit-box-decoration-break: clone;
         `
-        : `color: ${colors[variant][500].color};`}
+        : `color: ${colors[variant][40]};`}
     `;
 
     return <span ref={ref} className={cx(baseClass, className)} {...props} />;

@@ -107,8 +107,8 @@ export default function PrinciplesPage() {
           const { space, colors, mediaQuery, radii } = useTheme();
 
           const containerClass = css\`
-            background: \${colors['primary'][500].color};
-            color: \${colors['primary'][500].contrastingColor};
+            background: \${colors['cyan'][30]};
+            color: \${colors['cyan'][40]};
             padding: \${space.xl} \${space.lg};
             margin: \${space.md};
             max-width: 100%;
@@ -140,8 +140,8 @@ export default function PrinciplesPage() {
           const { space, colors, radii, transition } = useTheme();
 
           const containerClass = css({
-            background: colors['primary'][500].color,
-            color: colors['primary'][500].contrastingColor,
+            background: colors['cyan'][30],
+            color: colors['cyan'][40],
             padding: \`\${space.xl} \${space.lg}\`,
             margin: space.md,
             maxWidth: '100%',

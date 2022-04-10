@@ -55,8 +55,8 @@ export default function Tooltip() {
                         alignItems: 'center',
                         justifyContent: 'center',
                         borderRadius: '999px',
-                        background: colors.error[600].color,
-                        color: colors.error[600].contrastingColor,
+                        background: colors.coolred[50],
+                        color: colors.coolred[10],
                         transition: transition.default
                       })}
                     >

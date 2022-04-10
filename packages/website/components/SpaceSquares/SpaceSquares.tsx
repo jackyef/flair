@@ -27,7 +27,7 @@ const Square = ({ size }: { size: SpaceVariant }) => {
     width: ${space[size]};
     height: ${space[size]};
     margin-right: ${space.lg};
-    background: ${colors.primary[700].color};
+    background: ${colors.cyan[80]};
   `;
 
   return <div className={className} />;

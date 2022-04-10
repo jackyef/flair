@@ -55,12 +55,12 @@ export const Switch = ({
           border-radius: 999px;
           height: calc(${baseSize} + ${offsetSize});
           width: calc(2 * ${baseSize});
-          background: ${colors.background[400].color};
+          background: ${colors.light[80]};
           display: flex;
           align-items: center;
 
           &[aria-checked='true'] {
-            background: ${colors.primary[600].color};
+            background: ${colors.cyan[50]};
           }
         `}
       >
@@ -77,7 +77,7 @@ export const Switch = ({
               justify-content: center;
               width: calc(${baseSize} - ${offsetSize});
               height: calc(${baseSize} - ${offsetSize});
-              background: ${colors.light[700].color};
+              background: ${colors.light[20]};
               border-radius: 50%;
 
               ${mediaQuery.onReducedMotion} {

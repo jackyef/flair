@@ -28,7 +28,7 @@ export const DocsNavButtons = () => {
   const paginationHeading = css`
     display: block;
     margin-bottom: ${space.md};
-    opacity: 0.5;
+    opacity: 0.9;
     font-size: ${mobileFontSizes.body};
 
     ${mediaQuery.onMobileUp} {
@@ -57,7 +57,7 @@ export const DocsNavButtons = () => {
         <Link href={prevPage.href}>
           <a>
             <Text className={paginationHeading}>Previous</Text>
-            <Text gradient={['primary', 'secondary']} className={bigAndBold}>
+            <Text gradient={['cyan', 'magenta']} className={bigAndBold}>
               &larr; {prevPage.label}
             </Text>
           </a>
@@ -78,7 +78,7 @@ export const DocsNavButtons = () => {
             >
               Next
             </Text>
-            <Text gradient={['secondary', 'primary']} className={bigAndBold}>
+            <Text gradient={['magenta', 'cyan']} className={bigAndBold}>
               {nextPage.label} &rarr;
             </Text>
           </a>

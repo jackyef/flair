@@ -34,7 +34,7 @@ export default function Toast() {
               description: 'The description of the toast'
             }
 
-            const variants = ['primary', 'secondary', 'success', 'error', 'warning', 'foreground', 'background', 'dark', 'light'];
+            const variants = ['cyan', 'magenta', 'mint', 'coolred', 'yellow', 'foreground', 'background', 'dark', 'light'];
 
             return (
               <div className={css({

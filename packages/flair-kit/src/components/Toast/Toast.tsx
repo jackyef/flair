@@ -20,7 +20,7 @@ const DismissButton = styled(Button)`
 `;
 
 export const Toast = ({
-  variant = 'primary',
+  variant = 'cyan',
   description,
   title,
   onDismiss,
@@ -39,11 +39,18 @@ export const Toast = ({
     }
   `;
 
+  let variantForColor = variant;
+
+  if (variant === 'dark') variantForColor = 'light';
+  else if (variant === 'light') variantForColor = 'dark';
+  else if (variant === 'foreground') variantForColor = 'background';
+  else if (variant === 'background') variantForColor = 'foreground';
+
   return (
     <div
       className={css`
-        background: ${colors[variant][500].color};
-        color: ${colors[variant][500].contrastingColor};
+        background: ${colors[variant][30]};
+        color: ${colors[variantForColor][90]};
         padding: ${space.md} ${space.xl} ${space.lg};
         margin-bottom: ${space.md};
         max-width: 100%;

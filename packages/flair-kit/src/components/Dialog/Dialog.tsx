@@ -109,7 +109,7 @@ export const Dialog: React.FC<Props> = ({
                 text-align: left;
                 vertical-align: middle;
                 border-radius: ${radii.xl};
-                background: ${colors.background[700].color};
+                background: ${colors.background[10]};
                 isolation: isolate;
 
                 ${mediaQuery.onMobileUp} {

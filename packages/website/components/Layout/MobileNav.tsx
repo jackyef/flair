@@ -19,8 +19,8 @@ export const MobileNav = ({ onClose, isOpen = false }: Props) => {
   const { space, colors, transition } = useTheme();
 
   const activeLink = css`
-    background: ${colors.background[500].color};
-    color: ${colors.background[500].contrastingColor} !important;
+    background: ${colors.background[30]};
+    color: ${colors.background[40]} !important;
   `;
 
   // Make sure the active link is visible in viewport
@@ -55,8 +55,8 @@ export const MobileNav = ({ onClose, isOpen = false }: Props) => {
           }
 
           & a:hover {
-            background: ${colors.background[600].color};
-            color: ${colors.background[600].contrastingColor};
+            background: ${colors.background[50]};
+            color: ${colors.background[50]};
           }
         `}
       >

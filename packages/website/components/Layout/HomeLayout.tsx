@@ -53,21 +53,21 @@ export const HomeLayout: React.FC = ({ children }) => {
           >
             <Anchor href="https://jackyef.com/">
               <GlobeAltIcon
-                fill={colors.foreground[800].color}
+                fill={colors.foreground[90]}
                 width={20}
                 height={20}
               />
             </Anchor>
             <Anchor href="https://github.com/jackyef/flair">
               <GitHubIcon
-                fill={colors.foreground[800].color}
+                fill={colors.foreground[90]}
                 width={20}
                 height={20}
               />
             </Anchor>
             <Anchor href="https://twitter.com/jackyef__">
               <TwitterIcon
-                fill={colors.foreground[800].color}
+                fill={colors.foreground[90]}
                 width={20}
                 height={20}
               />
