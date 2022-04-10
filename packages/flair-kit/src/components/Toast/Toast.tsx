@@ -25,7 +25,8 @@ export const Toast = ({
   title,
   onDismiss,
 }: Props) => {
-  const { space, colors, mediaQuery, radii, transition } = useTheme();
+  const { space, colors, mediaQuery, radii, transition, colorScheme } =
+    useTheme();
 
   const enterAnimation = keyframes`
     from { 
@@ -46,10 +47,12 @@ export const Toast = ({
   else if (variant === 'foreground') variantForColor = 'background';
   else if (variant === 'background') variantForColor = 'foreground';
 
+  const needBorder = variant === 'background' || variant === colorScheme;
+
   return (
     <div
       className={css`
-        background: ${colors[variant][30]};
+        background: ${colors[variant][20]};
         color: ${colors[variantForColor][90]};
         padding: ${space.md} ${space.xl} ${space.lg};
         margin-bottom: ${space.md};
@@ -58,6 +61,7 @@ export const Toast = ({
         transition: ${transition.default}, ${transition.tamerTransform};
         pointer-events: auto;
         animation: ${enterAnimation} 0.3s;
+        ${needBorder ? `border: 1px solid ${colors.background[80]};` : ''}
 
         ${mediaQuery.onMobileUp} {
           max-width: 400px;

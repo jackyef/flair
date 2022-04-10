@@ -39,7 +39,7 @@ export const ColorSquare: React.FC<ColorSquareProps> = ({
 
         &:focus,
         &:hover {
-          transform: scale(1.05) translateY(-4px);
+          transform: scale(1.2) translateY(-4px);
         }
       `}
     >

@@ -99,12 +99,12 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, Props>(
         transform: translateY(0) scale(1);
       }
       `
-        : `background: ${colors[variant][isDarkLightFgBg ? 40 : 20]};
+        : `background: ${colors[variant][20]};
       color: ${colors[variantForColor][90]};
       
       &:hover,
       &:focus {
-        background: ${colors[variant][isDarkLightFgBg ? 30 : 10]};
+        background: ${colors[variant][10]};
         color: ${colors[variantForColor][80]};
       }
       `}

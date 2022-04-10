@@ -16,8 +16,7 @@ const Paper = (props: React.HTMLAttributes<HTMLDivElement>) => {
       className={css`
         padding: ${space['lg']};
         margin: 0;
-        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-        background: ${colors.background[80]};
+        background: ${colors.background[30]};
         transition: ${transition.default};
 
         & > h1 {
@@ -26,7 +25,7 @@ const Paper = (props: React.HTMLAttributes<HTMLDivElement>) => {
 
         ${mediaQuery.onMobileUp} {
           padding: ${space['2xl']};
-          margin: ${space['2xl']};
+          margin: ${space['2xl']} 0;
         }
       `}
     />

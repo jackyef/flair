@@ -263,8 +263,8 @@ export const Pre: React.FC<React.HTMLAttributes<HTMLPreElement>> = ({
   const preClass = css`
     padding: ${space.lg};
     border-radius: ${radii.lg};
-    background: ${colors.background[10]};
-    color: ${colors.foreground[40]};
+    background: ${colors.background[30]};
+    color: ${colors.foreground[60]};
     min-width: 0px;
     overflow-x: auto;
     transition: ${transition.default};
